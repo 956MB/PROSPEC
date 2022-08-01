@@ -50,17 +50,17 @@ export enum EButtonImages {
 
 export enum ETooltip {
     TOOLTIP = 'tooltip',
-    LEFT = 'tooltiptext-left',
-    RIGHT = 'tooltiptext-right',
-    TOP = 'tooltiptext-top',
-    BOTTOM = 'tooltiptext-bottom',
+    LEFT = 'tooltip-text tooltip-left',
+    RIGHT = 'tooltip-text tooltip-right',
+    TOP = 'tooltipt-ext tooltip-top',
+    BOTTOM = 'tooltip-text tooltip-bottom',
 }
 
 // MESSAGES:
 
 export enum EEMessages {
     ESC = 'ESC',
-    UNAVAILABLE = 'Player is either not in a game, or spectate is unavailable.'
+    UNAVAILABLE = 'is either not in a game, or spectate is unavailable.'
 }
 
 

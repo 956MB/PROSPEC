@@ -5,9 +5,11 @@
 
 use tauri::Manager;
 use window_shadows::set_shadow;
+use std::env;
 
 fn main() {
     let context = tauri::generate_context!();
+    env::set_var("RUST_BACKTRACE", "1");
 
     tauri::Builder::default()
         .menu(if cfg!(target_os = "macos") {

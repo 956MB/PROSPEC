@@ -11,14 +11,14 @@ class ProSpec {
     public searchModes = [EModes.RANKED_SOLODUO];
     public searchRoles = [ERoles.ANY];
 
-    accountsLoaded: boolean;
-    allAccounts: ISummonerAccounts = [];
+    public accountsLoaded: boolean;
+    public allAccounts: ISummonerAccounts = [];
 
     constructor(refreshInit: boolean) {
         this.accountsLoaded = false;
-        // if (!this.accountsLoaded) {
-        //     this.loadPlayers();
-        // }
+        if (!this.accountsLoaded) {
+            this.loadPlayers();
+        }
         console.log(`Constructor called with refreshInit=${refreshInit}`);
     }
 

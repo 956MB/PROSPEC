@@ -7,6 +7,40 @@ body {
     overflow: hidden;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 18px;
+    /* backdrop-filter: blur(5px); */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(241, 241, 241, 0.05);
+    /* backdrop-filter: blur(5px); */
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    /* background: #888; */
+    background-color: rgb(255, 255, 255, 0.20);
+    border: 6px solid transparent;
+    border-radius: 10px;
+    background-clip: content-box;
+}
+/* Handle hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(255, 255, 255, 0.30);
+    border: 6px solid transparent;
+    border-radius: 10px;
+    background-clip: content-box;
+}
+/* Handle active */
+::-webkit-scrollbar-thumb:active {
+    background-color: rgb(255, 255, 255, 0.40);
+    border: 6px solid transparent;
+    border-radius: 10px;
+    background-clip: content-box;
+}
+
 .app {
     background-color: #333333;
     background-repeat: no-repeat;
@@ -27,7 +61,6 @@ body {
 }
 
 .dark-overlay {
-    position: fixed;
     position: absolute;
     pointer-events: none;
     left: 0;

@@ -9,11 +9,12 @@ import { getChampionFromId } from '../utils';
 import closeIcon from '../assets/icons/close.svg';
 
 const Options: React.FC<{
+    optionsDisabled: boolean,
     optionsProps: IOptionsSections,
     optionsChampProps: IOptionsSectionsChamp,
     selectedChamps: ISelectedChamps
     updateSelectedChampions: (champId: number) => void
-}> = ({ optionsProps, optionsChampProps, selectedChamps, updateSelectedChampions }) => {
+}> = ({ optionsDisabled, optionsProps, optionsChampProps, selectedChamps, updateSelectedChampions }) => {
     const [expanded, setExpanded] = useState(false);
     const [expandedSection, setExpandedSection] = useState(-1);
 
@@ -34,7 +35,7 @@ const Options: React.FC<{
     const sectionsChampFilter = optionsChampProps.sections.filter(sectionChamp => (sectionChamp.active === true));
 
     return (
-        <div className={`options-container ${!optionsProps.active ? 'options-disabled' : null}`}>
+        <div className={`options-container ${optionsDisabled ? 'options-disabled' : null}`}>
             <Suspense fallback={<div>Loading Component....</div>}>
                 {sectionsFilter.map(section => {
                     if (expanded) {
@@ -213,7 +214,7 @@ const OptionsButton: React.FC<{
 
     return (
         <div className={(buttonProps.selected && sectionExpanded) ? "options-button-selected" : (!buttonProps.active ? "options-button-disabled" : "options-button")} onClick={() => { handleExpanded(sectionId) }}>
-            {buttonProps.images.slice(0, 3).map((image, i) => (
+            {buttonProps.images.map((image, i) => (
                 <img
                 key={i}
                 src={`src/assets/${image}`}

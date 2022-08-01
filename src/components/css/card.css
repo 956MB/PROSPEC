@@ -7,11 +7,11 @@
     --card-menu-button-selectedHover: rgba(77, 77, 77, 0.95);
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Inter_Thin';
     src: url('src/assets/fonts/Inter Desktop/Inter-Thin.ttf');
     font-weight: 100;
-}
+} */
 
 @font-face {
     font-family: 'Inter_Light';
@@ -37,7 +37,7 @@
     font-weight: 700;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'NotoSansKR_Thin';
     src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Thin.otf');
     font-weight: 100;
@@ -53,7 +53,7 @@
     font-family: 'NotoSansKR_Regular';
     src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.otf');
     font-weight: 400;
-}
+} */
 
 @font-face {
     font-family: 'NotoSansKR_Medium';
@@ -61,11 +61,11 @@
     font-weight: 500;
 }
 
-@font-face {
+/* @font-face {
     font-family: 'NotoSansKR_Bold';
     src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Bold.otf');
     font-weight: 700;
-}
+} */
 
 @font-face {
     font-family: 'RobotoMono_Regular';
@@ -212,7 +212,7 @@
 }
 
 .card-unavailable .card-image-cutout {
-    opacity: 0.10;
+    display: none;
 }
 
 .player-card:hover {
@@ -227,7 +227,7 @@
 .player-card:hover .card-image,
 .player-card-clicked .card-image 
 {
-    opacity: 1.0;
+    opacity: 0.85;
     filter: grayscale(0);
 }
 .card-unavailable:hover .card-image,
@@ -270,19 +270,21 @@
     visibility: visible;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: flex-start; */
+    align-items: stretch;
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    overflow: hidden;
+    /* overflow: hidden; */
     pointer-events: none;
 }
 
 .card-photo {
     height: 100%;
-    width: calc(100% - 8px);
+    width: 100%;
+    /* width: calc(100% - 8px); */
     z-index: 2;
     pointer-events: none;
     background-repeat: no-repeat;
@@ -358,6 +360,7 @@
     position: absolute !important;
     display: flex;
     align-items: center;
+    vertical-align: middle;
     padding: 4px 8px 5px 8px;
     border-bottom-left-radius: 8px;
     border-top-right-radius: 5px;
@@ -367,6 +370,15 @@
     background-color: rgba(15, 15, 15, 0.45);
     backdrop-filter: blur(5px);
     z-index: 3;
+}
+
+.game-timer-text {
+    font-family: 'RobotoMono_Regular' !important;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.50);
+    pointer-events: none;
+    z-index: 4 !important;
+    user-select: none;
 }
 
 .card-unavailable .game-timer {
@@ -417,18 +429,10 @@
 }
 
 @keyframes showHideDot {
-    0% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    60% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    60% { opacity: 1; }
+    100% { opacity: 0; }
 }
 
 .ending-text {
@@ -449,14 +453,22 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    align-content: center;
+    /* align-content: center; */
     vertical-align: middle;
-    height: 58px;
-    width: 100%;
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* left: 0; */
+    /* height: 58px; */
+    /* width: 100%; */
+    flex: 1;
     z-index: 2;
     pointer-events: none;
-    padding-left: 135px;
+    padding-left: 67px;
+    padding-bottom: 7px;
+    padding-top: 1px;
+    backdrop-filter: grayscale(1);
     background-image: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.45) 40%, rgba(0,0,0,0) 75%);
+    /* background-color: rgba(0, 255, 255, 0.301); */
 }
 
 .card-unavailable .text-container {
@@ -468,17 +480,30 @@
 
 .text-summoner {
     font-family: 'NotoSansKR_Medium';
-    font-size: 18px;
+    /* font-size: 16px; */
     max-height: 23px;
     color: white;
     pointer-events: none;
+    display: block;
     user-select: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* font-size: 15px; */
+    /* flex: 1; */
+    min-width: 0;
+    /* background-color: rgba(240, 248, 255, 0.308); */
+    width: 100%;
+    /* width: auto; */
+    /* padding-left: 67px; */
 }
 
 .card-unavailable .text-summoner {
     max-height: 58px;
     margin-top: 10px;
+    margin-bottom: 3px;
     color: rgba(255, 255, 255, 0.4);
+    text-align: center !important;
 }
 
 .text-sub {
@@ -488,9 +513,14 @@
     pointer-events: none;
     z-index: 4 !important;
     user-select: none;
+    white-space: nowrap;
+    /* margin-left: 67px; */
+    /* background-color: rgba(95, 189, 184, 0.308); */
 }
 
-.card-unavailable .text-sub {
+.card-unavailable .text-sub,
+.card-unavailable .game-timer-text
+{
     display: none;
 }
 
@@ -499,12 +529,11 @@
     display: inline-block;
     z-index: 4 !important;
 }
-  
-.tooltip .tooltiptext-right {
+
+.tooltip .tooltip-text {
     display: none;
-    /* background-color: rgba(0, 0, 0, 0.90); */
-    background-color: rgba(15, 15, 15, 0.60);
-    backdrop-filter: blur(5px);
+    background-color: rgba(15, 15, 15, 0.85);
+    /* backdrop-filter: blur(10px); */
     color: #ffffffb3;
     text-align: center;
     font-family: 'RobotoMono_Regular';
@@ -512,75 +541,36 @@
     padding: 3px 8px 4px 8px;
     font-size: 11px;
     position: absolute;
-    /* bottom: 100%; */
-    text-align: center;
+    z-index: 4 !important;
+}
+
+.tooltip-right {
     top: 4px;
     left: 115%;
-    z-index: 4 !important;
-    animation: 0.7s fadeIn;
-    animation-fill-mode: forwards;
-  
-    visibility: hidden;
+    /* animation: 0.7s fadeIn; */
+    /* animation-fill-mode: forwards; */
+    /* visibility: hidden; */
 }
-.tooltip .tooltiptext-left {
-    display: none;
-    /* background-color: rgba(0, 0, 0, 0.90); */
-    background-color: rgba(15, 15, 15, 0.60);
-    backdrop-filter: blur(5px);
-    color: #ffffffb3;
-    text-align: center;
-    font-family: 'RobotoMono_Regular';
-    border-radius: 5px;
-    padding: 3px 8px 4px 8px;
-    font-size: 11px;
-    position: absolute;
-    text-align: center;
-    /* bottom: 100%; */
+
+.tooltip-left {
     top: 4px;
     right: 115%;
-    z-index: 4 !important;
 }
-.tooltip .tooltiptext-bottom {
-    display: none;
-    /* background-color: rgba(0, 0, 0, 0.90); */
-    background-color: rgba(15, 15, 15, 0.90);
-    /* backdrop-filter: blur(7px); */
-    /* filter: blur(5px); */
-    color: #ffffffb3;
-    text-align: center;
-    font-family: 'RobotoMono_Regular';
-    border-radius: 5px;
-    padding: 3px 8px 4px 8px;
-    font-size: 11px;
-    position: absolute;
-    /* bottom: 100%; */
-    text-align: center;
+
+.tooltip-bottom {
     top: 115%;
     right: 0;
     width: 100px;
+    border-radius: 5px 0 5px 5px !important;
     /* margin-left: -50%; */
     /* transform: translateX(-80%); */
-    z-index: 4 !important;
 }
-.tooltip .tooltiptext-top {
-    display: none;
-    /* background-color: rgba(0, 0, 0, 0.90); */
-    background-color: rgba(15, 15, 15, 0.50);
-    backdrop-filter: blur(5px);
-    color: #ffffffb3;
-    text-align: center;
-    font-family: 'RobotoMono_Regular';
-    border-radius: 5px;
-    padding: 3px 8px 4px 8px;
-    font-size: 11px;
-    position: absolute;
-    /* bottom: 100%; */
-    text-align: center;
+
+.tooltip-top {
     bottom: 115%;
     left: 50%;
     /* margin-left: -50%; */
     transform: translateX(-50%);
-    z-index: 4 !important;
 }
 
 @keyframes fadeIn {
@@ -592,15 +582,16 @@
     }
 }
 
-.tooltip:hover .tooltiptext-left,
-.tooltip:hover .tooltiptext-right,
-.tooltip:hover .tooltiptext-bottom,
-.tooltip:hover .tooltiptext-top
+.tooltip:hover .tooltip-left,
+.tooltip:hover .tooltip-right,
+.tooltip:hover .tooltip-bottom,
+.tooltip:hover .tooltip-top
 {
     display: block;
 }
   
 .clock-svg {
+    margin-top: 1px;
     margin-right: 5px;
     height: 12px;
     opacity: 0.5;
@@ -617,6 +608,7 @@
 }
 
 .player-card:hover .text-sub,
+.player-card:hover .game-timer-text,
 .player-card-clicked .text-sub
 {
     color: rgba(255, 255, 255, 0.85);

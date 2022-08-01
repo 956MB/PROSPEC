@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './css/card.css';
+import Marquee from "react-fast-marquee";
 
-import { formPlayerImage, getChampionFromId, getTeamString, secondsToTime, checkCutout, ending } from '../utils';
+import { formPlayerImage, getChampionFromId, getTeamFromNumber, secondsToTime, checkCutout, ending } from '../utils';
 import { IPlayer } from '../interfaces';
 
 import timerIcon from '../assets/icons/hourglass.svg';
@@ -12,7 +13,7 @@ const Card: React.FC<{
     globalTime: number,
     handleCloseMenus: (playerId: number, set: boolean) => void
 }> = ({ playerProps, globalTime, handleCloseMenus }) => {
-    const team = getTeamString(playerProps.summoner.team, true);
+    const team = getTeamFromNumber(playerProps.summoner.team, true);
     const player = formPlayerImage(team, playerProps.summoner.playerName);
     const champ = getChampionFromId(playerProps.champion)?.name;
     const glow = getChampionFromId(playerProps.champion)?.color;
@@ -63,10 +64,10 @@ const Card: React.FC<{
                     <h1 className="loading-dot dot-three">.</h1>
                 </div>
                 <img src={timerIcon} alt="clock" className={`clock-svg ${ending(gameTime + globalTime, 'ending-svg')} noselect`} />
-                <span className={`text-sub ${ending(gameTime + globalTime, 'ending-text')}`}>
+                <span className={`game-timer-text ${ending(gameTime + globalTime, 'ending-text')}`}>
                     {`${secondsToTime(gameTime + globalTime)}`}
                 </span>
-                <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{EEMessages.UNAVAILABLE}</span>
+                <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{`${playerProps.summoner.playerName} ${EEMessages.UNAVAILABLE}`}</span>
             </div>
             <div className='image-small-champ' style={imageSmallStyles}></div>
             <div className='blur-small'></div>
@@ -74,11 +75,10 @@ const Card: React.FC<{
                 <CardMenu />
                 <div className='card-photo' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
                 <div className='text-container'>
-                    <span className='text-summoner tooltip'>
-                        {/* <span className="tooltiptext">{ playerProps.player }</span> */}
+                    <span className='text-summoner'>
                         {playerProps.summoner.accountName}
                     </span>
-                    <span className='text-sub noselect'>{`${getTeamString(playerProps.summoner.team, false)}`}</span>
+                    <span className='text-sub noselect'>{`${getTeamFromNumber(playerProps.summoner.team, false)}`}</span>
                 </div>
             </div>
             <div className={cardUseDir === "loading" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/${cardUseDir}/${champ}${cardUseDir === "loading" ? '_0.webp' : '.png'})` }}></div>

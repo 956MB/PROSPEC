@@ -2,46 +2,6 @@
     color-scheme: dark;
 }
 
-/* width */
-.pros-container ::-webkit-scrollbar {
-    width: 20px;
-    /* backdrop-filter: blur(5px); */
-}
-
-/* Track */
-.pros-container ::-webkit-scrollbar-track {
-    background: rgb(241, 241, 241, 0.05);
-    /* backdrop-filter: blur(5px); */
-}
-/* .pros-container:hover ::-webkit-scrollbar-track {
-    background: rgb(241, 241, 241, 0.05);
-} */
-
-/* Handle */
-.pros-container ::-webkit-scrollbar-thumb {
-    /* background: #888; */
-    background-color: rgb(255, 255, 255, 0.20);
-    border: 6px solid transparent;
-    border-radius: 10px;
-    background-clip: content-box;
-}
-
-/* Handle hover */
-.pros-container ::-webkit-scrollbar-thumb:hover {
-    background-color: rgb(255, 255, 255, 0.30);
-    border: 6px solid transparent;
-    border-radius: 10px;
-    background-clip: content-box;
-}
-
-/* Handle active */
-.pros-container ::-webkit-scrollbar-thumb:active {
-    background-color: rgb(255, 255, 255, 0.40);
-    border: 6px solid transparent;
-    border-radius: 10px;
-    background-clip: content-box;
-}
-
 .pros-container {
     width: 100%;
     height: calc(100vh - 67px);
@@ -57,7 +17,7 @@
 .pros-scroll {
     height: 100%;
     padding-left: 30px;
-    padding-top: 30px;
+    /* padding-top: 30px; */
     padding-right: 30px;
     overflow-x: hidden;
     overflow-y: scroll;
@@ -73,5 +33,6 @@
     /* grid-gap: 15px; */
     row-gap: 17px;
     column-gap: 17px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }

@@ -1,4 +1,6 @@
-interface IPlayer { 
+// NOTE: Objects
+
+export interface IPlayer { 
     id: number;
     active: boolean;
     menuOpen: boolean;
@@ -7,60 +9,16 @@ interface IPlayer {
     gameInfo: IGameInfo,
 }
   
-interface IPlayers {
+export interface IPlayers {
     players: IPlayer[];
 }
 
-interface IOptionsButton {
-    id: number;
-    active: boolean;
-    selected: boolean;
-    type: string;
-    images: string[];
-    right: string;
-    content: string;
-}
-
-interface IOptionsButtonChamp {
-    id: number;
-    active: boolean;
-    type: string;
-    champ: number;
-    images: string[];
-    right: string;
-}
-
-interface IOptionsSection {
-    id: number;
-    name: string;
-    active: boolean;
-    expanded: boolean;
-    buttons: IOptionsButton[];
-}
-
-interface IOptionsSectionChamp {
-    id: number;
-    name: string;
-    active: boolean;
-    expanded: boolean;
-    buttons: IOptionsButtonChamp[];
-}
-
-interface IOptionsSections {
-    active: boolean;
-    sections: IOptionsSection[];
-}
-
-interface IOptionsSectionsChamp {
-    sections: IOptionsSectionChamp[];
-}
-
-interface ISelectedChamps {
+export interface ISelectedChamps {
     champs: number[];
 }
 
-interface ISummonerAccounts extends Array<ISummonerAccount>{}
-interface ISummonerAccount {
+export interface ISummonerAccounts extends Array<ISummonerAccount>{}
+export interface ISummonerAccount {
     accountName: string,
     playerName: string,
     team: number,
@@ -71,43 +29,83 @@ interface ISummonerAccount {
     stream: string,
 }
 
-interface ISummonerEntry {
-    accounts: ISummonerAccount[]
-}
-
-interface ISummonerDataResponse {
-    status: number,
-    data: any
-}
-
-interface IGameInfo {
+export interface IGameInfo {
     region: string,
     encryptionKey: string,
     gameId: string
     gameTime: number;
 }
 
-interface ISpectatorResult {
-    status: boolean,
-    file: string
-}
-
-interface IChampion {
+export interface IChampion {
     name: string,
     color: string
 }
 
-interface IRegion {
+export interface IRegion {
     use: string,
     display: string
 }
 
+// NOTE: Spectator
 
-// JSON INTERFACES:
-interface IJSONPlayers {
+export interface ISpectatorResult {
+    status: boolean,
+    file: string
+}
+
+// NOTE: UI
+
+export interface IOptionsButton {
+    id: number;
+    active: boolean;
+    selected: boolean;
+    type: string;
+    images: string[];
+    right: string;
+    content: string;
+}
+
+export interface IOptionsButtonChamp {
+    id: number;
+    active: boolean;
+    type: string;
+    champ: number;
+    images: string[];
+    right: string;
+}
+
+export interface IOptionsSection {
+    id: number;
+    name: string;
+    active: boolean;
+    expanded: boolean;
+    buttons: IOptionsButton[];
+}
+
+export interface IOptionsSectionChamp {
+    id: number;
+    name: string;
+    active: boolean;
+    expanded: boolean;
+    buttons: IOptionsButtonChamp[];
+}
+
+export interface IOptionsSections {
+    active: boolean;
+    sections: IOptionsSection[];
+}
+
+export interface IOptionsSectionsChamp {
+    sections: IOptionsSectionChamp[];
+}
+
+
+// NOTE: JSON
+
+export  interface IJSONPlayers {
     players: IJSONPlayer[]
 }
-interface IJSONPlayer {
+export  interface IJSONPlayer {
     player: string,
     team: number,
     league: string,
@@ -115,31 +113,10 @@ interface IJSONPlayer {
     stream: string,
     accounts: IJSONAccount[]
 }
-interface IJSONAccount {
+export  interface IJSONAccount {
     name: string,
     id: string,
     puuid: string,
     profileIcon: number,
     region: string
-}
-
-
-export type {
-    IPlayer,
-    IPlayers,
-    ISpectatorResult,
-    IChampion,
-    IRegion,
-    IOptionsSection,
-    IOptionsSections,
-    IOptionsButton,
-    IOptionsButtonChamp,
-    IOptionsSectionChamp,
-    IOptionsSectionsChamp,
-    ISelectedChamps,
-    ISummonerAccount,
-    ISummonerAccounts,
-    IJSONPlayers,
-    IJSONPlayer,
-    IJSONAccount
 }

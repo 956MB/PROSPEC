@@ -1,10 +1,10 @@
 :root {
-    --button-disabled: rgba(66, 66, 66, 0.25);
-    --button-normal: rgba(66, 66, 66, 0.45);
-    --button-pressed: rgba(66, 66, 66, 0.60);
-    --button-pressedSelected: rgba(66, 66, 66, 0.90);
-    --button-selected: rgba(77, 77, 77, 0.80);
-    --button-selectedHover: rgba(77, 77, 77, 0.95);
+    --button-disabled: rgba(69, 69, 69, 0.25);
+    --button-normal: rgba(69, 69, 69, 0.50);
+    --button-pressed: rgba(69, 69, 69, 0.60);
+    --button-pressedSelected: rgba(69, 69, 69, 0.90);
+    --button-selected: rgba(79, 79, 79, 0.80);
+    --button-selectedHover: rgba(79, 79, 79, 0.95);
 }
 
 
@@ -234,9 +234,10 @@
 
 .options-section-champ .section-close {
     display: block;
-    margin-left: 8px;
-    width: 44px !important;
-    padding: 0 16px 0 16px;
+    margin-left: 4px;
+    width: 40 !important;
+    max-width: 40 !important;
+    /* padding: 0 16px 0 16px; */
 }
 
 .section-close img {

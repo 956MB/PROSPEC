@@ -220,7 +220,23 @@ function ifShort(short: string, long: string, isShort: boolean): string {
     return isShort == true ? short : long;
 }
 
-export function getTeamString(team: number, short: boolean): string {
+export function getTeamFromString(team: string): number {
+    switch (team) {
+        case "DRX": return ETeams.DRX;
+        case "DK": return ETeams.DK;
+        case "BRO": return ETeams.BRO;
+        case "GEN": return ETeams.GEN;
+        case "HLE": return ETeams.HLE;
+        case "KT": return ETeams.KT;
+        case "KDF": return ETeams.KDF;
+        case "LSB": return ETeams.LSB;
+        case "NS": return ETeams.NS;
+        case "T1": return ETeams.T1;
+        default: return -1;
+    }
+}
+
+export function getTeamFromNumber(team: number, short: boolean): string {
     switch (team) {
         case ETeams.DRX: return ifShort(ETeamNames.DRX_SHORT, ETeamNames.DRX_LONG, short);
         case ETeams.DK: return ifShort(ETeamNames.DK_SHORT, ETeamNames.DK_LONG, short);
@@ -259,31 +275,21 @@ export function mapEnum(enumerable: any, type: string, fn: Function): any[] {
     return enumValues.map((m, i) => fn(m, i));
 }
 
+export function sliceMap(map: any[], min: number, max: number): any[] {
+    return map.slice(min, max);
+}
+
 export function included(list: string[], check: string): boolean {
     return list.includes(check);
 }
 
-export function regionType(region: string): string {
-    return (region === ERegions.WORLD) ? EButtonImages.ICON : EButtonImages.FLAG;
-}
-export function regionFolder(region: string): string {
-    return (region === ERegions.WORLD) ? 'icons' : 'flags';
-}
-export function regionFile(region: string): string {
-    return (region === ERegions.WORLD) ? '.svg' : '.png';
-}
-export function modeType(mode: string): string {
-    return (mode === EModes.ALL) ? EButtonImages.ICON : EButtonImages.NONE;
-}
-export function modeImage(mode: string): string {
-    return (mode === EModes.ALL) ? 'icons/any.svg' : '';
-}
-export function roleType(role: string): string {
-    return (role === ERoles.ANY) ? EButtonImages.ICON : EButtonImages.ROLE;
-}
-export function roleFile(role: string): string {
-    return (role === ERoles.ANY) ? '.svg' : '.png';
-}
+export function regionType(region: string): string { return (region === ERegions.WORLD) ? EButtonImages.ICON : EButtonImages.FLAG; }
+export function regionFolder(region: string): string { return (region === ERegions.WORLD) ? 'icons' : 'flags'; }
+export function regionFile(region: string): string { return (region === ERegions.WORLD) ? '.svg' : '.png'; }
+export function modeType(mode: string): string { return (mode === EModes.ALL) ? EButtonImages.ICON : EButtonImages.NONE; }
+export function modeImage(mode: string): string { return (mode === EModes.ALL) ? 'icons/any.svg' : ''; }
+export function roleType(role: string): string { return (role === ERoles.ANY) ? EButtonImages.ICON : EButtonImages.ROLE; }
+export function roleFile(role: string): string { return (role === ERoles.ANY) ? '.svg' : '.png'; }
 
 
 // RANDOM:
@@ -294,4 +300,19 @@ export function randomNumber(min: number, max: number): number {
 
 export function randomKDA(): string {
     return `${randomNumber(0, 10)}/${randomNumber(0, 10)}/${randomNumber(0, 10)}`;
+}
+
+export function randomEnum<T>(anEnum: T): T[keyof T] {
+    const enumValues = Object.keys(anEnum)
+        .map(n => Number.parseInt(n))
+        .filter(n => !Number.isNaN(n)) as unknown as T[keyof T][]
+    const randomIndex = Math.floor(Math.random() * enumValues.length)
+    const randomEnumValue = enumValues[randomIndex]
+    return randomEnumValue;
+}
+
+export function randomActive(): boolean {
+        var notRandomNumbers = [1, 1, 2, 2, 3, 3, 4];
+        var idx = Math.floor(Math.random() * notRandomNumbers.length);
+        return (notRandomNumbers[idx] != 4);
 }

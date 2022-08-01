@@ -5,7 +5,7 @@ import './css/titlebar.css';
 import { Options } from './options';
 import { EAboutSections, EButtonImages, EChampions, EModes, ERegions, ERoles } from '../typings';
 import { IOptionsButton, IOptionsButtonChamp, IOptionsSections, IOptionsSectionsChamp, ISelectedChamps } from '../interfaces';
-import { getChampionFromId, getRegion, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType } from '../utils';
+import { getChampionFromId, getRegion, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap } from '../utils';
 
 import refreshIcon from '../assets/icons/refresh.svg';
 // import sidebarIcon from '../assets/icons/sidebar.svg';
@@ -13,12 +13,14 @@ import minIcon from '../assets/icons/min.svg';
 import closeIcon from '../assets/icons/close.svg';
 
 const Titlebar: React.FC<{
+    settingsOpen: boolean,
     selectedRegions: ERegions[],
     selectedModes: EModes[],
     selectedRoles: ERoles[],
-}> = ({ selectedRegions, selectedModes, selectedRoles }) => {
+    refreshPlayers: () => void
+}> = ({ settingsOpen, selectedRegions, selectedModes, selectedRoles, refreshPlayers }) => {
     const [sections, setSections] = useState<IOptionsSections>({
-        active: true,
+        active: !settingsOpen,
         sections: [
             {
                 id: 0, name: EAboutSections.REGION, active: true, expanded: false,
@@ -49,13 +51,14 @@ const Titlebar: React.FC<{
         sections: [
             {
                 id: 3, name: EAboutSections.CHAMPIONS, active: true, expanded: false,
-                buttons: mapEnum(EChampions, "number", (champ: number, i: number) => {
-                    return {
-                        id: i, active: true, type: EButtonImages.CHAMP, champ: champ, images: [
-                            `dragontail-12.13.1/tiles/${getChampionFromId(champ)?.name}_0.jpg`,
-                        ], right: ""
-                    }
-                }) as IOptionsButtonChamp[]
+                buttons:
+                    sliceMap(mapEnum(EChampions, "number", (champ: number, i: number) => {
+                        return {
+                            id: i, active: true, type: EButtonImages.CHAMP, champ: champ, images: [
+                                `dragontail-12.13.1/tiles/${getChampionFromId(champ)?.name}_0.jpg`,
+                            ], right: ""
+                        }
+                    }) as IOptionsButtonChamp[], 0, 10)
             },
         ]
     });
@@ -74,22 +77,31 @@ const Titlebar: React.FC<{
         <div data-tauri-drag-region className="titlebar">
             <div className='titlebar-inner'>
                 <div className='refresh-group'>
-                    <button className="titlebar-button titlebar-button-edge-both" id="titlebar-refresh">
+                    <button
+                        className="titlebar-button titlebar-button-edge-both"
+                        id="titlebar-refresh"
+                        onClick={() => refreshPlayers()}>
                         <img src={refreshIcon} alt="refresh" />
                     </button>
                     <span className='refresh-text noselect'>{`Last Refresh: 8:34 PM`}</span>
                 </div>
 
-                <Options optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} />
+                <Options optionsDisabled={settingsOpen} optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} />
 
                 <div className='controls-group'>
                     {/* <button className="titlebar-button titlebar-button-edge-left" id="titlebar-sidebar">
                         <img src={ sidebarIcon } alt="sidebar" />
                     </button> */}
-                    <button className="titlebar-button titlebar-button-edge-left" id="titlebar-minimize" onClick={() => appWindow.minimize()}>
+                    <button
+                        className="titlebar-button titlebar-button-edge-left"
+                        id="titlebar-minimize"
+                        onClick={() => appWindow.minimize()}>
                         <img src={minIcon} alt="minimize" />
                     </button>
-                    <button className="titlebar-button titlebar-button-edge-right" id="titlebar-close" onClick={() => appWindow.close()}>
+                    <button
+                        className="titlebar-button titlebar-button-edge-right"
+                        id="titlebar-close"
+                        onClick={() => appWindow.close()}>
                         <img src={closeIcon} alt="close" />
                     </button>
                 </div>
