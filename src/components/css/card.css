@@ -1,0 +1,646 @@
+:root {
+    --card-menu-button-disabled: rgba(66, 66, 66, 0.25);
+    --card-menu-button-normal: rgba(66, 66, 66, 0.90);
+    --card-menu-button-pressed: rgba(66, 66, 66, 0.60);
+    --card-menu-button-pressedSelected: rgba(66, 66, 66, 0.90);
+    --card-menu-button-selected: rgba(85, 85, 85, 0.90);
+    --card-menu-button-selectedHover: rgba(77, 77, 77, 0.95);
+}
+
+@font-face {
+    font-family: 'Inter_Thin';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Thin.ttf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'Inter_Light';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Inter_Regular';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Inter_Medium';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Medium.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Inter_Bold';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Bold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'NotoSansKR_Thin';
+    src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Thin.otf');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'NotoSansKR_Light';
+    src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Light.otf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'NotoSansKR_Regular';
+    src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.otf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'NotoSansKR_Medium';
+    src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Medium.otf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'NotoSansKR_Bold';
+    src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Bold.otf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'RobotoMono_Regular';
+    src: url('src/assets/fonts/Roboto_Mono/static/RobotoMono-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'RobotoMono_Medium';
+    src: url('src/assets/fonts/Roboto_Mono/static/RobotoMono-Medium.ttf');
+    font-weight: 500;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.card-menu {
+    display: none;
+}
+
+/* .player-card-clicked .card-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 2;
+} */
+
+.card-menu-button {
+    pointer-events: all;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 31px;
+    width: 85px;
+    margin: 3px;
+    border-radius: 6px;
+    padding: 0 12px 0 12px;
+    transition: 0.10s;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--card-menu-button-normal);
+    cursor: pointer;
+}
+
+.card-menu-button span {
+    font-family: 'Inter_Regular';
+    font-size: 12px;
+    margin: 4px;
+    color: rgba(255, 255, 255, 0.95);
+    white-space: nowrap;
+}
+
+.card-menu-button:hover {
+    background-color: var(--card-menu-button-selected);
+}
+.card-menu-button:active {
+    background-color: var(--card-menu-button-pressed) !important;
+}
+
+/* .player-card-clicked .card-photo {
+    display: none;
+} */
+
+.player-card {
+    display: block;
+    position: relative;
+    width: 203px;
+    height: 245px;
+    border-radius: 10px;
+    margin: auto;
+    padding: 4px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    overflow: hidden;
+    pointer-events: all;
+    backface-visibility: hidden !important;
+    z-index: 3;
+    cursor: pointer;
+    background-color: rgba(26, 26, 26, 0.75);
+}
+
+.card-unavailable {
+    /* pointer-events: none !important; */
+    cursor: default;
+    border: 2px solid transparent !important;
+    filter: grayscale(1) !important;
+    overflow: visible;
+}
+
+.card-unavailable:active {
+    /* pointer-events: none !important; */
+    filter: grayscale(1) opacity(0.65) !important;
+}
+
+.player-card-clicked {
+    cursor: default !important;
+    pointer-events: all;
+}
+
+.card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    /* background-size: cover; */
+    opacity: 0.55;
+    background-position: center;
+    background-size: 217px;
+    pointer-events: none;
+    filter: grayscale(1) opacity(0.4);
+    z-index: 1;
+}
+
+.card-unavailable .card-image {
+    opacity: 0.10;
+}
+
+.card-image-cutout {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.55;
+    background-position: right;
+    pointer-events: none;
+    filter: grayscale(1) opacity(0.4);
+    z-index: 1;
+}
+
+.card-unavailable .card-image-cutout {
+    opacity: 0.10;
+}
+
+.player-card:hover {
+    /*border for slide in out animation thing, outline for no movement at all*/
+    border: 2px solid rgba(255, 255, 255, 0.20);
+}
+.card-unavailable:hover {
+    /*border for slide in out animation thing, outline for no movement at all*/
+    border: 2px solid transparent !important;
+}
+
+.player-card:hover .card-image,
+.player-card-clicked .card-image 
+{
+    opacity: 1.0;
+    filter: grayscale(0);
+}
+.card-unavailable:hover .card-image,
+.card-unavailable:hover .card-image-cutout
+{
+    opacity: 0.10 !important;
+    filter: grayscale(1) opacity(0.4) !important;
+}
+.player-card:hover .card-image-cutout,
+.player-card-clicked .card-image-cutout
+{
+    opacity: 0.85;
+    filter: grayscale(0);
+}
+
+.player-card:active .card-image,
+.player-card:active .card-image-cutout
+{
+    opacity: 0.65;
+    filter: grayscale(0.1);
+}
+.card-unavailable:active .card-image,
+.card-unavailable:active .card-image-cutout
+{
+    opacity: 0.10;
+    filter: grayscale(0.1) opacity(0.4);
+}
+
+/* .player-card-clicked .text-container {
+    display: none;
+}
+.player-card-clicked .image-small-champ {
+    display: none;
+}
+.player-card-clicked .blur-small {
+    display: none;
+} */
+
+.card-content {
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.card-photo {
+    height: 100%;
+    width: calc(100% - 8px);
+    z-index: 2;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+    background-size: 203px;
+}
+
+.card-unavailable .card-photo {
+    opacity: 0.55;
+}
+
+.image-small-logo {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    left: 10px;
+    bottom: 10px;
+    border-radius: 6px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    pointer-events: none;
+    background-size: 40px;
+    background-color: rgba(135, 135, 135, 0.103);
+    border: 1px solid rgb(255, 255, 255, 0.08);
+    z-index: 3;
+}
+
+.image-small-champ {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    left: 9px;
+    bottom: 9px;
+    border-radius: 7px;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    background-size: contain;
+    background-position: center;
+    background-size: 58px;
+    background-color: rgba(135, 135, 135, 0.30);
+    z-index: 3;
+}
+
+.card-unavailable .image-small-champ {
+    display: none;
+}
+
+.blur-small {
+    position: absolute;
+    height: 52px;
+    width: 52px;
+    left: 10px;
+    pointer-events: none;
+    bottom: 10px;
+    border-radius: 7px;
+    background-color: rgba(135, 135, 135, 0.10);  
+    backdrop-filter: blur(6px);
+    z-index: 2;
+}
+
+.card-unavailable .blur-small {
+    display: none;
+}
+
+/* .player-card-clicked .game-timer {
+    visibility: hidden;
+} */
+
+.game-timer {
+    visibility: visible;
+    position: absolute !important;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px 5px 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 5px;
+    pointer-events: all;
+    top: 4px;
+    right: 4px;
+    background-color: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(5px);
+    z-index: 3;
+}
+
+.card-unavailable .game-timer {
+    top: 2px !important;
+    right: 2px !important;
+    background-color: rgba(15, 15, 15, 0.45) !important;
+}
+
+.loading-dots {
+    display: none;
+    pointer-events: none;
+    user-select: none;
+}
+
+.card-unavailable .loading-dots {
+    display: block;
+    height: 16px;
+    text-align: center;
+    z-index: 3;
+    opacity: 0.75;
+    pointer-events: none;
+    user-select: none;
+}
+
+.loading-dot {
+    display: inline;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    position: relative;
+    top: -.6em;
+    font-size: 20px;
+    opacity: 0;
+    animation: showHideDot 1s ease-in-out infinite;
+    pointer-events: none;
+    user-select: none;
+}
+
+.dot-one {
+    animation-delay: 0.1s;
+}
+
+.dot-two {
+    animation-delay: 0.3s;
+}
+
+.dot-three {
+    animation-delay: 0.5s;
+}
+
+@keyframes showHideDot {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.ending-text {
+    color: rgba(255, 52, 79, 0.877) !important;
+}
+.ending-svg {
+    /* color: rgba(255, 52, 79, 0.877) !important; */
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+.player-card:hover .ending-bg {
+    background-color: rgba(35, 0, 0, 0.45) !important;
+}
+.ending-bg {
+    background-color: rgba(20, 0, 0, 0.45) !important;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: center;
+    vertical-align: middle;
+    height: 58px;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none;
+    padding-left: 135px;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.45) 40%, rgba(0,0,0,0) 75%);
+}
+
+.card-unavailable .text-container {
+    padding-left: 0;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    background-image: linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 75%);
+}
+
+.text-summoner {
+    font-family: 'NotoSansKR_Medium';
+    font-size: 18px;
+    max-height: 23px;
+    color: white;
+    pointer-events: none;
+    user-select: none;
+}
+
+.card-unavailable .text-summoner {
+    max-height: 58px;
+    margin-top: 10px;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.text-sub {
+    font-family: 'RobotoMono_Regular';
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.50);
+    pointer-events: none;
+    z-index: 4 !important;
+    user-select: none;
+}
+
+.card-unavailable .text-sub {
+    display: none;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    z-index: 4 !important;
+}
+  
+.tooltip .tooltiptext-right {
+    display: none;
+    /* background-color: rgba(0, 0, 0, 0.90); */
+    background-color: rgba(15, 15, 15, 0.60);
+    backdrop-filter: blur(5px);
+    color: #ffffffb3;
+    text-align: center;
+    font-family: 'RobotoMono_Regular';
+    border-radius: 5px;
+    padding: 3px 8px 4px 8px;
+    font-size: 11px;
+    position: absolute;
+    /* bottom: 100%; */
+    text-align: center;
+    top: 4px;
+    left: 115%;
+    z-index: 4 !important;
+    animation: 0.7s fadeIn;
+    animation-fill-mode: forwards;
+  
+    visibility: hidden;
+}
+.tooltip .tooltiptext-left {
+    display: none;
+    /* background-color: rgba(0, 0, 0, 0.90); */
+    background-color: rgba(15, 15, 15, 0.60);
+    backdrop-filter: blur(5px);
+    color: #ffffffb3;
+    text-align: center;
+    font-family: 'RobotoMono_Regular';
+    border-radius: 5px;
+    padding: 3px 8px 4px 8px;
+    font-size: 11px;
+    position: absolute;
+    text-align: center;
+    /* bottom: 100%; */
+    top: 4px;
+    right: 115%;
+    z-index: 4 !important;
+}
+.tooltip .tooltiptext-bottom {
+    display: none;
+    /* background-color: rgba(0, 0, 0, 0.90); */
+    background-color: rgba(15, 15, 15, 0.90);
+    /* backdrop-filter: blur(7px); */
+    /* filter: blur(5px); */
+    color: #ffffffb3;
+    text-align: center;
+    font-family: 'RobotoMono_Regular';
+    border-radius: 5px;
+    padding: 3px 8px 4px 8px;
+    font-size: 11px;
+    position: absolute;
+    /* bottom: 100%; */
+    text-align: center;
+    top: 115%;
+    right: 0;
+    width: 100px;
+    /* margin-left: -50%; */
+    /* transform: translateX(-80%); */
+    z-index: 4 !important;
+}
+.tooltip .tooltiptext-top {
+    display: none;
+    /* background-color: rgba(0, 0, 0, 0.90); */
+    background-color: rgba(15, 15, 15, 0.50);
+    backdrop-filter: blur(5px);
+    color: #ffffffb3;
+    text-align: center;
+    font-family: 'RobotoMono_Regular';
+    border-radius: 5px;
+    padding: 3px 8px 4px 8px;
+    font-size: 11px;
+    position: absolute;
+    /* bottom: 100%; */
+    text-align: center;
+    bottom: 115%;
+    left: 50%;
+    /* margin-left: -50%; */
+    transform: translateX(-50%);
+    z-index: 4 !important;
+}
+
+@keyframes fadeIn {
+    99% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+.tooltip:hover .tooltiptext-left,
+.tooltip:hover .tooltiptext-right,
+.tooltip:hover .tooltiptext-bottom,
+.tooltip:hover .tooltiptext-top
+{
+    display: block;
+}
+  
+.clock-svg {
+    margin-right: 5px;
+    height: 12px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.card-unavailable .clock-svg {
+    display: none;
+}
+
+.card-unavailable .ending-text
+{
+    color: rgba(255, 52, 79, 0.877) !important;
+}
+
+.player-card:hover .text-sub,
+.player-card-clicked .text-sub
+{
+    color: rgba(255, 255, 255, 0.85);
+}
+.player-card:active .text-sub {
+    color: rgba(255, 255, 255, 0.75);
+}
+.player-card:hover .clock-svg,
+.player-card-clicked .clock-svg
+{
+    opacity: 1.0;
+}
+.player-card:active .clock-svg {
+    opacity: 0.8;
+}
+
+@keyframes blinkEnding {
+    0% {
+        box-shadow: 0 0 100px 12px rgba(255, 52, 79, 0.40);
+    }
+    50% {
+        box-shadow: 0 0 100px 12px rgba(255, 52, 79, 0.80);
+    }
+    100% {
+        box-shadow: 0 0 100px 12px rgba(255, 52, 79, 0.40);
+    }
+}

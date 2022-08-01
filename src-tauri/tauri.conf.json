@@ -1,0 +1,75 @@
+{
+    "$schema": "../node_modules/@tauri-apps/cli/schema.json",
+    "build": {
+        "beforeBuildCommand": "",
+        "beforeDevCommand": "",
+        "withGlobalTauri": true,
+        "devPath": "http://localhost:3000",
+        "distDir": "../dist"
+    },
+    "package": {
+        "productName": "ProSpec",
+        "version": "0.1.0"
+    },
+    "tauri": {
+        "allowlist": {
+            "all": true,
+            "fs": {
+                "scope": [
+                    "$APP/**", "$APP/src/**", "$APP/src/data/**", "$APP/src/bats/**", "$APP/src/assets/**" ,"$DOWNLOAD/**", "$RESOURCE/**", "/data/**", "data/**"
+                ],
+                "all": true
+            }
+        },
+        "bundle": {
+            "active": true,
+            "category": "DeveloperTool",
+            "copyright": "",
+            "deb": {
+                "depends": []
+            },
+            "externalBin": [],
+            "icon": [
+                "assets/icons/glow.ico"
+            ],
+            "identifier": "com.prospec.win",
+            "longDescription": "",
+            "macOS": {
+                "entitlements": null,
+                "exceptionDomain": "",
+                "frameworks": [],
+                "providerShortName": null,
+                "signingIdentity": null
+            },
+            "resources": [
+                "assets/**",
+                "data/**",
+                "bats/*"
+            ],
+            "shortDescription": "",
+            "targets": "all",
+            "windows": {
+                "certificateThumbprint": null,
+                "digestAlgorithm": "sha256",
+                "timestampUrl": ""
+            }
+        },
+        "security": {
+            "csp": null
+        },
+        "updater": {
+            "active": false
+        },
+        "windows": [
+            {
+                "fullscreen": false,
+                "height": 830,
+                "resizable": true,
+                "title": "ProSpec",
+                "width": 1480,
+                "minWidth": 1040,
+                "decorations": false
+            }
+        ]
+    }
+}

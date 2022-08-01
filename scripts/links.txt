@@ -1,0 +1,24 @@
+LCK CL page:
+https://lol.fandom.com/wiki/LCK_CL/2022_Season/Summer_Season
+
+Player page:
+https://lol.fandom.com/wiki/SamD
+
+OP.GG KR registered summoners page:
+https://na.op.gg/spectate/list/pro-gamer?region=kr
+
+Summoner info element:
+
+<div class="info">
+    - Summoner profile icon link (save the icon number to their entry vvvv ):
+    <img class="icon" src="https://opgg-static.akamaized.net/images/profile_icons/profileIcon5270.jpg?image=q_auto" alt="profile image">
+    <div>
+        - Summoner name element (individual account name):
+        <div class="summoner-name">Kingen</div>
+        - Tier name element (element below holding players official name, this we can search)
+        <div class="tier-name">
+            <span class="tier">challenger </span>
+            <span class="name">Kingen</span>
+        </div>
+    </div>
+</div>

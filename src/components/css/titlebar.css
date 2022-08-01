@@ -1,0 +1,119 @@
+.titlebar {
+    display: flex;
+    flex-grow: 1;
+    height: 47px;
+    background-color: rgba(0, 0, 0, 0.25);
+    max-width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.titlebar-inner {
+    pointer-events: none;
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    height: 47px;
+    flex-grow: 1;
+    /* width: 100%; */
+    z-index: 2;
+    padding-left: 75px;
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.titlebar-blur {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 50px;
+    min-width: 100vw;
+}
+
+.titlebar-button {
+    pointer-events: all;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.refresh-group {
+    user-select: none;
+    pointer-events: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-right: 8px;
+    width: 200px;
+    height: 100%;
+    /* z-index: 2; */
+    /* background-color: #e8112354; */
+}
+
+.controls-group {
+    user-select: none;
+    pointer-events: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 200px;
+    padding-right: 8px;
+    padding-left: 8px;
+    /* z-index: 2; */
+    /* background-color: #4ee81154; */
+}
+
+.titlebar-button-edge:hover,
+.titlebar-button:hover
+{
+    background: rgba(255, 255, 255, 0.06);
+}
+.titlebar-button:active {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.titlebar-button img {
+    opacity: 0.25;
+    user-select: none;
+}
+.titlebar-button:hover img {
+    opacity: 0.6;
+}
+
+.titlebar-button-edge-left {
+    border-radius: 5px 0 0 5px;
+}
+.titlebar-button-edge-right {
+    border-radius: 0 5px 5px 0;
+}
+.titlebar-button-edge-both {
+    border-radius: 5px 5px 5px 5px;
+}
+
+#titlebar-sidebar img {
+    height: 16px;
+}
+
+#titlebar-close {
+    padding-right: 7px;
+}
+#titlebar-close:hover {
+    background: #E81123 !important;
+}
+#titlebar-close:hover img {
+    opacity: 0.95 !important;
+}
+
+.refresh-text {
+    font-family: 'Inter_Light';
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.20);
+    margin-left: 6px;
+    white-space:nowrap;
+}

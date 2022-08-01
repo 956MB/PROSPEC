@@ -1,0 +1,42 @@
+TOPBAR:
+
+Last Refresh: 8:34 PM
+Ranked Solo/Duo
+All
+Any
+Group:
+Game start
+Sort:
+Team
+Search pros
+
+CARD MENU:
+
+Spectate
+Live game
+Afreeca
+
+SETTINGS:
+
+Settings
+Auto refresh
+Refresh interval
+How many seconds/min to refresh the list of pros. If interval set to <1m, it may stress the LoL API rate limits.
+List layout
+Card
+Show team logos
+Show random skins
+Displays random skin backgrounds instead of the default skin art. (No way to use skin in the current match).
+Theme
+Dark
+App scale
+Open on startup
+Minimize to tray
+Close button should minimize, not exit.
+Favorite notifications
+Favorite pros gets notifications when they start a game (Auto refresh on).
+Hardware acceleration
+Hardware acceleration uses the GPU to make the ProSpec run more smoothly.
+Language
+After restarting the app, the change is applied.
+English
