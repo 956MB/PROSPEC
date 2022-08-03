@@ -99,6 +99,46 @@ export interface IOptionsSectionsChamp {
     sections: IOptionsSectionChamp[];
 }
 
+// NOTE: Settings
+
+export interface ISettingsPage {
+    index: number;
+    title: string;
+    items: ISettingsItems;
+}
+
+export interface ISettingsItems extends Array<ISettingsItem>{}
+export interface ISettingsItem {
+    title: string;
+    description: string;
+    value: ISettingsItemValue;
+    childValues: ISettingsItemChildren;
+}
+
+export interface ISettingsItemChildren extends Array<ISettingsItemChild>{}
+export interface ISettingsItemChild extends ISettingsItem {
+    disabledByParent: boolean
+}
+
+export interface ISettingsItemValue {
+    value: any
+    setValue(v: any): boolean
+}
+
+export interface ISettingsItemValueBool extends Omit<ISettingsItemValue, 'value' | 'setValue'> {
+    value: boolean
+    setValue(v: boolean): boolean
+}
+
+export interface ISettingsItemValueSelector extends Omit<ISettingsItemValue, 'value' | 'setValue'> {
+    value: string
+    setValue(v: string): boolean
+}
+
+export interface ISettingsPageButton {
+    index: number;
+    text: string;
+}
 
 // NOTE: JSON
 

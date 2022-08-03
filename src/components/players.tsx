@@ -8,16 +8,19 @@ const Players: React.FC<{
     players: IPlayers,
     handleCloseMenus: (playerId: number, set: boolean) => void
 }> = ({ players, handleCloseMenus }) => {
+    const [intervalActive, setIntervalActive] = useState(false);
     const [gameInterval, setGameInterval] = useState(0);
 
     useEffect(() => {
-        let interval = setInterval(() => {
-            setGameInterval(gameInterval + 1);
-        }, 1000)
-
-        return () => {
-            clearInterval(interval);
-        };
+        if (intervalActive) {
+            let interval = setInterval(() => {
+                setGameInterval(gameInterval + 1);
+            }, 1000)
+    
+            return () => {
+                clearInterval(interval);
+            };
+        }
     });
 
     return (

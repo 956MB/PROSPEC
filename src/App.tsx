@@ -60,8 +60,8 @@ function App() {
         });
     }
 
-    const handleCloseSettings = () => {
-        setSettingsOpen(false);
+    const handleSettingsOpen = (set: boolean = false) => {
+        setSettingsOpen(set);
     }
 
     const refreshPlayers = () => {
@@ -85,7 +85,7 @@ function App() {
 
     return (
         <div className="app" style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/splash/${appBG}.webp)` }}>
-            <Settings appBackground={appBG} settingsOpen={settingsOpen} handleCloseSettings={handleCloseSettings}/>
+            <Settings appBackground={appBG} settingsOpen={settingsOpen} handleSettingsOpen={handleSettingsOpen}/>
             <Titlebar settingsOpen={settingsOpen} selectedRegions={proSpec.searchRegions} selectedModes={proSpec.searchModes} selectedRoles={proSpec.searchRoles} refreshPlayers={refreshPlayers} />
             <div className="app-inner">
                 <Suspense fallback={<div>Loading Component....</div>}>
