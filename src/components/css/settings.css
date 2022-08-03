@@ -152,7 +152,7 @@
     align-items: flex-end;
     align-content: flex-end;
     vertical-align: middle;
-    /* background-color: rgba(192, 34, 34, 0.279); */
+    background-color: rgba(30, 30, 30, 0.45);
     /* height: 50px; */
     padding: 20px 20px 10px 0;
     border-top-right-radius: 10px;
@@ -189,6 +189,7 @@
     display: flex;
     flex-direction: row;
     /* align-content: center; */
+    background-color: rgba(30, 30, 30, 0.45);
     /* background-color: rgba(0, 0, 255, 0.197); */
     /* padding: 0 0 7px 0; */
     border-bottom: 1px inset rgba(255,255,255,0.05);

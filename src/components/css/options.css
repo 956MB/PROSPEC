@@ -111,7 +111,7 @@
     background-color: var(--button-normal);
     height: 31px;
     margin: 0 3px 0 3px;
-    border-radius: 16px;
+    border-radius: 6px;
     /* border-radius: 6px; */
     padding: 0 12px 0 0;
     transition: 0.10s;
@@ -127,7 +127,7 @@
     background-color: var(--button-normal);
     height: 31px;
     margin: 0 3px 0 3px;
-    border-radius: 16px;
+    border-radius: 6px;
     padding: 0 0 0 1px;
     transition: 0.10s;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -156,7 +156,7 @@
     background-color: var(--button-normal);
     height: 31px;
     margin: 0 3px 0 3px;
-    border-radius: 16px;
+    border-radius: 6px;
     padding: 0 12px 0 0;
     transition: 0.10s;
     opacity: 0.5;
@@ -183,7 +183,7 @@
     background-color: var(--button-selected);
     height: 31px;
     margin: 0 3px 0 3px;
-    border-radius: 16px;
+    border-radius: 6px;
     padding: 0 12px 0 0;
     border-top: 1px solid rgba(255, 255, 255, 0.09);
     cursor: pointer;
@@ -237,7 +237,7 @@
     margin-left: 4px;
     width: 40 !important;
     max-width: 40 !important;
-    /* padding: 0 16px 0 16px; */
+    /* padding: 0 6px 0 6px; */
 }
 
 .section-close img {
@@ -277,8 +277,8 @@
 
 .image-role {
     display: block;
-    height: 16px;
-    width: 16px;
+    height: 6px;
+    width: 6px;
     object-fit: contain;
     opacity: 0.45;
     margin-right: 8px;
@@ -312,12 +312,12 @@
 }
 
 .options-button-champ-normal .champ-edge-left {
-    border-bottom-left-radius: 16px;
-    border-top-left-radius: 16px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
 }
 .options-button-champ-normal .champ-edge-right {
-    border-bottom-right-radius: 16px;
-    border-top-right-radius: 16px;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 .options-button-selected .image-icon,
