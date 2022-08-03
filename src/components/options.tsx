@@ -65,11 +65,11 @@ const OptionsSection: React.FC<{
     // const [buttons, setButtons] = useState<IOptionsButton[]>(sectionProps.buttons);
     const [expanded, setExpanded] = useState(sectionProps.expanded);
 
-    const handleExpanded = (sectionId: number) => {
+    const FExpanded = (sectionId: number) => {
         setExpanded(!expanded);
         toggleExpanded(sectionId);
     }
-    const handleSelected = (buttonId: number) => {
+    const FSelected = (buttonId: number) => {
         const filteredButtons = sectionProps.buttons.map((button) => {
             return { id: button.id, active: button.active, selected: ((button.id === buttonId) ? true : false), type: button.type, images: button.images, right: button.right, content: button.content };
         });
@@ -92,10 +92,10 @@ const OptionsSection: React.FC<{
             {/* <span className={`${expanded ? "section-label" : "section-label-disable"} noselect`}>{sectionProps.name}</span> */}
             
             {buttonsFilter.map((props, i) => (
-                <OptionsButton key={i} buttonProps={props} sectionExpanded={expanded} sectionId={sectionProps.id} toggleExpanded={handleExpanded} toggleSelected={handleSelected}></OptionsButton>
+                <OptionsButton key={i} buttonProps={props} sectionExpanded={expanded} sectionId={sectionProps.id} toggleExpanded={FExpanded} toggleSelected={FSelected}></OptionsButton>
             ))}
 
-            <div className={`${expanded ? 'titlebar-button titlebar-button-edge-both section-close' : 'image-null'} ${ETooltip.TOOLTIP}`} onClick={() => handleExpanded(sectionProps.id)}>
+            <div className={`${expanded ? 'titlebar-button titlebar-button-edge-both section-close' : 'image-null'} ${ETooltip.TOOLTIP}`} onClick={() => FExpanded(sectionProps.id)}>
                 <img src={closeIcon} alt="close" />
                 <span className={`${ETooltip.RIGHT}`}>{EEMessages.ESC}</span>
             </div>
@@ -112,11 +112,11 @@ const OptionsSectionChamp: React.FC<{
 }> = ({ sectionChampProps, selectedChamps, toggleExpanded, closeSections, updateSelectedChampions }) => {
     const [expanded, setExpanded] = useState(sectionChampProps.expanded);
     
-    const handleExpanded = (sectionId: number) => {
+    const FExpanded = (sectionId: number) => {
         setExpanded(!expanded);
         toggleExpanded(sectionId);
     }
-    const handleSelected = (buttonId: number, champId: number) => {
+    const FSelected = (buttonId: number, champId: number) => {
         const filteredButtons = sectionChampProps.buttons.map((button) => {
             return { id: button.id, active: button.active, selected: ((button.id === buttonId) ? true : false), type: button.type, champ: button.champ, images: button.images, right: button.right };
         });
@@ -152,7 +152,7 @@ const OptionsSectionChamp: React.FC<{
                     sectionId={sectionChampProps.id}
                     champGlows={glowList}
                     toggleExpanded={() => (null)}
-                    toggleSelected={handleSelected}
+                    toggleSelected={FSelected}
                 ></OptionsButtonChamp>
             ))
     } else {
@@ -171,7 +171,7 @@ const OptionsSectionChamp: React.FC<{
             sectionExpanded={expanded}
             sectionId={sectionChampProps.id}
             champGlows={glowList}
-            toggleExpanded={handleExpanded}
+            toggleExpanded={FExpanded}
             toggleSelected={() => (null)}
         ></OptionsButtonChamp>
     }
@@ -184,7 +184,7 @@ const OptionsSectionChamp: React.FC<{
                 {useButtons}
             </div>
 
-            <div className={`${expanded ? 'titlebar-button titlebar-button-edge-both section-close' : 'image-null'} ${ETooltip.TOOLTIP}`} onClick={() => handleExpanded(sectionChampProps.id)}>
+            <div className={`${expanded ? 'titlebar-button titlebar-button-edge-both section-close' : 'image-null'} ${ETooltip.TOOLTIP}`} onClick={() => FExpanded(sectionChampProps.id)}>
                 <img src={closeIcon} alt="close" />
                 <span className={`${ETooltip.RIGHT}`}>{EEMessages.ESC}</span>
             </div>
@@ -200,7 +200,7 @@ const OptionsButton: React.FC<{
     toggleSelected: (buttonId: number) => void
 }> = ({ buttonProps, sectionExpanded, sectionId, toggleExpanded, toggleSelected }) => {
     // const [selected, setSelected] = useState(buttonProps.selected);
-    const handleExpanded = (sectionId: number) => {
+    const FExpanded = (sectionId: number) => {
         // setSelected(!selected);
         if (buttonProps.active) {
             if (sectionExpanded) {
@@ -213,7 +213,7 @@ const OptionsButton: React.FC<{
     // const buttonImages = buttonProps.images.filter(_ => ( buttonProps.active === true ));
 
     return (
-        <div className={(buttonProps.selected && sectionExpanded) ? "options-button-selected" : (!buttonProps.active ? "options-button-disabled" : "options-button")} onClick={() => { handleExpanded(sectionId) }}>
+        <div className={(buttonProps.selected && sectionExpanded) ? "options-button-selected" : (!buttonProps.active ? "options-button-disabled" : "options-button")} onClick={() => { FExpanded(sectionId) }}>
             {buttonProps.images.map((image, i) => (
                 <img
                 key={i}
@@ -235,7 +235,7 @@ const OptionsButtonChamp: React.FC<{
     toggleExpanded: (sectionId: number) => void
     toggleSelected: (buttonId: number, champId: number) => void
 }> = ({ buttonChampProps, champSelected, sectionExpanded, sectionId, champGlows, toggleExpanded, toggleSelected }) => {
-    const handleExpanded = (sectionId: number) => {
+    const FExpanded = (sectionId: number) => {
         if (buttonChampProps.active) {
             if (sectionExpanded) {
                 toggleSelected(buttonChampProps.id, buttonChampProps.champ);
@@ -245,7 +245,7 @@ const OptionsButtonChamp: React.FC<{
     }
 
     return (
-        <div className={(sectionExpanded) ? (champSelected ? "options-button-champ-selected" : "options-button-champ") : "options-button-champ-normal"} onClick={() => { handleExpanded(sectionId) }}>
+        <div className={(sectionExpanded) ? (champSelected ? "options-button-champ-selected" : "options-button-champ") : "options-button-champ-normal"} onClick={() => { FExpanded(sectionId) }}>
 
             {buttonChampProps.images.map((image, i) => (
                 <img

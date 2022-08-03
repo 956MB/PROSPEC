@@ -9,50 +9,51 @@ import { ISettingsPageButton } from '../interfaces';
 const Settings: React.FC<{
     appBackground: string,
     settingsOpen: boolean,
-    handleSettingsOpen: (set: boolean) => void
-}> = ({ appBackground, settingsOpen, handleSettingsOpen }) => {
+    FSettingsOpen: (set: boolean) => void
+}> = ({ appBackground, settingsOpen, FSettingsOpen }) => {
 
     return (
-        <div className={`settings-outer ${settingsOpen ? 'settings-open' : null}`}>
-            <SettingsInner settingsOpen={settingsOpen} settingsBackground={appBackground} handleSettingsOpen={handleSettingsOpen}/>
+        <div className={`settings-outer ${settingsOpen ? 'settings-open' : null}`} /*style={{width: settingsOpen ? '597px' : '55px'}}*/>
+            <SettingsInner settingsOpen={settingsOpen} settingsBackground={appBackground} FSettingsOpen={FSettingsOpen}/>
 
-            <SettingsVerticalContainer settingsOpen={settingsOpen} handleSettingsOpen={handleSettingsOpen}/>
+            <SettingsVerticalContainer settingsOpen={settingsOpen} FSettingsOpen={FSettingsOpen}/>
         </div>
     )
 }
 
 const SettingsVerticalContainer: React.FC<{
     settingsOpen: boolean,
-    handleSettingsOpen: (set: boolean) => void
-}> = ({ settingsOpen, handleSettingsOpen }) => {
+    FSettingsOpen: (set: boolean) => void
+}> = ({ settingsOpen, FSettingsOpen }) => {
     return (
         <div data-tauri-drag-region className={`settings-vertical-container`} >
-            <div className={`vertical-button`} onClick={() => handleSettingsOpen(true)}>
+            <div className={`vertical-button`} onClick={() => FSettingsOpen(true)}>
                 <img src={gearIcon} alt="gear" />
             </div>
         </div>
     )
 }
 
+// TODO: need to make SettingsInner `display: none` or remove element AFTER settings slides all the way back to 55px.
 const SettingsInner: React.FC<{
     settingsOpen: boolean,
     settingsBackground: string,
-    handleSettingsOpen: (set: boolean) => void
-}> = ({ settingsOpen, settingsBackground, handleSettingsOpen }) => {
+    FSettingsOpen: (set: boolean) => void
+}> = ({ settingsOpen, settingsBackground, FSettingsOpen }) => {
     const [pageActive, setPageActive] = useState(0);
+    
     const isActive = (page: number): boolean => {
         return pageActive == page;
     }
-
-    const handlePageSwitch = (active: number) => {
+    const FPageSwitch = (active: number) => {
         setPageActive(active);
     }
 
     return (
-        <div className={`${settingsOpen ? 'settings-inner' : 'settings-closed'}`} >
+        <div className={`settings-inner`} >
             <div className='settings-title-section'>
                 <div className='settings-close-section'>
-                    <div className={`titlebar-button titlebar-button-edge-both close-button ${ETooltip.TOOLTIP}`} onClick={() => handleSettingsOpen(false)}>
+                    <div className={`titlebar-button titlebar-button-edge-both close-button ${ETooltip.TOOLTIP}`} onClick={() => FSettingsOpen(false)}>
                         <img src={closeIcon} alt="close" />
                         <span className={`${ETooltip.LEFT}`}>{EEMessages.ESC}</span>
                     </div>
@@ -60,10 +61,10 @@ const SettingsInner: React.FC<{
                 <div className='settings-title-container'>
                     <span className='settings-title-text'>Settings</span>
                     <div className='settings-page-button-container'>
-                        <SettingsPageButton pageActive={isActive(0)} buttonProps={{index: 0, text: "Content"}} handlePageSwitch={handlePageSwitch}/>
-                        <SettingsPageButton pageActive={isActive(1)} buttonProps={{index: 1, text: "Application"}} handlePageSwitch={handlePageSwitch}/>
-                        <SettingsPageButton pageActive={isActive(2)} buttonProps={{index: 2, text: "Language"}} handlePageSwitch={handlePageSwitch}/>
-                        <SettingsPageButton pageActive={isActive(3)} buttonProps={{index: 3, text: "About"}} handlePageSwitch={handlePageSwitch}/>
+                        <SettingsPageButton pageActive={isActive(0)} buttonProps={{index: 0, text: "Content"}} FPageSwitch={FPageSwitch}/>
+                        <SettingsPageButton pageActive={isActive(1)} buttonProps={{index: 1, text: "Application"}} FPageSwitch={FPageSwitch}/>
+                        <SettingsPageButton pageActive={isActive(2)} buttonProps={{index: 2, text: "Language"}} FPageSwitch={FPageSwitch}/>
+                        <SettingsPageButton pageActive={isActive(3)} buttonProps={{index: 3, text: "About"}} FPageSwitch={FPageSwitch}/>
                     </div>
                 </div>
 
@@ -91,10 +92,10 @@ const SettingsPage: React.FC<{
 const SettingsPageButton: React.FC<{
     pageActive: boolean,
     buttonProps: ISettingsPageButton,
-    handlePageSwitch: (active: number) => void
-}> = ({ pageActive, buttonProps, handlePageSwitch }) => {
+    FPageSwitch: (active: number) => void
+}> = ({ pageActive, buttonProps, FPageSwitch }) => {
     return (
-        <div className={`settings-page-button ${pageActive ? 'page-button-active' : null}`} onClick={() => handlePageSwitch(buttonProps.index)}>
+        <div className={`settings-page-button ${pageActive ? 'page-button-active' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
             <span className='page-button-text'>{buttonProps.text}</span>
         </div>
     )

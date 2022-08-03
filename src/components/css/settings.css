@@ -5,21 +5,24 @@
     /* min-height: 100%; */
     height: 100%;
     /* height: 100vh; */
-    /* width: 55px; */
+    width: 597px;
     background-color: rgb(61, 61, 61);
     user-select: none;
     pointer-events: all;
     top: 0;
-    left: 0;
+    left: -542px;
     border-right: 1px solid rgba(255,255,255,0.05);
     z-index: 3;
     /* padding: 20px 55px 20px 0; */
     border-radius: 0 10px 10px 0;
     overflow: hidden;
+    transition: .35s;
 }
 
 .settings-open {
-    width: 597px !important;
+    /* transition: .5s; */
+    /* width: 597px !important; */
+    left: 0 !important;
     box-shadow: 0 0 500px 350px rgba(0, 0, 0, 0.20) !important;
 }
 
@@ -72,11 +75,11 @@
     opacity: 0.5;
 }
 
-.settings-outer .settings-inner {
+/* .settings-outer .settings-inner {
     display: none;
-}
+} */
 
-.settings-open .settings-inner {
+.settings-outer .settings-inner {
     display: flex;
     position: relative;
     /* background-color: rgba(0, 0, 0, 0.46); */
@@ -88,6 +91,10 @@
     margin: 20px 0 20px 0;
     border-radius: 0 10px 10px 0;
     overflow: hidden;
+}
+
+.inner-none {
+    display: none !important;
 }
 
 .settings-dark-overlay {
@@ -127,9 +134,9 @@
     transform:scaleX(-1);
 }
 
-.settings-closed {
+/* .settings-closed {
     display: none !important;
-}
+} */
 
 .settings-title-section {
     display: flex;

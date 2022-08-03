@@ -5,7 +5,7 @@ import Titlebar from './components/titlebar';
 import Settings from './components/settings';
 import ProSpec from "./prospec";
 import { IPlayers } from "./interfaces";
-const ProsContainer = React.lazy(() => import("./components/players"));
+const Players = React.lazy(() => import("./components/players"));
 
 // import defaultBackground from "./assets/dragontail-12.13.1/random/Katarina_Sephi2.jpg";
 import { EChampions, EModes, ERegions, ETeams } from "./typings";
@@ -20,7 +20,7 @@ function App() {
         // proSpec.doSomething();
 
         // spectate.execSpectateWin("euw1", "J2iWm0UJqiR80PBGAeEj5PJFBo9h1KkP", "5963775436");
-        // const handleButtonClick = () => {
+        // const FButtonClick = () => {
         //     const fetchUserEmail = async () => {
         //         const response = await execSpectateWin("euw1", "J2iWm0UJqiR80PBGAeEj5PJFBo9h1KkP", "5963775436");
         //         console.log(`here click ${response.status}`);
@@ -54,13 +54,13 @@ function App() {
         // { id: 19, active: true, menuOpen: false, champion: EChampions.SWAIN, summoner: { accountName: "늘 완벽하고싶다", playerName: "Nuguri", team: ETeams.DK, summonerId: "", summonerPuuid: "", region: "", role: "", stream: "" }, gameInfo: { region: ERegions.KR, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) } },
     });
 
-    const handleCloseMenus = (playerId: number, set: boolean) => {
+    const FCloseMenus = (playerId: number, set: boolean) => {
         setPlayers({
             players: players.players.map((player) => ({ ...player, menuOpen: ((player.id === playerId) ? set : false) }))
         });
     }
 
-    const handleSettingsOpen = (set: boolean = false) => {
+    const FSettingsOpen = (set: boolean = false) => {
         setSettingsOpen(set);
     }
 
@@ -85,11 +85,11 @@ function App() {
 
     return (
         <div className="app" style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/splash/${appBG}.webp)` }}>
-            <Settings appBackground={appBG} settingsOpen={settingsOpen} handleSettingsOpen={handleSettingsOpen}/>
+            <Settings appBackground={appBG} settingsOpen={settingsOpen} FSettingsOpen={FSettingsOpen}/>
             <Titlebar settingsOpen={settingsOpen} selectedRegions={proSpec.searchRegions} selectedModes={proSpec.searchModes} selectedRoles={proSpec.searchRoles} refreshPlayers={refreshPlayers} />
             <div className="app-inner">
                 <Suspense fallback={<div>Loading Component....</div>}>
-                    <ProsContainer players={players} handleCloseMenus={handleCloseMenus} />
+                    <Players players={players} FCloseMenus={FCloseMenus} />
                 </Suspense>
             </div>
             <div className="dark-overlay"></div>

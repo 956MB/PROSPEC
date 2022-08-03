@@ -11,8 +11,8 @@ import { EButtonImages, EEMessages, ETooltip } from '../typings';
 const Card: React.FC<{
     playerProps: IPlayer,
     globalTime: number,
-    handleCloseMenus: (playerId: number, set: boolean) => void
-}> = ({ playerProps, globalTime, handleCloseMenus }) => {
+    FCloseMenus: (playerId: number, set: boolean) => void
+}> = ({ playerProps, globalTime, FCloseMenus }) => {
     const team = getTeamFromNumber(playerProps.summoner.team, true);
     const player = formPlayerImage(team, playerProps.summoner.playerName);
     const champ = getChampionFromId(playerProps.champion)?.name;
@@ -24,7 +24,7 @@ const Card: React.FC<{
     const toggleCardClicked = (e: any) => {
         e.stopPropagation();
         if (playerProps.active) {
-            handleCloseMenus(playerProps.id, !playerProps.menuOpen);
+            FCloseMenus(playerProps.id, !playerProps.menuOpen);
         }
     }
     const cardStyleClicked = { border: `2px solid rgba(${!glow ? '255, 255, 255' : (gameTime + globalTime >= 1800 ? '255, 0, 0' : glow)}, 0.70)` };
