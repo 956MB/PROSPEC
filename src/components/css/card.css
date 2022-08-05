@@ -137,8 +137,20 @@
     background-color: var(--card-menu-button-pressed) !important;
 }
 
-/* .player-card-clicked .card-photo {
-    display: none;
+/* NOTE: May use this in the future */
+/* .settings-open .player-card,
+.settings-open .game-timer
+{
+    pointer-events: none !important;
+}
+.settings-open .card-photo
+{
+    filter: grayscale(1) opacity(0.8) !important;
+}
+.settings-open .card-image,
+.settings-open .card-image-cutout
+{
+    filter: grayscale(1) opacity(0.4) !important;
 } */
 
 .player-card {
@@ -522,72 +534,6 @@
 .card-unavailable .game-timer-text
 {
     display: none;
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    z-index: 4 !important;
-}
-
-.tooltip .tooltip-text {
-    display: none;
-    background-color: rgba(15, 15, 15, 0.85);
-    /* backdrop-filter: blur(10px); */
-    color: #ffffffb3;
-    text-align: center;
-    font-family: 'RobotoMono_Regular';
-    border-radius: 5px;
-    padding: 3px 8px 4px 8px;
-    font-size: 11px;
-    position: absolute;
-    z-index: 4 !important;
-}
-
-.tooltip-right {
-    top: 4px;
-    left: 115%;
-    /* animation: 0.7s fadeIn; */
-    /* animation-fill-mode: forwards; */
-    /* visibility: hidden; */
-}
-
-.tooltip-left {
-    top: 4px;
-    right: 115%;
-}
-
-.tooltip-bottom {
-    top: 115%;
-    right: 0;
-    width: 100px;
-    border-radius: 5px 0 5px 5px !important;
-    /* margin-left: -50%; */
-    /* transform: translateX(-80%); */
-}
-
-.tooltip-top {
-    bottom: 115%;
-    left: 50%;
-    /* margin-left: -50%; */
-    transform: translateX(-50%);
-}
-
-@keyframes fadeIn {
-    99% {
-        visibility: hidden;
-    }
-    100% {
-        visibility: visible;
-    }
-}
-
-.tooltip:hover .tooltip-left,
-.tooltip:hover .tooltip-right,
-.tooltip:hover .tooltip-bottom,
-.tooltip:hover .tooltip-top
-{
-    display: block;
 }
   
 .clock-svg {

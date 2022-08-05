@@ -71,7 +71,7 @@ function App() {
                 players: proSpec.allAccounts
                     .filter((player) => player.region === "kr")
                     .sort(() => 0.5 - Math.random())
-                    .slice(0, 14)
+                    .slice(0, 15)
                     .map((player, i) => {
                         return {
                             id: i, active: randomActive(), menuOpen: false, champion: randomEnum(EChampions), summoner: { accountName: player.accountName, playerName: player.playerName, team: player.team, summonerId: "", summonerPuuid: "", region: player.region, role: player.role, stream: player.stream }, gameInfo: { region: getRegion(player.region).use, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) }
@@ -84,7 +84,7 @@ function App() {
     }
 
     return (
-        <div className="app" style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/splash/${appBG}.webp)` }}>
+        <div className={`app ${settingsOpen ? 'settings-open' : null}`} style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/splash/${appBG}.webp)` }}>
             <Settings appBackground={appBG} settingsOpen={settingsOpen} FSettingsOpen={FSettingsOpen}/>
             <Titlebar settingsOpen={settingsOpen} selectedRegions={proSpec.searchRegions} selectedModes={proSpec.searchModes} selectedRoles={proSpec.searchRoles} refreshPlayers={refreshPlayers} />
             <div className="app-inner">
