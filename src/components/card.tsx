@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './css/card.css';
-import Marquee from "react-fast-marquee";
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 import { formPlayerImage, getChampionFromId, getTeamFromNumber, secondsToTime, checkCutout, ending } from '../utils';
 import { IPlayer } from '../interfaces';
@@ -11,8 +11,7 @@ import { EButtonImages, EEMessages, ETooltip } from '../typings';
 const Card: React.FC<{
     playerProps: IPlayer,
     globalTime: number,
-    FCloseMenus: (playerId: number, set: boolean) => void
-}> = ({ playerProps, globalTime, FCloseMenus }) => {
+}> = ({ playerProps, globalTime }) => {
     const team = getTeamFromNumber(playerProps.summoner.team, true);
     const player = formPlayerImage(team, playerProps.summoner.playerName);
     const champ = getChampionFromId(playerProps.champion)?.name;
@@ -20,20 +19,16 @@ const Card: React.FC<{
     const [gameTime, setGameTime] = useState(playerProps.gameInfo.gameTime);
     const [cardUseDir, setCardUseDir] = useState("loading");
 
+    const [cardClicked, setCardClicked] = useState(false);
     const [cardPressed, setCardPressed] = useState(false);
-    const toggleCardClicked = (e: any) => {
-        e.stopPropagation();
-        if (playerProps.active) {
-            FCloseMenus(playerProps.id, !playerProps.menuOpen);
-        }
-    }
+    const toggleMenuClosed = (e: any) => { e.stopPropagation(); if (playerProps.active) setCardClicked(false); }
+    const toggleMenuOpen = (e: any) => { e.stopPropagation(); setCardClicked(true); }
+    const cardRef = useDetectClickOutside({ onTriggered: toggleMenuClosed });
+
     const cardStyleClicked = { border: `2px solid rgba(${!glow ? '255, 255, 255' : (gameTime + globalTime >= 1800 ? '255, 0, 0' : glow)}, 0.70)` };
-    // const cardStyleClicked = { border: `2px solid rgba(255, 255, 255, 0.30)` };
     const imageSmallStyles = {
-        // backgroundImage: `url(src/assets/logos/${team}.png)`,
         backgroundImage: `url(src/assets/dragontail-12.13.1/champion/${champ}.png)`,
         opacity: `${(!playerProps.active && cardPressed) ? '0.5' : '1.0'}`,
-        // backgroundImage: `url(src/assets/dragontail-12.13.1/profileicon/${proProps.profileIcon}.webp)`,
         boxShadow: (gameTime + globalTime >= 1800) ? '' : `0 0 100px 10px rgba(${!glow ? '255, 255, 255' : glow}, 0.30)`,
         border: `1px solid rgb(${!glow ? '255, 255, 255' : glow}, 0.10)`,
         animation: (gameTime + globalTime >= 1800) ? `blinkEnding 5s linear infinite` : ''
@@ -47,15 +42,14 @@ const Card: React.FC<{
         champDir();
     });
 
-    // onMouseDown={() => setCardPressed(true)} onMouseUp={() => setCardPressed(false)}
-    // outline: `2px solid rgba(${!glow ? '255, 255, 255' : glow}, 0.70)`
     return (
         <div
-            className={`player-card ${playerProps.menuOpen ? 'player-card-clicked' : undefined} ${!playerProps.active ? 'card-unavailable' : null}`}
-            style={(cardPressed || playerProps.menuOpen) ? cardStyleClicked : undefined}
-            onClick={toggleCardClicked}
+            className={`player-card ${playerProps.active && cardClicked ? 'player-card-clicked' : undefined} ${!playerProps.active ? 'card-unavailable' : null}`}
+            style={(cardPressed || cardClicked) ? cardStyleClicked : undefined}
+            onClick={toggleMenuOpen}
             onMouseDown={() => setCardPressed(true)}
             onMouseUp={() => setCardPressed(false)}
+            ref={cardRef}
         >
             <div className={`game-timer ${ending(gameTime + globalTime, 'ending-bg')} ${playerProps.active ? null : ETooltip.TOOLTIP}`}>
                 <div className="loading-dots">

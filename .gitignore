@@ -140,3 +140,4 @@ src-tauri/target/*
 /src-tauri/imports/loadingImages.tsx
 /src/data/flakked.txt
 /src/data/karis.txt
+/src/data/test.txt

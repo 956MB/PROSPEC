@@ -3,10 +3,9 @@
 export interface IPlayer { 
     id: number;
     active: boolean;
-    menuOpen: boolean;
     champion: number;
     summoner: ISummonerAccount;
-    gameInfo: IGameInfo,
+    gameInfo: IGameInfo;
 }
   
 export interface IPlayers {
@@ -19,37 +18,37 @@ export interface ISelectedChamps {
 
 export interface ISummonerAccounts extends Array<ISummonerAccount>{}
 export interface ISummonerAccount {
-    accountName: string,
-    playerName: string,
-    team: number,
-    summonerId: string,
-    summonerPuuid: string,
-    region: string,
-    role: string,
-    stream: string,
+    accountName: string;
+    playerName: string;
+    team: number;
+    summonerId: string;
+    summonerPuuid: string;
+    region: string;
+    role: string;
+    stream: string;
 }
 
 export interface IGameInfo {
-    region: string,
-    encryptionKey: string,
+    region: string;
+    encryptionKey: string;
     gameId: string
     gameTime: number;
 }
 
 export interface IChampion {
-    name: string,
+    name: string;
     color: string
 }
 
 export interface IRegion {
-    use: string,
+    use: string;
     display: string
 }
 
 // NOTE: Spectator
 
 export interface ISpectatorResult {
-    status: boolean,
+    status: boolean;
     file: string
 }
 
@@ -101,6 +100,7 @@ export interface IOptionsSectionsChamp {
 
 // NOTE: Settings
 
+export interface ISettingsPages extends Array<ISettingsPage>{}
 export interface ISettingsPage {
     index: number;
     title: string;
@@ -111,28 +111,36 @@ export interface ISettingsItems extends Array<ISettingsItem>{}
 export interface ISettingsItem {
     title: string;
     description: string;
-    value: ISettingsItemValue;
+    itemValue: ISettingsItemValue;
     childValues: ISettingsItemChildren;
 }
 
 export interface ISettingsItemChildren extends Array<ISettingsItemChild>{}
 export interface ISettingsItemChild extends ISettingsItem {
-    disabledByParent: boolean
+    disabledByParent: boolean;
 }
 
 export interface ISettingsItemValue {
-    value: any
-    setValue(v: any): boolean
+    type: string;
+    value: any;
+    // setValue(v: any): boolean
 }
 
-export interface ISettingsItemValueBool extends Omit<ISettingsItemValue, 'value' | 'setValue'> {
-    value: boolean
-    setValue(v: boolean): boolean
+export interface ISettingsItemValueBool extends Omit<ISettingsItemValue, 'value'> {
+    value: boolean;
+    // setValue(v: boolean): boolean
 }
 
-export interface ISettingsItemValueSelector extends Omit<ISettingsItemValue, 'value' | 'setValue'> {
-    value: string
-    setValue(v: string): boolean
+export interface ISettingsItemValueSelections extends Array<ISettingsItemValueSelection>{}
+export interface ISettingsItemValueSelection {
+    index: number;
+    text: string;
+}
+
+export interface ISettingsItemValueSelector extends Omit<ISettingsItemValue, 'value'> {
+    value: number;
+    options: ISettingsItemValueSelections;
+    // setValue(v: string): boolean
 }
 
 export interface ISettingsPageButton {
@@ -146,17 +154,17 @@ export  interface IJSONPlayers {
     players: IJSONPlayer[]
 }
 export  interface IJSONPlayer {
-    player: string,
-    team: number,
-    league: string,
-    role: string,
-    stream: string,
-    accounts: IJSONAccount[]
+    player: string;
+    team: number;
+    league: string;
+    role: string;
+    stream: string;
+    accounts: IJSONAccount[];
 }
 export  interface IJSONAccount {
-    name: string,
-    id: string,
-    puuid: string,
-    profileIcon: number,
-    region: string
+    name: string;
+    id: string;
+    puuid: string;
+    profileIcon: number;
+    region: string;
 }

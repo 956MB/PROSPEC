@@ -6,8 +6,7 @@ import { Card } from './card';
 
 const Players: React.FC<{
     players: IPlayers,
-    FCloseMenus: (playerId: number, set: boolean) => void
-}> = ({ players, FCloseMenus }) => {
+}> = ({ players }) => {
     const [intervalActive, setIntervalActive] = useState(false);
     const [gameInterval, setGameInterval] = useState(0);
 
@@ -24,11 +23,11 @@ const Players: React.FC<{
     });
 
     return (
-        <div className='pros-container' onClick={() => FCloseMenus(-1, false)}>
+        <div className='pros-container'>
             <div className='pros-scroll'>
                 <div className="pros-grid">
                     {players.players.map(player => (
-                        <Card key={player.id} playerProps={player} globalTime={gameInterval} FCloseMenus={FCloseMenus}></Card>
+                        <Card key={player.id} playerProps={player} globalTime={gameInterval}></Card>
                     ))}
                 </div>
             </div>

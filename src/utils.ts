@@ -32,6 +32,7 @@ export function replaceVars(str: string, rep: { [key: string]: string }) {
 };
 
 export async function checkCutout(champ: string): Promise<string> {
+    return "loading";
     const cutouts = await readDir(`assets/dragontail-12.13.1/cutouts/`, { dir: BaseDirectory.Resource, recursive: true });
     
     for (const entry of cutouts) {

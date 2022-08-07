@@ -30,7 +30,7 @@
             },
             "externalBin": [],
             "icon": [
-                "assets/icons/glow.ico"
+                "icons/pink.ico"
             ],
             "identifier": "com.prospec.win",
             "longDescription": "",

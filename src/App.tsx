@@ -14,7 +14,7 @@ import { getRegion, randomActive, randomEnum, randomNumber, sliceMap } from "./u
 function App() {
     const proSpec = useMemo(() => new ProSpec(false), []);
     const [appBG, setAppBG] = useState("Kayle_8");
-    const [settingsOpen, setSettingsOpen] = useState(true);
+    const [settingsOpen, setSettingsOpen] = useState(false);
 
     useEffect(() => {
         // proSpec.doSomething();
@@ -54,12 +54,6 @@ function App() {
         // { id: 19, active: true, menuOpen: false, champion: EChampions.SWAIN, summoner: { accountName: "늘 완벽하고싶다", playerName: "Nuguri", team: ETeams.DK, summonerId: "", summonerPuuid: "", region: "", role: "", stream: "" }, gameInfo: { region: ERegions.KR, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) } },
     });
 
-    const FCloseMenus = (playerId: number, set: boolean) => {
-        setPlayers({
-            players: players.players.map((player) => ({ ...player, menuOpen: ((player.id === playerId) ? set : false) }))
-        });
-    }
-
     const FSettingsOpen = (set: boolean = false) => {
         setSettingsOpen(set);
     }
@@ -74,7 +68,7 @@ function App() {
                     .slice(0, 15)
                     .map((player, i) => {
                         return {
-                            id: i, active: randomActive(), menuOpen: false, champion: randomEnum(EChampions), summoner: { accountName: player.accountName, playerName: player.playerName, team: player.team, summonerId: "", summonerPuuid: "", region: player.region, role: player.role, stream: player.stream }, gameInfo: { region: getRegion(player.region).use, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) }
+                            id: i, active: randomActive(), champion: randomEnum(EChampions), summoner: { accountName: player.accountName, playerName: player.playerName, team: player.team, summonerId: "", summonerPuuid: "", region: player.region, role: player.role, stream: player.stream }, gameInfo: { region: getRegion(player.region).use, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) }
                         }
                     })
             });
@@ -89,7 +83,7 @@ function App() {
             <Titlebar settingsOpen={settingsOpen} selectedRegions={proSpec.searchRegions} selectedModes={proSpec.searchModes} selectedRoles={proSpec.searchRoles} refreshPlayers={refreshPlayers} />
             <div className="app-inner">
                 <Suspense fallback={<div>Loading Component....</div>}>
-                    <Players players={players} FCloseMenus={FCloseMenus} />
+                    <Players players={players}/>
                 </Suspense>
             </div>
             <div className="dark-overlay"></div>

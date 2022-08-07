@@ -15,7 +15,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: rgba(60, 60, 60, 0.40);
+    background: rgba(60, 60, 60, 0.30);
     /* backdrop-filter: blur(5px); */
 }
 /* Handle */
@@ -39,6 +39,58 @@ body {
     border: 6px solid transparent;
     border-radius: 10px;
     background-clip: content-box;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+@font-face {
+    font-family: 'Inter_Light';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Light.ttf');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Inter_Regular';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Inter_Medium';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Medium.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Inter_Bold';
+    src: url('src/assets/fonts/Inter Desktop/Inter-Bold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'NotoSansKR_Medium';
+    src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Medium.otf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'RobotoMono_Regular';
+    src: url('src/assets/fonts/Roboto_Mono/static/RobotoMono-Regular.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'RobotoMono_Medium';
+    src: url('src/assets/fonts/Roboto_Mono/static/RobotoMono-Medium.ttf');
+    font-weight: 500;
 }
 
 .tooltip {
