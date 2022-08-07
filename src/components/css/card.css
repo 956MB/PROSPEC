@@ -221,6 +221,7 @@
     background-size: contain;
     background-position: bottom;
     background-size: 203px;
+    filter: saturate(1.2);
 }
 
 .card-unavailable .card-photo {
@@ -249,7 +250,7 @@
     height: 50px;
     width: 50px;
     left: 9px;
-    bottom: 9px;
+    bottom: 13px;
     border-radius: 7px;
     background-repeat: no-repeat;
     pointer-events: none;
@@ -260,8 +261,28 @@
     z-index: 3;
 }
 
-.card-unavailable .image-small-champ {
+.card-unavailable .image-small-champ,
+.card-unavailable .player-level
+{
     display: none;
+}
+
+.player-level {
+    position: absolute;
+    /* height: 50px; */
+    /* width: 50px; */
+    left: 35px;
+    bottom: 5px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    background-color: rgba(10, 10, 10, 0.97);
+    z-index: 4 !important;
+    color: rgba(255, 255, 255, 0.90);
+    text-align: center;
+    font-family: 'RobotoMono_Regular';
+    border-radius: 12px;
+    padding: 2px 6px 2px 6px;
+    font-size: 10px;
 }
 
 .blur-small {

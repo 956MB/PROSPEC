@@ -101,7 +101,7 @@ body {
 
 .tooltip .tooltip-text {
     display: none;
-    background-color: rgba(15, 15, 15, 0.85);
+    background-color: rgba(15, 15, 15, 0.95);
     /* backdrop-filter: blur(10px); */
     color: rgba(255, 255, 255, 0.702);
     text-align: center;

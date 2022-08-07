@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './css/card.css';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
-import { formPlayerImage, getChampionFromId, getTeamFromNumber, secondsToTime, checkCutout, ending } from '../utils';
+import { formPlayerImage, getChampionFromId, getTeamFromNumber, secondsToTime, checkCutout, ending, randomNumber } from '../utils';
 import { IPlayer } from '../interfaces';
 
 import timerIcon from '../assets/icons/hourglass.svg';
@@ -63,6 +63,7 @@ const Card: React.FC<{
                 </span>
                 <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{`${playerProps.summoner.playerName} ${EEMessages.UNAVAILABLE}`}</span>
             </div>
+            <span className='player-level'>{randomNumber(30, 500)}</span>
             <div className='image-small-champ' style={imageSmallStyles}></div>
             <div className='blur-small'></div>
             <div className='card-content'>

@@ -103,6 +103,7 @@ export interface IOptionsSectionsChamp {
 export interface ISettingsPages extends Array<ISettingsPage>{}
 export interface ISettingsPage {
     index: number;
+    type: string;
     title: string;
     items: ISettingsItems;
 }
@@ -140,6 +141,13 @@ export interface ISettingsItemValueSelection {
 export interface ISettingsItemValueSelector extends Omit<ISettingsItemValue, 'value'> {
     value: number;
     options: ISettingsItemValueSelections;
+    // setValue(v: string): boolean
+}
+
+export interface ISettingsItemValueLanguages extends Array<ISettingsItemValueLanguage>{}
+export interface ISettingsItemValueLanguage extends Omit<ISettingsItemValue, 'value'> {
+    value: number;
+    text: string;
     // setValue(v: string): boolean
 }
 
