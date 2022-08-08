@@ -79,7 +79,7 @@ const Settings: React.FC<{
                 { itemValue: { type: 'lang', value: 3, text: 'Italiano', lang: 'it_IT' } as ISettingsItemValueLanguage},
                 { itemValue: { type: 'lang', value: 4, text: 'Nederlands', lang: 'nl_NL' } as ISettingsItemValueLanguage},
                 { itemValue: { type: 'lang', value: 5, text: 'Svenska', lang: 'sv_SV' } as ISettingsItemValueLanguage},
-                { itemValue: { type: 'lang', value: 6, text: 'Suomeksi', lang: 'fi_FI' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 6, text: 'Suomi', lang: 'fi_FI' } as ISettingsItemValueLanguage},
                 { itemValue: { type: 'lang', value: 7, text: 'Português', lang: 'pt_PT' } as ISettingsItemValueLanguage},
                 { itemValue: { type: 'lang', value: 8, text: 'Polski', lang: 'pl_PL' } as ISettingsItemValueLanguage},
                 { itemValue: { type: 'lang', value: 9, text: 'Русский', lang: 'ru_RU' } as ISettingsItemValueLanguage},
@@ -168,8 +168,9 @@ const SettingsPage: React.FC<{
     pageProps: ISettingsPage,
     pageActive: boolean,
 }> = ({ pageProps, pageActive }) => {
+    const [t, i18n] = useTranslation('common');
     const langPage = pageProps as ISettingsPageLanguage;
-    const [langSelected, setLangSelected] = useState(langPage.selected);
+    const [langSelected, setLangSelected] = useState(-1);
 
     const fLangSelect = (set: number) => {
         setLangSelected(set);
@@ -177,11 +178,13 @@ const SettingsPage: React.FC<{
 
     return (
         <div className={`${pageProps.type === 'lang' ? 'settings-page-lang' : 'settings-page'} ${pageActive ? `${pageProps.type === 'lang' ? 'page-active-lang' : 'page-active'}` : null}`}>
-            {pageProps.items.map((item, i) => (
-                pageProps.type === 'lang'
-                    ? <SettingsPageItemLanguage key={i} itemValue={item.itemValue as ISettingsItemValueLanguage} langSelected={langSelected} fLangSelect={fLangSelect}></SettingsPageItemLanguage>
+            {pageProps.items.map((item, i) => {
+                const valueLang = item.itemValue as ISettingsItemValueLanguage
+
+                return pageProps.type === 'lang'
+                    ? <SettingsPageItemLanguage key={i} itemValue={item.itemValue as ISettingsItemValueLanguage} langSelected={i18n.language === valueLang.lang ? valueLang.value : -1} fLangSelect={fLangSelect}></SettingsPageItemLanguage>
                     : <SettingsPageItem key={i} itemProps={item}></SettingsPageItem>
-            ))}
+            })}
         </div>
     )
 }
@@ -255,7 +258,7 @@ const SettingsPageItemLanguage: React.FC<{
     return (
         <div className={`item-language ${i18n.hasResourceBundle(itemValue.lang, 'common') ? null : 'lang-disabled'}`} onClick={fSelectLanguage}>
             <div className={`circle ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
-            <span className='language-text'>{itemValue.text}</span>
+            <span className='language-text'>{i18n.hasResourceBundle(itemValue.lang, 'common') ? itemValue.text : '· · ·'}</span>
         </div>
     )
 }

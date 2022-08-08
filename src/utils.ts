@@ -1,4 +1,4 @@
-import { IChampion, IRegion } from "./interfaces";
+import { IChampion, IRegion, ISummonerAccount } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import { BlobOptions } from "buffer";
@@ -13,6 +13,19 @@ export function ending(sec: number, _true: string): string | null {
 
 function escapeRegExp(str: string) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
+declare global {
+    interface Array<T> {
+        uniquePlayers(min?: number, max?: number): Array<T>;
+    }
+}
+
+if (!Array.prototype.uniquePlayers) {
+    Array.prototype.uniquePlayers = function<T>(this: ISummonerAccount[], min: number, max: number): ISummonerAccount[] {
+        const unique = [...new Map(this.map(item => [item.playerName, item])).values()];
+        return unique.slice(min, max);
+    }
 }
 
 export function secondsToTime(secs: number): string {
@@ -299,6 +312,9 @@ export function roleFile(role: string): string { return (role === ERoles.ANY) ? 
 
 // TRANSLATION:
 
+export function oMode(mode: string): string { return `modes.${mode}` }
+export function oRole(role: string): string { return `roles.${role}` }
+export function oRegion(region: string): string { return `regions.${region}` }
 export function sTitle(page: string): string { return `settings.pages.${page}.title` }
 export function sItemTitle(page: string, item: string): string { return `settings.pages.${page}.items.${item}.title` }
 export function sItemDescription(page: string, item: string): string { return `settings.pages.${page}.items.${item}.description` }

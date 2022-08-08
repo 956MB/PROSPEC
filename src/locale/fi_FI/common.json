@@ -1,0 +1,130 @@
+{
+	"modes": {
+		"ARAM": "ARAM",
+		"URF": "URF",
+		"all": "Kaikki",
+		"normalBlind": "Normaali sokea",
+		"normalDraft": "Normaali luonnos",
+		"rankedFlex": "Luokiteltu flex",
+		"rankedSoloDuo": "Luokiteltu soolo/duo"
+	},
+	"regions": {
+		"br": "BR",
+		"eun": "EUN",
+		"euw": "EUW",
+		"jp": "JP",
+		"kr": "KR",
+		"na": "NA",
+		"oce": "OCE",
+		"ru": "RU",
+		"world": "Maailman"
+	},
+	"roles": {
+		"any": "Minkä tahansa",
+		"bottom": "Pohja",
+		"jungle": "Viidakko",
+		"middle": "Keski-",
+		"support": "Tuki",
+		"top": "Ylhäältä"
+	},
+	"settings": {
+		"pages": {
+			"about": {
+				"title": "Noin"
+			},
+			"application": {
+				"items": {
+					"Accent": {
+						"title": "Aksentti"
+					},
+					"appScale": {
+						"title": "Sovellusasteikko"
+					},
+					"dark": {
+						"title": "Tumma"
+					},
+					"favortieNotifications": {
+						"description": "Suosikki ammattilaiset saavat ilmoituksia, kun he alkavat peliä (automaattinen päivitys päällä).",
+						"title": "Suosikkiilmoitukset"
+					},
+					"hardwareAcceleration": {
+						"description": "Laitteistoki",
+						"title": "Laitteistokiihdytys"
+					},
+					"keyboardMode": {
+						"description": "Mahdollistaa sovelluksen navigoinnin näppäimistöllä.",
+						"title": "Näppäimistötila"
+					},
+					"light": {
+						"title": "Valaistus"
+					},
+					"minimizeToTray": {
+						"description": "Sulje -painikkeen tulisi minimoida, ei poistua.",
+						"title": "Minimoida tarjotin"
+					},
+					"openOnStartup": {
+						"title": "Avaa käynnistyksen yhteydessä"
+					},
+					"randomAppBackground": {
+						"description": "Valitse APP -tausta, joka valitaan satunnaisesti Champion Poolista tai aseta se tiettyyn oletusarvoon.",
+						"title": "Satunnainen sovellustausta"
+					},
+					"system": {
+						"title": "Järjestelmä"
+					},
+					"theme": {
+						"title": "Teema"
+					}
+				},
+				"title": "Soveltaminen"
+			},
+			"content": {
+				"items": {
+					"autoRefresh": {
+						"title": "Automaattinen virkistäminen"
+					},
+					"card": {
+						"title": "Kortti"
+					},
+					"list": {
+						"title": "Lista"
+					},
+					"listLayout": {
+						"title": "Listata asettelu"
+					},
+					"refreshInterval": {
+						"description": "Kuinka monta sekuntia/min päivittää ammattilaisten luettelo.3M+ Suositellaan LOL API -nopeusrajojen vuoksi.",
+						"title": "Virkistysväli"
+					},
+					"showRandomSkins": {
+						"description": "Näyttää satunnaiset ihotaustat oletusarvoisen ihotaiteen sijasta.",
+						"title": "Näytä satunnaiset nahat"
+					},
+					"showSummonerIds": {
+						"description": "Näyttää Player Summoner ID (Hide on bush) Gamertagin (Faker) sijasta.",
+						"title": "Näytä Summoner IDS"
+					},
+					"showTeamLogos": {
+						"description": "Näyttää joukkueen logon nykyisen mestarin sijasta kortissa.",
+						"title": "Näytä tiimin logot"
+					},
+					"useCutouts": {
+						"description": "Käyttää läpinäkyviä mestarien leikkauksia roisketaiteen lataamisen sijasta",
+						"title": "Käytä leikkauksia"
+					}
+				},
+				"title": "Sisältö"
+			},
+			"language": {
+				"title": "Kieli"
+			}
+		},
+		"title": "Asetukset"
+	},
+	"titlebar": {
+		"lastRefresh": "Viimeinen virkistys: {{time}}"
+	},
+	"tooltips": {
+		"playerUnavailable": "{{player}} ei ole pelissä tai katsoja ei ole käytettävissä."
+	}
+}

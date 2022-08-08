@@ -334,8 +334,7 @@
 
 .loading-dot {
     display: inline;
-    margin-left: 0.1em;
-    margin-right: 0.1em;
+    margin: 0 0.1em 0 0.1em;
     position: relative;
     top: -.6em;
     font-size: 20px;
@@ -385,9 +384,7 @@
     flex: 1;
     z-index: 2;
     pointer-events: none;
-    padding-left: 67px;
-    padding-bottom: 7px;
-    padding-top: 1px;
+    padding: 1px 4px 7px 67px;
     backdrop-filter: grayscale(1);
     background-image: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.45) 40%, rgba(0,0,0,0) 75%);
 }
@@ -415,8 +412,7 @@
 
 .card-unavailable .text-summoner {
     max-height: 58px;
-    margin-top: 10px;
-    margin-bottom: 3px;
+    margin: 8px 0 5px 0;
     color: rgba(255, 255, 255, 0.4);
     text-align: center !important;
 }
@@ -429,6 +425,7 @@
     z-index: 4 !important;
     user-select: none;
     white-space: nowrap;
+    margin: -1px 0 1px 0;
 }
 
 .card-unavailable .text-sub,
@@ -438,8 +435,7 @@
 }
   
 .clock-svg {
-    margin-top: 1px;
-    margin-right: 5px;
+    margin: 1px 5px 0 0;
     height: 12px;
     opacity: 0.5;
     pointer-events: none;

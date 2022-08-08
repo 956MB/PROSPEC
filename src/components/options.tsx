@@ -7,6 +7,7 @@ import { EButtonImages, EEMessages, ETooltip } from '../typings';
 import { getChampionFromId } from '../utils';
 
 import closeIcon from '../assets/icons/close.svg';
+import { useTranslation } from 'react-i18next';
 
 const Options: React.FC<{
     optionsDisabled: boolean,
@@ -199,6 +200,7 @@ const OptionsButton: React.FC<{
     toggleExpanded: (sectionId: number) => void
     toggleSelected: (buttonId: number) => void
 }> = ({ buttonProps, sectionExpanded, sectionId, toggleExpanded, toggleSelected }) => {
+    const {t, i18n} = useTranslation('common');
     // const [selected, setSelected] = useState(buttonProps.selected);
     const FExpanded = (sectionId: number) => {
         // setSelected(!selected);
@@ -210,8 +212,6 @@ const OptionsButton: React.FC<{
         }
     }
 
-    // const buttonImages = buttonProps.images.filter(_ => ( buttonProps.active === true ));
-
     return (
         <div className={(buttonProps.selected && sectionExpanded) ? "options-button-selected" : (!buttonProps.active ? "options-button-disabled" : "options-button")} onClick={() => { FExpanded(sectionId) }}>
             {buttonProps.images.map((image, i) => (
@@ -220,7 +220,7 @@ const OptionsButton: React.FC<{
                 src={`src/assets/${image}`}
                 className={`${buttonProps.type} ${(i === 0 && buttonProps.type === EButtonImages.CHAMP) ? 'champ-edge-left' : null} ${(i === buttonProps.images.length - 1 && buttonProps.type === EButtonImages.CHAMP) ? 'champ-edge-right' : null} noselect`} />
             ))}
-            <span className='button-content noselect'>{buttonProps.content}</span>
+            <span className='button-content noselect'>{t(buttonProps.content)}</span>
             {<img src={`src/assets/${buttonProps.right}`} className={buttonProps.right === "" ? "image-null" : "image-right"} />}
         </div>
     )

@@ -72,7 +72,7 @@
     border-radius: 10px;
     pointer-events: all;
     z-index: 3;
-    padding-bottom: 20px;
+    padding: 0 0 20px 0;
 }
 
 .vertical-button {
@@ -205,8 +205,7 @@
     font-family: 'Inter_Medium';
     font-size: 26px;
     color: white;
-    margin-right: auto;
-    margin-top: 15px;
+    margin: 15px auto 0 0;
     line-height: 1.5;
 }
 
@@ -306,7 +305,7 @@
     justify-content: center;
     vertical-align: middle;
     border-left: 1px solid rgba(255, 255, 255, 0.10);
-    padding-left: 15px;
+    padding: 0 0 0 15px;
     margin: 8px 0 0 20px;
 }
 
@@ -339,6 +338,7 @@
 .item-description {
     color: rgba(255, 255, 255, 0.28);
     margin-top: 2px;
+    line-height: 1.4;
 }
 
 .center-container {
@@ -362,9 +362,7 @@
     backdrop-filter: blur(6px) !important;
     overflow: hidden;
     flex: none;
-    margin-left: 20px;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto 0 auto 20px;
     cursor: pointer;
 }
 .bool-half {
@@ -412,9 +410,7 @@
     backdrop-filter: blur(5px) !important;
     overflow: hidden;
     flex: none;
-    margin-left: 20px;
-    margin-top: auto;
-    margin-bottom: auto;
+    margin: auto 0 auto 20px;
     cursor: pointer;
     background: rgba(66, 66, 66, 0.40);
 }
@@ -488,7 +484,9 @@
     pointer-events: none !important;
     opacity: 0.5 !important;
 }
-.lang-disabled span {
+.lang-disabled span,
+.lang-disabled .circle
+{
     opacity: 0.5 !important;
 }
 

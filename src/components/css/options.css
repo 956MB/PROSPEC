@@ -248,26 +248,23 @@
     max-height: 32px !important;
     max-width: 18px !important;
     object-fit: contain;
-    margin-right: 8px;
-    margin-left: 12px;
+    margin: 0 8px 0 12px;
 }
 
 .image-icon {
     display: block;
     object-fit: contain;
     opacity: 0.25;
-    margin-right: 8px;
-    margin-left: 12px;
+    margin: 0 8px 0 12px;
 }
 
 .image-role {
     display: block;
-    height: 6px;
-    width: 6px;
+    height: 16px;
+    width: 16px;
     object-fit: contain;
     opacity: 0.45;
-    margin-right: 8px;
-    margin-left: 12px;
+    margin: 0 8px 0 12px;
 }
 
 .image-champ {
@@ -283,8 +280,7 @@
     display: block;
     object-fit: contain;
     opacity: 0.25;
-    margin-right: 12px;
-    margin-left: 12px;
+    margin: 0 12px 0 12px;
 }
 
 .options-button-champ-selected .champ-edge-left {

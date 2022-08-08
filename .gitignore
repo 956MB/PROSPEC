@@ -141,3 +141,4 @@ src-tauri/target/*
 /src/data/flakked.txt
 /src/data/karis.txt
 /src/data/test.txt
+/src/locale/prospec.babel

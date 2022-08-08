@@ -131,14 +131,11 @@ body {
     right: 0;
     width: 100px;
     border-radius: 5px 0 5px 5px !important;
-    /* margin-left: -50%; */
-    /* transform: translateX(-80%); */
 }
 
 .tooltip-top {
     bottom: 115%;
     left: 50%;
-    /* margin-left: -50%; */
     transform: translateX(-50%);
 }
 

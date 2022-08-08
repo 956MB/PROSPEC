@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { appWindow } from '@tauri-apps/api/window';
+import { useTranslation } from "react-i18next";
 import './css/titlebar.css';
 
 import { Options } from './options';
 import { EAboutSections, EButtonImages, EChampions, EModes, ERegions, ERoles } from '../typings';
 import { IOptionsButton, IOptionsButtonChamp, IOptionsSections, IOptionsSectionsChamp, ISelectedChamps } from '../interfaces';
-import { getChampionFromId, getRegion, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap } from '../utils';
+import { getChampionFromId, getRegion, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap, oMode, oRole, oRegion } from '../utils';
 
 import refreshIcon from '../assets/icons/refresh.svg';
 // import sidebarIcon from '../assets/icons/sidebar.svg';
@@ -19,6 +20,7 @@ const Titlebar: React.FC<{
     selectedRoles: ERoles[],
     refreshPlayers: () => void
 }> = ({ settingsOpen, selectedRegions, selectedModes, selectedRoles, refreshPlayers }) => {
+    const {t, i18n} = useTranslation('common');
     const [sections, setSections] = useState<IOptionsSections>({
         active: !settingsOpen,
         sections: [
@@ -26,21 +28,21 @@ const Titlebar: React.FC<{
                 id: 0, name: EAboutSections.REGION, active: true, expanded: false,
                 buttons:
                     mapEnum(ERegions, "string", (region: ERegions, i: number) => {
-                        return { id: i, active: true, selected: included(selectedRegions, region), type: regionType(region), images: [`${regionFolder(region)}/${region}${regionFile(region)}`], right: "", content: getRegion(region).display }
+                        return { id: i, active: true, selected: included(selectedRegions, region), type: regionType(region), images: [`${regionFolder(region)}/${region}${regionFile(region)}`], right: "", content: oRegion(region as string) }
                     }) as IOptionsButton[]
             },
             {
                 id: 1, name: EAboutSections.MODE, active: true, expanded: false,
                 buttons:
                     mapEnum(EModes, "string", (mode: EModes, i: number) => {
-                        return { id: i, active: true, selected: included(selectedModes, mode), type: modeType(mode), images: [modeImage(mode)], right: "", content: mode }
+                        return { id: i, active: true, selected: included(selectedModes, mode), type: modeType(mode), images: [modeImage(mode)], right: "", content: oMode(mode as string) }
                     }) as IOptionsButton[]
             },
             {
                 id: 2, name: EAboutSections.ROLE, active: true, expanded: false,
                 buttons:
                     mapEnum(ERoles, "string", (role: ERoles, i: number) => {
-                        return { id: i, active: true, selected: included(selectedRoles, role), type: roleType(role), images: [`icons/${role.toLowerCase()}${roleFile(role)}`], right: "", content: role }
+                        return { id: i, active: true, selected: included(selectedRoles, role), type: roleType(role), images: [`icons/${role.toLowerCase()}${roleFile(role)}`], right: "", content: oRole(role as string) }
                     }) as IOptionsButton[]
             },
         ]
@@ -83,7 +85,7 @@ const Titlebar: React.FC<{
                         onClick={() => refreshPlayers()}>
                         <img src={refreshIcon} alt="refresh" />
                     </button>
-                    <span className='refresh-text noselect'>{`Last Refresh: 8:34 PM`}</span>
+                    <span className='refresh-text noselect'>{t('titlebar.lastRefresh', {time: '8:34 PM'})}</span>
                 </div>
 
                 <Options optionsDisabled={settingsOpen} optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} />

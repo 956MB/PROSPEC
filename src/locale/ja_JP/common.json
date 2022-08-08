@@ -1,0 +1,130 @@
+{
+	"modes": {
+		"ARAM": "ARAM",
+		"URF": "URF",
+		"all": "すべて",
+		"normalBlind": "ノーマルブラインド",
+		"normalDraft": "通常ドラフト",
+		"rankedFlex": "ランクフレックス",
+		"rankedSoloDuo": "ランクソロ/デュオ"
+	},
+	"regions": {
+		"br": "BR",
+		"eun": "EUN",
+		"euw": "EUW",
+		"jp": "JP",
+		"kr": "KR",
+		"na": "NA",
+		"oce": "OCE",
+		"ru": "RU",
+		"world": "世界"
+	},
+	"roles": {
+		"any": "どれか",
+		"bottom": "底",
+		"jungle": "密林",
+		"middle": "中間",
+		"support": "サポート",
+		"top": "上"
+	},
+	"settings": {
+		"pages": {
+			"about": {
+				"title": "約"
+			},
+			"application": {
+				"items": {
+					"Accent": {
+						"title": "アクセント"
+					},
+					"appScale": {
+						"title": "アプリの規模"
+					},
+					"dark": {
+						"title": "ダーク"
+					},
+					"favortieNotifications": {
+						"description": "お気に入りのプロは、ゲームを開始すると通知を受け取ります (自動更新オン)。",
+						"title": "お気に入りの通知"
+					},
+					"hardwareAcceleration": {
+						"description": "ハードウェア アクセラレーションは、GPU を使用して ProSpec をよりスムーズに実行します。",
+						"title": "ハードウェアアクセラレーション"
+					},
+					"keyboardMode": {
+						"description": "キーボードを使用したアプリ ナビゲーションを有効にします。",
+						"title": "キーボードモード"
+					},
+					"light": {
+						"title": "光"
+					},
+					"minimizeToTray": {
+						"description": "閉じるボタンは、終了ではなく最小化する必要があります。",
+						"title": "トレイに最小化"
+					},
+					"openOnStartup": {
+						"title": "起動時に開く"
+					},
+					"randomAppBackground": {
+						"description": "アプリの背景をチャンピオン プールからランダムに選択するか、特定のデフォルトに設定します。",
+						"title": "ランダムなアプリの背景"
+					},
+					"system": {
+						"title": "システム"
+					},
+					"theme": {
+						"title": "テーマ"
+					}
+				},
+				"title": "応用"
+			},
+			"content": {
+				"items": {
+					"autoRefresh": {
+						"title": "自動更新"
+					},
+					"card": {
+						"title": "カード"
+					},
+					"list": {
+						"title": "リスト"
+					},
+					"listLayout": {
+						"title": "リストのレイアウト"
+					},
+					"refreshInterval": {
+						"description": "プロのリストを更新する秒数/分。 LoL API のレート制限のため、3 分以上を推奨。",
+						"title": "更新間隔"
+					},
+					"showRandomSkins": {
+						"description": "デフォルトのスキン アートの代わりに、ランダムなスキンの背景を表示します。",
+						"title": "ランダムスキンを表示"
+					},
+					"showSummonerIds": {
+						"description": "ゲーマータグ (Faker) の代わりに、プレイヤー サモナー ID (Hide on Bush) を表示します。",
+						"title": "サモナーIDを表示"
+					},
+					"showTeamLogos": {
+						"description": "カードの現在のチャンピオンの代わりにチームのロゴを表示します。",
+						"title": "チームのロゴを表示"
+					},
+					"useCutouts": {
+						"description": "スプラッシュ アートをロードする代わりに、透明なチャンピオン カットアウトを使用します",
+						"title": "カットアウトを使用する"
+					}
+				},
+				"title": "コンテンツ"
+			},
+			"language": {
+				"title": "言語"
+			}
+		},
+		"title": "設定"
+	},
+	"titlebar": {
+		"lastRefresh": "最終更新： {{time}}"
+	},
+	"tooltips": {
+		"playerUnavailable": "{{player}} はゲームに参加していないか、観戦できません。"
+	}
+}

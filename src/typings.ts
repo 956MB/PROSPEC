@@ -8,34 +8,34 @@ export enum EAboutSections {
 }
 
 export enum ERegions {
-    WORLD = 'globe',
-    NA = 'NA',
-    EUW = 'EUW',
-    EUN = 'EUN',
-    OCE = 'OCE',
-    KR = 'KR',
-    JP = 'JP',
-    BR = 'BR',
-    RU = 'RU'
+    WORLD = 'world',
+    NA = 'na',
+    EUW = 'euw',
+    EUN = 'eun',
+    OCE = 'oce',
+    KR = 'kr',
+    JP = 'jp',
+    BR = 'br',
+    RU = 'ru'
 }
 
 export enum EModes {
-    ALL = 'All',
-    RANKED_SOLODUO = 'Ranked Solo/Duo',
-    RANKED_FLEX = 'Ranked Flex',
-    NORMAL_DRAFT = 'Normal Draft',
-    NORMAL_BLIND = 'Normal Blind',
+    ALL = 'all',
+    RANKED_SOLODUO = 'rankedSoloDuo',
+    RANKED_FLEX = 'rankedFlex',
+    NORMAL_DRAFT = 'normalDraft',
+    NORMAL_BLIND = 'normalBlind',
     URF = 'URF',
     ARAM = 'ARAM'
 }
 
 export enum ERoles {
-    ANY = 'Any',
-    TOP = 'Top',
-    JUNGLE = 'Jungle',
-    MID = 'Mid',
-    BOTTOM = 'Bottom',
-    SUPPORT = 'Support'
+    ANY = 'any',
+    TOP = 'top',
+    JUNGLE = 'jungle',
+    MIDDLE = 'middle',
+    BOTTOM = 'bottom',
+    SUPPORT = 'support'
 }
 
 export enum EButtonImages {
@@ -60,7 +60,7 @@ export enum ETooltip {
 
 export enum EEMessages {
     ESC = 'ESC',
-    UNAVAILABLE = 'is either not in a game, or spectate is unavailable.'
+    UNAVAILABLE = 'tooltips.playerUnavailable'
 }
 
 

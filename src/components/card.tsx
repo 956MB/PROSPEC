@@ -7,11 +7,14 @@ import { IPlayer } from '../interfaces';
 
 import timerIcon from '../assets/icons/hourglass.svg';
 import { EButtonImages, EEMessages, ETooltip } from '../typings';
+import { useTranslation } from 'react-i18next';
 
 const Card: React.FC<{
     playerProps: IPlayer,
     globalTime: number,
 }> = ({ playerProps, globalTime }) => {
+    const {t, i18n} = useTranslation('common');
+
     const team = getTeamFromNumber(playerProps.summoner.team, true);
     const player = formPlayerImage(team, playerProps.summoner.playerName);
     const champ = getChampionFromId(playerProps.champion)?.name;
@@ -61,7 +64,7 @@ const Card: React.FC<{
                 <span className={`game-timer-text ${ending(gameTime + globalTime, 'ending-text')}`}>
                     {`${secondsToTime(gameTime + globalTime)}`}
                 </span>
-                <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{`${playerProps.summoner.playerName} ${EEMessages.UNAVAILABLE}`}</span>
+                <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, {player: playerProps.summoner.playerName})}</span>
             </div>
             <span className='player-level'>{randomNumber(30, 500)}</span>
             <div className='image-small-champ' style={imageSmallStyles}></div>

@@ -1,107 +1,130 @@
 {
-    "settings": {
-        "title": "Settings",
-        "pages": {
-            "content": {
-                "title": "Content",
-                "items": {
-                    "listLayout": {
-                        "title": "List layout",
-                        "description": ""
-                    },
-                    "card": {
-                        "title": "Card",
-                        "description": ""
-                    },
-                    "list": {
-                        "title": "List",
-                        "description": ""
-                    },
-                    "autoRefresh": {
-                        "title": "Auto refresh",
-                        "description": ""
-                    },
-                    "refreshInterval": {
-                        "title": "Refresh interval",
-                        "description": "How many seconds/min to refresh the list of pros. 3m+ recommended because of LoL API rate limits."
-                    },
-                    "showSummonerIds": {
-                        "title": "Show summoner IDs",
-                        "description": "Displays player summoner ID (Hide on bush), instead of gamertag (Faker)."
-                    },
-                    "showRandomSkins": {
-                        "title": "Show random skins",
-                        "description": "Displays random skin backgrounds instead of default skin art."
-                    },
-                    "useCutouts": {
-                        "title": "Use cutouts",
-                        "description": "Uses transparent champion cutouts instead of loading splash art"
-                    },
-                    "showTeamLogos": {
-                        "title": "Show team logos",
-                        "description": "Displays team logo in place of current champion in card."
-                    }
-                }
-            },
-            "application": {
-                "title": "Application",
-                "items": {
-                    "theme": {
-                        "title": "Theme",
-                        "description": ""
-                    },
-                    "dark": {
-                        "title": "Dark",
-                        "description": ""
-                    },
-                    "light": {
-                        "title": "Light",
-                        "description": ""
-                    },
-                    "system": {
-                        "title": "System",
-                        "description": ""
-                    },
-                    "Accent": {
-                        "title": "Accent",
-                        "description": ""
-                    },
-                    "appScale": {
-                        "title": "App scale",
-                        "description": ""
-                    },
-                    "openOnStartup": {
-                        "title": "Open on startup",
-                        "description": ""
-                    },
-                    "minimizeToTray": {
-                        "title": "Minimize to tray",
-                        "description": "Close button should minimize, not exit."
-                    },
-                    "hardwareAcceleration": {
-                        "title": "Hardware acceleration",
-                        "description": "Hardware acceleration uses the GPU to make the ProSpec run more smoothly."
-                    },
-                    "randomAppBackground": {
-                        "title": "Random app background",
-                        "description": "Choose the app background to be randomly selected from champion pool, or set it to a specific default."
-                    },
-                    "keyboardMode": {
-                        "title": "Keyboard mode",
-                        "description": "Enables app navigation using the keyboard."
-                    },
-                    "favortieNotifications": {
-                        "title": "Favorite notifications",
-                        "description": "Favorite pros gets notifications when they start a game (Auto refresh on)."
-                    }
-                }
-            },
-            "language": {
-                "title": "Language"
-            },
-            "about": {
-                "title": "About"
-            }
-        }
-    }
+	"modes": {
+		"ARAM": "ARAM",
+		"URF": "URF",
+		"all": "All",
+		"normalBlind": "Normal Blind",
+		"normalDraft": "Normal Draft",
+		"rankedFlex": "Ranked Flex",
+		"rankedSoloDuo": "Ranked Solo/Duo"
+	},
+	"regions": {
+		"br": "BR",
+		"eun": "EUN",
+		"euw": "EUW",
+		"jp": "JP",
+		"kr": "KR",
+		"na": "NA",
+		"oce": "OCE",
+		"ru": "RU",
+		"world": "World"
+	},
+	"roles": {
+		"any": "Any",
+		"bottom": "Bottom",
+		"jungle": "Jungle",
+		"middle": "Middle",
+		"support": "Support",
+		"top": "Top"
+	},
+	"settings": {
+		"pages": {
+			"about": {
+				"title": "About"
+			},
+			"application": {
+				"items": {
+					"Accent": {
+						"title": "Accent"
+					},
+					"appScale": {
+						"title": "App scale"
+					},
+					"dark": {
+						"title": "Dark"
+					},
+					"favortieNotifications": {
+						"description": "Favorite pros gets notifications when they start a game (Auto refresh on).",
+						"title": "Favorite notifications"
+					},
+					"hardwareAcceleration": {
+						"description": "Hardware acceleration uses the GPU to make the ProSpec run more smoothly.",
+						"title": "Hardware acceleration"
+					},
+					"keyboardMode": {
+						"description": "Enables app navigation using the keyboard.",
+						"title": "Keyboard mode"
+					},
+					"light": {
+						"title": "Light"
+					},
+					"minimizeToTray": {
+						"description": "Close button should minimize, not exit.",
+						"title": "Minimize to tray"
+					},
+					"openOnStartup": {
+						"title": "Open on startup"
+					},
+					"randomAppBackground": {
+						"description": "Choose the app background to be randomly selected from champion pool, or set it to a specific default.",
+						"title": "Random app background"
+					},
+					"system": {
+						"title": "System"
+					},
+					"theme": {
+						"title": "Theme"
+					}
+				},
+				"title": "Application"
+			},
+			"content": {
+				"items": {
+					"autoRefresh": {
+						"title": "Auto refresh"
+					},
+					"card": {
+						"title": "Card"
+					},
+					"list": {
+						"title": "List"
+					},
+					"listLayout": {
+						"title": "List layout"
+					},
+					"refreshInterval": {
+						"description": "How many seconds/min to refresh the list of pros. 3m+ recommended because of LoL API rate limits.",
+						"title": "Refresh interval"
+					},
+					"showRandomSkins": {
+						"description": "Displays random skin backgrounds instead of default skin art.",
+						"title": "Show random skins"
+					},
+					"showSummonerIds": {
+						"description": "Displays player summoner ID (Hide on bush), instead of gamertag (Faker).",
+						"title": "Show summoner IDs"
+					},
+					"showTeamLogos": {
+						"description": "Displays team logo in place of current champion in card.",
+						"title": "Show team logos"
+					},
+					"useCutouts": {
+						"description": "Uses transparent champion cutouts instead of loading splash art",
+						"title": "Use cutouts"
+					}
+				},
+				"title": "Content"
+			},
+			"language": {
+				"title": "Language"
+			}
+		},
+		"title": "Settings"
+	},
+	"titlebar": {
+		"lastRefresh": "Last refresh: {{time}}"
+	},
+	"tooltips": {
+		"playerUnavailable": "{{player}} is either not in a game, or spectate is unavailable."
+	}
 }

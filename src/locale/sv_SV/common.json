@@ -1,0 +1,130 @@
+{
+	"modes": {
+		"ARAM": "ARAM",
+		"URF": "URF",
+		"all": "Allt",
+		"normalBlind": "Normal Blind",
+		"normalDraft": "Normalt utkast",
+		"rankedFlex": "Rankad Flex",
+		"rankedSoloDuo": "Rangordnad solo/duo"
+	},
+	"regions": {
+		"br": "BR",
+		"eun": "EUN",
+		"euw": "EUW",
+		"jp": "JP",
+		"kr": "KR",
+		"na": "NA",
+		"oce": "OCE",
+		"ru": "RU",
+		"world": "Värld"
+	},
+	"roles": {
+		"any": "Några",
+		"bottom": "Botten",
+		"jungle": "Djungel",
+		"middle": "Mitten",
+		"support": "Stöd",
+		"top": "Topp"
+	},
+	"settings": {
+		"pages": {
+			"about": {
+				"title": "Handla om"
+			},
+			"application": {
+				"items": {
+					"Accent": {
+						"title": "Accent"
+					},
+					"appScale": {
+						"title": "Ansökan skala"
+					},
+					"dark": {
+						"title": "Mörk"
+					},
+					"favortieNotifications": {
+						"description": "Favoritproffs får aviseringar när de startar ett spel (Automatisk uppdatering på).",
+						"title": "Favoritaviseringar"
+					},
+					"hardwareAcceleration": {
+						"description": "Hårdvaruacceleration använder GPU:n för att få ProSpec att fungera smidigare.",
+						"title": "Hårdvaruacceleration"
+					},
+					"keyboardMode": {
+						"description": "Aktiverar appnavigering med tangentbordet.",
+						"title": "Tangentbordsläge"
+					},
+					"light": {
+						"title": "Ljus"
+					},
+					"minimizeToTray": {
+						"description": "Stäng-knappen ska minimera, inte avsluta.",
+						"title": "Minimera till bricka"
+					},
+					"openOnStartup": {
+						"title": "Öppna vid start"
+					},
+					"randomAppBackground": {
+						"description": "Välj appbakgrunden som ska väljas slumpmässigt från mästarpoolen, eller ställ in den på en specifik standard.",
+						"title": "Slumpmässig appbakgrund"
+					},
+					"system": {
+						"title": "Systemet"
+					},
+					"theme": {
+						"title": "Tema"
+					}
+				},
+				"title": "Ansökan"
+			},
+			"content": {
+				"items": {
+					"autoRefresh": {
+						"title": "Automatisk omladdning"
+					},
+					"card": {
+						"title": "Kort"
+					},
+					"list": {
+						"title": "Lista"
+					},
+					"listLayout": {
+						"title": "Listlayout"
+					},
+					"refreshInterval": {
+						"description": "Hur många sekunder/min ska du uppdatera listan över proffs. 3m+ rekommenderas på grund av LoL API-hastighetsgränser.",
+						"title": "Uppdateringsintervall"
+					},
+					"showRandomSkins": {
+						"description": "Visar slumpmässiga skalbakgrunder istället för standardskalkonst.",
+						"title": "Visa slumpmässiga skal"
+					},
+					"showSummonerIds": {
+						"description": "Visar spelarens kallelse-ID (Göm på bush), istället för gamertag (Faker).",
+						"title": "Visa uppmanar-ID"
+					},
+					"showTeamLogos": {
+						"description": "Visar lagets logotyp i stället för nuvarande mästare på kort.",
+						"title": "Visa teamlogotyper"
+					},
+					"useCutouts": {
+						"description": "Använder genomskinliga champion-utskärningar istället för att ladda stänkkonst",
+						"title": "Använd utskärningar"
+					}
+				},
+				"title": "Innehåll"
+			},
+			"language": {
+				"title": "Språk"
+			}
+		},
+		"title": "Inställningar"
+	},
+	"titlebar": {
+		"lastRefresh": "Senaste uppdatering: {{time}}"
+	},
+	"tooltips": {
+		"playerUnavailable": "{{player}} är antingen inte med i ett spel eller så är publiken inte tillgänglig."
+	}
+}
