@@ -3,6 +3,10 @@ import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import { BlobOptions } from "buffer";
 
+export function unull() {
+    return () => null
+}
+
 export function ending(sec: number, _true: string): string | null {
     return sec >= 1800 ? _true : null
 }
@@ -291,6 +295,13 @@ export function modeType(mode: string): string { return (mode === EModes.ALL) ? 
 export function modeImage(mode: string): string { return (mode === EModes.ALL) ? 'icons/any.svg' : ''; }
 export function roleType(role: string): string { return (role === ERoles.ANY) ? EButtonImages.ICON : EButtonImages.ROLE; }
 export function roleFile(role: string): string { return (role === ERoles.ANY) ? '.svg' : '.png'; }
+
+
+// TRANSLATION:
+
+export function sTitle(page: string): string { return `settings.pages.${page}.title` }
+export function sItemTitle(page: string, item: string): string { return `settings.pages.${page}.items.${item}.title` }
+export function sItemDescription(page: string, item: string): string { return `settings.pages.${page}.items.${item}.description` }
 
 
 // RANDOM:

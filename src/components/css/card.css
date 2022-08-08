@@ -91,7 +91,6 @@
 }
 
 .card-unavailable {
-    /* pointer-events: none !important; */
     cursor: default;
     border: 2px solid transparent !important;
     filter: grayscale(1) !important;
@@ -99,7 +98,6 @@
 }
 
 .card-unavailable:active {
-    /* pointer-events: none !important; */
     filter: grayscale(1) opacity(0.65) !important;
 }
 
@@ -114,7 +112,6 @@
     height: 100%;
     border-radius: 5px;
     background-repeat: no-repeat;
-    /* background-size: cover; */
     opacity: 0.55;
     background-position: center;
     background-size: 217px;
@@ -186,35 +183,22 @@
     filter: grayscale(0.1) opacity(0.4);
 }
 
-/* .player-card-clicked .text-container {
-    display: none;
-}
-.player-card-clicked .image-small-champ {
-    display: none;
-}
-.player-card-clicked .blur-small {
-    display: none;
-} */
-
 .card-content {
     visibility: visible;
     display: flex;
     flex-direction: column;
-    /* align-items: flex-start; */
     align-items: stretch;
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    /* overflow: hidden; */
     pointer-events: none;
 }
 
 .card-photo {
     height: 100%;
     width: 100%;
-    /* width: calc(100% - 8px); */
     z-index: 2;
     pointer-events: none;
     background-repeat: no-repeat;
@@ -269,8 +253,6 @@
 
 .player-level {
     position: absolute;
-    /* height: 50px; */
-    /* width: 50px; */
     left: 35px;
     bottom: 5px;
     transform: translateX(-50%);
@@ -301,10 +283,6 @@
 .card-unavailable .blur-small {
     display: none;
 }
-
-/* .player-card-clicked .game-timer {
-    visibility: hidden;
-} */
 
 .game-timer {
     visibility: visible;
@@ -390,7 +368,6 @@
     color: rgba(255, 52, 79, 0.877) !important;
 }
 .ending-svg {
-    /* color: rgba(255, 52, 79, 0.877) !important; */
     filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
 }
 .player-card:hover .ending-bg {
@@ -404,13 +381,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    /* align-content: center; */
     vertical-align: middle;
-    /* position: absolute; */
-    /* bottom: 0; */
-    /* left: 0; */
-    /* height: 58px; */
-    /* width: 100%; */
     flex: 1;
     z-index: 2;
     pointer-events: none;
@@ -419,7 +390,6 @@
     padding-top: 1px;
     backdrop-filter: grayscale(1);
     background-image: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.45) 40%, rgba(0,0,0,0) 75%);
-    /* background-color: rgba(0, 255, 255, 0.301); */
 }
 
 .card-unavailable .text-container {
@@ -431,7 +401,6 @@
 
 .text-summoner {
     font-family: 'NotoSansKR_Medium';
-    /* font-size: 16px; */
     max-height: 23px;
     color: white;
     pointer-events: none;
@@ -440,13 +409,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* font-size: 15px; */
-    /* flex: 1; */
     min-width: 0;
-    /* background-color: rgba(240, 248, 255, 0.308); */
     width: 100%;
-    /* width: auto; */
-    /* padding-left: 67px; */
 }
 
 .card-unavailable .text-summoner {
@@ -465,8 +429,6 @@
     z-index: 4 !important;
     user-select: none;
     white-space: nowrap;
-    /* margin-left: 67px; */
-    /* background-color: rgba(95, 189, 184, 0.308); */
 }
 
 .card-unavailable .text-sub,

@@ -1,0 +1,107 @@
+{
+    "settings": {
+        "title": "Settings",
+        "pages": {
+            "content": {
+                "title": "Content",
+                "items": {
+                    "listLayout": {
+                        "title": "List layout",
+                        "description": ""
+                    },
+                    "card": {
+                        "title": "Card",
+                        "description": ""
+                    },
+                    "list": {
+                        "title": "List",
+                        "description": ""
+                    },
+                    "autoRefresh": {
+                        "title": "Auto refresh",
+                        "description": ""
+                    },
+                    "refreshInterval": {
+                        "title": "Refresh interval",
+                        "description": "How many seconds/min to refresh the list of pros. 3m+ recommended because of LoL API rate limits."
+                    },
+                    "showSummonerIds": {
+                        "title": "Show summoner IDs",
+                        "description": "Displays player summoner ID (Hide on bush), instead of gamertag (Faker)."
+                    },
+                    "showRandomSkins": {
+                        "title": "Show random skins",
+                        "description": "Displays random skin backgrounds instead of default skin art."
+                    },
+                    "useCutouts": {
+                        "title": "Use cutouts",
+                        "description": "Uses transparent champion cutouts instead of loading splash art"
+                    },
+                    "showTeamLogos": {
+                        "title": "Show team logos",
+                        "description": "Displays team logo in place of current champion in card."
+                    }
+                }
+            },
+            "application": {
+                "title": "Application",
+                "items": {
+                    "theme": {
+                        "title": "Theme",
+                        "description": ""
+                    },
+                    "dark": {
+                        "title": "Dark",
+                        "description": ""
+                    },
+                    "light": {
+                        "title": "Light",
+                        "description": ""
+                    },
+                    "system": {
+                        "title": "System",
+                        "description": ""
+                    },
+                    "Accent": {
+                        "title": "Accent",
+                        "description": ""
+                    },
+                    "appScale": {
+                        "title": "App scale",
+                        "description": ""
+                    },
+                    "openOnStartup": {
+                        "title": "Open on startup",
+                        "description": ""
+                    },
+                    "minimizeToTray": {
+                        "title": "Minimize to tray",
+                        "description": "Close button should minimize, not exit."
+                    },
+                    "hardwareAcceleration": {
+                        "title": "Hardware acceleration",
+                        "description": "Hardware acceleration uses the GPU to make the ProSpec run more smoothly."
+                    },
+                    "randomAppBackground": {
+                        "title": "Random app background",
+                        "description": "Choose the app background to be randomly selected from champion pool, or set it to a specific default."
+                    },
+                    "keyboardMode": {
+                        "title": "Keyboard mode",
+                        "description": "Enables app navigation using the keyboard."
+                    },
+                    "favortieNotifications": {
+                        "title": "Favorite notifications",
+                        "description": "Favorite pros gets notifications when they start a game (Auto refresh on)."
+                    }
+                }
+            },
+            "language": {
+                "title": "Language"
+            },
+            "about": {
+                "title": "About"
+            }
+        }
+    }
+}

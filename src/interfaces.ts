@@ -108,17 +108,18 @@ export interface ISettingsPage {
     items: ISettingsItems;
 }
 
-export interface ISettingsItems extends Array<ISettingsItem>{}
-export interface ISettingsItem {
-    title: string;
-    description: string;
-    itemValue: ISettingsItemValue;
-    childValues: ISettingsItemChildren;
+export interface ISettingsPageLanguage extends ISettingsPage {
+    selected: number;
 }
 
-export interface ISettingsItemChildren extends Array<ISettingsItemChild>{}
-export interface ISettingsItemChild extends ISettingsItem {
-    disabledByParent: boolean;
+export type ISettingsPageUnion = ISettingsPage | ISettingsPageLanguage;
+
+export interface ISettingsItems extends Array<ISettingsItem>{}
+export interface ISettingsItem {
+    title?: string;
+    description?: string;
+    itemValue: ISettingsItemValue;
+    childValues?: ISettingsItems;
 }
 
 export interface ISettingsItemValue {
@@ -148,6 +149,7 @@ export interface ISettingsItemValueLanguages extends Array<ISettingsItemValueLan
 export interface ISettingsItemValueLanguage extends Omit<ISettingsItemValue, 'value'> {
     value: number;
     text: string;
+    lang: string;
     // setValue(v: string): boolean
 }
 

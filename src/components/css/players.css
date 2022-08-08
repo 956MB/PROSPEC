@@ -17,7 +17,6 @@
 .pros-scroll {
     height: 100%;
     padding-left: 30px;
-    /* padding-top: 30px; */
     padding-right: 30px;
     overflow-x: hidden;
     overflow-y: auto;
@@ -25,12 +24,8 @@
 
 .pros-grid {
     display: grid;
-    /* grid-template-columns: auto auto auto auto auto auto; */
     grid-template-columns: repeat(auto-fit, minmax(203px, 1fr));
-    /* grid-auto-rows: min-content; */
-    /* grid-auto-columns: min-content; */
     grid-auto-rows: 245px;
-    /* grid-gap: 15px; */
     row-gap: 17px;
     column-gap: 17px;
     padding-bottom: 30px;

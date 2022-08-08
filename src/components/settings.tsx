@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import { EButtonImages, EEMessages, ETooltip } from '../typings';
+import { useTranslation } from "react-i18next";
 import './css/settings.css';
+
+import { EEMessages, ETooltip } from '../typings';
+import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPage, ISettingsPageButton, ISettingsPages, ISettingsPageLanguage } from '../interfaces';
+import { sTitle, sItemTitle, sItemDescription, unull } from '../utils';
 
 import closeIcon from '../assets/icons/close.svg';
 import gearIcon from '../assets/icons/gear.svg';
-import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPage, ISettingsPageButton, ISettingsPages, ISettingsPageLanguage } from '../interfaces';
+import { t } from 'i18next';
+
+// sItemTitle('content', 'listLayout')
+// 'settings.page.content.items.listLayout.title'
 
 const Settings: React.FC<{
     appBackground: string,
@@ -13,73 +20,80 @@ const Settings: React.FC<{
 }> = ({ appBackground, settingsOpen, FSettingsOpen }) => {
     const [settings, setSettings] = useState<ISettingsPages>([
         {
-            index: 0, type: 'list', title: 'Application', items: [
-                { title: 'Theme', description: '', itemValue: { type: 'selector', value: 0, options: [
-                    {index: 0, text: 'Dark'}, {index: 1, text: 'Light'}, {index: 2, text: 'System'}
-                ] } as ISettingsItemValueSelector, childValues: [] }
+            index: 0, type: 'list', title: sTitle('content'), items: [
+                { title: sItemTitle('content', 'listLayout'), itemValue: {
+                    type: 'selector', value: 0, options: [
+                        { index: 0, text: sItemTitle('content', 'card') }, { index: 1, text: sItemTitle('content', 'list') }
+                    ]
+                } as ISettingsItemValueSelector}
                 ,
-                { title: 'Accent', description: '', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: []}
+                { title: sItemTitle('content', 'autoRefresh'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool, childValues: [
+                    { title: sItemTitle('content', 'refreshInterval'), description: sItemDescription('content', 'refreshInterval'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                ] }
                 ,
-                { title: 'App scale', description: '', itemValue: { type: 'selector', value: 0, options: [
-                    {index: 0, text: '100%'}, {index: 1, text: '90%'}, {index: 2, text: '75%'}, {index: 2, text: '50%'}
-                ] } as ISettingsItemValueSelector, childValues: [] }
+                { title: sItemTitle('content', 'showSummonerIds'), description: sItemDescription('content', 'showSummonerIds'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool}
                 ,
-                { title: 'Open on startup', description: '', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: []}
+                { title: sItemTitle('content', 'showRandomSkins'), description: sItemDescription('content', 'showRandomSkins'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool, childValues: [
+                    { title: sItemTitle('content', 'useCutouts'), description: sItemDescription('content', 'useCutouts'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                ] }
                 ,
-                { title: 'Minimize to tray', description: 'Close button should minimize, not exit.', itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool, childValues: []}
-                ,
-                { title: 'Hardware acceleration', description: 'Hardware acceleration uses the GPU to make the ProSpec run more smoothly.', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: []}
-                ,
-                { title: 'Random app background', description: 'Choose the app background to be randomly selected from champion pool, or set it to a specific default.', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: []}
-                ,
-                { title: 'Keyboard mode', description: 'Enables app navigation using the keyboard.', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: []}
-                ,
-                { title: 'Favorite notifications', description: 'Favorite pros gets notifications when they start a game (Auto refresh on).', itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool, childValues: []}
-        ] }
+                { title: sItemTitle('content', 'showTeamLogos'), description: sItemDescription('content', 'showTeamLogos'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+            ]
+        }
         ,
-        { index: 1, type: 'list', title: 'Content', items: [
-            { title: 'List layout', description: '', itemValue: { type: 'selector', value: 0, options: [
-                {index: 0, text: 'Card'}, {index: 1, text: 'List'}, {index: 2, text: 'Item3'}
-            ] } as ISettingsItemValueSelector, childValues: [] }
-            ,
-            {
-                title: 'Auto refresh', description: '', itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool, childValues: [
-                    { title: 'Refresh interval', description: 'How many seconds/min to refresh the list of pros. 3m+ recommended because of LoL API rate limits.', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: [], disabledByParent: true }
-                ]
-            }
-            ,
-            { title: 'Show summoner IDs', description: 'Displays player summoner ID (Hide on bush), instead of gamertag (Faker).', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: [] },
-            {
-                title: 'Show random skins', description: 'Displays random skin backgrounds instead of the default skin art.', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: [
-                    { title: 'Use cutouts', description: 'Uses transparent champion cutouts instead of loading splash art', itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool, childValues: [], disabledByParent: true }
-                ]
-            }
-            ,
-            { title: 'Show team logos', description: 'Displays team logo in place of current champion in card.', itemValue: { value: false } as ISettingsItemValueBool, childValues: [] }
-        ] }
+        {
+            index: 1, type: 'list', title: sTitle('application'), items: [
+                { title: sItemTitle('application', 'theme'), itemValue: {
+                    type: 'selector', value: 0, options: [
+                        { index: 0, text: sItemTitle('application', 'dark') }, { index: 1, text: sItemTitle('application', 'light') }, { index: 2, text: sItemTitle('application', 'system') }
+                    ]
+                } as ISettingsItemValueSelector}
+                ,
+                { title: sItemTitle('application', 'Accent'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                ,
+                { title: sItemTitle('application', 'appScale'), itemValue: {
+                    type: 'selector', value: 0, options: [
+                        { index: 0, text: '100%' }, { index: 1, text: '90%' }, { index: 2, text: '75%' }, { index: 2, text: '50%' }
+                    ]
+                } as ISettingsItemValueSelector}
+                ,
+                { title: sItemTitle('application', 'openOnStartup'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                ,
+                { title: sItemTitle('application', 'minimizeToTray'), description: sItemDescription('application', 'minimizeToTray'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool}
+                ,
+                { title: sItemTitle('application', 'hardwareAcceleration'), description: sItemDescription('application', 'hardwareAcceleration'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                ,
+                { title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                ,
+                { title: sItemTitle('application', 'keyboardMode'), description: sItemDescription('application', 'keyboardMode'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                ,
+                { title: sItemTitle('application', 'favortieNotifications'), description: sItemDescription('application', 'favortieNotifications'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool}
+            ]
+        }
         ,
-        { index: 2, type: 'lang', title: 'Language', selected: 13, items: [
-            { title: '', description: '', itemValue: { type: 'lang', value: 0, text: 'English' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 1, text: 'Deutsch' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 2, text: 'Français' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 3, text: 'Italiano' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 4, text: 'Nederlands' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 5, text: 'Svenska' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 6, text: 'Suomeksi' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 7, text: 'Português' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 8, text: 'Polski' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 9, text: 'Русский' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 10, text: 'Türkçe' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 11, text: 'Čeština' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 12, text: 'Ελληνικά' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 13, text: '한국어' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 14, text: '日本語' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 15, text: 'Tiếng Việt' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 16, text: '简体中文' } as ISettingsItemValueLanguage, childValues: [] },
-            { title: '', description: '', itemValue: { type: 'lang', value: 17, text: '繁體中文' } as ISettingsItemValueLanguage, childValues: [] }
+        {
+            index: 2, type: 'lang', title: sTitle('language'), selected: 0, items: [
+                { itemValue: { type: 'lang', value: 0, text: 'English', lang: 'en_EN' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 1, text: 'Deutsch', lang: 'de_DE' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 2, text: 'Français', lang: 'fr_FR' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 3, text: 'Italiano', lang: 'it_IT' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 4, text: 'Nederlands', lang: 'nl_NL' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 5, text: 'Svenska', lang: 'sv_SV' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 6, text: 'Suomeksi', lang: 'fi_FI' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 7, text: 'Português', lang: 'pt_PT' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 8, text: 'Polski', lang: 'pl_PL' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 9, text: 'Русский', lang: 'ru_RU' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 10, text: 'Türkçe', lang: 'tr_TR' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 11, text: 'Čeština', lang: 'cs_CS' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 12, text: 'Ελληνικά', lang: 'el_EL' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 13, text: '한국어', lang: 'kr_KR' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 14, text: '日本語', lang: 'ja_JP' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 15, text: 'Tiếng Việt', lang: 'vi_VI' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 16, text: '简体中文', lang: 'zh_CN' } as ISettingsItemValueLanguage},
+                { itemValue: { type: 'lang', value: 17, text: '繁體中文', lang: 'zh_TW' } as ISettingsItemValueLanguage}
         ] } as ISettingsPageLanguage
         ,
-        { index: 3, type: 'list', title: 'About', items: [] }
+        { index: 3, type: 'list', title: sTitle('about'), items: [] }
     ]
     )
 
@@ -112,6 +126,7 @@ const SettingsInner: React.FC<{
     settingsBackground: string,
     FSettingsOpen: (set: boolean) => void
 }> = ({ pagesProps, settingsOpen, settingsBackground, FSettingsOpen }) => {
+    const {t, i18n} = useTranslation('common');
     const [pageActive, setPageActive] = useState(0);
 
     const isActive = (page: number): boolean => {
@@ -125,7 +140,7 @@ const SettingsInner: React.FC<{
         <div className={`settings-inner`} >
             <div className='settings-content'>
                 <div className='settings-close-container'>
-                    <span className='settings-title-text'>Settings</span>
+                    <span className='settings-title-text'>{t('settings.title')}</span>
                     <div className={`titlebar-button titlebar-button-edge-both close-button ${ETooltip.TOOLTIP}`} onClick={() => FSettingsOpen(false)}>
                         <img src={closeIcon} alt="close" />
                         <span className={`${ETooltip.LEFT}`}>{EEMessages.ESC}</span>
@@ -165,7 +180,7 @@ const SettingsPage: React.FC<{
             {pageProps.items.map((item, i) => (
                 pageProps.type === 'lang'
                     ? <SettingsPageItemLanguage key={i} itemValue={item.itemValue as ISettingsItemValueLanguage} langSelected={langSelected} fLangSelect={fLangSelect}></SettingsPageItemLanguage>
-                    : <SettingsPageItem key={i} itemProps={item} parentFalse={item.itemValue.value == false}></SettingsPageItem>
+                    : <SettingsPageItem key={i} itemProps={item}></SettingsPageItem>
             ))}
         </div>
     )
@@ -176,41 +191,47 @@ const SettingsPageButton: React.FC<{
     buttonProps: ISettingsPageButton,
     FPageSwitch: (active: number) => void
 }> = ({ pageActive, buttonProps, FPageSwitch }) => {
+    const {t, i18n} = useTranslation('common');
+
     return (
         <div className={`settings-page-button ${pageActive ? 'page-button-active' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
-            <span className='page-button-text'>{buttonProps.text}</span>
+            <span className='page-button-text'>{t(buttonProps.text)}</span>
         </div>
     )
 }
 
 const SettingsPageItem: React.FC<{
     itemProps: ISettingsItem,
-    parentFalse: boolean
-}> = ({ itemProps, parentFalse }) => {
+}> = ({ itemProps }) => {
+    const {t, i18n} = useTranslation('common');
     const [noDescription, setNoDescription] = useState(itemProps.description === '');
+    const [parentEanbled, setParentEnabled] = useState(itemProps.itemValue.value);
+
+    const fToggleParent = (set: boolean) => { setParentEnabled(set); }
+
     return (
         <div className={`settings-page-item`}>
             <div className={`item-parent-container`}>
                 <div className={`item-title-conatiner ${noDescription ? 'center-container' : null}`}>
-                    <span className='item-title noselect'>{itemProps.title}</span>
-                    <span className={`item-description ${noDescription ? 'description-hidden' : null} noselect`}>{itemProps.description}</span>
+                    <span className='item-title noselect'>{itemProps.title ? t(itemProps.title) : ''}</span>
+                    <span className={`item-description ${noDescription ? 'description-hidden' : null} noselect`}>{itemProps.description ? t(itemProps.description) : ''}</span>
                 </div>
 
                 {itemProps.itemValue.type === 'boolean'
-                    ? <SettingsItemValueBool itemValue={itemProps.itemValue.value} /> : null}
+                    ? <SettingsItemValueBool itemValue={itemProps.itemValue.value as boolean} fToggleParent={fToggleParent} /> : null}
                 {itemProps.itemValue.type === 'selector'
                     ? <SettingsItemValueSelector itemProps={itemProps.itemValue as ISettingsItemValueSelector} /> : null}
             </div>
 
-            {itemProps.childValues.map((child, i) => (
-                <div className={`item-child-container ${parentFalse && child.disabledByParent ? 'child-disabled' : null}`}>
+            {itemProps.childValues?.map((child, i) => (
+                <div className={`item-child-container ${!parentEanbled ? 'child-disabled' : null}`}>
                     <div className='item-child-text'>
-                        <span className={'item-title noselect'}>{child.title}</span>
-                        <span className={`item-description ${child.description === '' ? 'description-hidden' : null} noselect`}>{child.description}</span>
+                        <span className={'item-title noselect'}>{child.title ? t(child.title) : ''}</span>
+                        <span className={`item-description ${child.description === '' ? 'description-hidden' : null} noselect`}>{child.description ? t(child.description) : ''}</span>
                     </div>
 
                     {child.itemValue.type === 'boolean'
-                        ? <SettingsItemValueBool itemValue={child.itemValue.value} /> : null}
+                        ? <SettingsItemValueBool itemValue={child.itemValue.value as boolean} fToggleParent={unull()} /> : null}
                     {child.itemValue.type === 'selector'
                         ? <SettingsItemValueSelector itemProps={child.itemValue as ISettingsItemValueSelector} /> : null}
                 </div>
@@ -224,8 +245,15 @@ const SettingsPageItemLanguage: React.FC<{
     langSelected: number,
     fLangSelect: (set: number) => void
 }> = ({ itemValue, langSelected, fLangSelect }) => {
+    const [t, i18n] = useTranslation('common');
+
+    const fSelectLanguage = () => {
+        fLangSelect(itemValue.value);
+        i18n.changeLanguage(itemValue.lang);
+    }
+
     return (
-        <div className='item-language' onClick={() => fLangSelect(itemValue.value)}>
+        <div className={`item-language ${i18n.hasResourceBundle(itemValue.lang, 'common') ? null : 'lang-disabled'}`} onClick={fSelectLanguage}>
             <div className={`circle ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
             <span className='language-text'>{itemValue.text}</span>
         </div>
@@ -234,16 +262,22 @@ const SettingsPageItemLanguage: React.FC<{
 
 // NOTE: ISettingsItemValue components:
 const SettingsItemValueBool: React.FC<{
-    itemValue: boolean
-}> = ({ itemValue }) => {
+    itemValue: boolean,
+    fToggleParent: (set: boolean) => void
+}> = ({ itemValue, fToggleParent }) => {
     const [boolValue, setBoolValue] = useState(itemValue);
+
+    const fBoolValue = (set: boolean) => {
+        setBoolValue(set);
+        fToggleParent(set);
+    } 
 
     return (
         <div className={`item-value-bool`}>
-            <div className={`bool-half half-left ${boolValue ? 'half-selected' : null}`} onClick={() => setBoolValue(false)}>
+            <div className={`bool-half half-left ${boolValue ? 'half-selected' : null}`} onClick={() => fBoolValue(false)}>
                 <div className={`circle ${boolValue ? 'offUnselected' : 'offSelected'}`}></div>
             </div>
-            <div className={`bool-half half-right ${!boolValue ? 'half-selected' : null}`} onClick={() => setBoolValue(true)}>
+            <div className={`bool-half half-right ${!boolValue ? 'half-selected' : null}`} onClick={() => fBoolValue(true)}>
                 <div className={`bar ${boolValue ? 'onSelected' : 'onUnselected'}`}></div>
             </div>
         </div>
@@ -252,12 +286,13 @@ const SettingsItemValueBool: React.FC<{
 const SettingsItemValueSelector: React.FC<{
     itemProps: ISettingsItemValueSelector
 }> = ({ itemProps }) => {
+    const [t, i18n] = useTranslation('common');
     const [selectorOpen, setSelectorOpen] = useState(false);
     // const [selectorValue, setSelectorValue] = useState(itemValue);
 
     return (
         <div className={`item-value-selector`}>
-            <span className='value-text'>{itemProps.options[itemProps.value].text}</span>
+            <span className='value-text'>{t(itemProps.options[itemProps.value].text)}</span>
             <img src={`src/assets/icons/chevron.right.svg`} alt="" className='value-right' />
         </div>
     )
