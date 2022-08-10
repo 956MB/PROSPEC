@@ -20,7 +20,7 @@ const Titlebar: React.FC<{
     selectedRoles: ERoles[],
     refreshPlayers: () => void
 }> = ({ settingsOpen, selectedRegions, selectedModes, selectedRoles, refreshPlayers }) => {
-    const {t, i18n} = useTranslation('common');
+    const { t } = useTranslation('common');
     const [sections, setSections] = useState<IOptionsSections>({
         active: !settingsOpen,
         sections: [
@@ -122,7 +122,7 @@ const SearchBar: React.FC<{
     fOnChange: (e: any) => void,
     fClearSearch: () => void
 }> = ({ searchDisabled, value, fOnChange, fClearSearch }) => {
-    const {t, i18n} = useTranslation('common');
+    const { t } = useTranslation('common');
 
     return (
         <div className={`search-bar ${(value === '') ? null : 'search-bar-active'} ${searchDisabled ? 'search-disabled' : null}`}>
@@ -131,7 +131,7 @@ const SearchBar: React.FC<{
                 src={`src/assets/icons/${(value === '') ? 'search' : 'close'}.svg`}
                 className={`${(value === '') ? 'search-icon' : 'close-icon'}`}/>
             </div>
-            <input type="text" id="fname" name="search" value={value} onChange={fOnChange} placeholder={t('titlebar.searchPlaceholder')}></input>
+            <input type="text" id="fname" name="search" value={value} onChange={fOnChange} placeholder={t('titlebar.searchPlaceholder')} spellCheck="false"></input>
         </div>
     )
 }

@@ -152,8 +152,13 @@ body {
     transform: translateX(-50%);
 }
 
-.right-closer {
+.right-close {
     left: 100% !important;
+    white-space: nowrap;
+}
+.right-far {
+    left: 131% !important;
+    white-space: nowrap;
 }
 
 @keyframes fadeIn {

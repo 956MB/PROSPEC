@@ -9,6 +9,7 @@ import { sTitle, sItemTitle, sItemDescription, unull } from '../utils';
 
 import closeIcon from '../assets/icons/close.svg';
 import gearIcon from '../assets/icons/gear.svg';
+import discordIcon from '../assets/icons/discord.svg';
 import { t } from 'i18next';
 
 // sItemTitle('content', 'listLayout')
@@ -114,13 +115,18 @@ const SettingsVerticalContainer: React.FC<{
     settingsOpen: boolean,
     FSettingsOpen: (set: boolean) => void
 }> = ({ settingsOpen, FSettingsOpen }) => {
-    const {t, i18n} = useTranslation('common');
+    const { t } = useTranslation('common');
 
     return (
         <div data-tauri-drag-region className={`settings-vertical-container`} >
+            <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => null}>
+                <img src={discordIcon} alt="discord" />
+                <span className={`${ETooltip.RIGHT} right-far`}>{`Discord`}</span>
+            </div>
+
             <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => FSettingsOpen(true)}>
                 <img src={gearIcon} alt="gear" />
-                <span className={`${ETooltip.RIGHTDELAY} tooltip-delay right-closer`}>{t('settings.title')}</span>
+                <span className={`${ETooltip.RIGHT} right-far`}>{`${t('settings.title')}`}</span>
             </div>
         </div>
     )
@@ -133,7 +139,7 @@ const SettingsInner: React.FC<{
     settingsBackground: IAppBackground,
     FSettingsOpen: (set: boolean) => void
 }> = ({ pagesProps, settingsOpen, settingsBackground, FSettingsOpen }) => {
-    const {t, i18n} = useTranslation('common');
+    const { t } = useTranslation('common');
     const [pageActive, setPageActive] = useState(0);
 
     const isActive = (page: number): boolean => {
@@ -207,7 +213,7 @@ const SettingsPageButton: React.FC<{
     buttonProps: ISettingsPageButton,
     FPageSwitch: (active: number) => void
 }> = ({ pageActive, buttonProps, FPageSwitch }) => {
-    const {t, i18n} = useTranslation('common');
+    const { t } = useTranslation('common');
 
     return (
         <div className={`settings-page-button ${pageActive ? 'page-button-active' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
@@ -221,7 +227,7 @@ const SettingsPageButton: React.FC<{
 const SettingsPageItem: React.FC<{
     itemProps: ISettingsItem,
 }> = ({ itemProps }) => {
-    const {t, i18n} = useTranslation('common');
+    const { t } = useTranslation('common');
     const [noDescription, setNoDescription] = useState(itemProps.description === '');
     const [parentEanbled, setParentEnabled] = useState(itemProps.itemValue.value);
 
@@ -265,7 +271,7 @@ const SettingsPageItemLanguage: React.FC<{
     langSelected: number,
     fLangSelect: (set: number) => void
 }> = ({ itemValue, langSelected, fLangSelect }) => {
-    const [t, i18n] = useTranslation('common');
+    const { i18n } = useTranslation('common');
 
     const fSelectLanguage = () => {
         fLangSelect(itemValue.value);
@@ -273,7 +279,7 @@ const SettingsPageItemLanguage: React.FC<{
     }
 
     return (
-        <div className={`item-language ${i18n.hasResourceBundle(itemValue.lang, 'common') ? null : 'lang-disabled'}`} onClick={fSelectLanguage}>
+        <div className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : 'unselected-lang'} ${i18n.hasResourceBundle(itemValue.lang, 'common') ? null : 'lang-disabled'}`} onClick={fSelectLanguage}>
             <div className={`circle ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
             <span className='language-text'>{i18n.hasResourceBundle(itemValue.lang, 'common') ? itemValue.text : '· · ·'}</span>
         </div>
@@ -306,7 +312,7 @@ const SettingsItemValueBool: React.FC<{
 const SettingsItemValueSelector: React.FC<{
     itemProps: ISettingsItemValueSelector
 }> = ({ itemProps }) => {
-    const [t, i18n] = useTranslation('common');
+    const [t] = useTranslation('common');
     const [selectorOpen, setSelectorOpen] = useState(false);
     // const [selectorValue, setSelectorValue] = useState(itemValue);
 

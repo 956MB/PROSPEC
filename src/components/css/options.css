@@ -11,7 +11,7 @@
 .options-container {
     display: flex;
     flex: 1;
-    transition: 0.10s;
+    transition: 0.20s;
     /* width: 0; */
     height: 100%;
     align-items: center;
@@ -63,6 +63,11 @@
     pointer-events: none;
 }
 
+.options-section-champ .section-expanded {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
 .section-expanded {
     width: 100%;
 }
@@ -75,8 +80,8 @@
     flex-wrap: nowrap;
     flex-direction: row;
     user-select: none;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    /* overflow-x: scroll; */
+    /* overflow-y: hidden; */
     pointer-events: all;
     width: auto;
     -ms-overflow-style: none;
@@ -103,12 +108,12 @@
     align-items: center;
     justify-content: flex-start;
     background-color: var(--button-normal);
-    height: 31px;
+    height: 30px;
     margin: 0 3px 0 3px;
     border-radius: 6px;
     padding: 0 12px 0 0;
-    transition: 0.10s;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.10s;
+    /* border-top: 1px solid rgba(255, 255, 255, 0.05); */
     cursor: pointer;
 }
 
@@ -118,12 +123,12 @@
     align-items: center;
     justify-content: flex-start;
     background-color: var(--button-normal);
-    height: 31px;
+    height: 30px;
     margin: 0 3px 0 3px;
     border-radius: 6px;
-    padding: 0 0 0 1px;
+    /* padding: 0 0 0 1px; */
     transition: 0.10s;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.05); */
     cursor: pointer;
 }
 
@@ -146,13 +151,13 @@
     align-items: center;
     justify-content: flex-start;
     background-color: var(--button-normal);
-    height: 31px;
+    height: 30px;
     margin: 0 3px 0 3px;
     border-radius: 6px;
     padding: 0 12px 0 0;
     transition: 0.10s;
     opacity: 0.5;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.05); */
 }
 
 .options-button-disabled .image-flag {
@@ -173,11 +178,11 @@
     align-items: center;
     justify-content: center;
     background-color: var(--button-selected);
-    height: 31px;
+    height: 30px;
     margin: 0 3px 0 3px;
     border-radius: 6px;
     padding: 0 12px 0 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    /* border-top: 1px solid rgba(255, 255, 255, 0.09); */
     cursor: pointer;
 }
 
@@ -218,7 +223,7 @@
 }
 .section-close {
     display: block;
-    margin-left: 8px;
+    margin-left: 3px;
 }
 
 .options-section-champ .section-close {

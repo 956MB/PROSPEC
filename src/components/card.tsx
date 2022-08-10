@@ -13,7 +13,7 @@ const Card: React.FC<{
     playerProps: IPlayer,
     globalTime: number,
 }> = ({ playerProps, globalTime }) => {
-    const {t, i18n} = useTranslation('common');
+    const { t } = useTranslation('common');
 
     const team = getTeamFromNumber(playerProps.summoner.team, true);
     const player = formPlayerImage(team, playerProps.summoner.playerName);
