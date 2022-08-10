@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from "react-i18next";
+import { useDetectClickOutside } from 'react-detect-click-outside';
 import './css/settings.css';
 
 import { EEMessages, ETooltip } from '../typings';
-import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPage, ISettingsPageButton, ISettingsPages, ISettingsPageLanguage } from '../interfaces';
+import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPage, ISettingsPageButton, ISettingsPages, ISettingsPageLanguage, IAppBackground } from '../interfaces';
 import { sTitle, sItemTitle, sItemDescription, unull } from '../utils';
 
 import closeIcon from '../assets/icons/close.svg';
@@ -14,16 +15,19 @@ import { t } from 'i18next';
 // 'settings.page.content.items.listLayout.title'
 
 const Settings: React.FC<{
-    appBackground: string,
+    appBackground: IAppBackground,
     settingsOpen: boolean,
     FSettingsOpen: (set: boolean) => void
 }> = ({ appBackground, settingsOpen, FSettingsOpen }) => {
+    // const toggleSettingsClosed = (e: any) => { e.stopPropagation(); if (settingsOpen) FSettingsOpen(false); }
+    // const settingsRef = useDetectClickOutside({ onTriggered: toggleSettingsClosed });
+
     const [settings, setSettings] = useState<ISettingsPages>([
         {
             index: 0, type: 'list', title: sTitle('content'), items: [
                 { title: sItemTitle('content', 'listLayout'), itemValue: {
                     type: 'selector', value: 0, options: [
-                        { index: 0, text: sItemTitle('content', 'card') }, { index: 1, text: sItemTitle('content', 'list') }
+                        { text: sItemTitle('content', 'card') }, { index: 1, text: sItemTitle('content', 'list') }
                     ]
                 } as ISettingsItemValueSelector}
                 ,
@@ -110,10 +114,13 @@ const SettingsVerticalContainer: React.FC<{
     settingsOpen: boolean,
     FSettingsOpen: (set: boolean) => void
 }> = ({ settingsOpen, FSettingsOpen }) => {
+    const {t, i18n} = useTranslation('common');
+
     return (
         <div data-tauri-drag-region className={`settings-vertical-container`} >
-            <div className={`vertical-button`} onClick={() => FSettingsOpen(true)}>
+            <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => FSettingsOpen(true)}>
                 <img src={gearIcon} alt="gear" />
+                <span className={`${ETooltip.RIGHTDELAY} tooltip-delay right-closer`}>{t('settings.title')}</span>
             </div>
         </div>
     )
@@ -123,7 +130,7 @@ const SettingsVerticalContainer: React.FC<{
 const SettingsInner: React.FC<{
     pagesProps: ISettingsPages,
     settingsOpen: boolean,
-    settingsBackground: string,
+    settingsBackground: IAppBackground,
     FSettingsOpen: (set: boolean) => void
 }> = ({ pagesProps, settingsOpen, settingsBackground, FSettingsOpen }) => {
     const {t, i18n} = useTranslation('common');
@@ -148,18 +155,22 @@ const SettingsInner: React.FC<{
                 </div>
                 <div className='settings-buttons-container'>
                     <div className='settings-page-button-container'>
-                        {pagesProps.map((page, i) => (
-                            <SettingsPageButton key={page.index} pageActive={isActive(page.index)} buttonProps={{ index: page.index, text: page.title }} FPageSwitch={FPageSwitch} />
-                        ))}
+                        {React.Children.toArray(
+                            pagesProps.map((page, i) => (
+                                <SettingsPageButton key={page.index} pageActive={isActive(page.index)} buttonProps={{ index: page.index, text: page.title }} FPageSwitch={FPageSwitch} />
+                            ))
+                        )}
                     </div>
                 </div>
 
-                {pagesProps.map((page, i) => (
-                    <SettingsPage key={page.index} pageProps={page} pageActive={isActive(i)} />
-                ))}
+                {React.Children.toArray(
+                    pagesProps.map((page, i) => (
+                        <SettingsPage key={page.index} pageProps={page} pageActive={isActive(i)} />
+                    ))
+                )}
             </div>
             <div className="settings-dark-overlay"></div>
-            <div className="settings-background" style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/centered/${settingsBackground}.webp)` }}></div>
+            <div className={`${(settingsBackground.type === 'splash') ? 'settings-background-center' : 'settings-background-left'}`} style={{ backgroundImage: `url(src/${settingsBackground.secondary})` }}></div>
         </div>
     )
 }
@@ -178,13 +189,15 @@ const SettingsPage: React.FC<{
 
     return (
         <div className={`${pageProps.type === 'lang' ? 'settings-page-lang' : 'settings-page'} ${pageActive ? `${pageProps.type === 'lang' ? 'page-active-lang' : 'page-active'}` : null}`}>
-            {pageProps.items.map((item, i) => {
-                const valueLang = item.itemValue as ISettingsItemValueLanguage
+            {React.Children.toArray(
+                pageProps.items.map((item) => {
+                    const valueLang = item.itemValue as ISettingsItemValueLanguage
 
-                return pageProps.type === 'lang'
-                    ? <SettingsPageItemLanguage key={i} itemValue={item.itemValue as ISettingsItemValueLanguage} langSelected={i18n.language === valueLang.lang ? valueLang.value : -1} fLangSelect={fLangSelect}></SettingsPageItemLanguage>
-                    : <SettingsPageItem key={i} itemProps={item}></SettingsPageItem>
-            })}
+                    return pageProps.type === 'lang'
+                        ? <SettingsPageItemLanguage itemValue={item.itemValue as ISettingsItemValueLanguage} langSelected={i18n.language === valueLang.lang ? valueLang.value : -1} fLangSelect={fLangSelect}></SettingsPageItemLanguage>
+                        : <SettingsPageItem itemProps={item}></SettingsPageItem>
+                })
+            )}
         </div>
     )
 }
@@ -198,7 +211,9 @@ const SettingsPageButton: React.FC<{
 
     return (
         <div className={`settings-page-button ${pageActive ? 'page-button-active' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
-            <span className='page-button-text'>{t(buttonProps.text)}</span>
+            <div className='page-button-inner'>
+                <span className='page-button-text'>{t(buttonProps.text)}</span>
+            </div>
         </div>
     )
 }
@@ -226,19 +241,21 @@ const SettingsPageItem: React.FC<{
                     ? <SettingsItemValueSelector itemProps={itemProps.itemValue as ISettingsItemValueSelector} /> : null}
             </div>
 
-            {itemProps.childValues?.map((child, i) => (
-                <div className={`item-child-container ${!parentEanbled ? 'child-disabled' : null}`}>
-                    <div className='item-child-text'>
-                        <span className={'item-title noselect'}>{child.title ? t(child.title) : ''}</span>
-                        <span className={`item-description ${child.description === '' ? 'description-hidden' : null} noselect`}>{child.description ? t(child.description) : ''}</span>
-                    </div>
+            {React.Children.toArray(
+                itemProps.childValues?.map((child) => (
+                    <div className={`item-child-container ${!parentEanbled ? 'child-disabled' : null}`}>
+                        <div className='item-child-text'>
+                            <span className={'item-title noselect'}>{child.title ? t(child.title) : ''}</span>
+                            <span className={`item-description ${child.description === '' ? 'description-hidden' : null} noselect`}>{child.description ? t(child.description) : ''}</span>
+                        </div>
 
-                    {child.itemValue.type === 'boolean'
-                        ? <SettingsItemValueBool itemValue={child.itemValue.value as boolean} fToggleParent={unull()} /> : null}
-                    {child.itemValue.type === 'selector'
-                        ? <SettingsItemValueSelector itemProps={child.itemValue as ISettingsItemValueSelector} /> : null}
-                </div>
-            ))}
+                        {child.itemValue.type === 'boolean'
+                            ? <SettingsItemValueBool itemValue={child.itemValue.value as boolean} fToggleParent={unull()} /> : null}
+                        {child.itemValue.type === 'selector'
+                            ? <SettingsItemValueSelector itemProps={child.itemValue as ISettingsItemValueSelector} /> : null}
+                    </div>
+                ))
+            )}
         </div>
     )
 }

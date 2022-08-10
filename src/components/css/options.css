@@ -10,8 +10,9 @@
 
 .options-container {
     display: flex;
-    flex-grow: 1;
-    width: 0;
+    flex: 1;
+    transition: 0.10s;
+    /* width: 0; */
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -20,10 +21,12 @@
     user-select: none;
     pointer-events: none;
     z-index: 3 !important;
+    /* background-color: rgba(127, 255, 212, 0.322); */
+    /* transition: width 0.4s ease-in-out; */
 }
 
 .options-disabled {
-    filter: grayscale(1) opacity(0.7) !important;
+    filter: grayscale(1) opacity(0.6) !important;
 }
 .options-disabled .options-section,
 .options-disabled .options-section-champ,
@@ -256,6 +259,17 @@
     object-fit: contain;
     opacity: 0.25;
     margin: 0 8px 0 12px;
+    /* height: 15px; */
+    /* width: 15px; */
+}
+
+.image-world {
+    display: block;
+    object-fit: contain;
+    opacity: 0.25;
+    margin: 0 8px 0 12px;
+    height: 19px;
+    width: 19px;
 }
 
 .image-role {
@@ -303,6 +317,8 @@
 
 .options-button-selected .image-icon,
 .options-button:hover .image-icon,
+.options-button-selected .image-world,
+.options-button:hover .image-world,
 .options-button:hover .image-right,
 .options-button-champ-normal:hover .image-icon,
 .options-button-champ-normal:hover .image-right,
@@ -322,6 +338,7 @@
     filter: brightness(1.05);
 }
 .options-button:active .image-icon,
+.options-button:active .image-world,
 .options-button:active .image-right,
 .options-button-champ-normal:active .image-icon,
 .options-button-champ-normal:active .image-right,

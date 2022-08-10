@@ -75,14 +75,14 @@
     display: block;
     position: relative;
     width: 203px;
-    height: 245px;
+    height: 165px;
     border-radius: 10px;
     margin: auto;
     padding: 4px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: hidden; */
     pointer-events: all;
     backface-visibility: hidden !important;
     z-index: 3;
@@ -95,6 +95,7 @@
     border: 2px solid transparent !important;
     filter: grayscale(1) !important;
     overflow: visible;
+    z-index: 4;
 }
 
 .card-unavailable:active {
@@ -112,7 +113,7 @@
     height: 100%;
     border-radius: 5px;
     background-repeat: no-repeat;
-    opacity: 0.55;
+    opacity: 0.35;
     background-position: center;
     background-size: 217px;
     pointer-events: none;
@@ -121,7 +122,7 @@
 }
 
 .card-unavailable .card-image {
-    opacity: 0.10;
+    opacity: 0.0;
 }
 
 .card-image-cutout {
@@ -154,13 +155,13 @@
 .player-card:hover .card-image,
 .player-card-clicked .card-image 
 {
-    opacity: 0.85;
-    filter: grayscale(0);
+    opacity: 0.80;
+    /* filter: grayscale(0); */
 }
 .card-unavailable:hover .card-image,
 .card-unavailable:hover .card-image-cutout
 {
-    opacity: 0.10 !important;
+    opacity: 0.0 !important;
     filter: grayscale(1) opacity(0.4) !important;
 }
 .player-card:hover .card-image-cutout,
@@ -186,17 +187,24 @@
 .card-content {
     visibility: visible;
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    /* flex: 1; */
+    align-items: flex-end;
+    /* align-items: flex-end; */
+    /* align-content: stretch; */
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
     pointer-events: none;
+    /* overflow: hidden; */
 }
 
 .card-photo {
+    position: absolute;
+    left: 0;
+    bottom: 47px;
     height: 100%;
     width: 100%;
     z-index: 2;
@@ -204,12 +212,15 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom;
-    background-size: 203px;
+    /* TODO: player photos get blurry RIGHT AT 'background-size: 186px'... DONT KNOW WHY */
+    /* NOTE: annnnndd maybe 187px???? idk */
+    background-size: 188px;
     filter: saturate(1.2);
 }
 
 .card-unavailable .card-photo {
     opacity: 0.55;
+    bottom: 45px;
 }
 
 .image-small-logo {
@@ -233,8 +244,8 @@
     position: absolute;
     height: 50px;
     width: 50px;
-    left: 9px;
-    bottom: 13px;
+    left: 12px;
+    bottom: 16px;
     border-radius: 7px;
     background-repeat: no-repeat;
     pointer-events: none;
@@ -253,11 +264,11 @@
 
 .player-level {
     position: absolute;
-    left: 35px;
-    bottom: 5px;
+    left: 38px;
+    bottom: 8px;
     transform: translateX(-50%);
     pointer-events: none;
-    background-color: rgba(10, 10, 10, 0.97);
+    background-color: rgba(10, 10, 10, 1.0);
     z-index: 4 !important;
     color: rgba(255, 255, 255, 0.90);
     text-align: center;
@@ -271,7 +282,7 @@
     position: absolute;
     height: 52px;
     width: 52px;
-    left: 10px;
+    left: 12px;
     pointer-events: none;
     bottom: 10px;
     border-radius: 7px;
@@ -298,7 +309,7 @@
     right: 4px;
     background-color: rgba(15, 15, 15, 0.45);
     backdrop-filter: blur(5px);
-    z-index: 3;
+    z-index: 2;
 }
 
 .game-timer-text {
@@ -313,7 +324,7 @@
 .card-unavailable .game-timer {
     top: 2px !important;
     right: 2px !important;
-    background-color: rgba(15, 15, 15, 0.45) !important;
+    /* background-color: rgba(15, 15, 15, 0.45) !important; */
 }
 
 .loading-dots {
@@ -384,13 +395,18 @@
     flex: 1;
     z-index: 2;
     pointer-events: none;
+    border-radius: 0 0 5px 5px;
     padding: 1px 4px 7px 67px;
-    backdrop-filter: grayscale(1);
-    background-image: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.45) 40%, rgba(0,0,0,0) 75%);
+    height: 35px;
+    backdrop-filter: grayscale(1) blur(3px);
+    background-color: rgba(0, 0, 0, 0.20);
+    margin: 0 4px 4px 4px;
+    /* background-image: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.45) 40%, rgba(0,0,0,0) 75%); */
 }
 
 .card-unavailable .text-container {
     padding-left: 0;
+    flex: 1;
     align-items: center;
     border-bottom-left-radius: 10px;
     background-image: linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 75%);
@@ -425,7 +441,7 @@
     z-index: 4 !important;
     user-select: none;
     white-space: nowrap;
-    margin: -1px 0 1px 0;
+    margin: 0 0 -5px 0;
 }
 
 .card-unavailable .text-sub,

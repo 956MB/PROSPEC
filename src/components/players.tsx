@@ -7,7 +7,7 @@ import { Card } from './card';
 const Players: React.FC<{
     players: IPlayers,
 }> = ({ players }) => {
-    const [intervalActive, setIntervalActive] = useState(false);
+    const [intervalActive, setIntervalActive] = useState(true);
     const [gameInterval, setGameInterval] = useState(0);
 
     useEffect(() => {
@@ -26,9 +26,11 @@ const Players: React.FC<{
         <div className='pros-container'>
             <div className='pros-scroll'>
                 <div className="pros-grid">
-                    {players.players.map(player => (
-                        <Card key={player.id} playerProps={player} globalTime={gameInterval}></Card>
-                    ))}
+                    {React.Children.toArray(
+                        players.players.map(player => (
+                            <Card playerProps={player} globalTime={gameInterval}></Card>
+                        ))
+                    )}
                 </div>
             </div>
         </div>

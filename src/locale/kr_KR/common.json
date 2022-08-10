@@ -122,7 +122,8 @@
 		"title": "선호도"
 	},
 	"titlebar": {
-		"lastRefresh": "마지막 새로 고침: {{time}}"
+		"lastRefresh": "마지막 새로 고침: {{time}}",
+		"searchPlaceholder": "수색"
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} 이(가) 게임에 없거나 관전할 수 없습니다."

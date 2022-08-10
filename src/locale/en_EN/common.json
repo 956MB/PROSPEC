@@ -122,7 +122,8 @@
 		"title": "Settings"
 	},
 	"titlebar": {
-		"lastRefresh": "Last refresh: {{time}}"
+		"lastRefresh": "Last refresh: {{time}}",
+		"searchPlaceholder": "Search"
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} is either not in a game, or spectate is unavailable."

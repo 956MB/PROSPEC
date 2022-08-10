@@ -7,7 +7,7 @@ import { ISummonerAccount, ISummonerAccounts, IJSONPlayers, IJSONPlayer, IJSONAc
 import * as KR from './data/players/lck.json';
 
 class ProSpec {
-    public searchRegions = [ERegions.KR];
+    public searchRegions = [ERegions.WORLD];
     public searchModes = [EModes.RANKED_SOLODUO];
     public searchRoles = [ERoles.ANY];
 

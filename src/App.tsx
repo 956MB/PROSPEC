@@ -4,29 +4,24 @@ import './App.css';
 import Titlebar from './components/titlebar';
 import Settings from './components/settings';
 import ProSpec from "./prospec";
-import { IPlayers } from "./interfaces";
+import { IAppBackground, IPlayers } from "./interfaces";
 const Players = React.lazy(() => import("./components/players"));
 
-// import defaultBackground from "./assets/dragontail-12.13.1/random/Katarina_Sephi2.jpg";
-import { EChampions, EModes, ERegions, ETeams } from "./typings";
-import { getRegion, randomActive, randomEnum, randomNumber, sliceMap } from "./utils";
+import { EChampions, ERegions } from "./typings";
+import { getRegion, randomActive, randomBackground, randomEnum, randomNumber } from "./utils";
 
 function App() {
     const proSpec = useMemo(() => new ProSpec(false), []);
-    const [appBG, setAppBG] = useState("Kayle_8");
+    const [appBG, setAppBG] = useState({type: 'random', primary: `assets/dragontail-12.13.1/random/Miyazaki.png`, secondary: `assets/dragontail-12.13.1/random/Miyazaki.png`} as IAppBackground);
     const [settingsOpen, setSettingsOpen] = useState(false);
 
     useEffect(() => {
-        // proSpec.doSomething();
-
-        // spectate.execSpectateWin("euw1", "J2iWm0UJqiR80PBGAeEj5PJFBo9h1KkP", "5963775436");
-        // const FButtonClick = () => {
-        //     const fetchUserEmail = async () => {
-        //         const response = await execSpectateWin("euw1", "J2iWm0UJqiR80PBGAeEj5PJFBo9h1KkP", "5963775436");
-        //         console.log(`here click ${response.status}`);
-        //     };
-        //     fetchUserEmail();
-        // };
+        const getAppBackground = async () => {
+            const randomBG = await randomBackground();
+            setAppBG(randomBG);
+            console.log(randomBG.primary, randomBG.secondary);
+        };
+        // getAppBackground();
     }, [proSpec]);
 
     const [players, setPlayers] = useState<IPlayers>({
@@ -63,7 +58,7 @@ function App() {
             console.log("LOADED");
             setPlayers({
                 players: proSpec.allAccounts
-                    .filter((player) => player.region === "kr")
+                    .filterRegions(ERegions.KR, ERegions.NA)
                     .sort(() => 0.5 - Math.random())
                     .uniquePlayers(0, 15)
                     .map((player, i) => {
@@ -78,7 +73,7 @@ function App() {
     }
 
     return (
-        <div className={`app ${settingsOpen ? 'settings-open' : null}`} style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/splash/${appBG}.webp)` }}>
+        <div className={`app ${settingsOpen ? 'settings-open' : null}`} style={{ backgroundImage: `url(src/${appBG.primary})` }}>
             <Settings appBackground={appBG} settingsOpen={settingsOpen} FSettingsOpen={FSettingsOpen}/>
             <Titlebar settingsOpen={settingsOpen} selectedRegions={proSpec.searchRegions} selectedModes={proSpec.searchModes} selectedRoles={proSpec.searchRoles} refreshPlayers={refreshPlayers} />
             <div className="app-inner">

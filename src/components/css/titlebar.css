@@ -1,3 +1,8 @@
+:root {
+    --searchbar-normal: rgba(50, 50, 50, 0.60);
+    --searchbar-focus: rgba(50, 50, 50, 0.75);
+}
+
 .titlebar {
     display: flex;
     flex-grow: 1;
@@ -14,6 +19,7 @@
     align-items: center;
     height: 47px;
     flex-grow: 1;
+    width: 100%;
     z-index: 2;
     padding-left: 75px;
     backdrop-filter: blur(4px);
@@ -47,8 +53,9 @@
     justify-content: flex-start;
     align-items: center;
     padding-right: 8px;
-    width: 200px;
+    width: 254px;
     height: 100%;
+    /* background-color: #e811233b; */
 }
 
 .controls-group {
@@ -56,20 +63,25 @@
     pointer-events: none;
     display: flex;
     justify-content: flex-end;
+    /* align-content: flex-end; */
+    flex-direction: row;
     align-items: center;
     height: 100%;
-    width: 200px;
+    /* width: 300px; */
     padding-right: 8px;
     padding-left: 8px;
+    /* background-color: rgba(0, 0, 255, 0.24); */
 }
 
 .titlebar-button-edge:hover,
 .titlebar-button:hover
 {
     background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
 }
 .titlebar-button:active {
     background: rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(4px);
 }
 
 .titlebar-button img {
@@ -110,4 +122,125 @@
     color: rgba(255, 255, 255, 0.20);
     margin-left: 6px;
     white-space:nowrap;
+}
+
+.search-bar {
+    margin-right: 8px;
+    float: right;
+    position: relative;
+}
+
+.search-bar-active input[type=text] {
+    width: 250px !important;
+}
+
+.search-bar input[type=text] {
+    /* TODO: Need to figure out how to align options container width and search bar width with transition. */
+    pointer-events: all;
+    float: right;
+    width: 150px;
+    flex: 1;
+    transition: 0.15s;
+    /* transition: width 0.3s linear; */
+    height: 30px;
+    padding: 1px 10px 0 10px;
+    /* margin: 8px 0; */
+    display: block;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: var(--searchbar-normal);
+    backdrop-filter: blur(6px);
+    /* background-image: url('src/assets/icons/search.svg'); */
+    background-position: calc(100% - 10px) 55%;
+    background-repeat: no-repeat;
+}
+
+.search-bar input[type=text]:focus {
+    /* background-color: var(--searchbar-focus); */
+    width: 225px;
+    /* flex: 2; */
+    /* border: none !important; */
+    /* outline: none !important; */
+}
+
+.search-bar input[type=text]:focus .options-container {
+    flex: 1;
+}
+
+/* Chrome, Firefox, Opera, Safari 10.1+ */
+.search-bar ::placeholder {
+    font-family: 'Inter_Regular';
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.20);
+    white-space:nowrap;
+}
+/* Internet Explorer 10-11 */
+.search-bar ::-ms-input-placeholder {
+    font-family: 'Inter_Regular';
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.20);
+    white-space:nowrap;
+}
+/* Microsoft Edge */
+.search-bar ::-ms-input-placeholder {
+    font-family: 'Inter_Regular';
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.20);
+    white-space:nowrap;
+}
+
+.search-bar input[type=text]:focus::placeholder {
+    color: rgba(255, 255, 255, 0.30);
+}
+
+.search-disabled,
+.search-disabled input[type=text]
+{
+    pointer-events: none;
+    filter: grayscale(1) opacity(0.9) !important;
+}
+
+.icon-container {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 0 5px 5px 0;
+    /* transform: translateY(-50%); */
+    pointer-events: none;
+    z-index: 5 !important;
+    /* background-color: #e8112327; */
+}
+
+.icon-clickable {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.search-icon {
+    height: 14px;
+    width: 14px;
+    margin-top: 2px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.close-icon {
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    height: 11px;
+    width: 11px;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    /* margin-top: 1px; */
+    opacity: 0.4;
 }

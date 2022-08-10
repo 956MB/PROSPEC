@@ -43,6 +43,7 @@ export enum EButtonImages {
     NONE = 'image-none',
     FLAG = 'image-flag',
     ICON = 'image-icon',
+    WORLD = 'image-world',
     ROLE = 'image-role',
     CHAMP = 'image-champ',
     RIGHT = 'image-right'
@@ -52,8 +53,12 @@ export enum ETooltip {
     TOOLTIP = 'tooltip',
     LEFT = 'tooltip-text tooltip-left',
     RIGHT = 'tooltip-text tooltip-right',
-    TOP = 'tooltipt-ext tooltip-top',
+    TOP = 'tooltip-text tooltip-top',
     BOTTOM = 'tooltip-text tooltip-bottom',
+    LEFTDELAY = 'tooltip-text-delay tooltip-left',
+    RIGHTDELAY = 'tooltip-text-delay tooltip-right',
+    TOPDELAY = 'tooltip-text-delay tooltip-top',
+    BOTTOMDELAY = 'tooltip-text-delay tooltip-bottom'
 }
 
 // MESSAGES:

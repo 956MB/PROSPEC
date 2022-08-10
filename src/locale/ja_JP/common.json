@@ -122,7 +122,8 @@
 		"title": "設定"
 	},
 	"titlebar": {
-		"lastRefresh": "最終更新： {{time}}"
+		"lastRefresh": "最終更新： {{time}}",
+		"searchPlaceholder": "サーチ"
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} はゲームに参加していないか、観戦できません。"

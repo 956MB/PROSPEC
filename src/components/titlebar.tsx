@@ -6,7 +6,7 @@ import './css/titlebar.css';
 import { Options } from './options';
 import { EAboutSections, EButtonImages, EChampions, EModes, ERegions, ERoles } from '../typings';
 import { IOptionsButton, IOptionsButtonChamp, IOptionsSections, IOptionsSectionsChamp, ISelectedChamps } from '../interfaces';
-import { getChampionFromId, getRegion, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap, oMode, oRole, oRegion } from '../utils';
+import { getChampionFromId, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap, oMode, oRole, oRegion } from '../utils';
 
 import refreshIcon from '../assets/icons/refresh.svg';
 // import sidebarIcon from '../assets/icons/sidebar.svg';
@@ -65,6 +65,12 @@ const Titlebar: React.FC<{
         ]
     });
 
+    const [inputValue, setInputValue] = useState("");
+    const fInputChange = (e: any) => {
+        const { value } = e.target;
+        setInputValue(value);
+    };
+
     const updateSelectedChampions = (champId: number) => {
         if (selectedChamps.champs.includes(champId)) {
             setSelectedChamps({
@@ -91,9 +97,7 @@ const Titlebar: React.FC<{
                 <Options optionsDisabled={settingsOpen} optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} />
 
                 <div className='controls-group'>
-                    {/* <button className="titlebar-button titlebar-button-edge-left" id="titlebar-sidebar">
-                        <img src={ sidebarIcon } alt="sidebar" />
-                    </button> */}
+                    <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/>
                     <button
                         className="titlebar-button titlebar-button-edge-left"
                         id="titlebar-minimize"
@@ -108,6 +112,26 @@ const Titlebar: React.FC<{
                     </button>
                 </div>
             </div>
+        </div>
+    )
+}
+
+const SearchBar: React.FC<{
+    searchDisabled: boolean,
+    value: string,
+    fOnChange: (e: any) => void,
+    fClearSearch: () => void
+}> = ({ searchDisabled, value, fOnChange, fClearSearch }) => {
+    const {t, i18n} = useTranslation('common');
+
+    return (
+        <div className={`search-bar ${(value === '') ? null : 'search-bar-active'} ${searchDisabled ? 'search-disabled' : null}`}>
+            <div className={`icon-container ${(value === '') ? null : 'icon-clickable'}`} onClick={(value === '') ? () => null : fClearSearch}>
+                <img
+                src={`src/assets/icons/${(value === '') ? 'search' : 'close'}.svg`}
+                className={`${(value === '') ? 'search-icon' : 'close-icon'}`}/>
+            </div>
+            <input type="text" id="fname" name="search" value={value} onChange={fOnChange} placeholder={t('titlebar.searchPlaceholder')}></input>
         </div>
     )
 }

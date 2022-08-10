@@ -18,6 +18,7 @@ const Card: React.FC<{
     const team = getTeamFromNumber(playerProps.summoner.team, true);
     const player = formPlayerImage(team, playerProps.summoner.playerName);
     const champ = getChampionFromId(playerProps.champion)?.name;
+    const [level, setLevel] = useState(randomNumber(30, 500));
     const glow = getChampionFromId(playerProps.champion)?.color;
     const [gameTime, setGameTime] = useState(playerProps.gameInfo.gameTime);
     const [cardUseDir, setCardUseDir] = useState("loading");
@@ -32,9 +33,9 @@ const Card: React.FC<{
     const imageSmallStyles = {
         backgroundImage: `url(src/assets/dragontail-12.13.1/champion/${champ}.png)`,
         opacity: `${(!playerProps.active && cardPressed) ? '0.5' : '1.0'}`,
-        boxShadow: (gameTime + globalTime >= 1800) ? '' : `0 0 100px 10px rgba(${!glow ? '255, 255, 255' : glow}, 0.30)`,
+        // boxShadow: (gameTime + globalTime >= 1800) ? '' : `0 0 100px 10px rgba(${!glow ? '255, 255, 255' : glow}, 0.${(gameTime + globalTime >= 1800) ? '30' : '0'})`,
         border: `1px solid rgb(${!glow ? '255, 255, 255' : glow}, 0.10)`,
-        animation: (gameTime + globalTime >= 1800) ? `blinkEnding 5s linear infinite` : ''
+        // animation: (gameTime + globalTime >= 1800) ? `blinkEnding 5s linear infinite` : ''
     };
 
     useEffect(() => {
@@ -60,18 +61,18 @@ const Card: React.FC<{
                     <h1 className="loading-dot dot-two">.</h1>
                     <h1 className="loading-dot dot-three">.</h1>
                 </div>
-                <img src={timerIcon} alt="clock" className={`clock-svg ${ending(gameTime + globalTime, 'ending-svg')} noselect`} />
+                {/* <img src={timerIcon} alt="clock" className={`clock-svg ${ending(gameTime + globalTime, 'ending-svg')} noselect`} /> */}
                 <span className={`game-timer-text ${ending(gameTime + globalTime, 'ending-text')}`}>
                     {`${secondsToTime(gameTime + globalTime)}`}
                 </span>
                 <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, {player: playerProps.summoner.playerName})}</span>
             </div>
-            <span className='player-level'>{randomNumber(30, 500)}</span>
+            <span className='player-level'>{level}</span>
             <div className='image-small-champ' style={imageSmallStyles}></div>
             <div className='blur-small'></div>
+            <div className='card-photo' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
             <div className='card-content'>
-                <CardMenu />
-                <div className='card-photo' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
+                {/* <CardMenu /> */}
                 <div className='text-container'>
                     <span className='text-summoner'>
                         {playerProps.summoner.accountName}

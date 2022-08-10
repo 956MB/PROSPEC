@@ -5,8 +5,8 @@
 		"all": "Kaikki",
 		"normalBlind": "Normaali sokea",
 		"normalDraft": "Normaali luonnos",
-		"rankedFlex": "Luokiteltu flex",
-		"rankedSoloDuo": "Luokiteltu soolo/duo"
+		"rankedFlex": "Sijoitus flex",
+		"rankedSoloDuo": "Sijoitus yksin/duo"
 	},
 	"regions": {
 		"br": "BR",
@@ -122,7 +122,8 @@
 		"title": "Asetukset"
 	},
 	"titlebar": {
-		"lastRefresh": "Viimeinen virkistys: {{time}}"
+		"lastRefresh": "Viimeinen virkistys: {{time}}",
+		"searchPlaceholder": "Hae"
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} ei ole pelissä tai katsoja ei ole käytettävissä."

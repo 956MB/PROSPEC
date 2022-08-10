@@ -38,21 +38,25 @@ const Options: React.FC<{
     return (
         <div className={`options-container ${optionsDisabled ? 'options-disabled' : null}`}>
             <Suspense fallback={<div>Loading Component....</div>}>
-                {sectionsFilter.map(section => {
-                    if (expanded) {
-                        if (section.id === expandedSection) { return <OptionsSection key={section.id} sectionProps={section} toggleExpanded={toggleExpanded} closeSections={closeSections}></OptionsSection> }
-                    } else {
-                        return <OptionsSection key={section.id} sectionProps={section} toggleExpanded={toggleExpanded} closeSections={closeSections}></OptionsSection>
-                    }
-                })}
+                {React.Children.toArray(
+                    sectionsFilter.map(section => {
+                        if (expanded) {
+                            if (section.id === expandedSection) { return <OptionsSection sectionProps={section} toggleExpanded={toggleExpanded} closeSections={closeSections}></OptionsSection> }
+                        } else {
+                            return <OptionsSection sectionProps={section} toggleExpanded={toggleExpanded} closeSections={closeSections}></OptionsSection>
+                        }
+                    })
+                )}
 
-                {sectionsChampFilter.map(sectionChamp => {
-                    if (expanded) {
-                        if (sectionChamp.id === expandedSection) { return <OptionsSectionChamp key={sectionChamp.id} sectionChampProps={sectionChamp} selectedChamps={selectedChamps} toggleExpanded={toggleExpanded} closeSections={closeSections} updateSelectedChampions={updateSelected}></OptionsSectionChamp> }
-                    } else {
-                        return <OptionsSectionChamp key={sectionChamp.id} sectionChampProps={sectionChamp} selectedChamps={selectedChamps} toggleExpanded={toggleExpanded} closeSections={closeSections} updateSelectedChampions={() => (null)}></OptionsSectionChamp>
-                    }
-                })}
+                {React.Children.toArray(
+                    sectionsChampFilter.map(sectionChamp => {
+                        if (expanded) {
+                            if (sectionChamp.id === expandedSection) { return <OptionsSectionChamp sectionChampProps={sectionChamp} selectedChamps={selectedChamps} toggleExpanded={toggleExpanded} closeSections={closeSections} updateSelectedChampions={updateSelected}></OptionsSectionChamp> }
+                        } else {
+                            return <OptionsSectionChamp sectionChampProps={sectionChamp} selectedChamps={selectedChamps} toggleExpanded={toggleExpanded} closeSections={closeSections} updateSelectedChampions={() => (null)}></OptionsSectionChamp>
+                        }
+                    })
+                )}
             </Suspense>
         </div>
     )
@@ -92,9 +96,11 @@ const OptionsSection: React.FC<{
         <div className='options-section'>
             {/* <span className={`${expanded ? "section-label" : "section-label-disable"} noselect`}>{sectionProps.name}</span> */}
             
-            {buttonsFilter.map((props, i) => (
-                <OptionsButton key={i} buttonProps={props} sectionExpanded={expanded} sectionId={sectionProps.id} toggleExpanded={FExpanded} toggleSelected={FSelected}></OptionsButton>
-            ))}
+            {React.Children.toArray(
+                buttonsFilter.map((props) => (
+                    <OptionsButton buttonProps={props} sectionExpanded={expanded} sectionId={sectionProps.id} toggleExpanded={FExpanded} toggleSelected={FSelected}></OptionsButton>
+                ))
+            )}
 
             <div className={`${expanded ? 'titlebar-button titlebar-button-edge-both section-close' : 'image-null'} ${ETooltip.TOOLTIP}`} onClick={() => FExpanded(sectionProps.id)}>
                 <img src={closeIcon} alt="close" />
@@ -138,15 +144,15 @@ const OptionsSectionChamp: React.FC<{
 
     let useButtons;
     if (expanded) {
-        useButtons = sectionChampProps.buttons
+        useButtons = React.Children.toArray(
+            sectionChampProps.buttons
             .sort((a, b) => {
                 let aS = getChampionFromId(a.champ)?.name!;
                 let bS = getChampionFromId(b.champ)?.name!;
                 return aS.localeCompare(bS)
             })
-            .map((props, i) => (
+            .map((props) => (
                 <OptionsButtonChamp
-                    key={i}
                     champSelected={selectedChamps.champs.includes(props.champ)}
                     buttonChampProps={props}
                     sectionExpanded={expanded}
@@ -156,6 +162,7 @@ const OptionsSectionChamp: React.FC<{
                     toggleSelected={FSelected}
                 ></OptionsButtonChamp>
             ))
+        )
     } else {
         let selected = selectedChamps.champs
             .sort((a, b) => {
@@ -165,16 +172,17 @@ const OptionsSectionChamp: React.FC<{
             })
             .map((champ, i) => (`dragontail-12.13.1/tiles/${getChampionFromId(champ)?.name}_0.jpg`));
 
-        useButtons = <OptionsButtonChamp
-            key={0}
-            champSelected={false}
-            buttonChampProps={{ id: 0, active: true, type: EButtonImages.CHAMP, champ: -1, images: selected, right: "icons/plus.svg" }}
-            sectionExpanded={expanded}
-            sectionId={sectionChampProps.id}
-            champGlows={glowList}
-            toggleExpanded={FExpanded}
-            toggleSelected={() => (null)}
-        ></OptionsButtonChamp>
+        useButtons = React.Children.toArray(
+            <OptionsButtonChamp
+                champSelected={false}
+                buttonChampProps={{ id: 0, active: true, type: EButtonImages.CHAMP, champ: -1, images: selected, right: "icons/plus.svg" }}
+                sectionExpanded={expanded}
+                sectionId={sectionChampProps.id}
+                champGlows={glowList}
+                toggleExpanded={FExpanded}
+                toggleSelected={() => (null)}
+            ></OptionsButtonChamp>
+        )
     }
 
     return (
@@ -214,12 +222,13 @@ const OptionsButton: React.FC<{
 
     return (
         <div className={(buttonProps.selected && sectionExpanded) ? "options-button-selected" : (!buttonProps.active ? "options-button-disabled" : "options-button")} onClick={() => { FExpanded(sectionId) }}>
-            {buttonProps.images.map((image, i) => (
-                <img
-                key={i}
-                src={`src/assets/${image}`}
-                className={`${buttonProps.type} ${(i === 0 && buttonProps.type === EButtonImages.CHAMP) ? 'champ-edge-left' : null} ${(i === buttonProps.images.length - 1 && buttonProps.type === EButtonImages.CHAMP) ? 'champ-edge-right' : null} noselect`} />
-            ))}
+            {React.Children.toArray(
+                buttonProps.images.map((image, i) => (
+                    <img
+                    src={`src/assets/${image}`}
+                    className={`${buttonProps.type} ${(i === 0 && buttonProps.type === EButtonImages.CHAMP) ? 'champ-edge-left' : null} ${(i === buttonProps.images.length - 1 && buttonProps.type === EButtonImages.CHAMP) ? 'champ-edge-right' : null} noselect`} />
+                ))
+            )}
             <span className='button-content noselect'>{t(buttonProps.content)}</span>
             {<img src={`src/assets/${buttonProps.right}`} className={buttonProps.right === "" ? "image-null" : "image-right"} />}
         </div>
@@ -247,14 +256,14 @@ const OptionsButtonChamp: React.FC<{
     return (
         <div className={(sectionExpanded) ? (champSelected ? "options-button-champ-selected" : "options-button-champ") : "options-button-champ-normal"} onClick={() => { FExpanded(sectionId) }}>
 
-            {buttonChampProps.images.map((image, i) => (
-                <img
-                    key={i}
+            {React.Children.toArray(
+                buttonChampProps.images.map((image, i) => (
+                    <img
                     src={`src/assets/${image}`}
                     className={`${buttonChampProps.type} ${(i === 0 && buttonChampProps.type === EButtonImages.CHAMP) ? 'champ-edge-left' : null} ${(i === buttonChampProps.images.length - 1 && buttonChampProps.type === EButtonImages.CHAMP) ? 'champ-edge-right' : null} noselect`}
-                    style={{ boxShadow: !sectionExpanded ? `${champGlows[i]}` : undefined }}
-                />
-            ))}
+                    style={{ boxShadow: !sectionExpanded ? `${champGlows[i]}` : undefined }}/>
+                ))
+            )}
 
             {<img
                 src={`src/assets/${buttonChampProps.right}`}

@@ -96,7 +96,7 @@ body {
 .tooltip {
     position: relative;
     display: inline-block;
-    z-index: 4 !important;
+    z-index: 99 !important;
 }
 
 .tooltip .tooltip-text {
@@ -110,33 +110,50 @@ body {
     padding: 3px 8px 4px 8px;
     font-size: 11px;
     position: absolute;
-    z-index: 4 !important;
+    z-index: 99 !important;
+}
+
+.tooltip .tooltip-text-delay {
+    display: block;
+    background-color: rgba(15, 15, 15, 0.95);
+    /* backdrop-filter: blur(10px); */
+    color: rgba(255, 255, 255, 0.702);
+    text-align: center;
+    font-family: 'RobotoMono_Regular';
+    border-radius: 5px;
+    padding: 3px 8px 4px 8px;
+    font-size: 11px;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 99 !important;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .tooltip-right {
-    top: 4px;
+    top: 50%;
+    transform: translateY(-50%);
     left: 115%;
-    /* animation: 0.7s fadeIn; */
-    /* animation-fill-mode: forwards; */
-    /* visibility: hidden; */
 }
-
 .tooltip-left {
-    top: 4px;
+    top: 50%;
+    transform: translateY(-50%);
     right: 115%;
 }
-
 .tooltip-bottom {
     top: 115%;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100px;
-    border-radius: 5px 0 5px 5px !important;
 }
-
 .tooltip-top {
     bottom: 115%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.right-closer {
+    left: 100% !important;
 }
 
 @keyframes fadeIn {
@@ -148,12 +165,17 @@ body {
     }
 }
 
-.tooltip:hover .tooltip-left,
-.tooltip:hover .tooltip-right,
-.tooltip:hover .tooltip-bottom,
-.tooltip:hover .tooltip-top
-{
+.tooltip:hover .tooltip-text {
     display: block;
+    z-index: 99 !important;
+}
+
+.tooltip:hover .tooltip-text-delay {
+    opacity: 1;
+    visibility: visible;
+    transition: all 200ms;
+    transition-delay: 1s;
+    z-index: 99 !important;
 }
 
 .app {

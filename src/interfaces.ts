@@ -1,5 +1,11 @@
 // NOTE: Objects
 
+export interface IAppBackground {
+    type: string;
+    primary: string;
+    secondary: string;
+}
+
 export interface IPlayer { 
     id: number;
     active: boolean;

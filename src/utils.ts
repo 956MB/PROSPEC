@@ -1,4 +1,4 @@
-import { IChampion, IRegion, ISummonerAccount } from "./interfaces";
+import { IAppBackground, IChampion, IRegion, ISummonerAccount } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import { BlobOptions } from "buffer";
@@ -13,19 +13,6 @@ export function ending(sec: number, _true: string): string | null {
 
 function escapeRegExp(str: string) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-}
-
-declare global {
-    interface Array<T> {
-        uniquePlayers(min?: number, max?: number): Array<T>;
-    }
-}
-
-if (!Array.prototype.uniquePlayers) {
-    Array.prototype.uniquePlayers = function<T>(this: ISummonerAccount[], min: number, max: number): ISummonerAccount[] {
-        const unique = [...new Map(this.map(item => [item.playerName, item])).values()];
-        return unique.slice(min, max);
-    }
 }
 
 export function secondsToTime(secs: number): string {
@@ -301,7 +288,7 @@ export function included(list: string[], check: string): boolean {
     return list.includes(check);
 }
 
-export function regionType(region: string): string { return (region === ERegions.WORLD) ? EButtonImages.ICON : EButtonImages.FLAG; }
+export function regionType(region: string): string { return (region === ERegions.WORLD) ? EButtonImages.WORLD : EButtonImages.FLAG; }
 export function regionFolder(region: string): string { return (region === ERegions.WORLD) ? 'icons' : 'flags'; }
 export function regionFile(region: string): string { return (region === ERegions.WORLD) ? '.svg' : '.png'; }
 export function modeType(mode: string): string { return (mode === EModes.ALL) ? EButtonImages.ICON : EButtonImages.NONE; }
@@ -310,7 +297,28 @@ export function roleType(role: string): string { return (role === ERoles.ANY) ? 
 export function roleFile(role: string): string { return (role === ERoles.ANY) ? '.svg' : '.png'; }
 
 
-// TRANSLATION:
+// NOTE: Prototypes:
+
+declare global {
+    interface Array<T> {
+        filterRegions(...regions: ERegions[]): Array<T>;
+        uniquePlayers(min?: number, max?: number): Array<T>;
+    }
+}
+if (!Array.prototype.filterRegions) {
+    Array.prototype.filterRegions = function<T>(this: ISummonerAccount[], ...regions: ERegions[]): ISummonerAccount[] {
+        return this.filter((player) => (regions.length >= 1) ? regions.includes(player.region as ERegions) : this);
+    }
+}
+if (!Array.prototype.uniquePlayers) {
+    Array.prototype.uniquePlayers = function<T>(this: ISummonerAccount[], min: number, max: number): ISummonerAccount[] {
+        const unique = [...new Map(this.map(item => [item.playerName, item])).values()];
+        return unique.slice(min, max);
+    }
+}
+
+
+// NOTE: TRANSLATION:
 
 export function oMode(mode: string): string { return `modes.${mode}` }
 export function oRole(role: string): string { return `roles.${role}` }
@@ -320,7 +328,7 @@ export function sItemTitle(page: string, item: string): string { return `setting
 export function sItemDescription(page: string, item: string): string { return `settings.pages.${page}.items.${item}.description` }
 
 
-// RANDOM:
+// NOTE: RANDOM:
 
 export function randomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -340,7 +348,19 @@ export function randomEnum<T>(anEnum: T): T[keyof T] {
 }
 
 export function randomActive(): boolean {
-        var notRandomNumbers = [1, 1, 2, 2, 3, 3, 4];
-        var idx = Math.floor(Math.random() * notRandomNumbers.length);
+        const notRandomNumbers = [1, 1, 2, 2, 3, 3, 4];
+        const idx = Math.floor(Math.random() * notRandomNumbers.length);
         return (notRandomNumbers[idx] != 4);
+}
+
+export async function randomBackground(): Promise<IAppBackground> {
+    const randomOrChamp = false;
+    // const randomOrChamp = randomNumber(0, 1) == 1;
+    const bgs = await readDir(`assets/dragontail-12.13.1/${randomOrChamp ? 'splash' : 'random'}/`, { dir: BaseDirectory.Resource, recursive: true });
+    const entry = bgs.at(randomNumber(0, bgs.length-1))?.name;
+    
+    const primaryBG = (randomOrChamp) ? `splash/${entry}` : `random/${entry}`;
+    const secondaryBG = (randomOrChamp) ? `centered/${entry}` : `random/${entry}`;
+
+    return {type: (randomOrChamp) ? 'splash' : 'random', primary: `assets/dragontail-12.13.1/${primaryBG}`, secondary: `assets/dragontail-12.13.1/${secondaryBG}`}
 }

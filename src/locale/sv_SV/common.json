@@ -122,7 +122,8 @@
 		"title": "Inställningar"
 	},
 	"titlebar": {
-		"lastRefresh": "Senaste uppdatering: {{time}}"
+		"lastRefresh": "Senaste uppdatering: {{time}}",
+		"searchPlaceholder": "Sök"
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} är antingen inte med i ett spel eller så är publiken inte tillgänglig."
