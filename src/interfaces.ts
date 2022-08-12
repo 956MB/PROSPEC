@@ -60,6 +60,11 @@ export interface ISpectatorResult {
 
 // NOTE: UI
 
+export interface IMenuOrigin {
+    x: number;
+    y: number;
+}
+
 export interface IOptionsButton {
     id: number;
     active: boolean;

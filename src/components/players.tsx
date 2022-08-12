@@ -7,7 +7,7 @@ import { Card } from './card';
 const Players: React.FC<{
     players: IPlayers,
 }> = ({ players }) => {
-    const [intervalActive, setIntervalActive] = useState(true);
+    const [intervalActive, setIntervalActive] = useState(false);
     const [gameInterval, setGameInterval] = useState(0);
 
     useEffect(() => {

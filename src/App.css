@@ -18,6 +18,9 @@ body {
     background: rgba(60, 60, 60, 0.30);
     /* backdrop-filter: blur(5px); */
 }
+.pros-container  ::-webkit-scrollbar-track {
+    margin-top: 47px;
+}
 /* Handle */
 ::-webkit-scrollbar-thumb {
     /* background: #888; */
@@ -215,9 +218,9 @@ body {
 
 .app-inner {
     display: flex;
-    padding-left: 75px  ;
-    padding-top: 20px;
-    padding-right: 20px;
+    padding-left: 55px  ;
+    /* padding-top: 20px; */
+    /* padding-right: 20px; */
 }
 
 .border-bottom {

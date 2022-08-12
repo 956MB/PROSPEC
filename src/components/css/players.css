@@ -4,14 +4,17 @@
 
 .pros-container {
     width: 100%;
-    height: calc(100vh - 67px);
-    background-color: rgba(0, 0, 0, 0.17);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    /* height: calc(100vh - 47px); */
+    height: 100vh;
+    /* background-color: rgba(0, 0, 0, 0.17); */
+    background-color: rgba(30, 30, 30, 0.45);
+    /* border-top-left-radius: 8px; */
+    /* border-top-right-radius: 8px; */
     display: inline-block;
     overflow: hidden;
-    border: 1px solid rgb(255, 255, 255, 0.08);
+    /* border-top: 1px solid rgb(255, 255, 255, 0.08); */
     z-index: 2;
+    /* padding: 47px 0 0 0; */
 }
 
 .pros-scroll {
@@ -27,5 +30,5 @@
     grid-auto-rows: 195px;
     row-gap: 16px;
     column-gap: 17px;
-    padding: 35px 0 35px 0;
+    padding: 82px 0 30px 0;
 }

@@ -36,6 +36,8 @@ const Settings: React.FC<{
                     { title: sItemTitle('content', 'refreshInterval'), description: sItemDescription('content', 'refreshInterval'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
                 ] }
                 ,
+                { itemValue: { type: "spacer", value: false } }
+                ,
                 { title: sItemTitle('content', 'showSummonerIds'), description: sItemDescription('content', 'showSummonerIds'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool}
                 ,
                 { title: sItemTitle('content', 'showRandomSkins'), description: sItemDescription('content', 'showRandomSkins'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool, childValues: [
@@ -67,6 +69,8 @@ const Settings: React.FC<{
                 { title: sItemTitle('application', 'minimizeToTray'), description: sItemDescription('application', 'minimizeToTray'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool}
                 ,
                 { title: sItemTitle('application', 'hardwareAcceleration'), description: sItemDescription('application', 'hardwareAcceleration'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                ,
+                { itemValue: { type: "spacer", value: false } }
                 ,
                 { title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
                 ,
@@ -118,8 +122,8 @@ const SettingsVerticalContainer: React.FC<{
     const { t } = useTranslation('common');
 
     return (
-        <div data-tauri-drag-region className={`settings-vertical-container`} >
-            <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => null}>
+        <div className={`settings-vertical-container`} >
+            <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => null} id={'discord-button'}>
                 <img src={discordIcon} alt="discord" />
                 <span className={`${ETooltip.RIGHT} right-far`}>{`Discord`}</span>
             </div>
@@ -197,8 +201,9 @@ const SettingsPage: React.FC<{
         <div className={`${pageProps.type === 'lang' ? 'settings-page-lang' : 'settings-page'} ${pageActive ? `${pageProps.type === 'lang' ? 'page-active-lang' : 'page-active'}` : null}`}>
             {React.Children.toArray(
                 pageProps.items.map((item) => {
+                    if (item.itemValue.type === 'spacer') { return <SettingsPageSpacer/> }
+                    
                     const valueLang = item.itemValue as ISettingsItemValueLanguage
-
                     return pageProps.type === 'lang'
                         ? <SettingsPageItemLanguage itemValue={item.itemValue as ISettingsItemValueLanguage} langSelected={i18n.language === valueLang.lang ? valueLang.value : -1} fLangSelect={fLangSelect}></SettingsPageItemLanguage>
                         : <SettingsPageItem itemProps={item}></SettingsPageItem>
@@ -282,6 +287,16 @@ const SettingsPageItemLanguage: React.FC<{
         <div className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : 'unselected-lang'} ${i18n.hasResourceBundle(itemValue.lang, 'common') ? null : 'lang-disabled'}`} onClick={fSelectLanguage}>
             <div className={`circle ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
             <span className='language-text'>{i18n.hasResourceBundle(itemValue.lang, 'common') ? itemValue.text : '· · ·'}</span>
+        </div>
+    )
+}
+
+const SettingsPageSpacer: React.FC<{
+}> = ({ }) => {
+
+    return (
+        <div className={`settings-page-spacer`}>
+            <div className='spacer-divider'></div>
         </div>
     )
 }

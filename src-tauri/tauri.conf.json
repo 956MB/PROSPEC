@@ -62,12 +62,13 @@
         },
         "windows": [
             {
+                "title": "ProSpec",
+                "resizable": true,
                 "fullscreen": false,
                 "height": 830,
-                "resizable": true,
-                "title": "ProSpec",
+                "minHeight": 500,
                 "width": 1480,
-                "minWidth": 1040,
+                "minWidth": 1080,
                 "decorations": false
             }
         ]

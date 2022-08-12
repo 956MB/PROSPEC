@@ -5,10 +5,16 @@
 
 .titlebar {
     display: flex;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     height: 47px;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(30, 30, 30, 0.985);
+    /* background-color: rgba(0, 0, 0, 0.25); */
+    /* background-color: rgba(90, 90, 90, 0.80); */
+    /* background-color: rgba(255, 90, 90, 0.50); */
+    width: 100%;
     max-width: 100%;
+    position: absolute;
+    z-index: 3;
     top: 0;
     left: 0;
 }
@@ -22,7 +28,7 @@
     width: 100%;
     z-index: 2;
     padding-left: 75px;
-    backdrop-filter: blur(6px);
+    /* backdrop-filter: blur(16px) grayscale(1); */
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
@@ -125,9 +131,10 @@
 }
 
 .search-bar {
-    margin-right: 8px;
+    margin-right: 7px;
     float: right;
     position: relative;
+    backdrop-filter: blur(4px);
 }
 
 .search-bar-active input[type=text] {
@@ -151,7 +158,7 @@
     border-radius: 5px;
     box-sizing: border-box;
     background-color: var(--searchbar-normal);
-    backdrop-filter: blur(6px);
+    /* backdrop-filter: blur(6px); */
     /* background-image: url('src/assets/icons/search.svg'); */
     background-position: calc(100% - 10px) 55%;
     background-repeat: no-repeat;
@@ -175,21 +182,21 @@
 
 /* Chrome, Firefox, Opera, Safari 10.1+ */
 .search-bar ::placeholder {
-    font-family: 'Inter_Regular';
+    font-family: 'Inter_Light';
     font-size: 12px;
     color: rgba(255, 255, 255, 0.20);
     white-space:nowrap;
 }
 /* Internet Explorer 10-11 */
 .search-bar ::-ms-input-placeholder {
-    font-family: 'Inter_Regular';
+    font-family: 'Inter_Light';
     font-size: 12px;
     color: rgba(255, 255, 255, 0.20);
     white-space:nowrap;
 }
 /* Microsoft Edge */
 .search-bar ::-ms-input-placeholder {
-    font-family: 'Inter_Regular';
+    font-family: 'Inter_Light';
     font-size: 12px;
     color: rgba(255, 255, 255, 0.20);
     white-space:nowrap;
