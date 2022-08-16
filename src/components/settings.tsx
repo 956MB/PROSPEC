@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useTranslation } from "react-i18next";
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import './css/settings.css';
 
 import { EEMessages, ETooltip } from '../typings';
-import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPage, ISettingsPageButton, ISettingsPages, ISettingsPageLanguage, IAppBackground } from '../interfaces';
+import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPage, ISettingsPageButton, ISettingsPages, ISettingsPageLanguage, IAppBackground, useInit } from '../interfaces';
 import { sTitle, sItemTitle, sItemDescription, unull } from '../utils';
 
 import closeIcon from '../assets/icons/close.svg';
@@ -12,16 +12,13 @@ import gearIcon from '../assets/icons/gear.svg';
 import discordIcon from '../assets/icons/discord.svg';
 import { t } from 'i18next';
 
-// sItemTitle('content', 'listLayout')
-// 'settings.page.content.items.listLayout.title'
+import { SettingsContext } from '../context/SettingsContext';
 
 const Settings: React.FC<{
     appBackground: IAppBackground,
     settingsOpen: boolean,
     FSettingsOpen: (set: boolean) => void
 }> = ({ appBackground, settingsOpen, FSettingsOpen }) => {
-    // const toggleSettingsClosed = (e: any) => { e.stopPropagation(); if (settingsOpen) FSettingsOpen(false); }
-    // const settingsRef = useDetectClickOutside({ onTriggered: toggleSettingsClosed });
 
     const [settings, setSettings] = useState<ISettingsPages>([
         {
@@ -32,19 +29,19 @@ const Settings: React.FC<{
                     ]
                 } as ISettingsItemValueSelector}
                 ,
-                { title: sItemTitle('content', 'autoRefresh'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool, childValues: [
-                    { title: sItemTitle('content', 'refreshInterval'), description: sItemDescription('content', 'refreshInterval'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                { title: sItemTitle('content', 'autoRefresh'), itemValue: { type: 'boolean', value: false, key: 'keyAutoRefresh' } as ISettingsItemValueBool, childValues: [
+                    // { title: sItemTitle('content', 'refreshInterval'), description: sItemDescription('content', 'refreshInterval'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
                 ] }
                 ,
                 { itemValue: { type: "spacer", value: false } }
                 ,
-                { title: sItemTitle('content', 'showSummonerIds'), description: sItemDescription('content', 'showSummonerIds'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool}
+                { title: sItemTitle('content', 'showSummonerIds'), description: sItemDescription('content', 'showSummonerIds'), itemValue: { type: 'boolean', value: true, key: 'keyShowSummonerIds' } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('content', 'showRandomSkins'), description: sItemDescription('content', 'showRandomSkins'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool, childValues: [
-                    { title: sItemTitle('content', 'useCutouts'), description: sItemDescription('content', 'useCutouts'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                { title: sItemTitle('content', 'showRandomSkins'), description: sItemDescription('content', 'showRandomSkins'), itemValue: { type: 'boolean', value: true, key: 'keyShowRandomSkins' } as ISettingsItemValueBool, childValues: [
+                    { title: sItemTitle('content', 'useCutouts'), description: sItemDescription('content', 'useCutouts'), itemValue: { type: 'boolean', value: false, key: 'keyUseCutouts' } as ISettingsItemValueBool}
                 ] }
                 ,
-                { title: sItemTitle('content', 'showTeamLogos'), description: sItemDescription('content', 'showTeamLogos'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                { title: sItemTitle('content', 'showTeamLogos'), description: sItemDescription('content', 'showTeamLogos'), itemValue: { type: 'boolean', value: false, key: 'keyShowTeamLogos' } as ISettingsItemValueBool}
             ]
         }
         ,
@@ -56,27 +53,25 @@ const Settings: React.FC<{
                     ]
                 } as ISettingsItemValueSelector}
                 ,
-                { title: sItemTitle('application', 'Accent'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
-                ,
                 { title: sItemTitle('application', 'appScale'), itemValue: {
                     type: 'selector', value: 0, options: [
                         { index: 0, text: '100%' }, { index: 1, text: '90%' }, { index: 2, text: '75%' }, { index: 2, text: '50%' }
                     ]
                 } as ISettingsItemValueSelector}
                 ,
-                { title: sItemTitle('application', 'openOnStartup'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'openOnStartup'), itemValue: { type: 'boolean', value: false, key: 'keyOpenOnStartup' } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('application', 'minimizeToTray'), description: sItemDescription('application', 'minimizeToTray'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'minimizeToTray'), description: sItemDescription('application', 'minimizeToTray'), itemValue: { type: 'boolean', value: true, key: 'keyMinimizeToTray' } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('application', 'hardwareAcceleration'), description: sItemDescription('application', 'hardwareAcceleration'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'hardwareAcceleration'), description: sItemDescription('application', 'hardwareAcceleration'), itemValue: { type: 'boolean', value: false, key: 'keyHardwareAcceleration' } as ISettingsItemValueBool}
                 ,
                 { itemValue: { type: "spacer", value: false } }
                 ,
-                { title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: true, key: 'keyRandomAppBackground' } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('application', 'keyboardMode'), description: sItemDescription('application', 'keyboardMode'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'keyboardMode'), description: sItemDescription('application', 'keyboardMode'), itemValue: { type: 'boolean', value: false, key: 'keyKeyboardMode' } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('application', 'favortieNotifications'), description: sItemDescription('application', 'favortieNotifications'), itemValue: { type: 'boolean', value: true } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'favortieNotifications'), description: sItemDescription('application', 'favortieNotifications'), itemValue: { type: 'boolean', value: true, key: 'keyNotifications' } as ISettingsItemValueBool}
             ]
         }
         ,
@@ -100,7 +95,8 @@ const Settings: React.FC<{
                 { itemValue: { type: 'lang', value: 15, text: 'Tiếng Việt', lang: 'vi_VI' } as ISettingsItemValueLanguage},
                 { itemValue: { type: 'lang', value: 16, text: '简体中文', lang: 'zh_CN' } as ISettingsItemValueLanguage},
                 { itemValue: { type: 'lang', value: 17, text: '繁體中文', lang: 'zh_TW' } as ISettingsItemValueLanguage}
-        ] } as ISettingsPageLanguage
+            ]
+        } as ISettingsPageLanguage
         ,
         { index: 3, type: 'list', title: sTitle('about'), items: [] }
     ]
@@ -120,6 +116,7 @@ const SettingsVerticalContainer: React.FC<{
     FSettingsOpen: (set: boolean) => void
 }> = ({ settingsOpen, FSettingsOpen }) => {
     const { t } = useTranslation('common');
+    const { autoRefresh } = useContext(SettingsContext);
 
     return (
         <div className={`settings-vertical-container`} >
@@ -247,7 +244,7 @@ const SettingsPageItem: React.FC<{
                 </div>
 
                 {itemProps.itemValue.type === 'boolean'
-                    ? <SettingsItemValueBool itemValue={itemProps.itemValue.value as boolean} fToggleParent={fToggleParent} /> : null}
+                    ? <SettingsItemValueBool itemPropsBool={itemProps.itemValue as ISettingsItemValueBool} fToggleParent={fToggleParent} /> : null}
                 {itemProps.itemValue.type === 'selector'
                     ? <SettingsItemValueSelector itemProps={itemProps.itemValue as ISettingsItemValueSelector} /> : null}
             </div>
@@ -261,32 +258,12 @@ const SettingsPageItem: React.FC<{
                         </div>
 
                         {child.itemValue.type === 'boolean'
-                            ? <SettingsItemValueBool itemValue={child.itemValue.value as boolean} fToggleParent={unull()} /> : null}
+                            ? <SettingsItemValueBool itemPropsBool={child.itemValue as ISettingsItemValueBool} fToggleParent={unull()} /> : null}
                         {child.itemValue.type === 'selector'
                             ? <SettingsItemValueSelector itemProps={child.itemValue as ISettingsItemValueSelector} /> : null}
                     </div>
                 ))
             )}
-        </div>
-    )
-}
-
-const SettingsPageItemLanguage: React.FC<{
-    itemValue: ISettingsItemValueLanguage,
-    langSelected: number,
-    fLangSelect: (set: number) => void
-}> = ({ itemValue, langSelected, fLangSelect }) => {
-    const { i18n } = useTranslation('common');
-
-    const fSelectLanguage = () => {
-        fLangSelect(itemValue.value);
-        i18n.changeLanguage(itemValue.lang);
-    }
-
-    return (
-        <div className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : 'unselected-lang'} ${i18n.hasResourceBundle(itemValue.lang, 'common') ? null : 'lang-disabled'}`} onClick={fSelectLanguage}>
-            <div className={`circle ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
-            <span className='language-text'>{i18n.hasResourceBundle(itemValue.lang, 'common') ? itemValue.text : '· · ·'}</span>
         </div>
     )
 }
@@ -301,26 +278,61 @@ const SettingsPageSpacer: React.FC<{
     )
 }
 
+const SettingsPageItemLanguage: React.FC<{
+    itemValue: ISettingsItemValueLanguage,
+    langSelected: number,
+    fLangSelect: (set: number) => void
+}> = ({ itemValue, langSelected, fLangSelect }) => {
+    const { i18n } = useTranslation('common');
+    const { updateSetting } = useContext(SettingsContext);
+
+    const fSelectLanguage = () => {
+        fLangSelect(itemValue.value);
+        i18n.changeLanguage(itemValue.lang);
+        updateSetting('keyAppLanguage', itemValue.value);
+    }
+
+    return (
+        <div className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : 'unselected-lang'} ${i18n.hasResourceBundle(itemValue.lang, 'common') ? null : 'lang-disabled'}`} onClick={fSelectLanguage}>
+            <div className={`circle ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
+            <span className='language-text'>{i18n.hasResourceBundle(itemValue.lang, 'common') ? itemValue.text : '· · ·'}</span>
+        </div>
+    )
+}
+
 // NOTE: ISettingsItemValue components:
 const SettingsItemValueBool: React.FC<{
-    itemValue: boolean,
+    itemPropsBool: ISettingsItemValueBool,
     fToggleParent: (set: boolean) => void
-}> = ({ itemValue, fToggleParent }) => {
-    const [boolValue, setBoolValue] = useState(itemValue);
+}> = ({ itemPropsBool, fToggleParent }) => {
+    const { updateSetting, getSetting } = useContext(SettingsContext);
+    const [boolValue, setBoolValue] = useState(itemPropsBool.value);
 
     const fBoolValue = (set: boolean) => {
         setBoolValue(set);
         fToggleParent(set);
-    } 
+        updateSetting(itemPropsBool.key, set);
+    }
+
+    useInit(() => {
+        const getStoredValue = async () => {
+            const stored = await getSetting(itemPropsBool.key) as boolean | null;
+            if (stored != null) {
+                setBoolValue(stored);
+            }
+        }
+        getStoredValue();
+    });
 
     return (
-        <div className={`item-value-bool`}>
-            <div className={`bool-half half-left ${boolValue ? 'half-selected' : null}`} onClick={() => fBoolValue(false)}>
+        <div className={`item-value-bool ${boolValue ? 'bool-true' : null}`}>
+            <div className={`bool-half`} onClick={() => fBoolValue(false)}>
                 <div className={`circle ${boolValue ? 'offUnselected' : 'offSelected'}`}></div>
             </div>
-            <div className={`bool-half half-right ${!boolValue ? 'half-selected' : null}`} onClick={() => fBoolValue(true)}>
+            <div className={`bool-half`} onClick={() => fBoolValue(true)}>
                 <div className={`bar ${boolValue ? 'onSelected' : 'onUnselected'}`}></div>
             </div>
+            <div className={`half-selected`}></div>
         </div>
     )
 }
