@@ -1,3 +1,12 @@
+import { useState } from "react";
+
+export const useInit = (callBack = () => {}) => {
+    const [hasBeenCalled, setHasBeenCalled] = useState(false);
+    if (hasBeenCalled) return;
+    callBack();
+    setHasBeenCalled(true);
+}
+
 // NOTE: Objects
 
 export interface IAppBackground {
@@ -141,7 +150,7 @@ export interface ISettingsItemValue {
 
 export interface ISettingsItemValueBool extends Omit<ISettingsItemValue, 'value'> {
     value: boolean;
-    // setValue(v: boolean): boolean
+    key: string;
 }
 
 export interface ISettingsItemValueSelections extends Array<ISettingsItemValueSelection>{}
@@ -161,7 +170,6 @@ export interface ISettingsItemValueLanguage extends Omit<ISettingsItemValue, 'va
     value: number;
     text: string;
     lang: string;
-    // setValue(v: string): boolean
 }
 
 export interface ISettingsPageButton {

@@ -27,7 +27,7 @@
     flex-grow: 1;
     width: 100%;
     z-index: 2;
-    padding-left: 75px;
+    padding-left: 63px;
     /* backdrop-filter: blur(16px) grayscale(1); */
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
@@ -126,7 +126,7 @@
     font-family: 'Inter_Light';
     font-size: 12px;
     color: rgba(255, 255, 255, 0.20);
-    margin-left: 6px;
+    margin-left: 8px;
     white-space:nowrap;
 }
 

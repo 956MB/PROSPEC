@@ -14,3 +14,7 @@ Volibear_0
 Warwick_2
 TahmKench_11
 Ahri_66
+Lissandra_3
+Lissandra_2
+Vladimir_3
+Vladimir_6
