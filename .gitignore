@@ -142,3 +142,4 @@ src-tauri/target/*
 /src/data/karis.txt
 /src/data/test.txt
 /src/locale/prospec.babel
+/src/context/SettingsStore.tsx

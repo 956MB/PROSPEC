@@ -17,7 +17,8 @@
         "react-detect-click-outside": "^1.1.7",
         "react-dom": "^18.0.0",
         "react-hotkeys-hook": "^3.4.7",
-        "react-i18next": "^11.18.3"
+        "react-i18next": "^11.18.3",
+        "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#dev"
     },
     "devDependencies": {
         "@tauri-apps/cli": "^1.0.1",

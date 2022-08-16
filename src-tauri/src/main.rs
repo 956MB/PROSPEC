@@ -5,6 +5,7 @@
 
 use tauri::Manager;
 use window_shadows::set_shadow;
+use tauri_plugin_store::PluginBuilder;
 use std::env;
 
 fn main() {
@@ -12,6 +13,7 @@ fn main() {
     env::set_var("RUST_BACKTRACE", "1");
 
     tauri::Builder::default()
+        .plugin(PluginBuilder::default().build())
         .menu(if cfg!(target_os = "macos") {
             tauri::Menu::os_default(&context.package_info().name)
         } else {
