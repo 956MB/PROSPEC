@@ -116,7 +116,6 @@ const SettingsVerticalContainer: React.FC<{
     FSettingsOpen: (set: boolean) => void
 }> = ({ settingsOpen, FSettingsOpen }) => {
     const { t } = useTranslation('common');
-    const { autoRefresh } = useContext(SettingsContext);
 
     return (
         <div className={`settings-vertical-container`} >
@@ -311,7 +310,7 @@ const SettingsItemValueBool: React.FC<{
     const fBoolValue = (set: boolean) => {
         setBoolValue(set);
         fToggleParent(set);
-        updateSetting(itemPropsBool.key, set);
+        // updateSetting(itemPropsBool.key, set);
     }
 
     useInit(() => {

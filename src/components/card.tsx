@@ -1,17 +1,29 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useReducer, useEffect, useContext } from 'react';
 import './css/card.css';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
 import { formPlayerImage, getChampionFromId, getTeamFromNumber, secondsToTime, checkCutout, ending, randomNumber } from '../utils';
-import { IMenuOrigin, IPlayer } from '../interfaces';
+import { IMenuOrigin, IPlayer, ICardReducerState, IReducerAction } from '../interfaces';
 
-import { EButtonImages, EEMessages, ETooltip } from '../typings';
+import { EButtonImages, EEMessages, ECardReducerStates, ETooltip } from '../typings';
 import { useTranslation } from 'react-i18next';
 import { SettingsContext } from '../context/SettingsContext';
 
 import tvIcon from '../assets/icons/tv.svg';
 import chartIcon from '../assets/icons/chart.xyaxis.line.svg';
 import arrowIcon from '../assets/icons/arrow.up.right.svg';
+
+const cardReducer = (state: ICardReducerState, action: IReducerAction): ICardReducerState => {
+    switch (action.type) {
+        case ECardReducerStates.LEVEL: return { ...state, level: action.payload as number };
+        case ECardReducerStates.GAME_TIME: return { ...state, gameTime: action.payload as number };
+        case ECardReducerStates.BACKGROUND_DIR: return { ...state, backgroundDir: action.payload as string };
+        case ECardReducerStates.MENU_OPEN: return { ...state, menuOpen: action.payload as boolean };
+        case ECardReducerStates.MENU_ORIGIN: return { ...state, menuOrigin: action.payload as IMenuOrigin };
+        case ECardReducerStates.CARD_PRESSED: return { ...state, cardPressed: action.payload as boolean };
+        default: return state;
+    }
+}
 
 const Card: React.FC<{
     playerProps: IPlayer,
@@ -23,32 +35,26 @@ const Card: React.FC<{
     const team = getTeamFromNumber(playerProps.summoner.team, true);
     const player = formPlayerImage(team, playerProps.summoner.playerName);
     const champ = getChampionFromId(playerProps.champion)?.name;
-    const [level, setLevel] = useState(randomNumber(30, 500));
     const glow = getChampionFromId(playerProps.champion)?.color;
-    const [gameTime, setGameTime] = useState(playerProps.gameInfo.gameTime);
-    const [cardUseDir, setCardUseDir] = useState("tiles");
 
-    // Context menu:
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [menuOrigin, setMenuOrigin] = useState({x: 0, y: 0} as IMenuOrigin);
-    const toggleMenuClosed = (e: any) => { e.stopPropagation(); setMenuOpen(false); }
+    const [state, dispatch] = useReducer(cardReducer, { level: randomNumber(30, 500), gameTime: playerProps.gameInfo.gameTime, backgroundDir: "tiles", menuOpen: false, menuOrigin: { x: 0, y: 0 }, cardPressed: false })
+
+    const toggleMenuClosed = (e: any) => { e.stopPropagation(); dispatch({ type: ECardReducerStates.MENU_OPEN, payload: false }); }
     const toggleContextMenu = (e: any) => {
         e.preventDefault();
         e.stopPropagation();
 
         if (playerProps.active) {
-            setMenuOrigin({x: e.clientX, y: e.clientY + 5});
-            setMenuOpen(true);
+            dispatch({ type: ECardReducerStates.MENU_ORIGIN, payload: { x: e.clientX, y: e.clientY + 5 } });
+            dispatch({ type: ECardReducerStates.MENU_OPEN, payload: true });
         }
     }
 
-    const [cardPressed, setCardPressed] = useState(false);
     const cardRef = useDetectClickOutside({ onTriggered: toggleMenuClosed });
-
-    const cardStyleClicked = { border: `2px solid rgba(${!glow ? '255, 255, 255' : (gameTime + globalTime >= 1800 ? '255, 0, 0' : glow)}, 0.70)` };
+    const cardStyleClicked = { border: `2px solid rgba(${!glow ? '255, 255, 255' : (state.gameTime + globalTime >= 1800 ? '255, 0, 0' : glow)}, 0.70)` };
     const imageSmallStyles = {
         backgroundImage: `url(src/assets/dragontail-12.13.1/champion/${champ}.png)`,
-        opacity: `${(!playerProps.active && cardPressed) ? '0.5' : '1.0'}`,
+        opacity: `${(!playerProps.active && state.cardPressed) ? '0.5' : '1.0'}`,
         border: `1px solid rgb(${!glow ? '255, 255, 255' : glow}, 0.10)`,
     };
 
@@ -62,31 +68,30 @@ const Card: React.FC<{
 
     return (
         <div className={`card-outer`}>
-            {(menuOpen)
-                ? <CardMenu menuX={menuOrigin.x} menuY={menuOrigin.y}/> : null}
+            {(state.menuOpen)
+                ? <CardMenu menuX={state.menuOrigin.x} menuY={state.menuOrigin.y} /> : null}
 
             <div
-                className={`player-card ${playerProps.active && menuOpen ? 'player-card-clicked' : undefined} ${!playerProps.active ? 'card-unavailable' : null}`}
-                style={(cardPressed || menuOpen) ? cardStyleClicked : undefined}
+                className={`player-card ${playerProps.active && state.menuOpen ? 'player-card-clicked' : undefined} ${!playerProps.active ? 'card-unavailable' : null}`}
+                style={(state.cardPressed || state.menuOpen) ? cardStyleClicked : undefined}
                 onClick={toggleContextMenu}
-                onMouseDown={() => setCardPressed(true)}
-                onMouseUp={() => setCardPressed(false)}
+                onMouseDown={() => dispatch({ type: ECardReducerStates.CARD_PRESSED, payload: true })}
+                onMouseUp={() => dispatch({ type: ECardReducerStates.CARD_PRESSED, payload: false })}
                 ref={cardRef}
             >
 
-                <div className={`game-timer ${ending(gameTime + globalTime, 'ending-bg')} ${playerProps.active ? null : ETooltip.TOOLTIP}`}>
+                <div className={`game-timer ${ending(state.gameTime + globalTime, 'ending-bg')} ${playerProps.active ? null : ETooltip.TOOLTIP}`}>
                     <div className="loading-dots">
                         <h1 className="loading-dot dot-one">.</h1>
                         <h1 className="loading-dot dot-two">.</h1>
                         <h1 className="loading-dot dot-three">.</h1>
                     </div>
-                    {/* <img src={timerIcon} alt="clock" className={`clock-svg ${ending(gameTime + globalTime, 'ending-svg')} noselect`} /> */}
-                    <span className={`game-timer-text ${ending(gameTime + globalTime, 'ending-text')}`}>
-                        {`${secondsToTime(gameTime + globalTime)}`}
+                    <span className={`game-timer-text ${ending(state.gameTime + globalTime, 'ending-text')}`}>
+                        {`${secondsToTime(state.gameTime + globalTime)}`}
                     </span>
-                    <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, {player: playerProps.summoner.playerName})}</span>
+                    <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, { player: playerProps.summoner.playerName })}</span>
                 </div>
-                <span className='player-level'>{level}</span>
+                <span className='player-level'>{state.level}</span>
                 <div className='image-small-champ' style={imageSmallStyles}></div>
                 {/* <div className='blur-small'></div> */}
                 <div className='card-photo' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
@@ -99,7 +104,7 @@ const Card: React.FC<{
                         <span className='text-sub noselect'>{`${getTeamFromNumber(playerProps.summoner.team, false)}`}</span>
                     </div>
                 </div>
-                <div className={cardUseDir === "tiles" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/${cardUseDir}/${champ}${cardUseDir === "tiles" ? '_0.jpg' : '.png'})` }}></div>
+                <div className={state.backgroundDir === "tiles" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/${state.backgroundDir}/${champ}${state.backgroundDir === "tiles" ? '_0.jpg' : '.png'})` }}></div>
             </div>
         </div>
     )
@@ -111,7 +116,7 @@ const CardMenu: React.FC<{
 }> = ({ menuX, menuY }) => {
 
     return (
-        <div className={`card-menu`} style={ {top: menuY, left: menuX} }>
+        <div className={`card-menu`} style={{ top: menuY, left: menuX }}>
             <div className='card-menu-button'>
                 <div className='menu-icon-container'>
                     <img src={tvIcon} alt="alt" className='tv-icon' />

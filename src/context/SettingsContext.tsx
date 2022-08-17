@@ -1,56 +1,43 @@
 
-import React, { createContext, useEffect, useState } from "react";
-import { useInit } from "../interfaces";
+import React, { createContext, useEffect, useReducer, useState } from "react";
+import { IReducerAction, ISettingsReducerState, useInit } from "../interfaces";
 import { Store } from 'tauri-plugin-store-api';
-// import SettingsStore, { ISettings } from "./SettingsStore";
+import { ESettingsReducerStates } from "../typings";
 
 export const SettingsContext = createContext({
-    // Content:
-    listLayout: 0,
-    autoRefresh: false,
-    refreshInterval: 5,
-    showSummonerIds: true,
-    showRandomSkins: false,
-    useCutouts: false,
-    showTeamLogos: false,
-    // Application:
-    appTheme: 0,
-    appScale: 0,
-    openOnStartup: false,
-    minimizeToTray: true,
-    hardwareAcceleration: false,
-    randomAppBackground: true,
-    keyboardMode: false,
-    notifications: false,
-    // Language:
-    appLanguage: 0,
-    updateSetting: (key: string, val: any) => {},
-    getSetting: (key: string): any => {},
+    listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, randomAppBackground: true, keyboardMode: false, notifications: false, appLanguage: 0,
+    updateSetting: (key: string, val: any) => { },
+    getSetting: (key: string): any => { },
 })
 
+const settingsReducer = (state: ISettingsReducerState, action: IReducerAction): ISettingsReducerState => {
+    switch (action.type) {
+        case ESettingsReducerStates.LIST_LAYOUT: return { ...state, listLayout: action.payload as number };
+        case ESettingsReducerStates.AUTO_REFRESH: return { ...state, autoRefresh: action.payload as boolean };
+        case ESettingsReducerStates.REFRESH_INTERVAL: return { ...state, refreshInterval: action.payload as number };
+        case ESettingsReducerStates.SHOW_SUMMONER_IDS: return { ...state, showSummonerIds: action.payload as boolean };
+        case ESettingsReducerStates.SHOW_RANDOM_SKINS: return { ...state, showRandomSkins: action.payload as boolean };
+        case ESettingsReducerStates.USE_CUTOUTS: return { ...state, useCutouts: action.payload as boolean };
+        case ESettingsReducerStates.SHOW_TEAM_LOGOS: return { ...state, showTeamLogos: action.payload as boolean };
+        case ESettingsReducerStates.APP_THEME: return { ...state, appTheme: action.payload as number };
+        case ESettingsReducerStates.APP_SCALE: return { ...state, appScale: action.payload as number };
+        case ESettingsReducerStates.OPEN_ON_STARTUP: return { ...state, openOnStartup: action.payload as boolean };
+        case ESettingsReducerStates.MINIMIZE_TO_TRAY: return { ...state, minimizeToTray: action.payload as boolean };
+        case ESettingsReducerStates.HARDWARE_ACCELERATION: return { ...state, hardwareAcceleration: action.payload as boolean };
+        case ESettingsReducerStates.RANDOM_APP_BACKGROUND: return { ...state, randomAppBackground: action.payload as boolean };
+        case ESettingsReducerStates.KEYBOARD_MODE: return { ...state, keyboardMode: action.payload as boolean };
+        case ESettingsReducerStates.NOTIFICATIONS: return { ...state, notifications: action.payload as boolean };
+        case ESettingsReducerStates.APP_LANGUAGE: return { ...state, appLanguage: action.payload as number };
+        default: return state;
+    }
+}
+
 const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    // console.log("settingsProvider INIT;;");
     const settingsStore = new Store('.settings.dat');
 
-    // Content:
-    const [listLayout, setListLayout] = useState(0);
-    const [autoRefresh, setAutoRefresh] = useState(false);
-    const [refreshInterval, setRefreshInterval] = useState(5);
-    const [showSummonerIds, setShowSummonerIds] = useState(true);
-    const [showRandomSkins, setShowRandomSkins] = useState(true);
-    const [useCutouts, setUseCutouts] = useState(true);
-    const [showTeamLogos, setShowTeamLogos] = useState(true);
-    // Application:
-    const [appTheme, setAppTheme] = useState(0);
-    const [appScale, setAppScale] = useState(0);
-    const [openOnStartup, setOpenOnStartup] = useState(false);
-    const [minimizeToTray, setMinimizeToTray] = useState(true);
-    const [hardwareAcceleration, setHardwareAcceleration] = useState(false);
-    const [randomAppBackground, setRandomAppBackground] = useState(true);
-    const [keyboardMode, setKeyboardMode] = useState(false);
-    const [notifications, setNotifications] = useState(false);
-    // Language:
-    const [appLanguage, setAppLanguage] = useState(0);
+    const [state, dispatch] = useReducer(settingsReducer, {
+        listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, randomAppBackground: true, keyboardMode: false, notifications: false, appLanguage: 0,
+    })
 
     useInit(() => {
         const initSettings = async () => {
@@ -58,35 +45,35 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
             // settingsStore.reset();
 
             const valListLayout = await settingsStore.get('keyListLayout') as number;
-            setListLayout(checkSet('keyListLayout', valListLayout, 0) as number);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyListLayout', valListLayout, 0) });
             const valAutoRefresh = await settingsStore.get('keyAutoRefresh') as boolean;
-            setAutoRefresh(checkSet('keyAutoRefresh', valAutoRefresh, false) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyAutoRefresh', valAutoRefresh, false) });
             const valRefreshInterval = await settingsStore.get('keyRefreshInterval') as number;
-            setRefreshInterval(checkSet('keyRefreshInterval', valRefreshInterval, 5) as number);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyRefreshInterval', valRefreshInterval, 5) });
             const valShowSummonerIds = await settingsStore.get('keyShowSummonerIds') as boolean;
-            setShowSummonerIds(checkSet('keyShowSummonerIds', valShowSummonerIds, true) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyShowSummonerIds', valShowSummonerIds, true) });
             const valShowRandomSkins = await settingsStore.get('keyShowRandomSkins') as boolean;
-            setShowRandomSkins(checkSet('keyShowRandomSkins', valShowRandomSkins, true) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyShowRandomSkins', valShowRandomSkins, true) });
             const valUseCutouts = await settingsStore.get('keyUseCutouts') as boolean;
-            setUseCutouts(checkSet('keyUseCutouts', valUseCutouts, true) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyUseCutouts', valUseCutouts, true) });
             const valShowTeamLogos = await settingsStore.get('keyShowTeamLogos') as boolean;
-            setShowTeamLogos(checkSet('keyShowTeamLogos', valShowTeamLogos, true) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyShowTeamLogos', valShowTeamLogos, true) });
             const valAppTheme = await settingsStore.get('keyAppTheme') as number;
-            setAppTheme(checkSet('keyAppTheme', valAppTheme, 0) as number);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyAppTheme', valAppTheme, 0) });
             const valAppScale = await settingsStore.get('keyAppScale') as number;
-            setAppScale(checkSet('keyAppScale', valAppScale, 0) as number);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyAppScale', valAppScale, 0) });
             const valOpenOnStartup = await settingsStore.get('keyOpenOnStartup') as boolean;
-            setOpenOnStartup(checkSet('keyOpenOnStartup', valOpenOnStartup, false) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyOpenOnStartup', valOpenOnStartup, false) });
             const valMinimizeToTray = await settingsStore.get('keyMinimizeToTray') as boolean;
-            setMinimizeToTray(checkSet('keyMinimizeToTray', valMinimizeToTray, true) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyMinimizeToTray', valMinimizeToTray, true) });
             const valHardwareAcceleration = await settingsStore.get('keyHardwareAcceleration') as boolean;
-            setHardwareAcceleration(checkSet('keyHardwareAcceleration', valHardwareAcceleration, false) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyHardwareAcceleration', valHardwareAcceleration, false) });
             const valRandomAppBackground = await settingsStore.get('keyRandomAppBackground') as boolean;
-            setRandomAppBackground(checkSet('keyRandomAppBackground', valRandomAppBackground, true) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyRandomAppBackground', valRandomAppBackground, true) });
             const valKeyboardMode = await settingsStore.get('keyKeyboardMode') as boolean;
-            setKeyboardMode(checkSet('keyKeyboardMode', valKeyboardMode, false) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyKeyboardMode', valKeyboardMode, false) });
             const valNotifications = await settingsStore.get('keyNotifications') as boolean;
-            setNotifications(checkSet('keyNotifications', valNotifications, false) as boolean);
+            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyNotifications', valNotifications, false) });
 
             settingsStore.save();
         };
@@ -103,25 +90,7 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
     });
 
     const updateSetting = (key: string, val: any): void => {
-        switch(key) {
-            case 'keyAutoRefresh':          setAutoRefresh(val as boolean); break;
-            case 'keyListLayout':           setListLayout(val as number); break;
-            case 'keyRefreshInterval':      setRefreshInterval(val as number); break;
-            case 'keyShowSummonerIds':      setShowSummonerIds(val as boolean); break;
-            case 'keyShowRandomSkins':      setShowRandomSkins(val as boolean); break;
-            case 'keyUseCutouts':           setUseCutouts(val as boolean); break;
-            case 'keyShowTeamLogos':        setShowTeamLogos(val as boolean); break;
-            case 'keyAppTheme':             setAppTheme(val as number); break;
-            case 'keyAppScale':             setAppScale(val as number); break;
-            case 'keyOpenOnStartup':        setOpenOnStartup(val as boolean); break;
-            case 'keyMinimizeToTray':       setMinimizeToTray(val as boolean); break;
-            case 'keyHardwareAcceleration': setHardwareAcceleration(val as boolean); break;
-            case 'keyRandomAppBackground':  setRandomAppBackground(val as boolean); break;
-            case 'keyKeyboardMode':         setKeyboardMode(val as boolean); break;
-            case 'keyNotifications':        setNotifications(val as boolean); break;
-            case 'keyAppLanguage':          setAppLanguage(val as number); break;
-            default:                        return;
-        }
+        dispatch({ type: key, payload: val });
 
         settingsStore.set(key, val);
         settingsStore.save();
@@ -134,9 +103,7 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
 
     return (
         <SettingsContext.Provider value={{
-            listLayout, autoRefresh, refreshInterval, showSummonerIds, showRandomSkins, useCutouts, showTeamLogos,
-            appTheme, appScale, openOnStartup, minimizeToTray, hardwareAcceleration, randomAppBackground, keyboardMode, notifications,
-            appLanguage,
+            listLayout: state.listLayout, autoRefresh: state.autoRefresh, refreshInterval: state.refreshInterval, showSummonerIds: state.showSummonerIds, showRandomSkins: state.showRandomSkins, useCutouts: state.useCutouts, showTeamLogos: state.showTeamLogos, appTheme: state.appTheme, appScale: state.appScale, openOnStartup: state.openOnStartup, minimizeToTray: state.minimizeToTray, hardwareAcceleration: state.hardwareAcceleration, randomAppBackground: state.randomAppBackground, keyboardMode: state.keyboardMode, notifications: state.notifications, appLanguage: state.appLanguage,
 
             updateSetting, getSetting
         }}>

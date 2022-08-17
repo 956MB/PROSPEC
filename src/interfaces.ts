@@ -7,6 +7,41 @@ export const useInit = (callBack = () => {}) => {
     setHasBeenCalled(true);
 }
 
+// NOTE: Reducers
+
+export interface IReducerAction {
+    type: string;
+    payload: any;
+}
+
+export interface ICardReducerState {
+    level: number;
+    gameTime: number;
+    backgroundDir: string;
+    menuOpen: boolean;
+    menuOrigin: IMenuOrigin;
+    cardPressed: boolean;
+}
+
+export interface ISettingsReducerState {
+    listLayout: number;
+    autoRefresh: boolean;
+    refreshInterval: number;
+    showSummonerIds: boolean;
+    showRandomSkins: boolean;
+    useCutouts: boolean;
+    showTeamLogos: boolean;
+    appTheme: number;
+    appScale: number;
+    openOnStartup: boolean;
+    minimizeToTray: boolean;
+    hardwareAcceleration: boolean;
+    randomAppBackground: boolean;
+    keyboardMode: boolean;
+    notifications: boolean;
+    appLanguage: number;
+}
+
 // NOTE: Objects
 
 export interface IAppBackground {
