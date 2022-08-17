@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useDetectClickOutside } from 'react-detect-click-outside';
 import './css/settings.css';
 
-import { EEMessages, ETooltip } from '../typings';
+import { EEMessages, ETooltip, ESettingsReducerStates } from '../typings';
 import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPage, ISettingsPageButton, ISettingsPages, ISettingsPageLanguage, IAppBackground, useInit } from '../interfaces';
 import { sTitle, sItemTitle, sItemDescription, unull } from '../utils';
 
@@ -29,19 +29,19 @@ const Settings: React.FC<{
                     ]
                 } as ISettingsItemValueSelector}
                 ,
-                { title: sItemTitle('content', 'autoRefresh'), itemValue: { type: 'boolean', value: false, key: 'keyAutoRefresh' } as ISettingsItemValueBool, childValues: [
+                { title: sItemTitle('content', 'autoRefresh'), itemValue: { type: 'boolean', value: false, key: ESettingsReducerStates.AUTO_REFRESH } as ISettingsItemValueBool, childValues: [
                     // { title: sItemTitle('content', 'refreshInterval'), description: sItemDescription('content', 'refreshInterval'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
                 ] }
                 ,
                 { itemValue: { type: "spacer", value: false } }
                 ,
-                { title: sItemTitle('content', 'showSummonerIds'), description: sItemDescription('content', 'showSummonerIds'), itemValue: { type: 'boolean', value: true, key: 'keyShowSummonerIds' } as ISettingsItemValueBool}
+                { title: sItemTitle('content', 'showSummonerIds'), description: sItemDescription('content', 'showSummonerIds'), itemValue: { type: 'boolean', value: true, key: ESettingsReducerStates.SHOW_SUMMONER_IDS } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('content', 'showRandomSkins'), description: sItemDescription('content', 'showRandomSkins'), itemValue: { type: 'boolean', value: true, key: 'keyShowRandomSkins' } as ISettingsItemValueBool, childValues: [
-                    { title: sItemTitle('content', 'useCutouts'), description: sItemDescription('content', 'useCutouts'), itemValue: { type: 'boolean', value: false, key: 'keyUseCutouts' } as ISettingsItemValueBool}
+                { title: sItemTitle('content', 'showRandomSkins'), description: sItemDescription('content', 'showRandomSkins'), itemValue: { type: 'boolean', value: true, key: ESettingsReducerStates.SHOW_RANDOM_SKINS } as ISettingsItemValueBool, childValues: [
+                    { title: sItemTitle('content', 'useCutouts'), description: sItemDescription('content', 'useCutouts'), itemValue: { type: 'boolean', value: false, key: ESettingsReducerStates.USE_CUTOUTS } as ISettingsItemValueBool}
                 ] }
                 ,
-                { title: sItemTitle('content', 'showTeamLogos'), description: sItemDescription('content', 'showTeamLogos'), itemValue: { type: 'boolean', value: false, key: 'keyShowTeamLogos' } as ISettingsItemValueBool}
+                { title: sItemTitle('content', 'showTeamLogos'), description: sItemDescription('content', 'showTeamLogos'), itemValue: { type: 'boolean', value: false, key: ESettingsReducerStates.SHOW_TEAM_LOGOS } as ISettingsItemValueBool}
             ]
         }
         ,
@@ -59,19 +59,19 @@ const Settings: React.FC<{
                     ]
                 } as ISettingsItemValueSelector}
                 ,
-                { title: sItemTitle('application', 'openOnStartup'), itemValue: { type: 'boolean', value: false, key: 'keyOpenOnStartup' } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'openOnStartup'), itemValue: { type: 'boolean', value: false, key: ESettingsReducerStates.OPEN_ON_STARTUP } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('application', 'minimizeToTray'), description: sItemDescription('application', 'minimizeToTray'), itemValue: { type: 'boolean', value: true, key: 'keyMinimizeToTray' } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'minimizeToTray'), description: sItemDescription('application', 'minimizeToTray'), itemValue: { type: 'boolean', value: true, key: ESettingsReducerStates.MINIMIZE_TO_TRAY } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('application', 'hardwareAcceleration'), description: sItemDescription('application', 'hardwareAcceleration'), itemValue: { type: 'boolean', value: false, key: 'keyHardwareAcceleration' } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'hardwareAcceleration'), description: sItemDescription('application', 'hardwareAcceleration'), itemValue: { type: 'boolean', value: false, key: ESettingsReducerStates.HARDWARE_ACCELERATION } as ISettingsItemValueBool}
                 ,
                 { itemValue: { type: "spacer", value: false } }
                 ,
-                { title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: true, key: 'keyRandomAppBackground' } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: true, key: ESettingsReducerStates.RANDOM_APP_BACKGROUND } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('application', 'keyboardMode'), description: sItemDescription('application', 'keyboardMode'), itemValue: { type: 'boolean', value: false, key: 'keyKeyboardMode' } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'keyboardMode'), description: sItemDescription('application', 'keyboardMode'), itemValue: { type: 'boolean', value: false, key: ESettingsReducerStates.KEYBOARD_MODE } as ISettingsItemValueBool}
                 ,
-                { title: sItemTitle('application', 'favortieNotifications'), description: sItemDescription('application', 'favortieNotifications'), itemValue: { type: 'boolean', value: true, key: 'keyNotifications' } as ISettingsItemValueBool}
+                { title: sItemTitle('application', 'favortieNotifications'), description: sItemDescription('application', 'favortieNotifications'), itemValue: { type: 'boolean', value: true, key: ESettingsReducerStates.NOTIFICATIONS } as ISettingsItemValueBool}
             ]
         }
         ,
@@ -116,9 +116,10 @@ const SettingsVerticalContainer: React.FC<{
     FSettingsOpen: (set: boolean) => void
 }> = ({ settingsOpen, FSettingsOpen }) => {
     const { t } = useTranslation('common');
+    const { autoRefresh } = useContext(SettingsContext);
 
     return (
-        <div className={`settings-vertical-container`} >
+        <div className={`settings-vertical-container ${autoRefresh ? 'test-true' : 'test-false'}`} >
             <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => null} id={'discord-button'}>
                 <img src={discordIcon} alt="discord" />
                 <span className={`${ETooltip.RIGHT} right-far`}>{`Discord`}</span>
@@ -310,7 +311,7 @@ const SettingsItemValueBool: React.FC<{
     const fBoolValue = (set: boolean) => {
         setBoolValue(set);
         fToggleParent(set);
-        // updateSetting(itemPropsBool.key, set);
+        updateSetting(itemPropsBool.key, set);
     }
 
     useInit(() => {

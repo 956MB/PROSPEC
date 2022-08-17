@@ -24,6 +24,7 @@ export interface ICardReducerState {
 }
 
 export interface ISettingsReducerState {
+    // [index: string]: number | boolean;
     listLayout: number;
     autoRefresh: boolean;
     refreshInterval: number;

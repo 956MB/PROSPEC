@@ -73,22 +73,22 @@ export enum ECardReducerStates {
 }
 
 export enum ESettingsReducerStates {
-    LIST_LAYOUT = 'keyListLayout',
-    AUTO_REFRESH = 'keyAutoRefresh',
-    REFRESH_INTERVAL = 'keyRefreshInterval',
-    SHOW_SUMMONER_IDS = 'keyShowSummonerIds',
-    SHOW_RANDOM_SKINS = 'keyShowRandomSkins',
-    USE_CUTOUTS = 'keyUseCutouts',
-    SHOW_TEAM_LOGOS = 'keyShowTeamLogos',
-    APP_THEME = 'keyAppTheme',
-    APP_SCALE = 'keyAppScale',
-    OPEN_ON_STARTUP = 'keyOpenOnStartup',
-    MINIMIZE_TO_TRAY = 'keyMinimizeToTray',
-    HARDWARE_ACCELERATION = 'keyHardwareAcceleration',
-    RANDOM_APP_BACKGROUND = 'keyRandomAppBackground',
-    KEYBOARD_MODE = 'keyKeyboardMode',
-    NOTIFICATIONS = 'keyNotifications',
-    APP_LANGUAGE = 'keyAppLanguage',
+    LIST_LAYOUT = 'listLayout',
+    AUTO_REFRESH = 'autoRefresh',
+    REFRESH_INTERVAL = 'refreshInterval',
+    SHOW_SUMMONER_IDS = 'showSummonerIds',
+    SHOW_RANDOM_SKINS = 'showRandomSkins',
+    USE_CUTOUTS = 'useCutouts',
+    SHOW_TEAM_LOGOS = 'showTeamLogos',
+    APP_THEME = 'appTheme',
+    APP_SCALE = 'appScale',
+    OPEN_ON_STARTUP = 'openOnStartup',
+    MINIMIZE_TO_TRAY = 'minimizeToTray',
+    HARDWARE_ACCELERATION = 'hardwareAcceleration',
+    RANDOM_APP_BACKGROUND = 'randomAppBackground',
+    KEYBOARD_MODE = 'keyboardMode',
+    NOTIFICATIONS = 'notifications',
+    APP_LANGUAGE = 'appLanguage',
 }
 
 // NOTE: MESSAGES:

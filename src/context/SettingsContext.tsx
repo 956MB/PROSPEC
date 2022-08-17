@@ -3,6 +3,9 @@ import React, { createContext, useEffect, useReducer, useState } from "react";
 import { IReducerAction, ISettingsReducerState, useInit } from "../interfaces";
 import { Store } from 'tauri-plugin-store-api';
 import { ESettingsReducerStates } from "../typings";
+import { mapEnum } from "../utils";
+
+const DEFAULTS = [0, false, 5, true, false, false, false, 0, 0, false, true, false, true, false, false, 0];
 
 export const SettingsContext = createContext({
     listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, randomAppBackground: true, keyboardMode: false, notifications: false, appLanguage: 0,
@@ -44,36 +47,10 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
             settingsStore.load();
             // settingsStore.reset();
 
-            const valListLayout = await settingsStore.get('keyListLayout') as number;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyListLayout', valListLayout, 0) });
-            const valAutoRefresh = await settingsStore.get('keyAutoRefresh') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyAutoRefresh', valAutoRefresh, false) });
-            const valRefreshInterval = await settingsStore.get('keyRefreshInterval') as number;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyRefreshInterval', valRefreshInterval, 5) });
-            const valShowSummonerIds = await settingsStore.get('keyShowSummonerIds') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyShowSummonerIds', valShowSummonerIds, true) });
-            const valShowRandomSkins = await settingsStore.get('keyShowRandomSkins') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyShowRandomSkins', valShowRandomSkins, true) });
-            const valUseCutouts = await settingsStore.get('keyUseCutouts') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyUseCutouts', valUseCutouts, true) });
-            const valShowTeamLogos = await settingsStore.get('keyShowTeamLogos') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyShowTeamLogos', valShowTeamLogos, true) });
-            const valAppTheme = await settingsStore.get('keyAppTheme') as number;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyAppTheme', valAppTheme, 0) });
-            const valAppScale = await settingsStore.get('keyAppScale') as number;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyAppScale', valAppScale, 0) });
-            const valOpenOnStartup = await settingsStore.get('keyOpenOnStartup') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyOpenOnStartup', valOpenOnStartup, false) });
-            const valMinimizeToTray = await settingsStore.get('keyMinimizeToTray') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyMinimizeToTray', valMinimizeToTray, true) });
-            const valHardwareAcceleration = await settingsStore.get('keyHardwareAcceleration') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyHardwareAcceleration', valHardwareAcceleration, false) });
-            const valRandomAppBackground = await settingsStore.get('keyRandomAppBackground') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyRandomAppBackground', valRandomAppBackground, true) });
-            const valKeyboardMode = await settingsStore.get('keyKeyboardMode') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyKeyboardMode', valKeyboardMode, false) });
-            const valNotifications = await settingsStore.get('keyNotifications') as boolean;
-            dispatch({ type: ESettingsReducerStates.APP_LANGUAGE, payload: checkSet('keyNotifications', valNotifications, false) });
+            mapEnum(ESettingsReducerStates, "string", async (redState: ESettingsReducerStates, i: number) => {
+                const value = await settingsStore.get(redState);
+                dispatch({ type: redState, payload: checkSet(redState, value, DEFAULTS[i]) });
+            })
 
             settingsStore.save();
         };
