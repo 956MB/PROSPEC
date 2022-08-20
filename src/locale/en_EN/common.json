@@ -127,5 +127,11 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} is either not in a game, or spectate is unavailable."
-	}
+	},
+    "menus": {
+        "spectate": "Spectate",
+        "livegame": "Live Game",
+        "twitch": "Twitch",
+        "afreeca": "Afreeca"
+    }
 }

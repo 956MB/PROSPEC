@@ -38,7 +38,7 @@ const Card: React.FC<{
     const champ = getChampionFromId(playerProps.champion)?.name;
     const glow = getChampionFromId(playerProps.champion)?.color;
 
-    const [state, dispatch] = useReducer(cardReducer, { level: randomNumber(30, 500), gameTime: playerProps.gameInfo.gameTime, backgroundDir: "tiles", menuOpen: false, menuOrigin: { x: 0, y: 0 }, cardPressed: false })
+    const [state, dispatch] = useReducer(cardReducer, { level: randomNumber(30, 500), gameTime: playerProps.gameInfo.gameTime, backgroundDir: "loading", menuOpen: false, menuOrigin: { x: 0, y: 0 }, cardPressed: false })
 
     const toggleMenuClosed = (e: any) => { e.stopPropagation(); dispatch({ type: ECardReducerStates.MENU_OPEN, payload: false }); }
     const toggleContextMenu = (e: any) => {
@@ -84,13 +84,11 @@ const Card: React.FC<{
                     </span>
                     <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, { player: playerProps.summoner.playerName })}</span>
                 </div> */}
-                <div className='card-photo' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
-                <div className={`card-champ ${ETooltip.TOOLTIP}`} style={champStyles}>
-                    <span className={`${ETooltip.RIGHT}`}>{`${champ}`}</span>
-                </div>
+                <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
+                <div className={`card-champ noselect`} style={champStyles}></div>
                 <img src={dragIcon} alt="drag" className='card-drag noselect' />
                 {/* <div className='blur-small'></div> */}
-                <div className={state.backgroundDir === "tiles" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/${state.backgroundDir}/${champ}${state.backgroundDir === "tiles" ? '_0.jpg' : '.png'})` }}></div>
+                <div className={state.backgroundDir === "loading" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/${state.backgroundDir}/${champ}${state.backgroundDir === "loading" ? '_0.webp' : '.png'})` }}></div>
 
                 <div className='card-content'>
                     {/* <CardMenu /> */}
@@ -113,6 +111,7 @@ const CardMenu: React.FC<{
     menuX: number,
     menuY: number
 }> = ({ menuX, menuY }) => {
+    const { t } = useTranslation('common');
 
     return (
         <div className={`card-menu`} style={{ top: menuY, left: menuX }}>
@@ -120,19 +119,19 @@ const CardMenu: React.FC<{
                 <div className='menu-icon-container'>
                     <img src={tvIcon} alt="alt" className='tv-icon' />
                 </div>
-                <span className='noselect'>Spectate</span>
+                <span className='noselect'>{t('menus.spectate')}</span>
             </div>
             <div className='card-menu-button'>
                 <div className='menu-icon-container'>
                     <img src={chartIcon} alt="alt" className='chart-icon' />
                 </div>
-                <span className='noselect'>Live Game</span>
+                <span className='noselect'>{t('menus.livegame')}</span>
             </div>
             <div className='card-menu-button menu-button-diabled'>
                 <div className='menu-icon-container'>
                     <img src={arrowIcon} alt="alt" className='arrow-icon' />
                 </div>
-                <span className='noselect'>Twitch</span>
+                <span className='noselect'>{t('menus.twitch')}</span>
             </div>
         </div>
     )

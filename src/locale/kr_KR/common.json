@@ -127,5 +127,11 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} 이(가) 게임에 없거나 관전할 수 없습니다."
-	}
+	},
+    "menus": {
+        "spectate": "조심스럽게",
+        "livegame": "라이브 게임",
+        "twitch": "Twitch",
+        "afreeca": "Afreeca"
+    }
 }

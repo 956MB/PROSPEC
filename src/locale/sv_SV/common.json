@@ -127,5 +127,11 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} är antingen inte med i ett spel eller så är publiken inte tillgänglig."
-	}
+	},
+    "menus": {
+        "spectate": "Vaksam",
+        "livegame": "Levande spel",
+        "twitch": "Twitch",
+        "afreeca": "Afreeca"
+    }
 }

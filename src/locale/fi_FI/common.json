@@ -127,5 +127,11 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} ei ole pelissä tai katsoja ei ole käytettävissä."
-	}
+	},
+    "menus": {
+        "spectate": "Varovasti",
+        "livegame": "Live -peli",
+        "twitch": "Twitch",
+        "afreeca": "Afreeca"
+    }
 }

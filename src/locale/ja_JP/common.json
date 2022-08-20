@@ -127,5 +127,11 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} はゲームに参加していないか、観戦できません。"
-	}
+	},
+    "menus": {
+        "spectate": "監視されています",
+        "livegame": "ライブゲーム",
+        "twitch": "Twitch",
+        "afreeca": "Afreeca"
+    }
 }

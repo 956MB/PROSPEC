@@ -214,7 +214,7 @@
 .player-card:hover
 {
     /*border for slide in out animation thing, outline for no movement at all*/
-    background-color: rgb(20, 20, 20, 0.90);
+    background-color: rgb(16, 16, 16, 0.90);
     box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.20 );
     /* border: 2px solid rgba(255, 255, 255, 0.20); */
 }
@@ -288,7 +288,7 @@
     bottom: 58px;
     height: 100%;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
     pointer-events: none;
     background-repeat: no-repeat;
     background-size: contain;
@@ -326,9 +326,9 @@
     position: absolute;
     height: 48px;
     width: 48px;
-    left: 10px;
-    top: 10px;
-    border-radius: 6px 0 6px 0;
+    left: 16px;
+    top: 16px;
+    border-radius: 4px;
     background-repeat: no-repeat;
     pointer-events: none;
     background-size: contain;
@@ -337,7 +337,7 @@
     background-size: 58px;
     box-sizing: border-box;
     background-color: rgba(135, 135, 135, 0.10);
-    z-index: 3;
+    z-index: 2;
 }
 
 .card-drag {
@@ -408,7 +408,8 @@
 }
 
 .game-timer-text {
-    background-color: rgba(10, 10, 10, 1.0);
+    /* background-color: rgba(10, 10, 10, 1.0); */
+    background-color: rgba(16, 16, 16, 0.97);
     padding: 2px 6px 2px 6px;
     border-radius: 12px;
     font-family: 'RobotoMono_Regular' !important;
@@ -527,7 +528,7 @@
     /* white-space: nowrap; */
     text-overflow: ellipsis;
     /* min-width: 0; */
-    width: 144px;
+    width: 154px;
     z-index: 3;
     margin: -2px 0 0 0;
     /* margin-bottom: -2px; */
@@ -635,6 +636,7 @@
 .player-card-clicked .game-timer-text
 {
     color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(13, 13, 13, 0.97);
 }
 .player-card:active .text-sub {
     color: rgba(255, 255, 255, 0.80);
