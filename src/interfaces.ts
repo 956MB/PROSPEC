@@ -14,7 +14,7 @@ export interface IReducerAction {
     payload: any;
 }
 
-export interface ICardReducerState {
+export interface ICardStates {
     level: number;
     gameTime: number;
     backgroundDir: string;
@@ -23,7 +23,7 @@ export interface ICardReducerState {
     cardPressed: boolean;
 }
 
-export interface ISettingsReducerState {
+export interface ISettingsStates {
     // [index: string]: number | boolean;
     listLayout: number;
     autoRefresh: boolean;

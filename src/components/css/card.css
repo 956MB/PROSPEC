@@ -12,6 +12,7 @@
     display: flex;
     position: absolute;
     flex-direction: column;
+    pointer-events: all;
     /* width: 150px; */
     /* height: 100px; */
     z-index: 99 !important;
@@ -51,7 +52,7 @@
 .card-menu-button img {
     display: block;
     object-fit: contain;
-    opacity: 0.60;
+    opacity: 0.70;
     margin: 1px 6px 0 0;
 }
 
@@ -135,27 +136,29 @@
 .player-card {
     display: block;
     position: relative;
-    width: 203px;
-    height: 135px;
-    border-radius: 10px;
-    padding: 4px;
+    width: 180px;
+    height: 213px;
+    border-radius: 6px;
+    padding: 10px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    /* overflow: hidden; */
+    overflow: hidden;
     pointer-events: all;
     backface-visibility: hidden !important;
     z-index: 10;
-    cursor: pointer;
-    background-color: rgba(26, 26, 26, 0.75);
+    /* cursor: pointer; */
+    /* background-color: rgba(26, 26, 26, 0.75); */
+    background-color: rgba(23, 23, 23, 0.70);
 }
 
 .card-unavailable {
     cursor: default;
-    border: 2px solid transparent !important;
+    /* border: 2px solid transparent !important; */
     filter: grayscale(1) !important;
     overflow: visible;
     z-index: 90 !important;
+    background-color: rgba(25, 25, 25, 0.65);
 }
 
 .card-unavailable:active {
@@ -169,20 +172,24 @@
 
 .card-image {
     display: block;
+    position: relative;
     width: 100%;
-    height: 100%;
-    border-radius: 5px;
+    height: 145px;
+    border-radius: 4px;
     background-repeat: no-repeat;
     opacity: 0.35;
     background-position: center;
     background-size: 217px;
     pointer-events: none;
     filter: grayscale(1) opacity(0.4);
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1;
 }
 
 .card-unavailable .card-image {
-    opacity: 0.0;
+    opacity: 0.2;
+    /* height: 142px; */
 }
 
 .card-image-cutout {
@@ -203,13 +210,25 @@
     display: none;
 }
 
-.player-card:hover {
+.player-card-clicked,
+.player-card:hover
+{
     /*border for slide in out animation thing, outline for no movement at all*/
-    border: 2px solid rgba(255, 255, 255, 0.20);
+    background-color: rgb(20, 20, 20, 0.90);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.20 );
+    /* border: 2px solid rgba(255, 255, 255, 0.20); */
+}
+.player-card-clicked .card-image,
+.player-card:hover .card-image
+{
+    filter: grayscale(1) brightness(1.1) opacity(0.55) !important;
 }
 .card-unavailable:hover {
     /*border for slide in out animation thing, outline for no movement at all*/
-    border: 2px solid transparent !important;
+    /* border: 2px solid transparent !important; */
+    /* background-color: rgb(23, 23, 23, 0.70); */
+    background-color: rgba(25, 25, 25, 0.65);
+    box-shadow: none;
 }
 
 /* .player-card:hover .card-image,
@@ -221,8 +240,9 @@
 .card-unavailable:hover .card-image,
 .card-unavailable:hover .card-image-cutout
 {
-    opacity: 0.0 !important;
-    filter: grayscale(1) opacity(0.4) !important;
+    /* opacity: 0.0 !important; */
+    opacity: 0.2;
+    filter: grayscale(1) brightness(1.0) opacity(0.35) !important;
 }
 /* .player-card:hover .card-image-cutout,
 .player-card-clicked .card-image-cutout
@@ -240,7 +260,7 @@
 .card-unavailable:active .card-image,
 .card-unavailable:active .card-image-cutout
 {
-    opacity: 0.10;
+    opacity: 0.30;
     filter: grayscale(0.1) opacity(0.4);
 }
 
@@ -265,7 +285,7 @@
 .card-photo {
     position: absolute;
     left: 0;
-    bottom: 47px;
+    bottom: 58px;
     height: 100%;
     width: 100%;
     z-index: 2;
@@ -276,12 +296,13 @@
     /* TODO: player photos get blurry RIGHT AT 'background-size: 186px'... DONT KNOW WHY */
     /* NOTE: annnnndd maybe 187px???? idk */
     background-size: 158px;
+    border-radius: 4px;
     /* filter: saturate(1.2); */
 }
 
 .card-unavailable .card-photo {
     opacity: 0.55;
-    bottom: 49px;
+    /* bottom: 58px; */
 }
 
 .image-small-logo {
@@ -301,33 +322,46 @@
     z-index: 3;
 }
 
-.image-small-champ {
+.card-champ {
     position: absolute;
-    height: 50px;
-    width: 50px;
-    left: 12px;
-    bottom: 16px;
-    border-radius: 7px;
+    height: 48px;
+    width: 48px;
+    left: 10px;
+    top: 10px;
+    border-radius: 6px 0 6px 0;
     background-repeat: no-repeat;
     pointer-events: none;
     background-size: contain;
     background-position: center;
+    pointer-events: all;
     background-size: 58px;
-    background-color: rgba(135, 135, 135, 0.30);
+    box-sizing: border-box;
+    background-color: rgba(135, 135, 135, 0.10);
     z-index: 3;
 }
 
-.card-unavailable .image-small-champ,
+.card-drag {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    /* pointer-events: none; */
+    z-index: 4;
+    cursor: grab;
+    /* background-color: rgba(0, 255, 255, 0.295); */
+    padding: 8px;
+}
+
+.card-unavailable .card-champ,
 .card-unavailable .player-level
 {
     display: none;
 }
 
 .player-level {
-    position: absolute;
-    left: 38px;
-    bottom: 8px;
-    transform: translateX(-50%);
+    /* position: absolute; */
+    /* left: 38px; */
+    /* bottom: 8px; */
+    /* transform: translateX(-50%); */
     pointer-events: none;
     background-color: rgba(10, 10, 10, 1.0);
     z-index: 4 !important;
@@ -374,9 +408,12 @@
 }
 
 .game-timer-text {
+    background-color: rgba(10, 10, 10, 1.0);
+    padding: 2px 6px 2px 6px;
+    border-radius: 12px;
     font-family: 'RobotoMono_Regular' !important;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.50);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.60);
     pointer-events: none;
     z-index: 4 !important;
     user-select: none;
@@ -454,26 +491,27 @@
     align-items: flex-start;
     vertical-align: middle;
     align-content: center;
+    justify-content: center;
     flex: 1;
     /* width: 59%; */
     z-index: 2;
     pointer-events: none;
     border-radius: 0 0 10px 10px;
-    padding: 1px 4px 7px 72px;
-    height: 39px;
+    padding: 0 10px 0 15px;
+    height: 58px;
     /* backdrop-filter: grayscale(1) blur(3px); */
-    background-color: rgba(20, 20, 20, 0.75);
+    /* background-color: rgba(20, 20, 20, 0.75); */
     /* margin: 0 4px 4px 4px; */
     /* background-image: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.45) 40%, rgba(0,0,0,0) 75%); */
 }
 
 .card-unavailable .text-container {
-    padding-left: 0;
+    padding: 0;
     flex: 1;
     align-items: center;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    margin: 0 2px 2px 2px;
+    /* border-bottom-left-radius: 8px; */
+    /* border-bottom-right-radius: 8px; */
+    /* margin: 0 2px 2px 2px; */
     /* background-image: linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.25) 40%, rgba(0,0,0,0) 75%); */
 }
 
@@ -491,9 +529,8 @@
     /* min-width: 0; */
     width: 144px;
     z-index: 3;
-    /* margin: 0; */
-    margin-bottom: -2px;
-    margin-top: 1px;
+    margin: -2px 0 0 0;
+    /* margin-bottom: -2px; */
 }
 
 .animated {
@@ -545,14 +582,31 @@
     white-space: nowrap;
     overflow: visible;
     text-overflow: ellipsis;
-    /* margin: 2px 0 0 0; */
+    margin: 1px auto 0 0;
     z-index: 1;
+}
+
+.text-sub-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    vertical-align: middle;
+    align-content: center;
+    justify-content: center;
+    /* flex: 1; */
+    width: 100%;
+    /* background-color: rgba(0, 255, 255, 0.205); */
 }
 
 .card-unavailable .text-sub,
 .card-unavailable .game-timer-text
 {
     display: none;
+}
+
+.card-unavailable .text-summoner
+{
+    margin: 0;
 }
   
 .clock-svg {
@@ -572,14 +626,18 @@
 }
 
 .player-card:hover .text-sub,
+.player-card-clicked .text-sub
+{
+    color: rgba(255, 255, 255, 0.75);
+}
+
 .player-card:hover .game-timer-text,
-.player-card-clicked .text-sub,
 .player-card-clicked .game-timer-text
 {
     color: rgba(255, 255, 255, 0.85);
 }
 .player-card:active .text-sub {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.80);
 }
 .player-card:hover .clock-svg,
 .player-card-clicked .clock-svg

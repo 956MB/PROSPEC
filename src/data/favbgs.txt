@@ -18,3 +18,4 @@ Lissandra_3
 Lissandra_2
 Vladimir_3
 Vladimir_6
+Sejuani_26

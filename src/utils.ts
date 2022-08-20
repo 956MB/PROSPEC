@@ -302,7 +302,7 @@ export function roleFile(role: string): string { return (role === ERoles.ANY) ? 
 declare global {
     interface Array<T> {
         filterRegions(...regions: ERegions[]): Array<T>;
-        uniquePlayers(min?: number, max?: number): Array<T>;
+        filterUniquePlayers(min?: number, max?: number): Array<T>;
     }
 }
 if (!Array.prototype.filterRegions) {
@@ -310,8 +310,8 @@ if (!Array.prototype.filterRegions) {
         return this.filter((player) => (regions.length >= 1) ? regions.includes(player.region as ERegions) : this);
     }
 }
-if (!Array.prototype.uniquePlayers) {
-    Array.prototype.uniquePlayers = function<T>(this: ISummonerAccount[], min: number, max: number): ISummonerAccount[] {
+if (!Array.prototype.filterUniquePlayers) {
+    Array.prototype.filterUniquePlayers = function<T>(this: ISummonerAccount[], min: number, max: number): ISummonerAccount[] {
         const unique = [...new Map(this.map(item => [item.playerName, item])).values()];
         return unique.slice(min, max);
     }

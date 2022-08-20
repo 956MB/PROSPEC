@@ -72,7 +72,7 @@ export enum ECardReducerStates {
     CARD_PRESSED = 'cardPressed',
 }
 
-export enum ESettingsReducerStates {
+export enum ESettingsStates {
     LIST_LAYOUT = 'listLayout',
     AUTO_REFRESH = 'autoRefresh',
     REFRESH_INTERVAL = 'refreshInterval',
@@ -136,7 +136,7 @@ export enum ETeamNames {
     KT_SHORT = 'KT',
     KT_LONG = 'KT Rolster',
     KDF_SHORT = 'KDF',
-    KDF_LONG = 'Kwangdong Freecs',
+    KDF_LONG = 'KDF',
     LSB_SHORT = 'LSB',
     LSB_LONG = 'Liiv SANDBOX',
     NS_SHORT = 'NS',

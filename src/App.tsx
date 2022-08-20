@@ -40,7 +40,7 @@ function App() {
                 players: proSpec.allAccounts
                     .filterRegions(ERegions.KR, ERegions.NA)
                     .sort(() => 0.5 - Math.random())
-                    .uniquePlayers(0, 25)
+                    .filterUniquePlayers(0, 25)
                     .map((player, i) => {
                         return {
                             id: i, active: randomActive(), champion: randomEnum(EChampions), summoner: { accountName: player.accountName, playerName: player.playerName, team: player.team, summonerId: "", summonerPuuid: "", region: player.region, role: player.role, stream: player.stream }, gameInfo: { region: getRegion(player.region).use, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) }

@@ -23,7 +23,7 @@ const Players: React.FC<{
     });
 
     return (
-        <div className='pros-container'>
+        <div className='pros-container noselect'>
             <div className='pros-scroll'>
                 <div className="pros-grid">
                     {React.Children.toArray(

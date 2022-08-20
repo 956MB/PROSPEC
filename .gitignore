@@ -143,3 +143,4 @@ src-tauri/target/*
 /src/data/test.txt
 /src/locale/prospec.babel
 /src/context/SettingsStore.tsx
+*.psd

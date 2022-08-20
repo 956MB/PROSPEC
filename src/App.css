@@ -32,14 +32,14 @@ body {
 /* Handle hover */
 ::-webkit-scrollbar-thumb:hover {
     background-color: rgba(255, 255, 255, 0.30);
-    border: 6px solid transparent;
+    border: 5px solid transparent;
     border-radius: 10px;
     background-clip: content-box;
 }
 /* Handle active */
 ::-webkit-scrollbar-thumb:active {
     background-color: rgba(255, 255, 255, 0.40);
-    border: 6px solid transparent;
+    border: 5px solid transparent;
     border-radius: 10px;
     background-clip: content-box;
 }
@@ -52,6 +52,13 @@ body {
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
+}
+
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
 }
 
 @font-face {
@@ -99,7 +106,7 @@ body {
 .tooltip {
     position: relative;
     display: inline-block;
-    z-index: 99 !important;
+    /* z-index: 99 !important; */
 }
 
 .tooltip .tooltip-text {
@@ -155,6 +162,7 @@ body {
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
+    animation: fadeInTop 0.1s normal forwards ease-in-out;
 }
 
 .right-close {
@@ -214,17 +222,6 @@ body {
 }
 @keyframes fadeInTop {
     50% {
-        top: 105%;
-    }
-    75% {
-        top: 110%;
-    }
-    100% {
-        top: 115%;
-    }
-}
-@keyframes fadeInBottom {
-    50% {
         bottom: 105%;
     }
     75% {
@@ -232,6 +229,17 @@ body {
     }
     100% {
         bottom: 115%;
+    }
+}
+@keyframes fadeInBottom {
+    50% {
+        top: 105%;
+    }
+    75% {
+        top: 110%;
+    }
+    100% {
+        top: 115%;
     }
 }
 
@@ -244,7 +252,7 @@ body {
     opacity: 1;
     visibility: visible;
     transition: all 200ms;
-    transition-delay: 1s;
+    transition-delay: 0.8s;
     z-index: 99 !important;
 }
 

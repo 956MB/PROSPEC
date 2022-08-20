@@ -1,11 +1,13 @@
 
-import React, { createContext, useEffect, useReducer, useState } from "react";
-import { IReducerAction, ISettingsReducerState, useInit } from "../interfaces";
+import React, { createContext, startTransition, useEffect, useReducer, useState } from "react";
+import { IReducerAction, ISettingsStates, useInit } from "../interfaces";
 import { Store } from 'tauri-plugin-store-api';
-import { ESettingsReducerStates } from "../typings";
+import { ESettingsStates } from "../typings";
 import { mapEnum } from "../utils";
 
 const DEFAULTS = [0, false, 5, true, false, false, false, 0, 0, false, true, false, true, false, false, 0];
+const BOOLS: string[] = [ ESettingsStates.AUTO_REFRESH, ESettingsStates.SHOW_SUMMONER_IDS, ESettingsStates.SHOW_RANDOM_SKINS, ESettingsStates.USE_CUTOUTS, ESettingsStates.SHOW_TEAM_LOGOS, ESettingsStates.OPEN_ON_STARTUP, ESettingsStates.MINIMIZE_TO_TRAY, ESettingsStates.HARDWARE_ACCELERATION, ESettingsStates.RANDOM_APP_BACKGROUND, ESettingsStates.KEYBOARD_MODE, ESettingsStates.NOTIFICATIONS ];
+const NUMS: string[] = [ ESettingsStates.LIST_LAYOUT, ESettingsStates.REFRESH_INTERVAL, ESettingsStates.APP_THEME, ESettingsStates.APP_SCALE, ESettingsStates.APP_LANGUAGE ];
 
 export const SettingsContext = createContext({
     listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, randomAppBackground: true, keyboardMode: false, notifications: false, appLanguage: 0,
@@ -13,26 +15,11 @@ export const SettingsContext = createContext({
     getSetting: (key: string): any => { },
 })
 
-const settingsReducer = (state: ISettingsReducerState, action: IReducerAction): ISettingsReducerState => {
-    switch (action.type) {
-        case ESettingsReducerStates.LIST_LAYOUT: return { ...state, listLayout: action.payload as number };
-        case ESettingsReducerStates.AUTO_REFRESH: return { ...state, autoRefresh: action.payload as boolean };
-        case ESettingsReducerStates.REFRESH_INTERVAL: return { ...state, refreshInterval: action.payload as number };
-        case ESettingsReducerStates.SHOW_SUMMONER_IDS: return { ...state, showSummonerIds: action.payload as boolean };
-        case ESettingsReducerStates.SHOW_RANDOM_SKINS: return { ...state, showRandomSkins: action.payload as boolean };
-        case ESettingsReducerStates.USE_CUTOUTS: return { ...state, useCutouts: action.payload as boolean };
-        case ESettingsReducerStates.SHOW_TEAM_LOGOS: return { ...state, showTeamLogos: action.payload as boolean };
-        case ESettingsReducerStates.APP_THEME: return { ...state, appTheme: action.payload as number };
-        case ESettingsReducerStates.APP_SCALE: return { ...state, appScale: action.payload as number };
-        case ESettingsReducerStates.OPEN_ON_STARTUP: return { ...state, openOnStartup: action.payload as boolean };
-        case ESettingsReducerStates.MINIMIZE_TO_TRAY: return { ...state, minimizeToTray: action.payload as boolean };
-        case ESettingsReducerStates.HARDWARE_ACCELERATION: return { ...state, hardwareAcceleration: action.payload as boolean };
-        case ESettingsReducerStates.RANDOM_APP_BACKGROUND: return { ...state, randomAppBackground: action.payload as boolean };
-        case ESettingsReducerStates.KEYBOARD_MODE: return { ...state, keyboardMode: action.payload as boolean };
-        case ESettingsReducerStates.NOTIFICATIONS: return { ...state, notifications: action.payload as boolean };
-        case ESettingsReducerStates.APP_LANGUAGE: return { ...state, appLanguage: action.payload as number };
-        default: return state;
-    }
+const settingsReducer = (state: ISettingsStates, action: IReducerAction): ISettingsStates => {
+    if (BOOLS.includes(action.type)) { return { ...state, [action.type]: action.payload as boolean } };
+    if (NUMS.includes(action.type)) { return { ...state, [action.type]: action.payload as number } };
+
+    return state;
 }
 
 const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -47,7 +34,7 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
             settingsStore.load();
             // settingsStore.reset();
 
-            mapEnum(ESettingsReducerStates, "string", async (redState: ESettingsReducerStates, i: number) => {
+            mapEnum(ESettingsStates, "string", async (redState: ESettingsStates, i: number) => {
                 const value = await settingsStore.get(redState);
                 dispatch({ type: redState, payload: checkSet(redState, value, DEFAULTS[i]) });
             })
