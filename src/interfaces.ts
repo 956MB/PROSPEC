@@ -18,7 +18,6 @@ export interface ICardStates {
     level: number;
     gameTime: number;
     backgroundDir: string;
-    menuOpen: boolean;
     menuOrigin: IMenuOrigin;
     cardPressed: boolean;
 }
@@ -51,6 +50,7 @@ export interface IAppBackground {
     secondary: string;
 }
 
+export interface IPlayers extends Array<IPlayer>{}
 export interface IPlayer { 
     id: number;
     active: boolean;
@@ -58,11 +58,13 @@ export interface IPlayer {
     summoner: ISummonerAccount;
     gameInfo: IGameInfo;
 }
-  
-export interface IPlayers {
-    players: IPlayer[];
-}
 
+export interface IPlayerGroups extends Array<IPlayerGroup>{}
+export interface IPlayerGroup {
+    key: string;
+    players: IPlayers;
+}
+  
 export interface ISelectedChamps {
     champs: number[];
 }

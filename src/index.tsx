@@ -16,7 +16,7 @@ import common_jp from "./locale/ja_JP/common.json";
 
 i18next.init({
     interpolation: { escapeValue: false },
-    lng: 'en_EN',
+    lng: 'kr_KR',
     resources: {
         en_EN: { common: common_en },
         kr_KR: { common: common_kr },

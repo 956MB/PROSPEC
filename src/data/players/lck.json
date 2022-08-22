@@ -4,7 +4,7 @@
             "player": "Kingen",
             "team": 80,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "https://www.twitch.tv/hwang6595",
             "accounts": [
                 {
@@ -27,7 +27,7 @@
             "player": "Pyosik",
             "team": 80,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "https://www.twitch.tv/pyosixs",
             "accounts": [
                 {
@@ -57,7 +57,7 @@
             "player": "Zeka",
             "team": 80,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "https://www.twitch.tv/gun6028",
             "accounts": [
                 {
@@ -87,7 +87,7 @@
             "player": "Deft",
             "team": 80,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "https://www.twitch.tv/ilku1023",
             "accounts": [
                 {
@@ -138,7 +138,7 @@
             "player": "BeryL",
             "team": 80,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://www.twitch.tv/beryl0202",
             "accounts": [
                 {
@@ -182,7 +182,7 @@
             "player": "Nuguri",
             "team": 254,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "https://www.twitch.tv/zahard004",
             "accounts": [
                 {
@@ -240,7 +240,7 @@
             "player": "Canyon",
             "team": 254,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "https://twitch.tv/rjsqn1109",
             "accounts": [
                 {
@@ -298,7 +298,7 @@
             "player": "ShowMaker",
             "team": 254,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "https://www.twitch.tv/gjtn9664",
             "accounts": [
                 {
@@ -356,7 +356,7 @@
             "player": "deokdam",
             "team": 254,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "https://www.twitch.tv/gjsdg0225",
             "accounts": [
                 {
@@ -379,7 +379,7 @@
             "player": "Kellin",
             "team": 254,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://www.twitch.tv/lol_kellin",
             "accounts": [
                 {
@@ -409,7 +409,7 @@
             "player": "Sw0rd",
             "team": 109,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "https://www.twitch.tv/chltjddnjs970616",
             "accounts": [
                 {
@@ -432,7 +432,7 @@
             "player": "Morgan",
             "team": 109,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "https://www.twitch.tv/pjh1355",
             "accounts": [
                 {
@@ -462,7 +462,7 @@
             "player": "UmTi",
             "team": 109,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "https://www.twitch.tv/lol_umti",
             "accounts": [
                 {
@@ -499,7 +499,7 @@
             "player": "Raptor",
             "team": 109,
             "league": "LCK",
-            "role": "Jungler",
+            "role": "jungler",
             "stream": "",
             "accounts": []
         },
@@ -507,7 +507,7 @@
             "player": "Lava",
             "team": 109,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "https://www.twitch.tv/Lava1999",
             "accounts": [
                 {
@@ -537,7 +537,7 @@
             "player": "Hena",
             "team": 109,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "https://www.twitch.tv/time3079",
             "accounts": [
                 {
@@ -553,7 +553,7 @@
             "player": "Gamin",
             "team": 109,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "",
             "accounts": []
         },
@@ -561,7 +561,7 @@
             "player": "Delight",
             "team": 109,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://www.twitch.tv/dbghkswnd",
             "accounts": [
                 {
@@ -577,7 +577,7 @@
             "player": "Doran",
             "team": 151,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "https://www.twitch.tv/choi88255",
             "accounts": [
                 {
@@ -607,7 +607,7 @@
             "player": "Peanut",
             "team": 151,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "https://www.twitch.tv/lol_peanut",
             "accounts": [
                 {
@@ -644,7 +644,7 @@
             "player": "Chovy",
             "team": 151,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "https://www.twitch.tv/wjdcyql",
             "accounts": [
                 {
@@ -702,7 +702,7 @@
             "player": "Ruler",
             "team": 151,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "https://www.twitch.tv/lol_ruler",
             "accounts": [
                 {
@@ -739,7 +739,7 @@
             "player": "Lehends",
             "team": 151,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://www.twitch.tv/tldn031",
             "accounts": [
                 {
@@ -769,7 +769,7 @@
             "player": "DuDu",
             "team": 194,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "https://twitch.tv/vovldj",
             "accounts": [
                 {
@@ -799,7 +799,7 @@
             "player": "OnFleek",
             "team": 194,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "https://twitch.tv/kimjk2008",
             "accounts": [
                 {
@@ -815,7 +815,7 @@
             "player": "Karis",
             "team": 194,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "https://twitch.tv/karis03159",
             "accounts": [
                 {
@@ -845,7 +845,7 @@
             "player": "SamD",
             "team": 194,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "https://twitch.tv/samdsamdsamd",
             "accounts": [
                 {
@@ -875,7 +875,7 @@
             "player": "Cheoni",
             "team": 194,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "",
             "accounts": [
                 {
@@ -891,7 +891,7 @@
             "player": "Vsta",
             "team": 194,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://twitch.tv/dhgytjd123",
             "accounts": [
                 {
@@ -935,7 +935,7 @@
             "player": "Rascal",
             "team": 338,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "",
             "accounts": [
                 {
@@ -972,7 +972,7 @@
             "player": "Cuzz",
             "team": 338,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "",
             "accounts": [
                 {
@@ -1016,7 +1016,7 @@
             "player": "Aria",
             "team": 338,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "",
             "accounts": [
                 {
@@ -1060,7 +1060,7 @@
             "player": "VicLa",
             "team": 338,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "",
             "accounts": [
                 {
@@ -1083,7 +1083,7 @@
             "player": "Aiming",
             "team": 338,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "",
             "accounts": [
                 {
@@ -1106,7 +1106,7 @@
             "player": "Life",
             "team": 338,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "",
             "accounts": [
                 {
@@ -1143,7 +1143,7 @@
             "player": "Kiin",
             "team": 235,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "https://bj.afreecatv.com/rldls5656",
             "accounts": [
                 {
@@ -1173,7 +1173,7 @@
             "player": "Ellim",
             "team": 235,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "https://bj.afreecatv.com/chldpffla5",
             "accounts": [
                 {
@@ -1203,7 +1203,7 @@
             "player": "FATE",
             "team": 235,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "https://bj.afreecatv.com/aplss123",
             "accounts": [
                 {
@@ -1233,7 +1233,7 @@
             "player": "Teddy",
             "team": 235,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "https://bj.afreecatv.com/skdmlwlsjd",
             "accounts": [
                 {
@@ -1270,7 +1270,7 @@
             "player": "Hoit",
             "team": 235,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://bj.afreecatv.com/dbghtjd0706",
             "accounts": [
                 {
@@ -1307,7 +1307,7 @@
             "player": "Moham",
             "team": 235,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://bj.afreecatv.com/jst2233",
             "accounts": [
                 {
@@ -1330,7 +1330,7 @@
             "player": "Dove",
             "team": 415,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "",
             "accounts": [
                 {
@@ -1353,7 +1353,7 @@
             "player": "Croco",
             "team": 415,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "",
             "accounts": [
                 {
@@ -1383,7 +1383,7 @@
             "player": "Clozer",
             "team": 415,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "",
             "accounts": [
                 {
@@ -1413,7 +1413,7 @@
             "player": "Prince",
             "team": 415,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "",
             "accounts": [
                 {
@@ -1436,7 +1436,7 @@
             "player": "Kael",
             "team": 415,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "",
             "accounts": [
                 {
@@ -1452,7 +1452,7 @@
             "player": "Canna",
             "team": 16,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "https://twitch.tv/canna",
             "accounts": [
                 {
@@ -1475,7 +1475,7 @@
             "player": "Dread",
             "team": 16,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "https://twitch.tv/dread_jh",
             "accounts": [
                 {
@@ -1505,7 +1505,7 @@
             "player": "Bdd",
             "team": 16,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "https://twitch.tv/lol_bdd_990301",
             "accounts": [
                 {
@@ -1556,7 +1556,7 @@
             "player": "Ghost",
             "team": 16,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "https://twitch.tv/wkddydwns0318",
             "accounts": [
                 {
@@ -1600,7 +1600,7 @@
             "player": "Effort",
             "team": 16,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://twitch.tv/effort",
             "accounts": [
                 {
@@ -1623,7 +1623,7 @@
             "player": "Peter",
             "team": 16,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "https://www.twitch.tv/jyusu0428",
             "accounts": [
                 {
@@ -1646,7 +1646,7 @@
             "player": "Zeus",
             "team": 266,
             "league": "LCK",
-            "role": "Top",
+            "role": "top",
             "stream": "",
             "accounts": [
                 {
@@ -1676,7 +1676,7 @@
             "player": "Oner",
             "team": 266,
             "league": "LCK",
-            "role": "Jungle",
+            "role": "jungle",
             "stream": "",
             "accounts": [
                 {
@@ -1727,7 +1727,7 @@
             "player": "Faker",
             "team": 266,
             "league": "LCK",
-            "role": "Mid",
+            "role": "middle",
             "stream": "",
             "accounts": [
                 {
@@ -1778,7 +1778,7 @@
             "player": "Gumayusi",
             "team": 266,
             "league": "LCK",
-            "role": "Bottom",
+            "role": "bottom",
             "stream": "",
             "accounts": [
                 {
@@ -1808,7 +1808,7 @@
             "player": "Keria",
             "team": 266,
             "league": "LCK",
-            "role": "Support",
+            "role": "support",
             "stream": "",
             "accounts": [
                 {

@@ -132,6 +132,8 @@
         "spectate": "監視されています",
         "livegame": "ライブゲーム",
         "twitch": "Twitch",
-        "afreeca": "Afreeca"
+        "afreeca": "Afreeca",
+        "favorite": "お気に入り",
+        "unfavorite": "不利です"
     }
 }

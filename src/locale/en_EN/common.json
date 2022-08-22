@@ -132,6 +132,8 @@
         "spectate": "Spectate",
         "livegame": "Live Game",
         "twitch": "Twitch",
-        "afreeca": "Afreeca"
+        "afreeca": "Afreeca",
+        "favorite": "Favorite",
+        "unfavorite": "Unfavorite"
     }
 }

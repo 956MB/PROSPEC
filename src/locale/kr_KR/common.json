@@ -132,6 +132,8 @@
         "spectate": "조심스럽게",
         "livegame": "라이브 게임",
         "twitch": "Twitch",
-        "afreeca": "Afreeca"
+        "afreeca": "Afreeca",
+        "favorite": "가장 좋아하는",
+        "unfavorite": "좋지 않은"
     }
 }

@@ -132,6 +132,8 @@
         "spectate": "Vaksam",
         "livegame": "Levande spel",
         "twitch": "Twitch",
-        "afreeca": "Afreeca"
+        "afreeca": "Afreeca",
+        "favorite": "Favorit",
+        "unfavorite": "Ogynnit"
     }
 }

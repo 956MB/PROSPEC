@@ -5,7 +5,8 @@
     /* --card-menu-button-pressedSelected: rgba(66, 66, 66, 0.90); */
     --card-menu-button-hover: rgba(85, 85, 85, 0.30);
     /* --card-menu-button-selectedHover: rgba(77, 77, 77, 0.95); */
-    --menu-icon-normal: rgba(255, 255, 255, 0.20);
+    --menu-icon-normal: rgba(255, 255, 255, 0.80);
+    --menu-icon-disabled: rgba(255, 255, 255, 0.50);
 }
 
 .card-menu {
@@ -13,13 +14,32 @@
     position: absolute;
     flex-direction: column;
     pointer-events: all;
-    /* width: 150px; */
+    /* width: 133px; */
+    min-width: 133px;
     /* height: 100px; */
     z-index: 99 !important;
     background-color: rgb(13, 13, 13, 0.99);
     border-radius: 5px;
     padding: 6px;
-    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.60);
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.40);
+}
+
+.card-menu-info {
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    border-radius: 3px;
+    padding: 0 12px 0 12px;
+
+    font-family: 'Inter_Medium';
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.50);
+    white-space: nowrap;
+    text-align: left;
+    /* background-color: rgba(0, 255, 255, 0.205); */
+    height: 30px;
 }
 
 .card-menu-button {
@@ -28,7 +48,7 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: row;
-    /* height: 30px; */
+    height: 30px;
     /* width: 80px; */
     /* margin: 3px; */
     border-radius: 3px;
@@ -52,7 +72,7 @@
 .card-menu-button img {
     display: block;
     object-fit: contain;
-    opacity: 0.70;
+    opacity: 0.80;
     margin: 1px 6px 0 0;
 }
 
@@ -68,6 +88,21 @@
     height: 12px;
     width: 13px;
 }
+.heart-icon {
+    height: 16px;
+    width: 16px;
+    -webkit-transition: all 0.2s ease;  
+    -moz-transition: all 0.2s ease;  
+    -o-transition: all 0.2s ease;  
+    -ms-transition: all 0.2s ease;  
+    transition: all 0.2s ease;
+}
+.icon-normal {
+    transform: scale(1.0);
+}
+.icon-bounce {
+    transform: scale(1.1);
+}
 
 .tvNormal {
     background-color: var(--menu-icon-normal);
@@ -78,6 +113,41 @@
     background-color: var(--accent);
     mask: url('src/assets/icons/tv.svg') no-repeat center / contain;
     -webkit-mask: url('src/assets/icons/tv.svg') no-repeat center / contain;
+}
+.chartNormal {
+    background-color: var(--menu-icon-normal);
+    mask: url('src/assets/icons/chart.xyaxis.line.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/chart.xyaxis.line.svg') no-repeat center / contain;
+}
+.chartHovered {
+    background-color: var(--accent);
+    mask: url('src/assets/icons/chart.xyaxis.line.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/chart.xyaxis.line.svg') no-repeat center / contain;
+}
+.arrowNormal {
+    background-color: var(--menu-icon-normal);
+    mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+}
+.arrowHovered {
+    background-color: var(--accent);
+    mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+}
+.arrowDisabled {
+    background-color: var(--menu-icon-disabled);
+    mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+}
+.heartFavorited {
+    background-color: var(--accent);
+    mask: url('src/assets/icons/heart.fill.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/heart.fill.svg') no-repeat center / contain;
+}
+.heartUnfavorited {
+    background-color: var(--menu-icon-normal);
+    mask: url('src/assets/icons/heart.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/heart.svg') no-repeat center / contain;
 }
 
 .menu-icon-container {
@@ -93,17 +163,25 @@
 
 }
 
-.menu-button-diabled {
+.menu-button-disabled {
     pointer-events: none;
     opacity: 0.4;
 }
 
-/* .card-menu-button:hover span {
-    color: rgba(255, 255, 255, 0.95);
+.card-menu-spacer {
+    height: 13px;
+    min-height: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 0 5px 0 5px;
 }
-.card-menu-button:hover img {
-    opacity: 0.95;
-} */
+
+.menu-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.10);
+}
 
 .card-menu-button:hover {
     background-color: var(--card-menu-button-hover);
@@ -112,25 +190,19 @@
     background-color: var(--card-menu-button-pressed) !important;
 }
 
-/* NOTE: May use this in the future */
-/* .settings-open .player-card,
-.settings-open .game-timer
-{
-    pointer-events: none !important;
+.card-menu-button:hover span {
+    color: rgba(255, 255, 255, 0.95);
 }
-.settings-open .card-photo
-{
-    filter: grayscale(1) opacity(0.8) !important;
+.card-menu-button:hover img {
+    opacity: 0.95;
 }
-.settings-open .card-image,
-.settings-open .card-image-cutout
-{
-    filter: grayscale(1) opacity(0.4) !important;
-} */
+.card-menu-button:active span {
+    color: rgba(255, 255, 255, 0.75);
+}
 
 .card-outer {
-    /* background-color: blue; */
     margin: auto;
+    position: relative;
 }
 
 .player-card {
@@ -147,7 +219,7 @@
     pointer-events: all;
     backface-visibility: hidden !important;
     z-index: 10;
-    /* cursor: pointer; */
+    cursor: pointer;
     /* background-color: rgba(26, 26, 26, 0.75); */
     background-color: rgba(23, 23, 23, 0.70);
 }
@@ -215,7 +287,7 @@
 {
     /*border for slide in out animation thing, outline for no movement at all*/
     background-color: rgb(16, 16, 16, 0.90);
-    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.20 );
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.25 );
     /* border: 2px solid rgba(255, 255, 255, 0.20); */
 }
 .player-card-clicked .card-image,
@@ -428,18 +500,24 @@
 
 .loading-dots {
     display: none;
-    pointer-events: none;
+    /* pointer-events: none; */
     user-select: none;
 }
 
 .card-unavailable .loading-dots {
     display: block;
-    height: 16px;
+    height: 15px;
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    border-radius: 16px;
     text-align: center;
-    z-index: 3;
-    opacity: 0.75;
-    pointer-events: none;
+    z-index: 4;
+    /* opacity: 0.75; */
+    /* pointer-events: none; */
     user-select: none;
+    background-color: rgba(10, 10, 10, 0.30);
+    padding: 0 4px 1px 4px;
 }
 
 .loading-dot {
@@ -468,8 +546,8 @@
 
 @keyframes showHideDot {
     0% { opacity: 0; }
-    50% { opacity: 1; }
-    60% { opacity: 1; }
+    50% { opacity: 0.9; }
+    60% { opacity: 0.9; }
     100% { opacity: 0; }
 }
 

@@ -59,7 +59,8 @@
     justify-content: flex-start;
     align-items: center;
     padding-right: 8px;
-    width: 254px;
+    flex: 1;
+    /* width: 254px; */
     height: 100%;
     /* background-color: #e811233b; */
 }
@@ -74,6 +75,7 @@
     align-items: center;
     height: 100%;
     /* width: 300px; */
+    flex: 1;
     padding-right: 8px;
     padding-left: 8px;
     /* background-color: rgba(0, 0, 255, 0.24); */
@@ -132,20 +134,21 @@
 
 .search-bar {
     margin-right: 7px;
-    float: right;
+    margin-left: 22px;
+    float: center;
     position: relative;
     backdrop-filter: blur(4px);
 }
 
 .search-bar-active input[type=text] {
-    width: 225px !important;
+    width: 325px !important;
 }
 
 .search-bar input[type=text] {
     /* TODO: Need to figure out how to align options container width and search bar width with transition. */
     pointer-events: all;
     float: right;
-    width: 150px;
+    width: 250px;
     flex: 1;
     transition: 0.15s;
     /* transition: width 0.3s linear; */
@@ -169,7 +172,7 @@
 
 .search-bar input[type=text]:focus {
     /* background-color: var(--searchbar-focus); */
-    width: 225px;
+    width: 325px;
     text-decoration: none !important;
     /* flex: 2; */
     /* border: none !important; */

@@ -92,12 +92,12 @@ const Titlebar: React.FC<{
                         <img src={refreshIcon} alt="refresh" />
                     </button>
                     <span className='refresh-text noselect'>{t('titlebar.lastRefresh', {time: '8:34 PM'})}</span>
+                    <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/>
                 </div>
 
-                <Options optionsDisabled={settingsOpen} optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} />
+                {/* <Options optionsDisabled={settingsOpen} optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} /> */}
 
                 <div className='controls-group'>
-                    <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/>
                     <button
                         className="titlebar-button titlebar-button-edge-left"
                         id="titlebar-minimize"

@@ -153,14 +153,16 @@ img {
     animation: fadeInLeft 0.1s normal forwards ease-in-out;
 }
 .tooltip-bottom {
-    top: 115%;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
     width: 100px;
+    animation: fadeInBottom 0.1s normal forwards ease-in-out;
 }
 .tooltip-top {
     bottom: 100%;
     left: 50%;
+    width: 100px;
     transform: translateX(-50%);
     animation: fadeInTop 0.1s normal forwards ease-in-out;
 }
@@ -168,12 +170,12 @@ img {
 .right-close {
     left: 85% !important;
     white-space: nowrap;
-    animation: fadeInRightClose 0.15s normal forwards ease-in-out !important;
+    animation: fadeInRightClose 0.1s normal forwards ease-in-out !important;
 }
 .right-far {
     left: 100%;
     white-space: nowrap;
-    animation: fadeInRightFar 0.15s normal forwards ease-in-out !important;
+    animation: fadeInRightFar 0.1s normal forwards ease-in-out !important;
 }
 
 @keyframes fadeInLeft {
@@ -222,24 +224,24 @@ img {
 }
 @keyframes fadeInTop {
     50% {
-        bottom: 105%;
-    }
-    75% {
         bottom: 110%;
     }
+    75% {
+        bottom: 120%;
+    }
     100% {
-        bottom: 115%;
+        bottom: 125%;
     }
 }
 @keyframes fadeInBottom {
     50% {
-        top: 105%;
-    }
-    75% {
         top: 110%;
     }
+    75% {
+        top: 120%;
+    }
     100% {
-        top: 115%;
+        top: 125%;
     }
 }
 
@@ -261,6 +263,8 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
     min-width: 1040px;
+    width: 100vw;
+    height: 100vh;
 }
 
 .app-background {
@@ -270,6 +274,8 @@ img {
     top: 0;
     min-height: 100vh;
     min-width: 100vw;
+    width: 100vw;
+    height: 100vh;
     filter: opacity(0.30) saturate(0);
     pointer-events: none;
     z-index: 0;
@@ -282,13 +288,18 @@ img {
     top: 0;
     min-height: 100vh;
     min-width: 100vw;
-    background-color: rgba(25, 25, 25, 0.92);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(25, 25, 25, 0.95);
     z-index: 1;
 }
 
 .app-inner {
     display: flex;
-    padding-left: 55px  ;
+    padding-left: 55px;
+    /* flex: 1; */
+    /* width: 100%; */
+    /* height: 100%; */
     /* padding-top: 20px; */
     /* padding-right: 20px; */
 }
