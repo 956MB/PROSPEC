@@ -1,0 +1,147 @@
+{
+	"modes": {
+		"ARAM": "ARAM",
+		"URF": "URF",
+		"all": "الجميع",
+		"normalBlind": "أعمى عادي",
+		"normalDraft": "المسودة العادية",
+		"rankedFlex": "المرتبة المرنة",
+		"rankedSoloDuo": "المرتبة المنفردة/الثنائي"
+	},
+	"regions": {
+		"br": "BR",
+		"eun": "EUN",
+		"euw": "EUW",
+		"jp": "JP",
+		"kr": "KR",
+		"na": "NA",
+		"oce": "OCE",
+		"ru": "RU",
+		"world": "العالمية"
+	},
+	"roles": {
+		"any": "أي",
+		"bottom": "الأسفل",
+		"jungle": "الغابة",
+		"middle": "وسط",
+		"support": "الدعم",
+		"top": "قمة"
+	},
+	"settings": {
+		"pages": {
+			"about": {
+				"title": "حول"
+			},
+			"application": {
+				"items": {
+					"Accent": {
+						"title": "لهجة"
+					},
+					"appScale": {
+						"title": "مقياس التطبيق"
+					},
+					"dark": {
+						"title": "مظلم"
+					},
+					"favortieNotifications": {
+						"description": "يحصل الايجابيات المفضلة على إشعارات عند بدء لعبة (تحديث تلقائي).",
+						"title": "الإخطارات المفضلة"
+					},
+					"hardwareAcceleration": {
+						"description": "يستخدم تسريع الأجهزة وحدة معالجة الرسومات لجعل ProSpec تعمل بسلاسة أكثر.",
+						"title": "تسريع الأجهزة"
+					},
+					"keyboardMode": {
+						"description": "تمكين التنقل في التطبيق باستخدام لوحة المفاتيح.",
+						"title": "وضع لوحة المفاتيح"
+					},
+					"light": {
+						"title": "خفيفة"
+					},
+					"minimizeToTray": {
+						"description": "يجب أن يقلل زر الإغلاق ، وليس الخروج.",
+						"title": "تقليل إلى صينية"
+					},
+					"openOnStartup": {
+						"title": "افتح على بدء التشغيل"
+					},
+					"randomAppBackground": {
+						"description": "اختر خلفية التطبيق ليتم تحديدها بشكل عشوائي من بيل بوم ، أو اضبطها على افتراضي محدد.",
+						"title": "خلفية التطبيق العشوائي"
+					},
+                    "liveBackground": {
+						"description": "سوف تستخدم النسخة المتحركة من فن الرش ، بدلاً من الصورة الافتراضية. (إن أمكن)",
+						"title": "الخلفية الحية"
+					},
+					"system": {
+						"title": "نظام"
+					},
+					"theme": {
+						"title": "سمة"
+					}
+				},
+				"title": "طلب"
+			},
+			"content": {
+				"items": {
+					"autoRefresh": {
+						"title": "تحديث تلقائي"
+					},
+					"card": {
+						"title": "بطاقة"
+					},
+					"list": {
+						"title": "قائمة"
+					},
+					"listLayout": {
+						"title": "قائمة تخطيط"
+					},
+					"refreshInterval": {
+						"description": "كم ثوانٍ/دقيقة لتحديث قائمة الإيجابيات 3M+ الموصى بها بسبب حدود معدل واجهة برمجة التطبيقات LOL.",
+						"title": "الفاصل الزمني للتحديث"
+					},
+					"showRandomSkins": {
+						"description": "يعرض خلفيات الجلد العشوائية بدلاً من فن الجلد الافتراضي.",
+						"title": "إظهار جلود عشوائية"
+					},
+					"showSummonerIds": {
+						"description": "يعرض اللاعب معرف الاستدعاء (إخفاء على بوش) ، بدلاً من gamertag (faker).",
+						"title": "عرض استدعاء معرفات"
+					},
+					"showTeamLogos": {
+						"description": "يعرض شعار الفريق في مكان البطل الحالي في البطاقة.",
+						"title": "عرض شعارات الفريق"
+					},
+					"useCutouts": {
+						"description": "يستخدم قواطع بطل شفافة بدلاً من تحميل فن الرش",
+						"title": "استخدم القواطع"
+					},
+                    "showUnavailable": {
+						"description": "يعرض بطاقات اللاعب التي لا تتوفر حاليًا من أجل تدويرها. (خطأ في API المتفرج ، أو لا يلعب اللاعب حاليًا.)",
+						"title": "تظهر غير متوفرة"
+					}
+				},
+				"title": "محتوى"
+			},
+			"language": {
+				"title": "لغة"
+			}
+		},
+		"title": "إعدادات"
+	},
+	"titlebar": {
+		"lastRefresh": "آخر تحديث: {{time}}",
+		"searchPlaceholder": "يبحث"
+	},
+	"tooltips": {
+		"playerUnavailable": "{{player}} إما ليس في لعبة ، أو أن المتفرج غير متوفر."
+	},
+    "menus": {
+        "spectate": "بشكل برعي",
+        "livegame": "بث مباشر مباراة",
+        "twitch": "Twitch",
+        "afreeca": "Afreeca",
+        "favorite": "مفضل",
+        "unfavorite": "غير متاح"
+    }
+}

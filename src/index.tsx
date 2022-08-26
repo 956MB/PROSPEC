@@ -9,10 +9,12 @@ import {I18nextProvider} from "react-i18next";
 import i18next from "i18next";
 
 import common_en from "./locale/en_EN/common.json";
+import common_ar from "./locale/ar_AE/common.json";
 import common_kr from "./locale/kr_KR/common.json";
 import common_fi from "./locale/fi_FI/common.json";
 import common_sv from "./locale/sv_SV/common.json";
 import common_jp from "./locale/ja_JP/common.json";
+import common_hi from "./locale/hi_HI/common.json";
 // import SettingsStore from './context/SettingsStore';
 
 i18next.init({
@@ -20,10 +22,12 @@ i18next.init({
     lng: 'kr_KR',
     resources: {
         en_EN: { common: common_en },
+        ar_AE: { common: common_ar },
         kr_KR: { common: common_kr },
         fi_FI: { common: common_fi },
         sv_SV: { common: common_sv },
-        ja_JP: { common: common_jp }
+        ja_JP: { common: common_jp },
+        hi_HI: { common: common_hi }
     },
 });
 

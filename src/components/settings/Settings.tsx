@@ -91,12 +91,14 @@ const Settings: React.FC<{
         {
             index: 2, type: 'lang', title: sTitle('language'), selected: 0, items: [
                 { itemValue: { type: 'lang', value: 0, text: 'English', lang: 'en_EN' } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 1, text: 'العربية', lang: 'ar_AE' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 1, text: 'Deutsch', lang: 'de_DE' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 2, text: 'Français', lang: 'fr_FR' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 3, text: 'Italiano', lang: 'it_IT' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 4, text: 'Nederlands', lang: 'nl_NL' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 5, text: 'Svenska', lang: 'sv_SV' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 6, text: 'Suomi', lang: 'fi_FI' } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 6, text: 'हिन्दी', lang: 'hi_HI' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 7, text: 'Português', lang: 'pt_PT' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 8, text: 'Polski', lang: 'pl_PL' } as ISettingsItemValueLanguage },
                 { itemValue: { type: 'lang', value: 9, text: 'Русский', lang: 'ru_RU' } as ISettingsItemValueLanguage },
