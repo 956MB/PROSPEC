@@ -69,6 +69,10 @@
 						"description": "챔피언 풀에서 무작위로 선택할 앱 배경을 선택하거나 특정 기본값으로 설정하십시오.",
 						"title": "랜덤 앱 배경"
 					},
+                    "liveBackground": {
+						"description": "기본 이미지 대신 스플래시 아트의 애니메이션 버전을 사용합니다.(가능하다면)",
+						"title": "라이브 배경"
+					},
 					"system": {
 						"title": "체계"
 					},
@@ -111,6 +115,10 @@
 					"useCutouts": {
 						"description": "스플래시 아트를로드하는 대신 투명 챔피언 컷 아웃을 사용합니다",
 						"title": "컷 아웃을 사용하십시오"
+					},
+                    "showUnavailable": {
+						"description": "현재 관중을 사용할 수없는 플레이어 카드를 표시합니다.(Spectator API 또는 플레이어의 오류가 현재 플레이되지 않습니다.)",
+						"title": "사용할 수 없음을 보여주십시오"
 					}
 				},
 				"title": "콘텐츠"
@@ -126,7 +134,7 @@
 		"searchPlaceholder": "수색"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} 이(가) 게임에 없거나 관전할 수 없습니다."
+		"playerUnavailable": "{{player}} 게임에 있지 않거나 관중을 사용할 수 없습니다."
 	},
     "menus": {
         "spectate": "조심스럽게",

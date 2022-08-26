@@ -69,6 +69,10 @@
 						"description": "Valitse APP -tausta, joka valitaan satunnaisesti Champion Poolista tai aseta se tiettyyn oletusarvoon.",
 						"title": "Satunnainen sovellustausta"
 					},
+                    "liveBackground": {
+						"description": "Käyttää roisketaiteen animaatiota oletuskuvan sijasta.(Jos mahdollista)",
+						"title": "Live -tausta"
+					},
 					"system": {
 						"title": "Järjestelmä"
 					},
@@ -111,6 +115,10 @@
 					"useCutouts": {
 						"description": "Käyttää läpinäkyviä mestarien leikkauksia roisketaiteen lataamisen sijasta",
 						"title": "Käytä leikkauksia"
+					},
+                    "showUnavailable": {
+						"description": "Näyttää pelaajien kortteja, joita ei tällä hetkellä ole käytettävissä katsottavaksi.(Virhe Spectator API: ssa tai pelaaja ei tällä hetkellä pelaa.)",
+						"title": "Ei ole käytettävissä"
 					}
 				},
 				"title": "Sisältö"
@@ -126,7 +134,7 @@
 		"searchPlaceholder": "Hae"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} ei ole pelissä tai katsoja ei ole käytettävissä."
+		"playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä."
 	},
     "menus": {
         "spectate": "Varovasti",

@@ -7,7 +7,8 @@
     display: flex;
     /* flex-grow: 1; */
     height: 47px;
-    background-color: rgba(30, 30, 30, 0.985);
+    background-color: rgba(30, 30, 30, 0.96);
+    /* border-radius: 0 0 10px 0; */
     /* background-color: rgba(0, 0, 0, 0.25); */
     /* background-color: rgba(90, 90, 90, 0.80); */
     /* background-color: rgba(255, 90, 90, 0.50); */
@@ -30,7 +31,17 @@
     padding-left: 63px;
     /* backdrop-filter: blur(1px) grayscale(1); */
     border-bottom: 1px solid rgba(255,255,255,0.06);
+    /* border-bottom: 1px solid rgba(47, 255, 99, 0.80); */
+    /* box-shadow: 0 0 20px 0px rgba(47, 255, 99, 0.15); */
+    /* border-bottom: 1px rgba(47, 255, 99, 0.80) solid; */
+    /* animation: blinkBorder 2s infinite; */
+    /* border-radius: 0 0 10px 0; */
 }
+
+@keyframes blinkBorder { 50% { 
+    border-color: rgba(47, 255, 99, 0.60);
+    box-shadow: 0 0 20px 0px rgba(47, 255, 99, 0.05)
+}  }
 
 .titlebar-blur {
     position: fixed;
@@ -135,7 +146,7 @@
 .search-bar {
     margin-right: 7px;
     margin-left: 22px;
-    float: center;
+    float: right;
     position: relative;
     backdrop-filter: blur(4px);
 }

@@ -69,6 +69,10 @@
 						"description": "Välj appbakgrunden som ska väljas slumpmässigt från mästarpoolen, eller ställ in den på en specifik standard.",
 						"title": "Slumpmässig appbakgrund"
 					},
+                    "liveBackground": {
+						"description": "Kommer att använda den animerade versionen av en stänkkonst istället för standardbilden.(Om möjligt)",
+						"title": "Levande bakgrund"
+					},
 					"system": {
 						"title": "Systemet"
 					},
@@ -111,6 +115,10 @@
 					"useCutouts": {
 						"description": "Använder genomskinliga champion-utskärningar istället för att ladda stänkkonst",
 						"title": "Använd utskärningar"
+					},
+                    "showUnavailable": {
+						"description": "Visar spelarkort som för närvarande inte är tillgängliga för att åstadkomma.(Fel i Spectator API, eller spelar för närvarande inte.)",
+						"title": "Visa sig inte"
 					}
 				},
 				"title": "Innehåll"
@@ -126,7 +134,7 @@
 		"searchPlaceholder": "Sök"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} är antingen inte med i ett spel eller så är publiken inte tillgänglig."
+		"playerUnavailable": "{{player}} är antingen inte i ett spel, eller åskådare är inte tillgänglig."
 	},
     "menus": {
         "spectate": "Vaksam",

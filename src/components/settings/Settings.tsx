@@ -45,6 +45,8 @@ const Settings: React.FC<{
                 }
                 ,
                 { title: sItemTitle('content', 'showTeamLogos'), description: sItemDescription('content', 'showTeamLogos'), itemValue: { type: 'boolean', value: false, key: ESettingsStates.SHOW_TEAM_LOGOS } as ISettingsItemValueBool }
+                ,
+                { title: sItemTitle('content', 'showUnavailable'), description: sItemDescription('content', 'showUnavailable'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.SHOW_UNAVAILABLE } as ISettingsItemValueBool }
             ]
         }
         ,
@@ -74,7 +76,11 @@ const Settings: React.FC<{
                 ,
                 { itemValue: { type: "spacer", value: false } }
                 ,
-                { title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.RANDOM_APP_BACKGROUND } as ISettingsItemValueBool }
+                {
+                    title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.RANDOM_APP_BACKGROUND } as ISettingsItemValueBool, childValues: [
+                        { title: sItemTitle('application', 'liveBackground'), description: sItemDescription('application', 'liveBackground'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.LIVE_BACKGROUND } as ISettingsItemValueBool }
+                    ]
+                }
                 ,
                 { title: sItemTitle('application', 'keyboardMode'), description: sItemDescription('application', 'keyboardMode'), itemValue: { type: 'boolean', value: false, key: ESettingsStates.KEYBOARD_MODE } as ISettingsItemValueBool }
                 ,
@@ -162,7 +168,13 @@ const SettingsInner: React.FC<{
                 )}
             </div>
             <div className="settings-dark-overlay"></div>
-            <div className={`${(settingsBackground.type === 'splash') ? 'settings-background-center' : 'settings-background-left'}`} style={{ backgroundImage: `url(src/${settingsBackground.secondary})` }}></div>
+            {/* <div
+                className={`${(settingsBackground.secondary.type === 'centered') ? 'settings-background-center' : 'settings-background-left'}`}
+                style={{
+                    backgroundImage:
+                        `url(src/assets/dragontail/${settingsBackground.secondary.type}/${settingsBackground.secondary.name}.jpg)`
+                }}>
+            </div> */}
         </div>
     )
 }

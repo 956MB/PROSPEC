@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { IPlayerGroups, IPlayers, useInit } from '../../interfaces';
 import '../css/players.css';
 
-import { groupBy, sortRoles } from "../../utils";
+import { groupByKey, mapEnum, sortByKey } from "../../utils";
 import { PlayersGroup } from './PlayersGroup';
+import { SpectatorContext } from "../../context/SpectatorContext";
+import { EGroupBy, ERoles, ETeams } from '../../typings';
+
+const ROLES_SORT = mapEnum(ERoles, "string", () => {}) as string[];
+const TEAMS_SORT = mapEnum(ETeams, "number", (team: number) => { return team.toString() }) as string[];
 
 const Players: React.FC<{
     players: IPlayers,
@@ -13,11 +18,20 @@ const Players: React.FC<{
     const [menuOpen, setMenuOpen] = useState(-1);
 
     const [groupedPlayers, setGroupedPlayers] = useState<IPlayerGroups>([]);
+    const { groupBy } = useContext(SpectatorContext);
 
     useInit(() => {
-        const by = groupBy(players, player => player.summoner.role);
-        const sortedGroups = sortRoles(by);
-        setGroupedPlayers(sortedGroups);
+        let grouped: IPlayerGroups = [];
+
+        if (groupBy == EGroupBy.ROLE) {
+            grouped = sortByKey(groupByKey(players, player => player.summoner.role), ROLES_SORT);
+        } else if (groupBy == EGroupBy.TEAM) {
+            grouped = sortByKey(groupByKey(players, player => player.summoner.team), TEAMS_SORT);
+        } else if (groupBy == EGroupBy.NONE) {
+            grouped = [{ key: EGroupBy.NONE, players: players }] as IPlayerGroups;
+        }
+
+        setGroupedPlayers(grouped);
     });
 
     useEffect(() => {
@@ -30,12 +44,6 @@ const Players: React.FC<{
                 clearInterval(interval);
             };
         }
-
-        // const by = groupBy(players, player => player.summoner.role);
-        // const grouped = Object.values(by) as IPlayers[];
-        // console.log(by);
-        // sortRoles(by);
-        // setGroupedPlayers(grouped);
     });
 
     return (
@@ -46,9 +54,7 @@ const Players: React.FC<{
                         <PlayersGroup
                             players={group.players}
                             groupPos={(i == 0 ? 'first-group' : (i == groupedPlayers.length-1 ? 'last-group' : ''))}
-                            useText={group.key}
-                            useImage={`./src/assets/icons/${group.key}.png`}
-                            // useImage={`./src/assets/logos/${getTeamFromNumber(group.at(0)!.summoner.team, true).toLowerCase()}.png`}
+                            groupKey={group.key}
                             globalTime={gameInterval}
                             menuOpen={menuOpen}
                             fHandleMenuOpen={(set: number) => setMenuOpen(set)}></PlayersGroup>

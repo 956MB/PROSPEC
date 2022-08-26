@@ -5,6 +5,9 @@ Jax_6
 Kennen_2
 Orianna_4
 DrMundo_7
+Ezreal_6
+Shen_6
+Nunu_6
 Lulu_4
 Karthus_1
 Heimerdinger_0
@@ -12,6 +15,7 @@ Hecarim_4
 Caitlyn_4
 Volibear_0
 Warwick_2
+Ezreal_5
 TahmKench_11
 Ahri_66
 Lissandra_3

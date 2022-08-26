@@ -69,6 +69,10 @@
 						"description": "Choose the app background to be randomly selected from champion pool, or set it to a specific default.",
 						"title": "Random app background"
 					},
+                    "liveBackground": {
+						"description": "Will use the animated version of a splash art, instead of the default image. (If possible)",
+						"title": "Live background"
+					},
 					"system": {
 						"title": "System"
 					},
@@ -111,6 +115,10 @@
 					"useCutouts": {
 						"description": "Uses transparent champion cutouts instead of loading splash art",
 						"title": "Use cutouts"
+					},
+                    "showUnavailable": {
+						"description": "Displays player cards that are currently unavailable for spectating. (Error in Spectator API, or player is not currently playing.)",
+						"title": "Show unavailable"
 					}
 				},
 				"title": "Content"
@@ -126,7 +134,7 @@
 		"searchPlaceholder": "Search"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} is either not in a game, or spectate is unavailable."
+		"playerUnavailable": "{{player}} is either not in a game, or spectator is unavailable."
 	},
     "menus": {
         "spectate": "Spectate",

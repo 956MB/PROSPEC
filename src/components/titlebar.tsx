@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { appWindow } from '@tauri-apps/api/window';
 import { useTranslation } from "react-i18next";
 import './css/titlebar.css';
@@ -13,13 +13,13 @@ import refreshIcon from '../assets/icons/refresh.svg';
 import minIcon from '../assets/icons/min.svg';
 import closeIcon from '../assets/icons/close.svg';
 
+import { SpectatorContext } from "../context/SpectatorContext";
+
 const Titlebar: React.FC<{
     settingsOpen: boolean,
-    selectedRegions: ERegions[],
-    selectedModes: EModes[],
-    selectedRoles: ERoles[],
     refreshPlayers: () => void
-}> = ({ settingsOpen, selectedRegions, selectedModes, selectedRoles, refreshPlayers }) => {
+}> = ({ settingsOpen, refreshPlayers }) => {
+    const { regionFilter, modeFilter, roleFilter } = useContext(SpectatorContext);
     const { t } = useTranslation('common');
     const [sections, setSections] = useState<IOptionsSections>({
         active: !settingsOpen,
@@ -28,21 +28,21 @@ const Titlebar: React.FC<{
                 id: 0, name: EAboutSections.REGION, active: true, expanded: false,
                 buttons:
                     mapEnum(ERegions, "string", (region: ERegions, i: number) => {
-                        return { id: i, active: true, selected: included(selectedRegions, region), type: regionType(region), images: [`${regionFolder(region)}/${region}${regionFile(region)}`], right: "", content: oRegion(region as string) }
+                        return { id: i, active: true, selected: included(regionFilter, region), type: regionType(region), images: [`${regionFolder(region)}/${region}${regionFile(region)}`], right: "", content: oRegion(region as string) }
                     }) as IOptionsButton[]
             },
             {
                 id: 1, name: EAboutSections.MODE, active: true, expanded: false,
                 buttons:
                     mapEnum(EModes, "string", (mode: EModes, i: number) => {
-                        return { id: i, active: true, selected: included(selectedModes, mode), type: modeType(mode), images: [modeImage(mode)], right: "", content: oMode(mode as string) }
+                        return { id: i, active: true, selected: included(modeFilter, mode), type: modeType(mode), images: [modeImage(mode)], right: "", content: oMode(mode as string) }
                     }) as IOptionsButton[]
             },
             {
                 id: 2, name: EAboutSections.ROLE, active: true, expanded: false,
                 buttons:
                     mapEnum(ERoles, "string", (role: ERoles, i: number) => {
-                        return { id: i, active: true, selected: included(selectedRoles, role), type: roleType(role), images: [`icons/${role.toLowerCase()}${roleFile(role)}`], right: "", content: oRole(role as string) }
+                        return { id: i, active: true, selected: included(roleFilter, role), type: roleType(role), images: [`icons/${role.toLowerCase()}${roleFile(role)}`], right: "", content: oRole(role as string) }
                     }) as IOptionsButton[]
             },
         ]
@@ -57,7 +57,7 @@ const Titlebar: React.FC<{
                     sliceMap(mapEnum(EChampions, "number", (champ: number, i: number) => {
                         return {
                             id: i, active: true, type: EButtonImages.CHAMP, champ: champ, images: [
-                                `dragontail-12.13.1/tiles/${getChampionFromId(champ)?.name}_0.jpg`,
+                                `dragontail/tiles/${getChampionFromId(champ)?.name}_0.jpg`,
                             ], right: ""
                         }
                     }) as IOptionsButtonChamp[], 0, 10)
@@ -92,12 +92,12 @@ const Titlebar: React.FC<{
                         <img src={refreshIcon} alt="refresh" />
                     </button>
                     <span className='refresh-text noselect'>{t('titlebar.lastRefresh', {time: '8:34 PM'})}</span>
-                    <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/>
                 </div>
 
                 {/* <Options optionsDisabled={settingsOpen} optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} /> */}
 
                 <div className='controls-group'>
+                    <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/>
                     <button
                         className="titlebar-button titlebar-button-edge-left"
                         id="titlebar-minimize"

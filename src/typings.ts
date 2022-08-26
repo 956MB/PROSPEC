@@ -61,6 +61,13 @@ export enum ETooltip {
     BOTTOMDELAY = 'tooltip-text-delay tooltip-bottom'
 }
 
+export enum EGroupBy {
+    NONE = 'NONE',
+    ROLE = 'ROLE',
+    TEAM = 'TEAM',
+    CHAMPION = 'CHAMPION'
+}
+
 // NOTE: States
 
 export enum ECardReducerStates {
@@ -80,12 +87,14 @@ export enum ESettingsStates {
     SHOW_RANDOM_SKINS = 'showRandomSkins',
     USE_CUTOUTS = 'useCutouts',
     SHOW_TEAM_LOGOS = 'showTeamLogos',
+    SHOW_UNAVAILABLE = 'showUnavailable',
     APP_THEME = 'appTheme',
     APP_SCALE = 'appScale',
     OPEN_ON_STARTUP = 'openOnStartup',
     MINIMIZE_TO_TRAY = 'minimizeToTray',
     HARDWARE_ACCELERATION = 'hardwareAcceleration',
     RANDOM_APP_BACKGROUND = 'randomAppBackground',
+    LIVE_BACKGROUND = 'liveBackground',
     KEYBOARD_MODE = 'keyboardMode',
     NOTIFICATIONS = 'notifications',
     APP_LANGUAGE = 'appLanguage',

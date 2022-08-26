@@ -1,7 +1,11 @@
-import { IAppBackground, IChampion, IPlayer, IPlayerGroups, IPlayers, IRegion, ISummonerAccount } from "./interfaces";
-import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles } from "./typings";
+import { IAppBackground, IBackground, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISummonerAccount } from "./interfaces";
+import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import { BlobOptions } from "buffer";
+import random from 'random'
+import { useTranslation } from "react-i18next";
+
+// const { t } = useTranslation('common');
 
 export function unull() {
     return () => null
@@ -37,12 +41,20 @@ export function replaceVars(str: string, rep: { [key: string]: string }) {
 
 export async function checkCutout(champ: string): Promise<string> {
     return "loading";
-    const cutouts = await readDir(`assets/dragontail-12.13.1/cutouts/`, { dir: BaseDirectory.Resource, recursive: true });
+    const cutouts = await readDir(`assets/dragontail/cutouts/`, { dir: BaseDirectory.Resource, recursive: true });
 
     for (const entry of cutouts) {
         if (entry.name === `${champ}.png`) { return "cutouts"; }
     }
     return "loading";
+}
+
+export async function checkLiveBackground(champ: string): Promise<boolean> {
+    const live = await readDir(`assets/dragontail/live/`, { dir: BaseDirectory.Resource, recursive: true });
+    for (const entry of live) {
+        if (entry.name === `${champ}.webm`) { return true; }
+    }
+    return false;
 }
 
 export function cutUnderscore(str: string): string {
@@ -58,7 +70,39 @@ function ifShort(short: string, long: string, isShort: boolean): string {
     return isShort == true ? short : long;
 }
 
+export function ifLiveBackground(background: string): boolean {
+    return background.includes(".mp4") || background.includes(".webm");
+}
+
 // NOTE: Gets
+
+export function getGroupInfoFromKey(key: any): IPlayerGroupInfo {
+    if ((key as string) === EGroupBy.NONE) {
+        return { type: EGroupBy.NONE, image: "", text: ""};
+    }
+    if (Object.values(ERoles).includes(key as ERoles)) {
+        return { type: "icon", image: `icons/${key as string}.png`, text: key as string};
+    }
+
+    const keys = Object.keys(ETeams).filter(k => typeof ETeams[k as any] === "number");
+    const values = keys.map(k => ETeams[k as any].toString());
+    if (values.includes(key as string)) {
+        switch(key) {
+            case ETeams.DRX.toString(): return { type: "logo", image: `logos/drx.png`, text: ETeamNames.DRX_SHORT};
+            case ETeams.DK.toString(): return { type: "logo", image: `logos/dk.png`, text: ETeamNames.DK_SHORT};
+            case ETeams.BRO.toString(): return { type: "logo", image: `logos/bro.png`, text: ETeamNames.BRO_SHORT};
+            case ETeams.GEN.toString(): return { type: "logo", image: `logos/gen.png`, text: ETeamNames.GEN_SHORT};
+            case ETeams.HLE.toString(): return { type: "logo", image: `logos/hle.png`, text: ETeamNames.HLE_SHORT};
+            case ETeams.KT.toString(): return { type: "logo", image: `logos/kt.png`, text: ETeamNames.KT_SHORT};
+            case ETeams.KDF.toString(): return { type: "logo", image: `logos/kdf.png`, text: ETeamNames.KDF_SHORT};
+            case ETeams.LSB.toString(): return { type: "logo", image: `logos/lsb.png`, text: ETeamNames.LSB_SHORT};
+            case ETeams.NS.toString(): return { type: "logo", image: `logos/ns.png`, text: ETeamNames.NS_SHORT};
+            case ETeams.T1.toString(): return { type: "logo", image: `logos/t1.png`, text: ETeamNames.T1_SHORT};
+        }
+    }
+
+    return { type: EGroupBy.NONE, image: "", text: ""};
+}
 
 export function getChampionFromId(champion: number): IChampion | undefined {
     switch (champion) {
@@ -277,23 +321,18 @@ export function whichStream(stream: string): string {
     return stream.includes("twitch") ? 'Twitch' : 'Afreeca';
 }
 
-export const groupBy = <T, K extends keyof any>(arr: T[], key: (i: T) => K) =>
+export const groupByKey = <T, K extends keyof any>(arr: T[], key: (i: T) => K) =>
     arr.reduce((groups, item) => {
         (groups[key(item)] ||= []).push(item);
         return groups;
     }, {} as Record<K, T[]>);
 
-const ROLES_SORT = ["top", "jungle", "middle", "bottom", "support"];
-export function sortRoles(record: Record<string, IPlayer[]>): IPlayerGroups {
+export function sortByKey(record: Record<string, IPlayer[]>, sortArr: string[]): IPlayerGroups {
     const result = Object.keys(record).map((key) => {
-        return {
-            key: key,
-            players: record[key as keyof typeof record] as IPlayers
-        };
+        return { key: key, players: record[key as keyof typeof record] as IPlayers };
     });
     
-    const sorted = result.sort((a, b) => ROLES_SORT.indexOf(a.key) - ROLES_SORT.indexOf(b.key));
-    // console.log(sorted);
+    const sorted = result.sort((a, b) => sortArr.indexOf(a.key) - sortArr.indexOf(b.key));
     return sorted as IPlayerGroups;
 }
 
@@ -327,19 +366,37 @@ export function roleFile(role: string): string { return (role === ERoles.ANY) ? 
 
 declare global {
     interface Array<T> {
-        filterRegions(...regions: ERegions[]): Array<T>;
+        filterRegions(regions: ERegions[]): Array<T>;
+        filterRoles(roles: ERoles[]): Array<T>;
+        // filterChampions(champions: EChampions[]): Array<T>;
         filterUniquePlayers(min?: number, max?: number): Array<T>;
+        filterRandomize(): Array<T>;
     }
 }
 if (!Array.prototype.filterRegions) {
-    Array.prototype.filterRegions = function <T>(this: ISummonerAccount[], ...regions: ERegions[]): ISummonerAccount[] {
+    Array.prototype.filterRegions = function (this: ISummonerAccount[], regions: ERegions[]): ISummonerAccount[] {
         return this.filter((player) => (regions.length >= 1) ? regions.includes(player.region as ERegions) : this);
     }
 }
+if (!Array.prototype.filterRoles) {
+    Array.prototype.filterRoles = function (this: ISummonerAccount[], roles: ERoles[]): ISummonerAccount[] {
+        return this.filter((player) => (roles.length >= 1) ? roles.includes(player.role as ERoles) : this);
+    }
+}
+// if (!Array.prototype.filterChampions) {
+//     Array.prototype.filterChampions = function (this: ISummonerAccount[], champions: EChampions[]): ISummonerAccount[] {
+//         return this.filter((player) => (champions.length >= 1) ? champions.includes(player. as ERoles) : this);
+//     }
+// }
 if (!Array.prototype.filterUniquePlayers) {
-    Array.prototype.filterUniquePlayers = function <T>(this: ISummonerAccount[], min: number, max: number): ISummonerAccount[] {
+    Array.prototype.filterUniquePlayers = function (this: ISummonerAccount[], min: number, max: number): ISummonerAccount[] {
         const unique = [...new Map(this.map(item => [item.playerName, item])).values()];
         return unique.slice(min, max);
+    }
+}
+if (!Array.prototype.filterRandomize) {
+    Array.prototype.filterRandomize = function (this: ISummonerAccount[]): ISummonerAccount[] {
+        return this.sort(() => 0.5 - random.float())
     }
 }
 
@@ -364,9 +421,10 @@ export function randomKDA(): string {
     return `${randomNumber(0, 10)}/${randomNumber(0, 10)}/${randomNumber(0, 10)}`;
 }
 
-export function randomEnum<T>(useEnum: T): T[keyof T] {
+export function randomEnum<T>(useEnum: T, filter: EChampions[]): T[keyof T] {
     const enumValues = Object.keys(useEnum)
         .map(n => Number.parseInt(n))
+        // .filter(n => (filter.length >= 1) ? filter.includes(n) : false)
         .filter(n => !Number.isNaN(n)) as unknown as T[keyof T][]
     const randomIndex = Math.floor(Math.random() * enumValues.length)
     const randomEnumValue = enumValues[randomIndex]
@@ -379,14 +437,24 @@ export function randomActive(): boolean {
     return (notRandomNumbers[idx] != 4);
 }
 
-export async function randomBackground(): Promise<IAppBackground> {
-    const randomOrChamp = false;
-    // const randomOrChamp = randomNumber(0, 1) == 1;
-    const bgs = await readDir(`assets/dragontail-12.13.1/${randomOrChamp ? 'splash' : 'random'}/`, { dir: BaseDirectory.Resource, recursive: true });
-    const entry = bgs.at(randomNumber(0, bgs.length - 1))?.name;
+export async function randomBackground(override?: IAppBackground): Promise<IAppBackground> {
+    // const randomOrChamp = false;
+    let randomOrSplash = random.boolean();
+    const bgs = await readDir(`assets/dragontail/${randomOrSplash ? 'random' : 'splash'}/`, { dir: BaseDirectory.Resource, recursive: true });
+    let entry = bgs.at(randomNumber(0, bgs.length - 1))?.name;
+    const ifLive = await checkLiveBackground(entry!);
 
-    const primaryBG = (randomOrChamp) ? `splash/${entry}` : `random/${entry}`;
-    const secondaryBG = (randomOrChamp) ? `centered/${entry}` : `random/${entry}`;
+    let primaryType = randomOrSplash ? "random" : (ifLive ? "live" : "splash");
+    let primaryName = entry!;
+    let secondaryType = randomOrSplash ? "random" : "centered";
+    let secondaryName = entry!;
 
-    return { type: (randomOrChamp) ? 'splash' : 'random', primary: `assets/dragontail-12.13.1/${primaryBG}`, secondary: `assets/dragontail-12.13.1/${secondaryBG}` }
+    return {
+        primary: {
+            type: override != null ? override.primary.type : primaryType,
+            name: override != null ? override.primary.name : primaryName },
+        secondary: {
+            type: override != null ? override.secondary.type : secondaryType,
+            name: override != null ? override.secondary.name : secondaryName }
+    }  as IAppBackground;
 }

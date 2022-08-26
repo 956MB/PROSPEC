@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { StringIfPlural } from "react-i18next";
 
 export const useInit = (callBack = () => {}) => {
     const [hasBeenCalled, setHasBeenCalled] = useState(false);
@@ -31,12 +32,14 @@ export interface ISettingsStates {
     showRandomSkins: boolean;
     useCutouts: boolean;
     showTeamLogos: boolean;
+    showUnavailable: boolean;
     appTheme: number;
     appScale: number;
     openOnStartup: boolean;
     minimizeToTray: boolean;
     hardwareAcceleration: boolean;
     randomAppBackground: boolean;
+    liveBackground: boolean;
     keyboardMode: boolean;
     notifications: boolean;
     appLanguage: number;
@@ -45,9 +48,13 @@ export interface ISettingsStates {
 // NOTE: Objects
 
 export interface IAppBackground {
+    primary: IBackground;
+    secondary: IBackground;
+}
+
+export interface IBackground {
     type: string;
-    primary: string;
-    secondary: string;
+    name: string;
 }
 
 export interface IPlayers extends Array<IPlayer>{}
@@ -61,8 +68,14 @@ export interface IPlayer {
 
 export interface IPlayerGroups extends Array<IPlayerGroup>{}
 export interface IPlayerGroup {
-    key: string;
+    key: any;
     players: IPlayers;
+}
+
+export interface IPlayerGroupInfo {
+    type: string;
+    image: string;
+    text: string;
 }
   
 export interface ISelectedChamps {

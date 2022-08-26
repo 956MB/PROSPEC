@@ -148,7 +148,7 @@ const OptionsSectionChamp: React.FC<{
                 let bS = getChampionFromId(b)?.name!;
                 return aS.localeCompare(bS)
             })
-            .map((champ, i) => (`dragontail-12.13.1/tiles/${getChampionFromId(champ)?.name}_0.jpg`));
+            .map((champ, i) => (`dragontail/tiles/${getChampionFromId(champ)?.name}_0.jpg`));
 
         useButtons = React.Children.toArray(
             <OptionsButtonChamp

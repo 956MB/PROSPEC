@@ -14,10 +14,10 @@ body {
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
     background: rgba(60, 60, 60, 0.30);
-    /* backdrop-filter: blur(5px); */
-}
+    backdrop-filter: blur(5px);
+} */
 .pros-container  ::-webkit-scrollbar-track {
     margin-top: 47px;
 }
@@ -179,70 +179,34 @@ img {
 }
 
 @keyframes fadeInLeft {
-    50% {
-        right: 105%;
-    }
-    75% {
-        right: 110%;
-    }
-    100% {
-        right: 115%;
-    }
+    50% { right: 105%; }
+    75% { right: 110%; }
+    100% { right: 115%; }
 }
 @keyframes fadeInRight {
-    50% {
-        left: 105%;
-    }
-    75% {
-        left: 110%;
-    }
-    100% {
-        left: 115%;
-    }
+    50% { left: 105%; }
+    75% { left: 110%; }
+    100% { left: 115%; }
 }
 @keyframes fadeInRightClose {
-    50% {
-        left: 90%;
-    }
-    75% {
-        left: 95%;
-    }
-    100% {
-        left: 100%;
-    }
+    50% { left: 90%; }
+    75% { left: 95%; }
+    100% { left: 100%; }
 }
 @keyframes fadeInRightFar {
-    50% {
-        left: 112%;
-    }
-    75% {
-        left: 124%;
-    }
-    100% {
-        left: 131%;
-    }
+    50% { left: 112%; }
+    75% { left: 124%; }
+    100% { left: 131%; }
 }
 @keyframes fadeInTop {
-    50% {
-        bottom: 110%;
-    }
-    75% {
-        bottom: 120%;
-    }
-    100% {
-        bottom: 125%;
-    }
+    50% { bottom: 110%; }
+    75% { bottom: 120%; }
+    100% { bottom: 125%; }
 }
 @keyframes fadeInBottom {
-    50% {
-        top: 110%;
-    }
-    75% {
-        top: 120%;
-    }
-    100% {
-        top: 125%;
-    }
+    50% { top: 110%; }
+    75% { top: 120%; }
+    100% { top: 125%; }
 }
 
 .tooltip:hover .tooltip-text {
@@ -265,6 +229,9 @@ img {
     min-width: 1040px;
     width: 100vw;
     height: 100vh;
+    /* border: 1px solid rgb(47, 255, 99) !important; */
+    /* box-sizing: border-box; */
+    /* border: 2px solid rgb(47, 255, 99); */
 }
 
 .app-background {
@@ -272,11 +239,13 @@ img {
     position: absolute;
     left: 0;
     top: 0;
-    min-height: 100vh;
-    min-width: 100vw;
-    width: 100vw;
-    height: 100vh;
-    filter: opacity(0.30) saturate(0);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* min-height: 100vh;
+    min-width: 100vw; */
+    width: 100%;
+    height: 100%;
+    filter: grayscale(1);
     pointer-events: none;
     z-index: 0;
 }
@@ -290,7 +259,7 @@ img {
     min-width: 100vw;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(25, 25, 25, 0.95);
+    background-color: rgba(25, 25, 25, 0.935);
     z-index: 1;
 }
 
@@ -312,4 +281,14 @@ img {
     bottom: 0;
     left: 0;
     z-index: 1;
+}
+
+.app-background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    filter: grayscale(1);
+    background-size: cover;
 }

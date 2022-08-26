@@ -11,7 +11,7 @@ const SettingsItem: React.FC<{
     itemProps: ISettingsItem,
 }> = ({ itemProps }) => {
     const { t } = useTranslation('common');
-    const [noDescription, setNoDescription] = useState(itemProps.description === '');
+    const [noDescription, setNoDescription] = useState(itemProps.description === '' || itemProps.description === undefined);
     const [parentEanbled, setParentEnabled] = useState(itemProps.itemValue.value);
 
     const fToggleParent = (set: boolean) => { setParentEnabled(set); }
@@ -24,13 +24,16 @@ const SettingsItem: React.FC<{
                     <span className={`item-description ${noDescription ? 'description-hidden' : null} noselect`}>{itemProps.description ? t(itemProps.description) : ''}</span>
                 </div>
 
-                {itemProps.itemValue.type === 'boolean'
-                    ? <SettingsItemBool
-                        itemPropsBool={itemProps.itemValue as ISettingsItemValueBool}
-                        fToggleParent={fToggleParent} /> : null}
-                {itemProps.itemValue.type === 'selector'
-                    ? <SettingsItemSelector
-                        itemProps={itemProps.itemValue as ISettingsItemValueSelector} /> : null}
+                <div className="item-value-container">
+                    {itemProps.itemValue.type === 'boolean'
+                        ? <SettingsItemBool
+                            itemPropsBool={itemProps.itemValue as ISettingsItemValueBool}
+                            fToggleParent={fToggleParent} /> : null}
+                    {itemProps.itemValue.type === 'selector'
+                        ? <SettingsItemSelector
+                            itemProps={itemProps.itemValue as ISettingsItemValueSelector} /> : null}
+                </div>
+                    
             </div>
 
             {React.Children.toArray(
@@ -41,13 +44,15 @@ const SettingsItem: React.FC<{
                             <span className={`item-description ${child.description === '' ? 'description-hidden' : null} noselect`}>{child.description ? t(child.description) : ''}</span>
                         </div>
 
-                        {child.itemValue.type === 'boolean'
-                            ? <SettingsItemBool
-                                itemPropsBool={child.itemValue as ISettingsItemValueBool}
-                                fToggleParent={unull()} /> : null}
-                        {child.itemValue.type === 'selector'
-                            ? <SettingsItemSelector
-                                itemProps={child.itemValue as ISettingsItemValueSelector} /> : null}
+                        <div className="item-value-container">
+                            {child.itemValue.type === 'boolean'
+                                ? <SettingsItemBool
+                                    itemPropsBool={child.itemValue as ISettingsItemValueBool}
+                                    fToggleParent={unull()} /> : null}
+                            {child.itemValue.type === 'selector'
+                                ? <SettingsItemSelector
+                                    itemProps={child.itemValue as ISettingsItemValueSelector} /> : null}
+                        </div>
                     </div>
                 ))
             )}
@@ -113,14 +118,8 @@ const SettingsItemBool: React.FC<{
     });
 
     return (
-        <div className={`item-value-bool ${boolValue ? 'bool-true' : null}`}>
-            <div className={`bool-half`} onClick={() => fBoolValue(false)}>
-                <div className={`circle ${boolValue ? 'offUnselected' : 'offSelected'}`}></div>
-            </div>
-            <div className={`bool-half`} onClick={() => fBoolValue(true)}>
-                <div className={`bar ${boolValue ? 'onSelected' : 'onUnselected'}`}></div>
-            </div>
-            <div className={`half-selected`}></div>
+        <div className={`item-value-bool ${boolValue ? 'bool-true' : null}`} onClick={() => fBoolValue(!boolValue)}>
+            <div className={`bool-circle`}></div>
         </div>
     )
 }
@@ -134,7 +133,7 @@ const SettingsItemSelector: React.FC<{
     return (
         <div className={`item-value-selector`}>
             <span className='value-text'>{t(itemProps.options[itemProps.value].text)}</span>
-            <img src={`src/assets/icons/chevron.right.svg`} alt="" className='value-right' />
+            <img src={`src/assets/icons/chevron.down.svg`} alt="" className='value-right' />
         </div>
     )
 }

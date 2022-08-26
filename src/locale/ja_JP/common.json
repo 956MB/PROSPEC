@@ -69,6 +69,10 @@
 						"description": "アプリの背景をチャンピオン プールからランダムに選択するか、特定のデフォルトに設定します。",
 						"title": "ランダムなアプリの背景"
 					},
+                    "liveBackground": {
+						"description": "デフォルトの画像ではなく、スプラッシュアートのアニメーションバージョンを使用します。（もし可能なら）",
+						"title": "ライブバックグラウンド"
+					},
 					"system": {
 						"title": "システム"
 					},
@@ -111,6 +115,10 @@
 					"useCutouts": {
 						"description": "スプラッシュ アートをロードする代わりに、透明なチャンピオン カットアウトを使用します",
 						"title": "カットアウトを使用する"
+					},
+                    "showUnavailable": {
+						"description": "現在、観察することができないプレーヤーカードを表示します。（Spectator APIのエラー、またはプレイヤーが現在プレイしていない。）",
+						"title": "表示されていないことを示します"
 					}
 				},
 				"title": "コンテンツ"
@@ -126,7 +134,7 @@
 		"searchPlaceholder": "サーチ"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} はゲームに参加していないか、観戦できません。"
+		"playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません。"
 	},
     "menus": {
         "spectate": "監視されています",

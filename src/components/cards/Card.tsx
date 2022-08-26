@@ -62,10 +62,10 @@ const Card: React.FC<{
 
     const cardRef = useDetectClickOutside({ onTriggered: toggleMenuClosed });
     const champStyles = {
-        backgroundImage: `url(src/assets/dragontail-12.13.1/champion/${champ}.png)`,
+        backgroundImage: `url(src/assets/dragontail/champion/${champ}.png)`,
         boxShadow: `0 0 100px 10px rgba(${!glow ? '255, 255, 255' : glow}, 0.20)`,
         opacity: `${(!playerProps.active && state.cardPressed) ? '0.5' : '1.0'}`,
-        border: `1px solid rgb(${!glow ? '255, 255, 255' : glow}, 0.09)`,
+        // border: `1px solid rgb(${!glow ? '255, 255, 255' : glow}, 0.09)`,
     };
 
     return (
@@ -90,9 +90,10 @@ const Card: React.FC<{
                 </div>
                 <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
                 <div className={`card-champ noselect`} style={champStyles}></div>
+                <span className='game-timer-text'>{`${secondsToTime(state.gameTime + globalTime)}`}</span>
                 <img src={dragIcon} alt="drag" className='card-drag noselect' />
                 {/* <div className='blur-small'></div> */}
-                <div className={state.backgroundDir === "loading" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail-12.13.1/${state.backgroundDir}/${champ}${state.backgroundDir === "loading" ? '_0.webp' : '.png'})` }}></div>
+                <div className={state.backgroundDir === "loading" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail/${state.backgroundDir}/${champ}${state.backgroundDir === "loading" ? '_0.jpg' : '.png'})` }}></div>
 
                 <div className='card-content'>
                     <div className='text-container'>
@@ -101,7 +102,6 @@ const Card: React.FC<{
                         </span>
                         <div className='text-sub-container'>
                             <span className='text-sub noselect'>{`${getTeamFromNumber(playerProps.summoner.team, false)}`}</span>
-                            <span className='game-timer-text'>{`${secondsToTime(state.gameTime + globalTime)}`}</span>
                         </div>
                     </div>
                 </div>
