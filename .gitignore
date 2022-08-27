@@ -136,11 +136,8 @@ src-tauri/target/*
 /src-tauri/bats/*.bat
 /src-tauri/data/flakked.txt
 /src-tauri/data/karis.txt
-/src/imports/loadingImages.tsx
-/src-tauri/imports/loadingImages.tsx
 /src/data/flakked.txt
 /src/data/karis.txt
 /src/data/test.txt
 /src/locale/prospec.babel
-/src/context/SettingsStore.tsx
 *.psd
