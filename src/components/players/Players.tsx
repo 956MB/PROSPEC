@@ -13,9 +13,9 @@ const TEAMS_SORT = mapEnum(ETeams, "number", (team: number) => { return team.toS
 const Players: React.FC<{
     players: IPlayers,
 }> = ({ players }) => {
-    const [intervalActive, setIntervalActive] = useState(false);
-    const [gameInterval, setGameInterval] = useState(0);
-    const [menuOpen, setMenuOpen] = useState(-1);
+    const [intervalActive, setIntervalActive] = useState<boolean>(false);
+    const [gameInterval, setGameInterval] = useState<number>(0);
+    const [menuOpen, setMenuOpen] = useState<number>(-1);
 
     const [groupedPlayers, setGroupedPlayers] = useState<IPlayerGroups>([]);
     const { groupBy } = useContext(SpectatorContext);

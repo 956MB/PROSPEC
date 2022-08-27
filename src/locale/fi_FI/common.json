@@ -43,7 +43,7 @@
 					"dark": {
 						"title": "Tumma"
 					},
-					"favortieNotifications": {
+					"notifications": {
 						"description": "Suosikki ammattilaiset saavat ilmoituksia, kun he alkavat peliä (automaattinen päivitys päällä).",
 						"title": "Suosikkiilmoitukset"
 					},
@@ -65,18 +65,22 @@
 					"openOnStartup": {
 						"title": "Avaa käynnistyksen yhteydessä"
 					},
-					"randomAppBackground": {
+					"useBackground": {
+						"description": "Valitse, näyttääkö ProSpec taustakuvia, kuten Splash Art.",
+						"title": "Käytä taustoja"
+					},
+					"randomBackground": {
 						"description": "Valitse APP -tausta, joka valitaan satunnaisesti Champion Poolista tai aseta se tiettyyn oletusarvoon.",
-						"title": "Satunnainen sovellustausta"
+						"title": "Satunnainen tausta"
 					},
                     "liveBackground": {
 						"description": "Käyttää roisketaiteen animaatiota oletuskuvan sijasta.(Jos mahdollista)",
-						"title": "Live -tausta"
+						"title": "Live -taustat"
 					},
 					"system": {
 						"title": "Järjestelmä"
 					},
-					"theme": {
+					"appTheme": {
 						"title": "Teema"
 					}
 				},

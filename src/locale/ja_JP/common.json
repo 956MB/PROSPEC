@@ -43,7 +43,7 @@
 					"dark": {
 						"title": "ダーク"
 					},
-					"favortieNotifications": {
+					"notifications": {
 						"description": "お気に入りのプロは、ゲームを開始すると通知を受け取ります (自動更新オン)。",
 						"title": "お気に入りの通知"
 					},
@@ -65,9 +65,13 @@
 					"openOnStartup": {
 						"title": "起動時に開く"
 					},
-					"randomAppBackground": {
-						"description": "アプリの背景をチャンピオン プールからランダムに選択するか、特定のデフォルトに設定します。",
-						"title": "ランダムなアプリの背景"
+					"useBackground": {
+						"description": "ProSpecがSplash Artのような背景画像を表示するかどうかを選択します。",
+						"title": "背景を使用します"
+					},
+					"randomBackground": {
+						"description": "チャンピオンプールからランダムに選択されるアプリの背景を選択するか、特定のデフォルトに設定します。",
+						"title": "ランダムな背景"
 					},
                     "liveBackground": {
 						"description": "デフォルトの画像ではなく、スプラッシュアートのアニメーションバージョンを使用します。（もし可能なら）",
@@ -76,7 +80,7 @@
 					"system": {
 						"title": "システム"
 					},
-					"theme": {
+					"appTheme": {
 						"title": "テーマ"
 					}
 				},

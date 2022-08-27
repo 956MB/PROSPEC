@@ -38,6 +38,30 @@ export enum ERoles {
     SUPPORT = 'support'
 }
 
+export enum ELanguages {
+    en_EN = 'en_EN',
+    ar_AE = 'ar_AE',
+    de_DE = 'de_DE',
+    he_HE = 'he_HE',
+    fr_FR = 'fr_FR',
+    it_IT = 'it_IT',
+    nl_NL = 'nl_NL',
+    sv_SV = 'sv_SV',
+    fi_FI = 'fi_FI',
+    hi_HI = 'hi_HI',
+    pt_PT = 'pt_PT',
+    pl_PL = 'pl_PL',
+    ru_RU = 'ru_RU',
+    tr_TR = 'tr_TR',
+    cs_CS = 'cs_CS',
+    el_EL = 'el_EL',
+    kr_KR = 'kr_KR',
+    ja_JP = 'ja_JP',
+    vi_VI = 'vi_VI',
+    zh_CN = 'zh_CN',
+    zh_TW = 'zh_TW'
+}
+
 export enum EButtonImages {
     NULL = 'image-null',
     NONE = 'image-none',
@@ -93,7 +117,8 @@ export enum ESettingsStates {
     OPEN_ON_STARTUP = 'openOnStartup',
     MINIMIZE_TO_TRAY = 'minimizeToTray',
     HARDWARE_ACCELERATION = 'hardwareAcceleration',
-    RANDOM_APP_BACKGROUND = 'randomAppBackground',
+    USE_BACKGROUND = 'useBackground',
+    RANDOM_BACKGROUND = 'randomBackground',
     LIVE_BACKGROUND = 'liveBackground',
     KEYBOARD_MODE = 'keyboardMode',
     NOTIFICATIONS = 'notifications',

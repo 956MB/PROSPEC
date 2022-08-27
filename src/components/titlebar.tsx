@@ -65,7 +65,7 @@ const Titlebar: React.FC<{
         ]
     });
 
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState<string>("");
     const fInputChange = (e: any) => {
         const { value } = e.target;
         setInputValue(value);

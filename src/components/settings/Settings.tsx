@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useTranslation } from "react-i18next";
 import '../css/settings.css';
 
-import { EEMessages, ETooltip, ESettingsStates } from '../../typings';
+import { EEMessages, ETooltip, ESettingsStates, ELanguages } from '../../typings';
 import { ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPages, ISettingsPageLanguage, IAppBackground, useInit } from '../../interfaces';
 import { sTitle, sItemTitle, sItemDescription } from '../../utils';
 
@@ -21,95 +21,98 @@ const Settings: React.FC<{
         {
             index: 0, type: 'list', title: sTitle('content'), items: [
                 {
-                    title: sItemTitle('content', 'listLayout'), itemValue: {
-                        type: 'selector', value: 0, options: [
-                            { text: sItemTitle('content', 'card') }, { index: 1, text: sItemTitle('content', 'list') }
+                    title: sItemTitle('content', ESettingsStates.LIST_LAYOUT), itemValue: {
+                        type: 'selector', key: ESettingsStates.LIST_LAYOUT, value: 0, options: [
+                            { index: 0, text: sItemTitle('content', 'card') },
+                            { index: 1, text: sItemTitle('content', 'list') }
                         ]
                     } as ISettingsItemValueSelector
                 }
                 ,
                 {
-                    title: sItemTitle('content', 'autoRefresh'), itemValue: { type: 'boolean', value: false, key: ESettingsStates.AUTO_REFRESH } as ISettingsItemValueBool, childValues: [
+                    title: sItemTitle('content', ESettingsStates.AUTO_REFRESH), itemValue: { type: 'boolean', value: false, key: ESettingsStates.AUTO_REFRESH } as ISettingsItemValueBool, childValues: [
                         // { title: sItemTitle('content', 'refreshInterval'), description: sItemDescription('content', 'refreshInterval'), itemValue: { type: 'boolean', value: false } as ISettingsItemValueBool}
                     ]
                 }
                 ,
                 { itemValue: { type: "spacer", value: false } }
                 ,
-                { title: sItemTitle('content', 'showSummonerIds'), description: sItemDescription('content', 'showSummonerIds'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.SHOW_SUMMONER_IDS } as ISettingsItemValueBool }
+                { title: sItemTitle('content', ESettingsStates.SHOW_SUMMONER_IDS), description: sItemDescription('content', ESettingsStates.SHOW_SUMMONER_IDS), itemValue: { type: 'boolean', value: true, key: ESettingsStates.SHOW_SUMMONER_IDS } as ISettingsItemValueBool }
                 ,
                 {
-                    title: sItemTitle('content', 'showRandomSkins'), description: sItemDescription('content', 'showRandomSkins'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.SHOW_RANDOM_SKINS } as ISettingsItemValueBool, childValues: [
-                        { title: sItemTitle('content', 'useCutouts'), description: sItemDescription('content', 'useCutouts'), itemValue: { type: 'boolean', value: false, key: ESettingsStates.USE_CUTOUTS } as ISettingsItemValueBool }
+                    title: sItemTitle('content', ESettingsStates.SHOW_RANDOM_SKINS), description: sItemDescription('content', ESettingsStates.SHOW_RANDOM_SKINS), itemValue: { type: 'boolean', value: true, key: ESettingsStates.SHOW_RANDOM_SKINS } as ISettingsItemValueBool, childValues: [
+                        { title: sItemTitle('content', ESettingsStates.USE_CUTOUTS), description: sItemDescription('content', ESettingsStates.USE_CUTOUTS), itemValue: { type: 'boolean', value: false, key: ESettingsStates.USE_CUTOUTS } as ISettingsItemValueBool }
                     ]
                 }
                 ,
-                { title: sItemTitle('content', 'showTeamLogos'), description: sItemDescription('content', 'showTeamLogos'), itemValue: { type: 'boolean', value: false, key: ESettingsStates.SHOW_TEAM_LOGOS } as ISettingsItemValueBool }
+                { title: sItemTitle('content', ESettingsStates.SHOW_TEAM_LOGOS), description: sItemDescription('content', ESettingsStates.SHOW_TEAM_LOGOS), itemValue: { type: 'boolean', value: false, key: ESettingsStates.SHOW_TEAM_LOGOS } as ISettingsItemValueBool }
                 ,
-                { title: sItemTitle('content', 'showUnavailable'), description: sItemDescription('content', 'showUnavailable'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.SHOW_UNAVAILABLE } as ISettingsItemValueBool }
+                { title: sItemTitle('content', ESettingsStates.SHOW_UNAVAILABLE), description: sItemDescription('content', ESettingsStates.SHOW_UNAVAILABLE), itemValue: { type: 'boolean', value: true, key: ESettingsStates.SHOW_UNAVAILABLE } as ISettingsItemValueBool }
             ]
         }
         ,
         {
             index: 1, type: 'list', title: sTitle('application'), items: [
                 {
-                    title: sItemTitle('application', 'theme'), itemValue: {
-                        type: 'selector', value: 0, options: [
+                    title: sItemTitle('application', ESettingsStates.APP_THEME), itemValue: {
+                        type: 'selector', key: ESettingsStates.APP_THEME, value: 0, options: [
                             { index: 0, text: sItemTitle('application', 'dark') }, { index: 1, text: sItemTitle('application', 'light') }, { index: 2, text: sItemTitle('application', 'system') }
                         ]
                     } as ISettingsItemValueSelector
                 }
                 ,
                 {
-                    title: sItemTitle('application', 'appScale'), itemValue: {
-                        type: 'selector', value: 0, options: [
+                    title: sItemTitle('application', ESettingsStates.APP_SCALE), itemValue: {
+                        type: 'selector', key: ESettingsStates.APP_SCALE, value: 0, options: [
                             { index: 0, text: '100%' }, { index: 1, text: '90%' }, { index: 2, text: '75%' }, { index: 2, text: '50%' }
                         ]
                     } as ISettingsItemValueSelector
                 }
                 ,
-                { title: sItemTitle('application', 'openOnStartup'), itemValue: { type: 'boolean', value: false, key: ESettingsStates.OPEN_ON_STARTUP } as ISettingsItemValueBool }
+                { title: sItemTitle('application', ESettingsStates.OPEN_ON_STARTUP), itemValue: { type: 'boolean', value: false, key: ESettingsStates.OPEN_ON_STARTUP } as ISettingsItemValueBool }
                 ,
-                { title: sItemTitle('application', 'minimizeToTray'), description: sItemDescription('application', 'minimizeToTray'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.MINIMIZE_TO_TRAY } as ISettingsItemValueBool }
+                { title: sItemTitle('application', ESettingsStates.MINIMIZE_TO_TRAY), description: sItemDescription('application', ESettingsStates.MINIMIZE_TO_TRAY), itemValue: { type: 'boolean', value: true, key: ESettingsStates.MINIMIZE_TO_TRAY } as ISettingsItemValueBool }
                 ,
-                { title: sItemTitle('application', 'hardwareAcceleration'), description: sItemDescription('application', 'hardwareAcceleration'), itemValue: { type: 'boolean', value: false, key: ESettingsStates.HARDWARE_ACCELERATION } as ISettingsItemValueBool }
+                { title: sItemTitle('application', ESettingsStates.HARDWARE_ACCELERATION), description: sItemDescription('application', ESettingsStates.HARDWARE_ACCELERATION), itemValue: { type: 'boolean', value: false, key: ESettingsStates.HARDWARE_ACCELERATION } as ISettingsItemValueBool }
                 ,
                 { itemValue: { type: "spacer", value: false } }
                 ,
                 {
-                    title: sItemTitle('application', 'randomAppBackground'), description: sItemDescription('application', 'randomAppBackground'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.RANDOM_APP_BACKGROUND } as ISettingsItemValueBool, childValues: [
-                        { title: sItemTitle('application', 'liveBackground'), description: sItemDescription('application', 'liveBackground'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.LIVE_BACKGROUND } as ISettingsItemValueBool }
+                    title: sItemTitle('application', ESettingsStates.USE_BACKGROUND), description: sItemDescription('application', ESettingsStates.USE_BACKGROUND), itemValue: { type: 'boolean', value: false, key: ESettingsStates.USE_BACKGROUND } as ISettingsItemValueBool, childValues: [
+                        { title: sItemTitle('application', ESettingsStates.RANDOM_BACKGROUND), description: sItemDescription('application', ESettingsStates.RANDOM_BACKGROUND), itemValue: { type: 'boolean', value: true, key: ESettingsStates.RANDOM_BACKGROUND } as ISettingsItemValueBool },
+                        { title: sItemTitle('application', ESettingsStates.LIVE_BACKGROUND), description: sItemDescription('application', ESettingsStates.LIVE_BACKGROUND), itemValue: { type: 'boolean', value: false, key: ESettingsStates.LIVE_BACKGROUND } as ISettingsItemValueBool }
                     ]
                 }
                 ,
-                { title: sItemTitle('application', 'keyboardMode'), description: sItemDescription('application', 'keyboardMode'), itemValue: { type: 'boolean', value: false, key: ESettingsStates.KEYBOARD_MODE } as ISettingsItemValueBool }
+                { title: sItemTitle('application', ESettingsStates.KEYBOARD_MODE), description: sItemDescription('application', ESettingsStates.KEYBOARD_MODE), itemValue: { type: 'boolean', value: false, key: ESettingsStates.KEYBOARD_MODE } as ISettingsItemValueBool }
                 ,
-                { title: sItemTitle('application', 'favortieNotifications'), description: sItemDescription('application', 'favortieNotifications'), itemValue: { type: 'boolean', value: true, key: ESettingsStates.NOTIFICATIONS } as ISettingsItemValueBool }
+                { title: sItemTitle('application', ESettingsStates.NOTIFICATIONS), description: sItemDescription('application', ESettingsStates.NOTIFICATIONS), itemValue: { type: 'boolean', value: true, key: ESettingsStates.NOTIFICATIONS } as ISettingsItemValueBool }
             ]
         }
         ,
         {
             index: 2, type: 'lang', title: sTitle('language'), selected: 0, items: [
-                { itemValue: { type: 'lang', value: 0, text: 'English', lang: 'en_EN' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 1, text: 'العربية', lang: 'ar_AE' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 1, text: 'Deutsch', lang: 'de_DE' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 2, text: 'Français', lang: 'fr_FR' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 3, text: 'Italiano', lang: 'it_IT' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 4, text: 'Nederlands', lang: 'nl_NL' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 5, text: 'Svenska', lang: 'sv_SV' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 6, text: 'Suomi', lang: 'fi_FI' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 6, text: 'हिन्दी', lang: 'hi_HI' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 7, text: 'Português', lang: 'pt_PT' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 8, text: 'Polski', lang: 'pl_PL' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 9, text: 'Русский', lang: 'ru_RU' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 10, text: 'Türkçe', lang: 'tr_TR' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 11, text: 'Čeština', lang: 'cs_CS' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 12, text: 'Ελληνικά', lang: 'el_EL' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 13, text: '한국어', lang: 'kr_KR' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 14, text: '日本語', lang: 'ja_JP' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 15, text: 'Tiếng Việt', lang: 'vi_VI' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 16, text: '简体中文', lang: 'zh_CN' } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 17, text: '繁體中文', lang: 'zh_TW' } as ISettingsItemValueLanguage }
+                { itemValue: { type: 'lang', value: 0, text: 'English', lang: ELanguages.en_EN } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 1, text: 'العربية', lang: ELanguages.ar_AE } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 2, text: 'Deutsch', lang: ELanguages.de_DE } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 3, text: 'עִברִית', lang: ELanguages.he_HE } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 4, text: 'Français', lang: ELanguages.fr_FR } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 5, text: 'Italiano', lang: ELanguages.it_IT } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 6, text: 'Nederlands', lang: ELanguages.nl_NL } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 7, text: 'Svenska', lang: ELanguages.sv_SV } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 8, text: 'Suomi', lang: ELanguages.fi_FI } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 9, text: 'हिन्दी', lang: ELanguages.hi_HI } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 10, text: 'Português', lang: ELanguages.pt_PT } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 11, text: 'Polski', lang: ELanguages.pl_PL } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 12, text: 'Русский', lang: ELanguages.ru_RU } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 13, text: 'Türkçe', lang: ELanguages.tr_TR } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 14, text: 'Čeština', lang: ELanguages.cs_CS } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 15, text: 'Ελληνικά', lang: ELanguages.el_EL } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 16, text: '한국어', lang: ELanguages.kr_KR } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 17, text: '日本語', lang: ELanguages.ja_JP } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 18, text: 'Tiếng Việt', lang: ELanguages.vi_VI } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 19, text: '简体中文', lang: ELanguages.zh_CN } as ISettingsItemValueLanguage },
+                { itemValue: { type: 'lang', value: 20, text: '繁體中文', lang: ELanguages.zh_TW } as ISettingsItemValueLanguage }
             ]
         } as ISettingsPageLanguage
         ,
@@ -134,7 +137,7 @@ const SettingsInner: React.FC<{
     FSettingsOpen: (set: boolean) => void
 }> = ({ pagesProps, settingsOpen, settingsBackground, FSettingsOpen }) => {
     const { t } = useTranslation('common');
-    const [pageActive, setPageActive] = useState(0);
+    const [pageActive, setPageActive] = useState<number>(0);
 
     const isActive = (page: number): boolean => {
         return pageActive == page;

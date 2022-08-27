@@ -1,0 +1,151 @@
+{
+	"modes": {
+		"ARAM": "ARAM",
+		"URF": "URF",
+		"all": "את כל",
+		"normalBlind": "עיוור רגיל",
+		"normalDraft": "טיוטה רגילה",
+		"rankedFlex": "גמיש מדורג",
+		"rankedSoloDuo": "סולו/צמד מדורגים"
+	},
+	"regions": {
+		"br": "BR",
+		"eun": "EUN",
+		"euw": "EUW",
+		"jp": "JP",
+		"kr": "KR",
+		"na": "NA",
+		"oce": "OCE",
+		"ru": "RU",
+		"world": "עולם"
+	},
+	"roles": {
+		"any": "כל",
+		"bottom": "תחתון",
+		"jungle": "ג'ונגל",
+		"middle": "אמצע",
+		"support": "תמיכה",
+		"top": "חלק עליון"
+	},
+	"settings": {
+		"pages": {
+			"about": {
+				"title": "על אודות"
+			},
+			"application": {
+				"items": {
+					"Accent": {
+						"title": "מבטא"
+					},
+					"appScale": {
+						"title": "סולם אפליקציות"
+					},
+					"dark": {
+						"title": "אפל"
+					},
+					"notifications": {
+						"description": "המקצוענים המועדפים מקבלים התראות כשהם מתחילים משחק (רענון אוטומטי).",
+						"title": "התראות מועדפות"
+					},
+					"hardwareAcceleration": {
+						"description": "האצת חומרה משתמשת ב- GPU כדי לגרום ל- ProSpec לרוץ בצורה חלקה יותר.",
+						"title": "האצת חומרה"
+					},
+					"keyboardMode": {
+						"description": "מאפשר ניווט באפליקציות באמצעות המקלדת.",
+						"title": "מצב מקלדת"
+					},
+					"light": {
+						"title": "אור"
+					},
+					"minimizeToTray": {
+						"description": "כפתור סגור צריך למזער, לא לצאת.",
+						"title": "צמצם למגש"
+					},
+					"openOnStartup": {
+						"title": "פתח בהפעלה"
+					},
+					"useBackground": {
+						"description": "בחר אם ProSpec מציג תמונות רקע כמו Splash Art.",
+						"title": "השתמש ברקעים"
+					},
+					"randomBackground": {
+						"description": "בחר את רקע האפליקציה שנבחר באופן אקראי מבריכת Champion, או הגדר אותה לברירת מחדל ספציפית.",
+						"title": "רקע אקראי"
+					},
+                    "liveBackground": {
+						"description": "ישתמש בגרסת האנימציה של אמנות ספלאש, במקום בתמונת ברירת המחדל.(אם אפשר)",
+						"title": "רקע חי"
+					},
+					"system": {
+						"title": "מערכת"
+					},
+					"appTheme": {
+						"title": "נושא"
+					}
+				},
+				"title": "יישום"
+			},
+			"content": {
+				"items": {
+					"autoRefresh": {
+						"title": "רענון אוטומטי"
+					},
+					"card": {
+						"title": "כרטיס"
+					},
+					"list": {
+						"title": "רשימה"
+					},
+					"listLayout": {
+						"title": "פריסת רשימה"
+					},
+					"refreshInterval": {
+						"description": "כמה שניות/דקה כדי לרענן את רשימת המקצוענים. 3M+ מומלץ בגלל מגבלות קצב API של LOL.",
+						"title": "מרווח רענון"
+					},
+					"showRandomSkins": {
+						"description": "מציג רקע עור אקראי במקום אמנות עור ברירת מחדל.",
+						"title": "הצג עורות אקראיים"
+					},
+					"showSummonerIds": {
+						"description": "מציג מזהה זימון נגן (הסתר על בוש), במקום GamerTag (Faker).",
+						"title": "הצג מזהי זימון"
+					},
+					"showTeamLogos": {
+						"description": "מציג לוגו צוות במקום האלוף הנוכחי בכרטיס.",
+						"title": "הצג לוגו של צוות"
+					},
+					"useCutouts": {
+						"description": "משתמש בגזרות אלופות שקופות במקום להעמיס אמנות התזה",
+						"title": "השתמש בגזרות"
+					},
+                    "showUnavailable": {
+						"description": "מציג כרטיסי נגן שאינם זמינים כרגע לצפייה. (שגיאה ב- API של Spectator או Player אינה משחקת כרגע.)",
+						"title": "הראה לא זמין"
+					}
+				},
+				"title": "תוכן"
+			},
+			"language": {
+				"title": "שפה"
+			}
+		},
+		"title": "הגדרות"
+	},
+	"titlebar": {
+		"lastRefresh": "רענון אחרון: {{time}}",
+		"searchPlaceholder": "לחפש"
+	},
+	"tooltips": {
+		"playerUnavailable": "{{player}} או לא במשחק, או שהצופה אינו זמין."
+	},
+    "menus": {
+        "spectate": "צפייה",
+        "livegame": "משחק חי",
+        "twitch": "Twitch",
+        "afreeca": "afreeca",
+        "favorite": "אהוב",
+        "unfavorite": "לא טוב"
+    }
+}

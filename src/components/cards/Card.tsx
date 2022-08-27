@@ -31,7 +31,7 @@ const Card: React.FC<{
 }> = ({ playerProps, globalTime, menuOpen, fHandleMenuOpen }) => {
     const { t } = useTranslation('common');
     const { showSummonerIds } = useContext(SettingsContext);
-    const [playerFavorited, setPlayerFavorited] = useState(false);
+    const [playerFavorited, setPlayerFavorited] = useState<boolean>(false);
 
     const team = getTeamFromNumber(playerProps.summoner.team, true);
     const player = formPlayerImage(team, playerProps.summoner.playerName);

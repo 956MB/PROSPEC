@@ -16,8 +16,8 @@ const Options: React.FC<{
     selectedChamps: ISelectedChamps
     updateSelectedChampions: (champId: number) => void
 }> = ({ optionsDisabled, optionsProps, optionsChampProps, selectedChamps, updateSelectedChampions }) => {
-    const [expanded, setExpanded] = useState(false);
-    const [expandedSection, setExpandedSection] = useState(-1);
+    const [expanded, setExpanded] = useState<boolean>(false);
+    const [expandedSection, setExpandedSection] = useState<number>(-1);
 
     const toggleExpanded = (sectionId: number, set: boolean) => {
         setExpanded(set);
@@ -187,9 +187,7 @@ const OptionsButton: React.FC<{
     toggleSelected: (buttonId: number) => void
 }> = ({ buttonProps, expandedSection, sectionId, toggleExpanded, toggleSelected }) => {
     const { t } = useTranslation('common');
-    // const [selected, setSelected] = useState(buttonProps.selected);
     const FExpanded = () => {
-        // setSelected(!selected);
         if (buttonProps.active) {
             if (sectionId === expandedSection) {
                 toggleSelected(buttonProps.id);

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { StringIfPlural } from "react-i18next";
 
 export const useInit = (callBack = () => {}) => {
-    const [hasBeenCalled, setHasBeenCalled] = useState(false);
+    const [hasBeenCalled, setHasBeenCalled] = useState<boolean>(false);
     if (hasBeenCalled) return;
     callBack();
     setHasBeenCalled(true);
@@ -24,7 +24,6 @@ export interface ICardStates {
 }
 
 export interface ISettingsStates {
-    // [index: string]: number | boolean;
     listLayout: number;
     autoRefresh: boolean;
     refreshInterval: number;
@@ -38,7 +37,8 @@ export interface ISettingsStates {
     openOnStartup: boolean;
     minimizeToTray: boolean;
     hardwareAcceleration: boolean;
-    randomAppBackground: boolean;
+    useBackground: boolean;
+    randomBackground: boolean;
     liveBackground: boolean;
     keyboardMode: boolean;
     notifications: boolean;
@@ -183,8 +183,6 @@ export interface ISettingsPageLanguage extends ISettingsPage {
     selected: number;
 }
 
-export type ISettingsPageUnion = ISettingsPage | ISettingsPageLanguage;
-
 export interface ISettingsItems extends Array<ISettingsItem>{}
 export interface ISettingsItem {
     title?: string;
@@ -211,6 +209,7 @@ export interface ISettingsItemValueSelection {
 }
 
 export interface ISettingsItemValueSelector extends Omit<ISettingsItemValue, 'value'> {
+    key: string;
     value: number;
     options: ISettingsItemValueSelections;
     // setValue(v: string): boolean

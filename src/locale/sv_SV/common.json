@@ -43,7 +43,7 @@
 					"dark": {
 						"title": "Mörk"
 					},
-					"favortieNotifications": {
+					"notifications": {
 						"description": "Favoritproffs får aviseringar när de startar ett spel (Automatisk uppdatering på).",
 						"title": "Favoritaviseringar"
 					},
@@ -65,18 +65,22 @@
 					"openOnStartup": {
 						"title": "Öppna vid start"
 					},
-					"randomAppBackground": {
-						"description": "Välj appbakgrunden som ska väljas slumpmässigt från mästarpoolen, eller ställ in den på en specifik standard.",
-						"title": "Slumpmässig appbakgrund"
+					"useBackground": {
+						"description": "Välj om ProSpec visar bakgrundsbilder som Splash Art.",
+						"title": "Använd bakgrunder"
+					},
+					"randomBackground": {
+						"description": "Välj appbakgrund som ska väljas slumpmässigt från Champion Pool, eller ställ in den till en specifik standard.",
+						"title": "Slumpmässig bakgrund"
 					},
                     "liveBackground": {
 						"description": "Kommer att använda den animerade versionen av en stänkkonst istället för standardbilden.(Om möjligt)",
-						"title": "Levande bakgrund"
+						"title": "Levande bakgrunder"
 					},
 					"system": {
 						"title": "Systemet"
 					},
-					"theme": {
+					"appTheme": {
 						"title": "Tema"
 					}
 				},

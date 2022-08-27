@@ -16,7 +16,7 @@ const CardMenu: React.FC<{
 }> = ({ player, favorited, fToggleFavorited, menuX, menuY }) => {
     const { t } = useTranslation('common');
     const { showSummonerIds } = useContext(SettingsContext);
-    const [ toggleBounce, setToggleBounce ] = useState(false);
+    const [ toggleBounce, setToggleBounce ] = useState<boolean>(false);
 
     const stopPropagation = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, callback: () => void) => {
         e.preventDefault(); e.stopPropagation();

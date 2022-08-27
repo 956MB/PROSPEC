@@ -11,7 +11,7 @@ const SettingsPage: React.FC<{
 }> = ({ pageProps, pageActive }) => {
     const [t, i18n] = useTranslation('common');
     const langPage = pageProps as ISettingsPageLanguage;
-    const [langSelected, setLangSelected] = useState(-1);
+    const [langSelected, setLangSelected] = useState<number>(-1);
 
     const fLangSelect = (set: number) => {
         setLangSelected(set);
@@ -20,7 +20,7 @@ const SettingsPage: React.FC<{
     return (
         <div className={`${pageProps.type === 'lang' ? 'settings-page-lang' : 'settings-page'} ${pageActive ? `${pageProps.type === 'lang' ? 'page-active-lang' : 'page-active'}` : null}`}>
             {React.Children.toArray(
-                pageProps.items.map((item) => {
+                pageProps.items.map((item, i) => {
                     if (item.itemValue.type === 'spacer') { return <SettingsItemSpacer /> }
 
                     const valueLang = item.itemValue as ISettingsItemValueLanguage
@@ -29,7 +29,9 @@ const SettingsPage: React.FC<{
                             itemValue={item.itemValue as ISettingsItemValueLanguage}
                             langSelected={i18n.language === valueLang.lang ? valueLang.value : -1}
                             fLangSelect={fLangSelect}></SettingsItemLanguage>
-                        : <SettingsItem itemProps={item}></SettingsItem>
+                        : <SettingsItem
+                            itemProps={item}
+                            itemZIndex={pageProps.items.length - i}></SettingsItem>
                 })
             )}
         </div>

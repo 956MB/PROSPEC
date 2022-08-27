@@ -13,27 +13,33 @@ import Players from "./components/players/Players";
 
 import { SpectatorContext } from "./context/SpectatorContext";
 import { SettingsContext } from "./context/SettingsContext";
+import { useTranslation } from "react-i18next";
 
 function App() {
+    const { i18n } = useTranslation('common');
     // const proSpec = useMemo(() => new ProSpec(false), []);
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
     const { liveBackground } = useContext(SettingsContext);
-    const [appBG, setAppBG] = useState<IAppBackground>({primary: { type: "live", name: "Sona_6" },
-    secondary: { type: "centered", name: "Sona_6" }});
-    const [settingsOpen, setSettingsOpen] = useState(false);
+    const [appBG, setAppBG] = useState<IAppBackground>({
+        primary: { type: "live", name: "Sona_6" },
+        secondary: { type: "centered", name: "Sona_6" }
+    });
+    const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
 
     useInit(() => {
         const getAppBackground = async () => {
-            const randomBG = await randomBackground({primary: { type: "live", name: "Sona_6" },
-            secondary: { type: "centered", name: "Sona_6" }});
+            const randomBG = await randomBackground({
+                primary: { type: "live", name: "Sona_6" },
+                secondary: { type: "centered", name: "Sona_6" }
+            });
             setAppBG(randomBG);
         };
         getAppBackground();
     });
 
-    const [playersLoaded, setPlayersLoaded] = useState(false);
+    const [playersLoaded, setPlayersLoaded] = useState<boolean>(false);
     const [players, setPlayers] = useState<IPlayers>([]);
-    const [playersKey, setPlayersKey] = useState(0);
+    const [playersKey, setPlayersKey] = useState<number>(0);
 
     const FSettingsOpen = (set: boolean = false) => {
         setSettingsOpen(set);
@@ -65,9 +71,11 @@ function App() {
     }
 
     return (
-        <div className={`app ${settingsOpen ? 'settings-open' : null}`} onContextMenu={(e) => {
-            e.preventDefault();
-        }}>
+        <div
+            className={`app ${settingsOpen ? 'settings-open' : null} ${i18n.language}`}
+            onContextMenu={(e) => {
+                e.preventDefault();
+            }}>
             <Settings appBackground={appBG} settingsOpen={settingsOpen} FSettingsOpen={FSettingsOpen} />
             <Titlebar settingsOpen={settingsOpen} refreshPlayers={refreshPlayers} />
             <div className="app-inner">

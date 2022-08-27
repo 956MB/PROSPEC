@@ -43,7 +43,7 @@
 					"dark": {
 						"title": "어두운"
 					},
-					"favortieNotifications": {
+					"notifications": {
 						"description": "좋아하는 프로에는 게임을 시작할 때 알림을받습니다 (자동 새로 고침).",
 						"title": "좋아하는 알림"
 					},
@@ -65,9 +65,13 @@
 					"openOnStartup": {
 						"title": "스타트 업에 열립니다"
 					},
-					"randomAppBackground": {
+					"useBackground": {
+						"description": "ProSpec이 Splash Art와 같은 배경 이미지를 표시하는지 여부를 선택하십시오.",
+						"title": "배경을 사용하십시오"
+					},
+					"randomBackground": {
 						"description": "챔피언 풀에서 무작위로 선택할 앱 배경을 선택하거나 특정 기본값으로 설정하십시오.",
-						"title": "랜덤 앱 배경"
+						"title": "무작위 배경"
 					},
                     "liveBackground": {
 						"description": "기본 이미지 대신 스플래시 아트의 애니메이션 버전을 사용합니다.(가능하다면)",
@@ -76,7 +80,7 @@
 					"system": {
 						"title": "체계"
 					},
-					"theme": {
+					"appTheme": {
 						"title": "주제"
 					}
 				},

@@ -43,7 +43,7 @@
 					"dark": {
 						"title": "Dark"
 					},
-					"favortieNotifications": {
+					"notifications": {
 						"description": "Favorite pros gets notifications when they start a game (Auto refresh on).",
 						"title": "Favorite notifications"
 					},
@@ -65,18 +65,22 @@
 					"openOnStartup": {
 						"title": "Open on startup"
 					},
-					"randomAppBackground": {
+                    "useBackground": {
+						"description": "Choose whether or not ProSpec shows background images like splash art.",
+						"title": "Use backgrounds"
+					},
+					"randomBackground": {
 						"description": "Choose the app background to be randomly selected from champion pool, or set it to a specific default.",
-						"title": "Random app background"
+						"title": "Random backgrounds"
 					},
                     "liveBackground": {
 						"description": "Will use the animated version of a splash art, instead of the default image. (If possible)",
-						"title": "Live background"
+						"title": "Live backgrounds"
 					},
 					"system": {
 						"title": "System"
 					},
-					"theme": {
+					"appTheme": {
 						"title": "Theme"
 					}
 				},

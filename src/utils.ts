@@ -345,6 +345,11 @@ export function mapEnum(enumerable: any, type: string, fn: Function): any[] {
     return enumValues.map((m, i) => fn(m, i));
 }
 
+export function mapEnumKeys(enumerable: any): string[] {
+    let enumMembers: string[] = Object.keys(enumerable).map(key => enumerable[key]);
+    return enumMembers;
+}
+
 export function sliceMap(map: any[], min: number, max: number): any[] {
     return map.slice(min, max);
 }

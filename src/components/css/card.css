@@ -21,7 +21,7 @@
     background-color: rgb(13, 13, 13, 0.99);
     border-radius: 5px;
     padding: 6px;
-    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.40);
+    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.35);
 }
 
 .card-menu-info {

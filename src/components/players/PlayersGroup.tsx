@@ -18,8 +18,8 @@ const PlayersGroup: React.FC<{
     const { t } = useTranslation('common');
     const { showUnavailable } = useContext(SettingsContext);
 
-    const [groupCollapsed, setGroupCollapsed] = useState(false);
-    const [groupInfo, setGroupInfo] = useState({} as IPlayerGroupInfo);
+    const [groupCollapsed, setGroupCollapsed] = useState<boolean>(false);
+    const [groupInfo, setGroupInfo] = useState<IPlayerGroupInfo>({} as IPlayerGroupInfo);
 
     useInit(() => {
         const info = getGroupInfoFromKey(groupKey);
