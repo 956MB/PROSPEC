@@ -141,3 +141,4 @@ src-tauri/target/*
 /src/data/test.txt
 /src/locale/prospec.babel
 *.psd
+.DS_Store

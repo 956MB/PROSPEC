@@ -1,9 +1,7 @@
-html {
+html, body {
     scroll-behavior: smooth;
-}
-
-body {
     margin: 0;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -223,12 +221,13 @@ img {
 }
 
 .app {
-    background-color: #333333;
+    /* background-color: #333333; */
     background-repeat: no-repeat;
     background-size: cover;
     min-width: 1040px;
     width: 100vw;
     height: 100vh;
+    overflow: auto;
     /* border: 1px solid rgb(47, 255, 99) !important; */
     /* box-sizing: border-box; */
     /* border: 2px solid rgb(47, 255, 99); */
@@ -259,7 +258,7 @@ img {
     min-width: 100vw;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(25, 25, 25, 0.935);
+    /* background-color: rgba(25, 25, 25, 0.935); */
     z-index: 1;
 }
 
