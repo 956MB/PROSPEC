@@ -44,37 +44,37 @@
 						"title": "Mörk"
 					},
 					"notifications": {
-						"description": "Favoritproffs får aviseringar när de startar ett spel (Automatisk uppdatering på).",
+						"description": "Favoritproffs får aviseringar när de startar ett spel (Automatisk uppdatering på)",
 						"title": "Favoritaviseringar"
 					},
 					"hardwareAcceleration": {
-						"description": "Hårdvaruacceleration använder GPU:n för att få ProSpec att fungera smidigare.",
+						"description": "Hårdvaruacceleration använder GPU:n för att få ProSpec att fungera smidigare",
 						"title": "Hårdvaruacceleration"
 					},
 					"keyboardMode": {
-						"description": "Aktiverar appnavigering med tangentbordet.",
+						"description": "Aktiverar appnavigering med tangentbordet",
 						"title": "Tangentbordsläge"
 					},
 					"light": {
 						"title": "Ljus"
 					},
 					"minimizeToTray": {
-						"description": "Stäng-knappen ska minimera, inte avsluta.",
+						"description": "Stäng-knappen ska minimera, inte avsluta",
 						"title": "Minimera till bricka"
 					},
 					"openOnStartup": {
 						"title": "Öppna vid start"
 					},
 					"useBackground": {
-						"description": "Välj om ProSpec visar bakgrundsbilder som Splash Art.",
+						"description": "Välj om app visar bakgrundsbilder som Splash Art eller inte",
 						"title": "Använd bakgrunder"
 					},
 					"randomBackground": {
-						"description": "Välj appbakgrund som ska väljas slumpmässigt från Champion Pool, eller ställ in den till en specifik standard.",
+						"description": "Välj appbakgrund som ska väljas slumpmässigt från Champion Pool, eller ställ in den till en specifik standard",
 						"title": "Slumpmässig bakgrund"
 					},
                     "liveBackground": {
-						"description": "Kommer att använda den animerade versionen av en stänkkonst istället för standardbilden.(Om möjligt)",
+						"description": "Kommer att använda den animerade versionen av en stänkkonst istället för standardbilden (Om möjligt)",
 						"title": "Levande bakgrunder"
 					},
 					"system": {
@@ -101,19 +101,19 @@
 						"title": "Listlayout"
 					},
 					"refreshInterval": {
-						"description": "Hur många sekunder/min ska du uppdatera listan över proffs. 3m+ rekommenderas på grund av LoL API-hastighetsgränser.",
+						"description": "Hur många sekunder/min ska du uppdatera listan över proffs (3m+ rekommenderas på grund av LoL API-hastighetsgränser)",
 						"title": "Uppdateringsintervall"
 					},
 					"showRandomSkins": {
-						"description": "Visar slumpmässiga skalbakgrunder istället för standardskalkonst.",
+						"description": "Visar slumpmässiga skalbakgrunder istället för standardskalkonst",
 						"title": "Visa slumpmässiga skal"
 					},
 					"showSummonerIds": {
-						"description": "Visar spelarens kallelse-ID (Göm på bush), istället för gamertag (Faker).",
+						"description": "Visar spelarens kallelse-ID (Göm på bush), istället för gamertag (Faker)",
 						"title": "Visa uppmanar-ID"
 					},
 					"showTeamLogos": {
-						"description": "Visar lagets logotyp i stället för nuvarande mästare på kort.",
+						"description": "Visar lagets logotyp i stället för nuvarande mästare på kort",
 						"title": "Visa teamlogotyper"
 					},
 					"useCutouts": {
@@ -121,7 +121,7 @@
 						"title": "Använd utskärningar"
 					},
                     "showUnavailable": {
-						"description": "Visar spelarkort som för närvarande inte är tillgängliga för att åstadkomma.(Fel i Spectator API, eller spelar för närvarande inte.)",
+						"description": "Visar spelarkort som för närvarande inte är tillgängliga för att åstadkomma (Fel i Spectator API, eller spelar för närvarande inte)",
 						"title": "Visa sig inte"
 					}
 				},
@@ -138,7 +138,7 @@
 		"searchPlaceholder": "Sök"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} är antingen inte i ett spel, eller åskådare är inte tillgänglig."
+		"playerUnavailable": "{{player}} är antingen inte i ett spel, eller åskådare är inte tillgänglig"
 	},
     "menus": {
         "spectate": "Vaksam",

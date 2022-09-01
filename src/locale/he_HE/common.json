@@ -44,37 +44,37 @@
 						"title": "אפל"
 					},
 					"notifications": {
-						"description": "המקצוענים המועדפים מקבלים התראות כשהם מתחילים משחק (רענון אוטומטי).",
+						"description": "המקצוענים המועדפים מקבלים התראות כשהם מתחילים משחק (רענון אוטומטי)",
 						"title": "התראות מועדפות"
 					},
 					"hardwareAcceleration": {
-						"description": "האצת חומרה משתמשת ב- GPU כדי לגרום ל- ProSpec לרוץ בצורה חלקה יותר.",
+						"description": "האצת חומרה משתמשת ב- GPU כדי לגרום ל- ProSpec לרוץ בצורה חלקה יותר",
 						"title": "האצת חומרה"
 					},
 					"keyboardMode": {
-						"description": "מאפשר ניווט באפליקציות באמצעות המקלדת.",
+						"description": "מאפשר ניווט באפליקציות באמצעות המקלדת",
 						"title": "מצב מקלדת"
 					},
 					"light": {
 						"title": "אור"
 					},
 					"minimizeToTray": {
-						"description": "כפתור סגור צריך למזער, לא לצאת.",
+						"description": "כפתור סגור צריך למזער, לא לצאת",
 						"title": "צמצם למגש"
 					},
 					"openOnStartup": {
 						"title": "פתח בהפעלה"
 					},
 					"useBackground": {
-						"description": "בחר אם ProSpec מציג תמונות רקע כמו Splash Art.",
+						"description": "בחר אם אפליקציה מציגה תמונות רקע כמו Splash Art",
 						"title": "השתמש ברקעים"
 					},
 					"randomBackground": {
-						"description": "בחר את רקע האפליקציה שנבחר באופן אקראי מבריכת Champion, או הגדר אותה לברירת מחדל ספציפית.",
+						"description": "בחר את רקע האפליקציה שנבחר באופן אקראי מבריכת Champion, או הגדר אותה לברירת מחדל ספציפית",
 						"title": "רקע אקראי"
 					},
                     "liveBackground": {
-						"description": "ישתמש בגרסת האנימציה של אמנות ספלאש, במקום בתמונת ברירת המחדל.(אם אפשר)",
+						"description": "ישתמש בגרסת האנימציה של אמנות ספלאש, במקום בתמונת ברירת המחדל (אם אפשר)",
 						"title": "רקע חי"
 					},
 					"system": {
@@ -101,19 +101,19 @@
 						"title": "פריסת רשימה"
 					},
 					"refreshInterval": {
-						"description": "כמה שניות/דקה כדי לרענן את רשימת המקצוענים. 3M+ מומלץ בגלל מגבלות קצב API של LOL.",
+						"description": "כמה שניות/דקה כדי לרענן את רשימת המקצוענים. 3M+ מומלץ בגלל מגבלות קצב API של LOL",
 						"title": "מרווח רענון"
 					},
 					"showRandomSkins": {
-						"description": "מציג רקע עור אקראי במקום אמנות עור ברירת מחדל.",
+						"description": "מציג רקע עור אקראי במקום אמנות עור ברירת מחדל",
 						"title": "הצג עורות אקראיים"
 					},
 					"showSummonerIds": {
-						"description": "מציג מזהה זימון נגן (הסתר על בוש), במקום GamerTag (Faker).",
+						"description": "מציג מזהה זימון נגן (הסתר על בוש), במקום GamerTag (Faker)",
 						"title": "הצג מזהי זימון"
 					},
 					"showTeamLogos": {
-						"description": "מציג לוגו צוות במקום האלוף הנוכחי בכרטיס.",
+						"description": "מציג לוגו צוות במקום האלוף הנוכחי בכרטיס",
 						"title": "הצג לוגו של צוות"
 					},
 					"useCutouts": {
@@ -121,7 +121,7 @@
 						"title": "השתמש בגזרות"
 					},
                     "showUnavailable": {
-						"description": "מציג כרטיסי נגן שאינם זמינים כרגע לצפייה. (שגיאה ב- API של Spectator או Player אינה משחקת כרגע.)",
+						"description": "מציג כרטיסי נגן שאינם זמינים כרגע לצפייה (שגיאה ב- API של Spectator או Player אינה משחקת כרגע)",
 						"title": "הראה לא זמין"
 					}
 				},
@@ -138,7 +138,7 @@
 		"searchPlaceholder": "לחפש"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} או לא במשחק, או שהצופה אינו זמין."
+		"playerUnavailable": "{{player}} או לא במשחק, או שהצופה אינו זמין"
 	},
     "menus": {
         "spectate": "צפייה",
