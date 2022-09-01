@@ -44,7 +44,7 @@
 						"title": "Tumma"
 					},
 					"notifications": {
-						"description": "Suosikki ammattilaiset saavat ilmoituksia, kun he alkavat peliä (automaattinen päivitys päällä).",
+						"description": "Suosikki ammattilaiset saavat ilmoituksia, kun he alkavat peliä (automaattinen päivitys päällä)",
 						"title": "Suosikkiilmoitukset"
 					},
 					"hardwareAcceleration": {
@@ -52,29 +52,29 @@
 						"title": "Laitteistokiihdytys"
 					},
 					"keyboardMode": {
-						"description": "Mahdollistaa sovelluksen navigoinnin näppäimistöllä.",
+						"description": "Mahdollistaa sovelluksen navigoinnin näppäimistöllä",
 						"title": "Näppäimistötila"
 					},
 					"light": {
 						"title": "Valaistus"
 					},
 					"minimizeToTray": {
-						"description": "Sulje -painikkeen tulisi minimoida, ei poistua.",
+						"description": "Sulje -painikkeen tulisi minimoida, ei poistua",
 						"title": "Minimoida tarjotin"
 					},
 					"openOnStartup": {
 						"title": "Avaa käynnistyksen yhteydessä"
 					},
 					"useBackground": {
-						"description": "Valitse, näyttääkö ProSpec taustakuvia, kuten Splash Art.",
+						"description": "Valitse, näyttääkö sovellus taustakuvia, kuten Splash Art",
 						"title": "Käytä taustoja"
 					},
 					"randomBackground": {
-						"description": "Valitse APP -tausta, joka valitaan satunnaisesti Champion Poolista tai aseta se tiettyyn oletusarvoon.",
+						"description": "Valitse APP -tausta, joka valitaan satunnaisesti Champion Poolista tai aseta se tiettyyn oletusarvoon",
 						"title": "Satunnainen tausta"
 					},
                     "liveBackground": {
-						"description": "Käyttää roisketaiteen animaatiota oletuskuvan sijasta.(Jos mahdollista)",
+						"description": "Käyttää roisketaiteen animaatiota oletuskuvan sijasta (Jos mahdollista)",
 						"title": "Live -taustat"
 					},
 					"system": {
@@ -101,19 +101,19 @@
 						"title": "Listata asettelu"
 					},
 					"refreshInterval": {
-						"description": "Kuinka monta sekuntia/min päivittää ammattilaisten luettelo.3M+ Suositellaan LOL API -nopeusrajojen vuoksi.",
+						"description": "Kuinka monta sekuntia/min päivittää ammattilaisten luettelo (3M+ Suositellaan LOL API -nopeusrajojen vuoksi)",
 						"title": "Virkistysväli"
 					},
 					"showRandomSkins": {
-						"description": "Näyttää satunnaiset ihotaustat oletusarvoisen ihotaiteen sijasta.",
+						"description": "Näyttää satunnaiset ihotaustat oletusarvoisen ihotaiteen sijasta",
 						"title": "Näytä satunnaiset nahat"
 					},
 					"showSummonerIds": {
-						"description": "Näyttää Player Summoner ID (Hide on bush) Gamertagin (Faker) sijasta.",
+						"description": "Näyttää Player Summoner ID (Hide on bush) Gamertagin (Faker) sijasta",
 						"title": "Näytä Summoner IDS"
 					},
 					"showTeamLogos": {
-						"description": "Näyttää joukkueen logon nykyisen mestarin sijasta kortissa.",
+						"description": "Näyttää joukkueen logon nykyisen mestarin sijasta kortissa",
 						"title": "Näytä tiimin logot"
 					},
 					"useCutouts": {
@@ -121,7 +121,7 @@
 						"title": "Käytä leikkauksia"
 					},
                     "showUnavailable": {
-						"description": "Näyttää pelaajien kortteja, joita ei tällä hetkellä ole käytettävissä katsottavaksi.(Virhe Spectator API: ssa tai pelaaja ei tällä hetkellä pelaa.)",
+						"description": "Näyttää pelaajien kortteja, joita ei tällä hetkellä ole käytettävissä katsottavaksi (Virhe Spectator API: ssa tai pelaaja ei tällä hetkellä pelaa)",
 						"title": "Ei ole käytettävissä"
 					}
 				},
@@ -138,7 +138,7 @@
 		"searchPlaceholder": "Hae"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä."
+		"playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä"
 	},
     "menus": {
         "spectate": "Varovasti",

@@ -44,37 +44,37 @@
 						"title": "Dark"
 					},
 					"notifications": {
-						"description": "Favorite pros gets notifications when they start a game (Auto refresh on).",
+						"description": "Favorite pros gets notifications when they start a game (Auto refresh on)",
 						"title": "Favorite notifications"
 					},
 					"hardwareAcceleration": {
-						"description": "Hardware acceleration uses the GPU to make the ProSpec run more smoothly.",
+						"description": "Hardware acceleration uses the GPU to make the ProSpec run more smoothly",
 						"title": "Hardware acceleration"
 					},
 					"keyboardMode": {
-						"description": "Enables app navigation using the keyboard.",
+						"description": "Enables app navigation using the keyboard",
 						"title": "Keyboard mode"
 					},
 					"light": {
 						"title": "Light"
 					},
 					"minimizeToTray": {
-						"description": "Close button should minimize, not exit.",
+						"description": "Close button should minimize, not exit",
 						"title": "Minimize to tray"
 					},
 					"openOnStartup": {
 						"title": "Open on startup"
 					},
                     "useBackground": {
-						"description": "Choose whether or not ProSpec shows background images like splash art.",
+						"description": "Choose whether or not app shows background images like splash art",
 						"title": "Use backgrounds"
 					},
 					"randomBackground": {
-						"description": "Choose the app background to be randomly selected from champion pool, or set it to a specific default.",
+						"description": "Choose the app background to be randomly selected from champion pool, or set it to a specific default",
 						"title": "Random backgrounds"
 					},
                     "liveBackground": {
-						"description": "Will use the animated version of a splash art, instead of the default image. (If possible)",
+						"description": "Will use the animated version of a splash art, instead of the default image (If possible)",
 						"title": "Live backgrounds"
 					},
 					"system": {
@@ -101,19 +101,19 @@
 						"title": "List layout"
 					},
 					"refreshInterval": {
-						"description": "How many seconds/min to refresh the list of pros. 3m+ recommended because of LoL API rate limits.",
+						"description": "How many seconds/min to refresh the list of pros (3m+ recommended because of LoL API rate limits)",
 						"title": "Refresh interval"
 					},
 					"showRandomSkins": {
-						"description": "Displays random skin backgrounds instead of default skin art.",
+						"description": "Displays random skin backgrounds instead of default skin art",
 						"title": "Show random skins"
 					},
 					"showSummonerIds": {
-						"description": "Displays player summoner ID (Hide on bush), instead of gamertag (Faker).",
+						"description": "Displays player summoner ID (Hide on bush), instead of gamertag (Faker)",
 						"title": "Show summoner IDs"
 					},
 					"showTeamLogos": {
-						"description": "Displays team logo in place of current champion in card.",
+						"description": "Displays team logo in place of current champion in card",
 						"title": "Show team logos"
 					},
 					"useCutouts": {
@@ -121,7 +121,7 @@
 						"title": "Use cutouts"
 					},
                     "showUnavailable": {
-						"description": "Displays player cards that are currently unavailable for spectating. (Error in Spectator API, or player is not currently playing.)",
+						"description": "Displays player cards that are currently unavailable for spectating (Error in Spectator API, or player is not currently playing)",
 						"title": "Show unavailable"
 					}
 				},
@@ -138,7 +138,7 @@
 		"searchPlaceholder": "Search"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} is either not in a game, or spectator is unavailable."
+		"playerUnavailable": "{{player}} is either not in a game, or spectator is unavailable"
 	},
     "menus": {
         "spectate": "Spectate",

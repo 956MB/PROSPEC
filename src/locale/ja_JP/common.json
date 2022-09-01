@@ -44,37 +44,37 @@
 						"title": "ダーク"
 					},
 					"notifications": {
-						"description": "お気に入りのプロは、ゲームを開始すると通知を受け取ります (自動更新オン)。",
+						"description": "お気に入りのプロは、ゲームを開始すると通知を受け取ります (自動更新オン)",
 						"title": "お気に入りの通知"
 					},
 					"hardwareAcceleration": {
-						"description": "ハードウェア アクセラレーションは、GPU を使用して ProSpec をよりスムーズに実行します。",
+						"description": "ハードウェア アクセラレーションは、GPU を使用して ProSpec をよりスムーズに実行します",
 						"title": "ハードウェアアクセラレーション"
 					},
 					"keyboardMode": {
-						"description": "キーボードを使用したアプリ ナビゲーションを有効にします。",
+						"description": "キーボードを使用したアプリ ナビゲーションを有効にします",
 						"title": "キーボードモード"
 					},
 					"light": {
 						"title": "光"
 					},
 					"minimizeToTray": {
-						"description": "閉じるボタンは、終了ではなく最小化する必要があります。",
+						"description": "閉じるボタンは、終了ではなく最小化する必要があります",
 						"title": "トレイに最小化"
 					},
 					"openOnStartup": {
 						"title": "起動時に開く"
 					},
 					"useBackground": {
-						"description": "ProSpecがSplash Artのような背景画像を表示するかどうかを選択します。",
+						"description": "アプリがスプラッシュアートのような背景画像を表示するかどうかを選択します",
 						"title": "背景を使用します"
 					},
 					"randomBackground": {
-						"description": "チャンピオンプールからランダムに選択されるアプリの背景を選択するか、特定のデフォルトに設定します。",
+						"description": "チャンピオンプールからランダムに選択されるアプリの背景を選択するか、特定のデフォルトに設定します",
 						"title": "ランダムな背景"
 					},
                     "liveBackground": {
-						"description": "デフォルトの画像ではなく、スプラッシュアートのアニメーションバージョンを使用します。（もし可能なら）",
+						"description": "デフォルトの画像ではなく、スプラッシュアートのアニメーションバージョンを使用します（もし可能なら）",
 						"title": "ライブバックグラウンド"
 					},
 					"system": {
@@ -101,19 +101,19 @@
 						"title": "リストのレイアウト"
 					},
 					"refreshInterval": {
-						"description": "プロのリストを更新する秒数/分。 LoL API のレート制限のため、3 分以上を推奨。",
+						"description": "プロのリストを更新する秒数/分 LoL API のレート制限のため、3 分以上を推奨",
 						"title": "更新間隔"
 					},
 					"showRandomSkins": {
-						"description": "デフォルトのスキン アートの代わりに、ランダムなスキンの背景を表示します。",
+						"description": "デフォルトのスキン アートの代わりに、ランダムなスキンの背景を表示します",
 						"title": "ランダムスキンを表示"
 					},
 					"showSummonerIds": {
-						"description": "ゲーマータグ (Faker) の代わりに、プレイヤー サモナー ID (Hide on Bush) を表示します。",
+						"description": "ゲーマータグ (Faker) の代わりに、プレイヤー サモナー ID (Hide on Bush) を表示します",
 						"title": "サモナーIDを表示"
 					},
 					"showTeamLogos": {
-						"description": "カードの現在のチャンピオンの代わりにチームのロゴを表示します。",
+						"description": "カードの現在のチャンピオンの代わりにチームのロゴを表示します",
 						"title": "チームのロゴを表示"
 					},
 					"useCutouts": {
@@ -121,7 +121,7 @@
 						"title": "カットアウトを使用する"
 					},
                     "showUnavailable": {
-						"description": "現在、観察することができないプレーヤーカードを表示します。（Spectator APIのエラー、またはプレイヤーが現在プレイしていない。）",
+						"description": "現在、観察することができないプレーヤーカードを表示します（Spectator APIのエラー、またはプレイヤーが現在プレイしていない）",
 						"title": "表示されていないことを示します"
 					}
 				},
@@ -138,7 +138,7 @@
 		"searchPlaceholder": "サーチ"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません。"
+		"playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません"
 	},
     "menus": {
         "spectate": "監視されています",
