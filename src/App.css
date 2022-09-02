@@ -48,12 +48,12 @@ body {
 }
 
 ::selection {
-    background: var(--accent-rgba); /* WebKit/Blink Browsers */
-    color: white;
+    background: rgb(255, 238, 0); /* WebKit/Blink Browsers */
+    color: black;
 }
 ::-moz-selection {
-    background: var(--accent-rgba); /* Gecko Browsers */
-    color: white;
+    background: rgb(255, 238, 0); /* Gecko Browsers */
+    color: black;
 }
 
 .noselect {
