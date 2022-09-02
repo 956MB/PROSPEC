@@ -129,7 +129,8 @@ export enum ESettingsStates {
 
 export enum EEMessages {
     ESC = 'ESC',
-    UNAVAILABLE = 'tooltips.playerUnavailable'
+    UNAVAILABLE = 'tooltips.playerUnavailable',
+    NONE_LOADED = 'tooltips.noPlayersLoaded'
 }
 
 

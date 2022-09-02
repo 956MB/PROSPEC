@@ -91,7 +91,7 @@ const Card: React.FC<{
                 <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
                 <div className={`card-champ noselect`} style={champStyles}></div>
                 <span className='game-timer-text'>{`${secondsToTime(state.gameTime + globalTime)}`}</span>
-                <img src={dragIcon} alt="drag" className='card-drag noselect' />
+                {/* <img src={dragIcon} alt="drag" className='card-drag noselect' /> */}
                 {/* <div className='blur-small'></div> */}
                 <div className={state.backgroundDir === "loading" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail/${state.backgroundDir}/${champ}${state.backgroundDir === "loading" ? '_0.jpg' : '.png'})` }}></div>
 

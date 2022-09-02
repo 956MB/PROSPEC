@@ -9,8 +9,8 @@ import { IOptionsButton, IOptionsButtonChamp, IOptionsSections, IOptionsSections
 import { getChampionFromId, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap, oMode, oRole, oRegion } from '../utils';
 
 import refreshIcon from '../assets/icons/refresh.svg';
-// import sidebarIcon from '../assets/icons/sidebar.svg';
 import minIcon from '../assets/icons/min.svg';
+import maxIcon from '../assets/icons/max.svg';
 import closeIcon from '../assets/icons/close.svg';
 
 import { SpectatorContext } from "../context/SpectatorContext";
@@ -97,15 +97,21 @@ const Titlebar: React.FC<{
                 {/* <Options optionsDisabled={settingsOpen} optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} /> */}
 
                 <div className='controls-group'>
-                    <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/>
+                    {/* <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/> */}
                     <button
-                        className="titlebar-button titlebar-button-edge-left"
+                        className="titlebar-controls-button"
                         id="titlebar-minimize"
                         onClick={() => appWindow.minimize()}>
                         <img src={minIcon} alt="minimize" />
                     </button>
                     <button
-                        className="titlebar-button titlebar-button-edge-right"
+                        className="titlebar-controls-button"
+                        id="titlebar-maximize"
+                        onClick={() => appWindow.toggleMaximize()}>
+                        <img src={maxIcon} alt="maximize" />
+                    </button>
+                    <button
+                        className="titlebar-controls-button"
                         id="titlebar-close"
                         onClick={() => appWindow.close()}>
                         <img src={closeIcon} alt="close" />

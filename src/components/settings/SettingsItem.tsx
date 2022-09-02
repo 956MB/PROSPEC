@@ -7,17 +7,32 @@ import { unull } from "../../utils";
 import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, useInit } from "../../interfaces";
 import { SettingsContext } from '../../context/SettingsContext';
 import { useDetectClickOutside } from "react-detect-click-outside";
-import { ESettingsStates } from '../../typings';
+import { ELanguages, ESettingsStates } from '../../typings';
+import { t } from "i18next";
 
 const SettingsItem: React.FC<{
     itemProps: ISettingsItem,
     itemZIndex: number
 }> = ({ itemProps, itemZIndex }) => {
     const { t } = useTranslation('common');
+    const { updateSetting, getSetting } = useContext(SettingsContext);
     const [noDescription, setNoDescription] = useState<boolean>(itemProps.description === '' || itemProps.description === undefined);
     const [parentEanbled, setParentEnabled] = useState<boolean>(itemProps.itemValue.value);
 
     const fToggleParent = (set: boolean) => { setParentEnabled(set); }
+
+    useInit(() => {
+        if (itemProps.itemValue.type === 'boolean') {
+            const getStoredValue = async () => {
+                const itemValueBool = itemProps.itemValue as ISettingsItemValueBool;
+                const stored = await getSetting(itemValueBool.key) as boolean | null;
+                if (stored != null) {
+                    setParentEnabled(stored);
+                }
+            }
+            getStoredValue();
+        }
+    });
 
     return (
         <div className={`settings-page-item`} style={{ zIndex: itemZIndex }}>
@@ -80,21 +95,30 @@ const SettingsItemLanguage: React.FC<{
     langSelected: number,
     fLangSelect: (set: number) => void
 }> = ({ itemValue, langSelected, fLangSelect }) => {
-    const { i18n } = useTranslation('common');
+    const { t, i18n } = useTranslation('common');
     const { updateSetting } = useContext(SettingsContext);
+    const [hasLang, setHasLang] = useState<boolean>(i18n.hasResourceBundle(itemValue.lang, 'common'));
 
     const fSelectLanguage = () => {
-        fLangSelect(itemValue.value);
-        i18n.changeLanguage(itemValue.lang);
-        updateSetting(ESettingsStates.APP_LANGUAGE, itemValue.value);
+        if (langSelected != itemValue.value) {
+            fLangSelect(itemValue.value);
+            i18n.changeLanguage(itemValue.lang);
+            updateSetting(ESettingsStates.APP_LANGUAGE, itemValue.value);
+        }
     }
 
     return (
         <div
-            className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : 'unselected-lang'} ${i18n.hasResourceBundle(itemValue.lang, 'common') ? null : 'lang-disabled'}`}
+            className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : 'unselected-lang'} ${hasLang ? null : 'lang-disabled'}`}
             onClick={fSelectLanguage}>
-            <div className={`circle ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
-            <span className='language-text'>{itemValue.text}</span>
+            <div className={`circle noselect ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
+            <span className='language-text noselect'>{itemValue.text}</span>
+            {!hasLang ? null :
+                <div className="language-flag-container">
+                    <span className='language-lang noselect'>{t(`languages.${itemValue.lang}`)}</span>
+                    <img src={`src/assets/flags/${itemValue.lang}.png`} alt="lang-flag" className={`item-language-flag`} />
+                </div>
+            }
         </div>
     )
 }

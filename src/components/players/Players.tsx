@@ -5,7 +5,8 @@ import '../css/players.css';
 import { groupByKey, mapEnum, sortByKey } from "../../utils";
 import { PlayersGroup } from './PlayersGroup';
 import { SpectatorContext } from "../../context/SpectatorContext";
-import { EGroupBy, ERoles, ETeams } from '../../typings';
+import { EGroupBy, ERoles, ETeams, EEMessages } from '../../typings';
+import { useTranslation } from 'react-i18next';
 
 const ROLES_SORT = mapEnum(ERoles, "string", () => {}) as string[];
 const TEAMS_SORT = mapEnum(ETeams, "number", (team: number) => { return team.toString() }) as string[];
@@ -65,4 +66,18 @@ const Players: React.FC<{
     );
 };
 
-export default Players
+const PlayersNotLoaded: React.FC<{
+}> = ({}) => {
+    const { t } = useTranslation('common');
+    
+    return (
+        <div className={`players-empty noselect`}>
+            <span>{t(`${EEMessages.NONE_LOADED}`)}</span>
+        </div>
+    )
+}
+
+export {
+    Players,
+    PlayersNotLoaded
+}

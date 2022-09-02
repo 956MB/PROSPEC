@@ -9,7 +9,7 @@ import { IAppBackground, IPlayers, useInit } from "./interfaces";
 
 import { EChampions, ERegions } from "./typings";
 import { getRegion, ifLiveBackground, randomActive, randomBackground, randomEnum, randomNumber } from "./utils";
-import Players from "./components/players/Players";
+import { Players, PlayersNotLoaded } from "./components/players/Players";
 
 import { SpectatorContext } from "./context/SpectatorContext";
 import { SettingsContext } from "./context/SettingsContext";
@@ -19,7 +19,7 @@ function App() {
     const { i18n } = useTranslation('common');
     // const proSpec = useMemo(() => new ProSpec(false), []);
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
-    const { liveBackground } = useContext(SettingsContext);
+    const { useBackground, liveBackground } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IAppBackground>({
         primary: { type: "live", name: "Sona_6" },
         secondary: { type: "centered", name: "Sona_6" }
@@ -78,22 +78,23 @@ function App() {
             }}>
             <Settings appBackground={appBG} settingsOpen={settingsOpen} FSettingsOpen={FSettingsOpen} />
             <Titlebar settingsOpen={settingsOpen} refreshPlayers={refreshPlayers} />
-            <div className="app-inner">
-                {playersLoaded ?
-                    <Players key={playersKey} players={players} />
-                    : null
-                }
-            </div>
+            {playersLoaded
+                ?
+                <Players key={playersKey} players={players} />
+                :
+                <PlayersNotLoaded/>
+            }
             <div className="dark-overlay"></div>
 
-            {/* {liveBackground && appBG.primary.type === "live"
-                ?
-                <video autoPlay muted loop className="app-background-video">
-                    <source src={`src/assets/dragontail/${liveBackground ? appBG.primary.type : "splash"}/${appBG.primary.name}.webm`} type="video/mp4" />
-                </video>
-                :
-                <div className="app-background" style={{ backgroundImage: `url(src/assets/dragontail/${liveBackground ? appBG.primary.type : "splash"}/${appBG.primary.name}.jpg)` }}></div>
-            } */}
+            {!useBackground ? null :
+                liveBackground && appBG.primary.type === "live"
+                    ?
+                    <video autoPlay muted loop className="app-background-video">
+                        <source src={`src/assets/dragontail/${liveBackground ? appBG.primary.type : "splash"}/${appBG.primary.name}.webm`} type="video/mp4" />
+                    </video>
+                    :
+                    <div className="app-background" style={{ backgroundImage: `url(src/assets/dragontail/${liveBackground ? appBG.primary.type : "splash"}/${appBG.primary.name}.jpg)` }}></div>
+            }
         </div>
     );
 }

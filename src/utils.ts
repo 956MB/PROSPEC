@@ -1,5 +1,5 @@
 import { IAppBackground, IBackground, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISummonerAccount } from "./interfaces";
-import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy } from "./typings";
+import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import { BlobOptions } from "buffer";
 import random from 'random'

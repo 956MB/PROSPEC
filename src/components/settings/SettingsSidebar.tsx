@@ -15,12 +15,12 @@ const SettingsSidebar: React.FC<{
         <div className={`settings-vertical-container`} >
             <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => null} id={'discord-button'}>
                 <img src={discordIcon} alt="discord" />
-                <span className={`${ETooltip.RIGHT} right-far`}>{`Discord`}</span>
+                <span className={`${settingsOpen ? `${ETooltip.LEFT} left-far` : `${ETooltip.RIGHT} right-far`}`}>{`Discord`}</span>
             </div>
 
-            <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => FSettingsOpen(true)}>
+            <div className={`vertical-button ${ETooltip.TOOLTIP}`} onClick={() => FSettingsOpen(!settingsOpen)}>
                 <img src={gearIcon} alt="gear" />
-                <span className={`${ETooltip.RIGHT} right-far`}>{`${t('settings.title')}`}</span>
+                <span className={`${settingsOpen ? `${ETooltip.LEFT} left-far` : `${ETooltip.RIGHT} right-far`}`}>{`${t('settings.title')}`}</span>
             </div>
         </div>
     )

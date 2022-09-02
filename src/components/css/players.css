@@ -3,9 +3,10 @@
 }
 
 .pros-container {
-    width: 100%;
+    /* width: 100%; */
     /* height: calc(100vh - 47px); */
-    height: 100vh;
+    /* height: 100%; */
+    flex: 1;
     /* background-color: rgba(0, 0, 0, 0.17); */
     /* background-color: rgba(25, 25, 25, 0.40); */
     /* background-color: rgba(0, 0, 0, 0.30); */
@@ -16,18 +17,20 @@
     /* border-top: 1px solid rgb(255, 255, 255, 0.08); */
     z-index: 2;
     /* margin: 47px 0 0 0; */
+    padding: 0 0 0 55px;
 }
 
 .first-group {
-    margin-top: 62px;
+    /* margin-top: 35px; */
 }
 .last-group {
-    margin-bottom: 35px !important;
+    margin-bottom: 30px;
 }
 
 .pros-scroll {
     height: 100%;
     /* padding: 0 15px 0 15px; */
+    /* margin: 47px 0 47px 0; */
     overflow-x: hidden;
     overflow-y: scroll;
 }
@@ -64,12 +67,12 @@
     align-content: center;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 5px;
     margin: 10px 0 30px 0;
     /* padding: 0 10px 0 10px; */
     cursor: pointer;
     /* backdrop-filter: blur(4px); */
-    /* background-color: rgba(0, 255, 255, 0.103); */
+    /* background-color: rgba(35, 35, 35, 0.90); */
 }
 
 .group-info {
@@ -114,30 +117,7 @@
     /* border-radius: 0 5px 5px 0; */
 }
 
-/* .group-sidebar:hover {
-    background-color: rgba(50, 50, 50, 0.40);
-} */
-.group-sidebar:hover .group-image-icon {
-    opacity: 0.75 !important;
-}
-.group-sidebar:hover .group-divider {
-    background-color: rgba(255, 255, 255, 0.15);
-}
-.group-sidebar:hover .group-divider-text {
-    color: rgba(255, 255, 255, 0.85);
-}
-/* .group-sidebar:active {
-    background-color: rgba(45, 45, 45, 0.85);
-} */
-.group-sidebar:active .group-image-icon {
-    opacity: 0.40 !important;
-}
-.group-sidebar:active .group-divider-text {
-    color: rgba(255, 255, 255, 0.75);
-}
-.group-sidebar:active .group-divider {
-    background-color: rgba(255, 255, 255, 0.10);
-}
+
 
 .group-image-icon {
     width: 18px;
@@ -213,3 +193,23 @@
         display: none;
     }
 } */
+
+.players-empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background-color: rgba(25, 25, 25, 0.60);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* margin: 0 10px 10px 65px; */
+    border-radius: 5px;
+    z-index: 2;
+}
+
+.players-empty span {
+    font-family: 'Inter_Medium';
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.15);
+    margin-bottom: 47px;
+}

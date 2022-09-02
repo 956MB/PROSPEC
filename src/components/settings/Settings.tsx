@@ -10,12 +10,18 @@ import closeIcon from '../../assets/icons/close.svg';
 
 import SettingsSidebar from './SettingsSidebar';
 import { SettingsPage, SettingsPageButton } from './SettingsPage';
+import { useDetectClickOutside } from 'react-detect-click-outside';
 
 const Settings: React.FC<{
     appBackground: IAppBackground,
     settingsOpen: boolean,
     FSettingsOpen: (set: boolean) => void
 }> = ({ appBackground, settingsOpen, FSettingsOpen }) => {
+    const toggleSettingsOpen = (e: any) => {
+        e.stopPropagation();
+        if (settingsOpen) { FSettingsOpen(false) }
+    }
+    const settingsRef = useDetectClickOutside({ onTriggered: toggleSettingsOpen });
 
     const [settings, setSettings] = useState<ISettingsPages>([
         {
@@ -121,7 +127,10 @@ const Settings: React.FC<{
     )
 
     return (
-        <div className={`settings-outer ${settingsOpen ? 'settings-open' : null}`}>
+        <div
+            className={`settings-outer ${settingsOpen ? 'settings-open' : null}`}
+            ref={settingsRef}
+        >
             <SettingsInner pagesProps={settings} settingsOpen={settingsOpen} settingsBackground={appBackground} FSettingsOpen={FSettingsOpen} />
 
             <SettingsSidebar settingsOpen={settingsOpen} FSettingsOpen={FSettingsOpen} />
@@ -149,8 +158,8 @@ const SettingsInner: React.FC<{
     return (
         <div className={`settings-inner`} >
             <div className='settings-content'>
-                <div className='settings-close-container'>
-                    <span className='settings-title-text'>{t('settings.title')}</span>
+                <div data-tauri-drag-region className='settings-close-container'>
+                    <span className='settings-title-text'>{`${t('settings.title')}`}</span>
                     <div className={`titlebar-button titlebar-button-edge-both close-button ${ETooltip.TOOLTIP}`} onClick={() => FSettingsOpen(false)}>
                         <img src={closeIcon} alt="close" />
                         <span className={`${ETooltip.LEFT}`}>{EEMessages.ESC}</span>
@@ -166,20 +175,22 @@ const SettingsInner: React.FC<{
                     </div>
                 </div>
 
-                {React.Children.toArray(
-                    pagesProps.map((page, i) => (
-                        <SettingsPage key={page.index} pageProps={page} pageActive={isActive(i)} />
-                    ))
-                )}
+                <div className='settings-page-container'>
+                    {React.Children.toArray(
+                        pagesProps.map((page, i) => (
+                            <SettingsPage key={page.index} pageProps={page} pageActive={isActive(i)} />
+                        ))
+                    )}
+                </div>
             </div>
             <div className="settings-dark-overlay"></div>
-            {/* <div
+            <div
                 className={`${(settingsBackground.secondary.type === 'centered') ? 'settings-background-center' : 'settings-background-left'}`}
                 style={{
                     backgroundImage:
                         `url(src/assets/dragontail/${settingsBackground.secondary.type}/${settingsBackground.secondary.name}.jpg)`
                 }}>
-            </div> */}
+            </div>
         </div>
     )
 }

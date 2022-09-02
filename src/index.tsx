@@ -16,7 +16,6 @@ import common_fi from "./locale/fi_FI/common.json";
 import common_sv from "./locale/sv_SV/common.json";
 import common_jp from "./locale/ja_JP/common.json";
 import common_hi from "./locale/hi_HI/common.json";
-// import SettingsStore from './context/SettingsStore';
 
 i18next.init({
     interpolation: { escapeValue: false },
