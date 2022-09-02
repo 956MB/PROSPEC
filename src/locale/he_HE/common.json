@@ -40,7 +40,9 @@
                     "Riot Games": "Aldsion Splash Art, סמלי אלוף, אייקוני פרופיל וכו '.",
                     "Metafy.gg": "גזרות אמנות של אלוף."
                 },
-                "third-party": "תוכנת צד שלישי - רישיון (ים)"
+                "dep": "תוכנת צד שלישי - רישיון (ים)",
+                "github": "Github",
+                "checkForUpdates": "בדוק עדכונים"
 			},
 			"application": {
 				"items": {

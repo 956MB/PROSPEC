@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { pAbout } from "../../utils";
-import { ISettingsAboutSectionEntries } from "../../interfaces";
+import { ISettingsAboutSectionEntries, ISettingsAboutSectionEntry, ISettingsAboutSectionEntryDep, ISettingsAboutSectionEntryDeps } from "../../interfaces";
 import { ETooltip } from "../../typings";
 import '../css/settings.css';
+
+import * as licenses from '../../licenses'
 
 const SettingsPageAbout: React.FC<{
     pageActive: boolean,
@@ -18,27 +20,28 @@ const SettingsPageAbout: React.FC<{
         { name: "Riot Games", link: "https://www.riotgames.com" },
         { name: "Metafy.gg", link: "https://metafy.gg/" },
     ]);
-    const [deps, setDeps] = useState<ISettingsAboutSectionEntries>([
-        { name: "@tauri-apps/api", link: "@1.0.2" },
-        { name: "@tauri-apps/cli", link: "@1.0.5" },
-        { name: "tauri-plugin-store-api", link: "@0.1.0" },
-        { name: "@types/node", link: "@18.7.14" },
-        { name: "@types/react", link: "@18.0.18" },
-        { name: "@types/react-dom", link: "@18.0.6" },
-        { name: "@vitejs/plugin-react", link: "@1.3.2" },
-        { name: "prop-types", link: "@15.8.1" },
-        { name: "react", link: "@18.2.0" },
-        { name: "react-dom", link: "@18.2.0" },
-        { name: "react-router-dom", link: "@6.3.0" },
-        { name: "react-i18next", link: "@11.18.5" },
-        { name: "react-detect-click-outside", link: "@1.1.7" },
-        { name: "react-hotkeys-hook", link: "@3.4.7" },
-        { name: "semantic-ui-react", link: "@2.1.3" },
-        { name: "typescript", link: "@4.8.2" },
-        { name: "vite", link: "@2.9.15" },
-        { name: "i18next", link: "@21.9.1" },
-        { name: "ini", link: "@3.0.1" },
-        { name: "random", link: "@3.0.6" },
+    const [deps, setDeps] = useState<ISettingsAboutSectionEntryDeps>([
+        // TODO: Do this dynamically...
+        { name: "@tauri-apps/api", version: "@1.0.2", link: "https://github.com/tauri-apps/tauri", license: licenses.tauriLicense },
+        { name: "@tauri-apps/cli", version: "@1.0.5", link: "https://github.com/tauri-apps/tauri", license: licenses.tauriLicense },
+        { name: "tauri-plugin-store-api", version: "@0.1.0", link: "https://github.com/tauri-apps/tauri-plugin-store", license: licenses.tauriLicense },
+        { name: "@types/node", version: "@18.7.14", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: licenses.typesNodeLicense },
+        { name: "@types/react", version: "@18.0.18", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: licenses.typesNodeLicense },
+        { name: "@types/react-dom", version: "@18.0.6", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: licenses.typesNodeLicense },
+        { name: "@vitejs/plugin-react", version: "@1.3.2", link: "https://github.com/jsx-eslint/eslint-plugin-react", license: licenses.pluginReactLicense },
+        { name: "prop-types", version: "@15.8.1", link: "https://github.com/facebook/prop-types", license: licenses.reactLicense },
+        { name: "react", version: "@18.2.0", link: "https://github.com/facebook/react", license: licenses.reactLicense },
+        { name: "react-dom", version: "@18.2.0", link: "https://github.com/facebook/react", license: licenses.reactLicense },
+        { name: "react-router-dom", version: "@6.3.0", link: "https://github.com/facebook/react", license: licenses.reactLicense },
+        { name: "react-i18next", version: "@11.18.5", link: "https://github.com/i18next/react-i18next", license: licenses.reacti18nextLicense },
+        { name: "react-detect-click-outside", version: "@1.1.7", link: "https://github.com/zhaluza/react-detect-click-outside", license: "" },
+        { name: "react-hotkeys-hook", version: "@3.4.7", link: "https://github.com/JohannesKlauss/react-hotkeys-hook", license: licenses.reactHotkeysHookLicense },
+        { name: "semantic-ui-react", version: "@2.1.3", link: "https://github.com/Semantic-Org/Semantic-UI-React", license: licenses.semanticUiReactLicense },
+        { name: "typescript", version: "@4.8.2", link: "https://github.com/Microsoft/TypeScript", license: licenses.typescriptLicense },
+        { name: "vite", version: "@2.9.15", link: "https://github.com/vitejs/vite", license: licenses.viteLicense },
+        { name: "i18next", version: "@21.9.1", link: "https://github.com/i18next/i18next", license: licenses.i18nextLicense },
+        { name: "ini", version: "@3.0.1", link: "https://github.com/npm/ini", license: licenses.iniLicense },
+        { name: "random", version: "@3.0.6", link: "https://github.com/transitive-bullshit/random", license: "" },
     ]);
 
     return (
@@ -60,15 +63,6 @@ const SettingsPageAbout: React.FC<{
             <div className={`settings-about-description`}>
                 <span className="noselect">{t(pAbout(`description`))}</span>
             </div>
-
-            {/* <div className={`settings-about-buttons-container`}>
-                <div className="settings-about-button">
-                    <span>Github</span>
-                </div>
-                <div className="settings-about-button">
-                    <span>Changelog</span>
-                </div>
-            </div> */}
 
             <div className={`settings-about-section`}>
                 <div className="settings-about-section-title">
@@ -94,23 +88,45 @@ const SettingsPageAbout: React.FC<{
 
             <div className={`settings-about-section`}>
                 <div className="settings-about-section-title">
-                    <span className="noselect">{`${t(pAbout(`third-party`))}:`}</span>
+                    <span className="noselect">{`${t(pAbout(`dep`))}:`}</span>
                 </div>
 
-                <div className={`settings-about-third-party-container`}>
+                <div className={`settings-about-dep-container`}>
                     {React.Children.toArray(
                         deps.map((dep, i) => (
                             <div>
-                                <div className="settings-about-section-entry">
-                                    <span className="settings-about-section-entry-name-third-party select">{dep.name}</span>
-                                    {/* <div className="dots-divider"></div> */}
-                                    <span className="settings-about-section-entry-link-third-party select">{`${dep.link}`}</span>
-                                </div>
+                                <SettingsSectionEntryCollapse sectionEntry={dep} />
                                 {i < deps.length - 1 ? <div className="spacer-divider-entry"></div> : null}
                             </div>
                         ))
                     )}
                 </div>
+            </div>
+        </div>
+    )
+}
+
+const SettingsSectionEntryCollapse: React.FC<{
+    sectionEntry: ISettingsAboutSectionEntryDep
+}> = ({ sectionEntry }) => {
+    const [entryOpen, setEntryOpen] = useState<boolean>(false);
+
+    return (
+        <div className={`settings-about-section-entry-dep ${entryOpen ? 'entry-open' : null}`}>
+            <div
+                className={`settings-about-entry-inner`}
+                onClick={() => setEntryOpen(!entryOpen)}
+            >
+                <img src={`src/assets/icons/chevron.down.svg`} alt="" className='value-right' />
+                <span className="settings-about-section-entry-name-dep select">{sectionEntry.name}</span>
+                {/* <div className="dots-divider"></div> */}
+                <span className="settings-about-section-entry-link-dep select">{`${sectionEntry.version}`}</span>
+            </div>
+
+            <div className={`settings-about-entry-content`}>
+                <div className="settings-about-entry-content-name select">{sectionEntry.name}</div>
+                {sectionEntry.link ? <div className="settings-about-entry-content-link select">{sectionEntry.link}</div> : null}
+                {sectionEntry.license && sectionEntry.license != "" ? <div className="settings-about-entry-content-license select">{sectionEntry.license}</div> : null}
             </div>
         </div>
     )

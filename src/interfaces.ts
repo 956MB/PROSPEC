@@ -230,7 +230,15 @@ export interface ISettingsPageButton {
 export interface ISettingsAboutSectionEntries extends Array<ISettingsAboutSectionEntry>{}
 export interface ISettingsAboutSectionEntry {
     name: string;
-    link: string;
+    link?: string;
+}
+
+export interface ISettingsAboutSectionEntryDeps extends Array<ISettingsAboutSectionEntryDep>{}
+export interface ISettingsAboutSectionEntryDep extends Omit<ISettingsAboutSectionEntry, 'name' | 'link'> {
+    name: string;
+    version: string;
+    link?: string;
+    license?: string;
 }
 
 // NOTE: JSON
