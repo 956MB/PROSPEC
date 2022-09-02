@@ -18,24 +18,27 @@ const SettingsPageAbout: React.FC<{
         { name: "Riot Games", link: "https://www.riotgames.com" },
         { name: "Metafy.gg", link: "https://metafy.gg/" },
     ]);
-    const [thirdParty, setThirdParty] = useState<ISettingsAboutSectionEntries>([
-        { name: "@tauri-apps/api", link: "@^1.0.1" },
-        { name: "@tauri-apps/cli", link: "@^1.0.1" },
-        { name: "tauri-plugin-store-api", link: "@github:tauri-apps/tauri-plugin-store#dev" },
-        { name: "@types/react", link: "@^18.0.0" },
-        { name: "@types/react-dom", link: "@^18.0.0" },
-        { name: "@types/node", link: "@^18.0.5" },
-        { name: "typescript", link: "@^4.6.3" },
-        { name: "react", link: "@^18.0.0" },
-        { name: "react-detect-click-outside", link: "@^1.1.7" },
-        { name: "react-dom", link: "@^18.0.0" },
-        { name: "react-hotkeys-hook", link: "@^3.4.7" },
-        { name: "react-i18next", link: "@^11.18.3" },
-        { name: "@vitejs/plugin-react", link: "@^1.3.0" },
-        { name: "vite", link: "@^2.9.9" },
-        { name: "i18next", link: "@^21.8.16" },
-        { name: "ini", link: "@^3.0.0" },
-        { name: "random", link: "@^3.0.6" },
+    const [deps, setDeps] = useState<ISettingsAboutSectionEntries>([
+        { name: "@tauri-apps/api", link: "@1.0.2" },
+        { name: "@tauri-apps/cli", link: "@1.0.5" },
+        { name: "tauri-plugin-store-api", link: "@0.1.0" },
+        { name: "@types/node", link: "@18.7.14" },
+        { name: "@types/react", link: "@18.0.18" },
+        { name: "@types/react-dom", link: "@18.0.6" },
+        { name: "@vitejs/plugin-react", link: "@1.3.2" },
+        { name: "prop-types", link: "@15.8.1" },
+        { name: "react", link: "@18.2.0" },
+        { name: "react-dom", link: "@18.2.0" },
+        { name: "react-router-dom", link: "@6.3.0" },
+        { name: "react-i18next", link: "@11.18.5" },
+        { name: "react-detect-click-outside", link: "@1.1.7" },
+        { name: "react-hotkeys-hook", link: "@3.4.7" },
+        { name: "semantic-ui-react", link: "@2.1.3" },
+        { name: "typescript", link: "@4.8.2" },
+        { name: "vite", link: "@2.9.15" },
+        { name: "i18next", link: "@21.9.1" },
+        { name: "ini", link: "@3.0.1" },
+        { name: "random", link: "@3.0.6" },
     ]);
 
     return (
@@ -75,11 +78,14 @@ const SettingsPageAbout: React.FC<{
                 <div className="settings-about-section-credit-container">
                     {React.Children.toArray(
                         credits.map((credit, i) => (
-                            <div className="settings-about-section-entry">
-                                <span className="settings-about-section-entry-name select">{credit.name}</span>
-                                <span className="settings-about-section-entry-reason noselect">{`${t(pAbout(`thanks.${credit.name}`))}`}</span>
-                                {/* <span className="settings-about-section-entry-link select">{`${credit.link}`}</span> */}
-                                <a href={credit.link} target = "_blank" rel = "noopener noreferrer" className={`settings-about-section-entry-link select`}>{credit.link}</a>
+                            <div>
+                                <div className="settings-about-section-entry">
+                                    <span className="settings-about-section-entry-name select">{credit.name}</span>
+                                    <span className="settings-about-section-entry-reason noselect">{`${t(pAbout(`thanks.${credit.name}`))}`}</span>
+                                    {/* <span className="settings-about-section-entry-link select">{`${credit.link}`}</span> */}
+                                    <a href={credit.link} target="_blank" rel="noopener noreferrer" className={`settings-about-section-entry-link select`}>{credit.link}</a>
+                                </div>
+                                {i < credits.length - 1 ? <div className="spacer-divider-entry"></div> : null}
                             </div>
                         ))
                     )}
@@ -93,11 +99,14 @@ const SettingsPageAbout: React.FC<{
 
                 <div className={`settings-about-third-party-container`}>
                     {React.Children.toArray(
-                        thirdParty.map((software, i) => (
-                            <div className="settings-about-section-entry">
-                                <span className="settings-about-section-entry-name-third-party select">{software.name}</span>
-                                {/* <div className="dots-divider"></div> */}
-                                <span className="settings-about-section-entry-link-third-party select">{`${software.link}`}</span>
+                        deps.map((dep, i) => (
+                            <div>
+                                <div className="settings-about-section-entry">
+                                    <span className="settings-about-section-entry-name-third-party select">{dep.name}</span>
+                                    {/* <div className="dots-divider"></div> */}
+                                    <span className="settings-about-section-entry-link-third-party select">{`${dep.link}`}</span>
+                                </div>
+                                {i < deps.length - 1 ? <div className="spacer-divider-entry"></div> : null}
                             </div>
                         ))
                     )}

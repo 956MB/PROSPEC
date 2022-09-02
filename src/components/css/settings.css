@@ -1,8 +1,8 @@
 :root {
-    --accent: rgba(255, 0, 60, 0.89);
-    --accent-opacity: rgba(255, 0, 60, 0.72);
-    --accent-hover: rgba(255, 0, 60, 0.94);
-    --accent-opacity-hover: rgba(255, 0, 60, 0.65);
+    --accent: rgba(255, 0, 75, 0.89);
+    --accent-opacity: rgba(255, 0, 75, 0.72);
+    --accent-hover: rgba(255, 0, 75, 0.94);
+    --accent-opacity-hover: rgba(255, 0, 75, 0.65);
     --toggle-unselected: rgba(255, 255, 255, 0.20);
     --toggle-unselected-hover: rgba(255, 255, 255, 0.30);
 }
@@ -317,7 +317,7 @@
 }
 
 .settings-about-version-text {
-    font-family: 'Inter_Medium';
+    font-family: 'Inter_Regular';
     font-size: 12px;
     color: rgba(255, 255, 255, 0.35);
     /* margin: 0 0 0 12px; */
@@ -412,8 +412,8 @@
     font-size: 12px;
     color: rgba(255, 255, 255, 0.70);
 }
-.settings-about-button span,
-.settings-about-button-accent span
+.br_BA .settings-about-button span,
+.br_BA .settings-about-button-accent span
 {
     font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
     font-size: 12px !important;
@@ -514,11 +514,11 @@
     /* background-color: rgba(0, 255, 255, 0.205); */
 }
 .settings-about-section-entry-link {
-    font-family: 'Inter_Medium';
+    font-family: 'Inter_Regular';
     font-size: 12px;
     color: var(--accent);
     cursor: pointer;
-    margin-left: auto;
+    margin: auto 0 auto auto;
     white-space: nowrap;
     min-width: 70px;
     text-align: right;
@@ -864,7 +864,13 @@
 
 .spacer-divider {
     height: 1px;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.10);
+}
+.spacer-divider-entry {
+    height: 1px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* NOTE: Bool */
