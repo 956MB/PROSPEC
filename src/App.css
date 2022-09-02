@@ -47,6 +47,15 @@ body {
     background-clip: content-box;
 }
 
+::selection {
+    background: var(--accent-rgba); /* WebKit/Blink Browsers */
+    color: white;
+}
+::-moz-selection {
+    background: var(--accent-rgba); /* Gecko Browsers */
+    color: white;
+}
+
 .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */

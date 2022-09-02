@@ -6,7 +6,7 @@ import { ISettingsAboutSectionEntries, ISettingsAboutSectionEntry, ISettingsAbou
 import { ETooltip } from "../../typings";
 import '../css/settings.css';
 
-import * as licenses from '../../licenses'
+import * as licenses from '../../imports/licenses'
 
 const SettingsPageAbout: React.FC<{
     pageActive: boolean,

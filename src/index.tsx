@@ -8,29 +8,21 @@ import SettingsProvider from "./context/SettingsContext";
 import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 
-import common_en from "./locale/en_EN/common.json";
-import common_ar from "./locale/ar_AE/common.json";
-import common_he from "./locale/he_HE/common.json";
-import common_kr from "./locale/kr_KR/common.json";
-import common_fi from "./locale/fi_FI/common.json";
-import common_sv from "./locale/sv_SV/common.json";
-import common_jp from "./locale/ja_JP/common.json";
-import common_hi from "./locale/hi_HI/common.json";
-import common_br from "./locale/br_BA/common.json";
+import * as locales from './imports/locales'
 
 i18next.init({
     interpolation: { escapeValue: false },
     lng: 'en_EN',
     resources: {
-        en_EN: { common: common_en },
-        ar_AE: { common: common_ar },
-        he_HE: { common: common_he },
-        kr_KR: { common: common_kr },
-        fi_FI: { common: common_fi },
-        sv_SV: { common: common_sv },
-        ja_JP: { common: common_jp },
-        hi_HI: { common: common_hi },
-        br_BA: { common: common_br }
+        en_EN: { common: locales.common_en },
+        ar_AE: { common: locales.common_ar },
+        he_HE: { common: locales.common_he },
+        kr_KR: { common: locales.common_kr },
+        fi_FI: { common: locales.common_fi },
+        sv_SV: { common: locales.common_sv },
+        ja_JP: { common: locales.common_jp },
+        hi_HI: { common: locales.common_hi },
+        br_BA: { common: locales.common_br }
     },
 });
 
