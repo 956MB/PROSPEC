@@ -59,7 +59,8 @@ export enum ELanguages {
     ja_JP = 'ja_JP',
     vi_VI = 'vi_VI',
     zh_CN = 'zh_CN',
-    zh_TW = 'zh_TW'
+    zh_TW = 'zh_TW',
+    br_BA = 'br_BA'
 }
 
 export enum EButtonImages {

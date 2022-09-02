@@ -76,6 +76,11 @@ export function ifLiveBackground(background: string): boolean {
 
 // NOTE: Gets
 
+const LANGS = [ "English", "العربية", "Deutsch", "עִברִית", "Français", "Italiano", "Nederlands", "Svenska", "Suomi", "हिन्दी", "Português", "Polski", "Русский", "Türkçe", "Čeština", "Ελληνικά", "한국어", "日本語", "Tiếng Việt", "简体中文", "繁體中文", "Braille" ];
+export function getLanguageStatic(lang: number): string {
+    return LANGS.at(lang)!;
+}
+
 export function getGroupInfoFromKey(key: any): IPlayerGroupInfo {
     if ((key as string) === EGroupBy.NONE) {
         return { type: EGroupBy.NONE, image: "", text: ""};
@@ -414,6 +419,7 @@ export function oRegion(region: string): string { return `regions.${region}` }
 export function sTitle(page: string): string { return `settings.pages.${page}.title` }
 export function sItemTitle(page: string, item: string): string { return `settings.pages.${page}.items.${item}.title` }
 export function sItemDescription(page: string, item: string): string { return `settings.pages.${page}.items.${item}.description` }
+export function pAbout(item: string): string { return `settings.pages.about.${item}` }
 
 
 // NOTE: RANDOM:

@@ -202,7 +202,7 @@
     flex: 1;
     background-color: rgba(25, 25, 25, 0.60);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    /* margin: 0 10px 10px 65px; */
+    margin: 0 0 0 55px;
     border-radius: 5px;
     z-index: 2;
 }
@@ -212,4 +212,10 @@
     font-size: 22px;
     color: rgba(255, 255, 255, 0.15);
     margin-bottom: 47px;
+    text-align: center;
+}
+
+.br_BA .players-empty span {
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
+    letter-spacing: 3px !important;
 }

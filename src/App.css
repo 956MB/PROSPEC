@@ -57,6 +57,13 @@ body {
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
+.select {
+    -webkit-user-select: text;  /* Chrome 49+ */
+    -moz-user-select: text;     /* Firefox 43+ */
+    -ms-user-select: text;      /* No support yet */
+    user-select: text;          /* Likely future */   
+}
+
 img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
@@ -149,6 +156,13 @@ img {
     visibility: hidden;
 }
 
+.br_BA .tooltip .tooltip-text,
+.br_BA .tooltip .tooltip-text-delay
+{
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
+    letter-spacing: 3px !important;
+}
+
 .tooltip-right {
     top: 50%;
     transform: translateY(-50%);
@@ -177,12 +191,12 @@ img {
 }
 
 .right-close {
-    left: 85% !important;
+    left: 100%;
     white-space: nowrap;
     animation: fadeInRightClose 0.1s normal forwards ease-in-out !important;
 }
 .left-close {
-    right: 85% !important;
+    right: 85%;
     white-space: nowrap;
     animation: fadeInLeftClose 0.1s normal forwards ease-in-out !important;
 }
@@ -208,9 +222,9 @@ img {
     100% { left: 115%; }
 }
 @keyframes fadeInRightClose {
-    50% { left: 90%; }
-    75% { left: 95%; }
-    100% { left: 100%; }
+    50% { left: 100%; }
+    75% { left: 102%; }
+    100% { left: 105%; }
 }
 @keyframes fadeInLeftClose {
     50% { right: 90%; }

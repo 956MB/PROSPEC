@@ -3,14 +3,15 @@ import { useTranslation } from "react-i18next";
 import '../css/settings.css';
 
 import { EEMessages, ETooltip, ESettingsStates, ELanguages } from '../../typings';
-import { ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPages, ISettingsPageLanguage, IAppBackground, useInit } from '../../interfaces';
-import { sTitle, sItemTitle, sItemDescription } from '../../utils';
+import { ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPages, ISettingsPageLanguage, IAppBackground, useInit, ISettingsItems } from '../../interfaces';
+import { sTitle, sItemTitle, sItemDescription, mapEnum, getLanguageStatic } from '../../utils';
 
 import closeIcon from '../../assets/icons/close.svg';
 
 import SettingsSidebar from './SettingsSidebar';
 import { SettingsPage, SettingsPageButton } from './SettingsPage';
 import { useDetectClickOutside } from 'react-detect-click-outside';
+import { SettingsPageAbout } from './SettingsPageAbout';
 
 const Settings: React.FC<{
     appBackground: IAppBackground,
@@ -97,32 +98,15 @@ const Settings: React.FC<{
         }
         ,
         {
-            index: 2, type: 'lang', title: sTitle('language'), selected: 0, items: [
-                { itemValue: { type: 'lang', value: 0, text: 'English', lang: ELanguages.en_EN } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 1, text: 'العربية', lang: ELanguages.ar_AE } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 2, text: 'Deutsch', lang: ELanguages.de_DE } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 3, text: 'עִברִית', lang: ELanguages.he_HE } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 4, text: 'Français', lang: ELanguages.fr_FR } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 5, text: 'Italiano', lang: ELanguages.it_IT } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 6, text: 'Nederlands', lang: ELanguages.nl_NL } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 7, text: 'Svenska', lang: ELanguages.sv_SV } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 8, text: 'Suomi', lang: ELanguages.fi_FI } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 9, text: 'हिन्दी', lang: ELanguages.hi_HI } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 10, text: 'Português', lang: ELanguages.pt_PT } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 11, text: 'Polski', lang: ELanguages.pl_PL } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 12, text: 'Русский', lang: ELanguages.ru_RU } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 13, text: 'Türkçe', lang: ELanguages.tr_TR } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 14, text: 'Čeština', lang: ELanguages.cs_CS } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 15, text: 'Ελληνικά', lang: ELanguages.el_EL } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 16, text: '한국어', lang: ELanguages.kr_KR } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 17, text: '日本語', lang: ELanguages.ja_JP } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 18, text: 'Tiếng Việt', lang: ELanguages.vi_VI } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 19, text: '简体中文', lang: ELanguages.zh_CN } as ISettingsItemValueLanguage },
-                { itemValue: { type: 'lang', value: 20, text: '繁體中文', lang: ELanguages.zh_TW } as ISettingsItemValueLanguage }
-            ]
+            index: 2, type: 'lang', title: sTitle('language'), selected: 0, items:
+                mapEnum(ELanguages, "string", (lang: ELanguages, i: number) => {
+                    return {
+                        itemValue: { type: 'lang', value: i, text: getLanguageStatic(i), lang: lang as string } as ISettingsItemValueLanguage
+                    }
+                }) as ISettingsItems
         } as ISettingsPageLanguage
         ,
-        { index: 3, type: 'list', title: sTitle('about'), items: [] }
+        { index: 3, type: 'about', title: sTitle('about'), items: [] }
     ]
     )
 
@@ -178,7 +162,11 @@ const SettingsInner: React.FC<{
                 <div className='settings-page-container'>
                     {React.Children.toArray(
                         pagesProps.map((page, i) => (
-                            <SettingsPage key={page.index} pageProps={page} pageActive={isActive(i)} />
+                            page.type === 'about'
+                                ?
+                                <SettingsPageAbout pageActive={isActive(i)} />
+                                :
+                                <SettingsPage key={page.index} pageProps={page} pageActive={isActive(i)} />
                         ))
                     )}
                 </div>

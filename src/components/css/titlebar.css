@@ -162,6 +162,12 @@
     white-space:nowrap;
 }
 
+.br_BA .refresh-text {
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
+    font-size: 11px !important;
+    letter-spacing: 3px !important;
+}
+
 .search-bar {
     margin-right: 7px;
     margin-left: 22px;

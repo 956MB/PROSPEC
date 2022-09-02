@@ -42,6 +42,13 @@
     height: 30px;
 }
 
+.br_BA .card-menu-info {
+    font-family: 'ChmcBraille_nK5P', 'RobotoMono_Regular' !important;
+    font-size: 11px !important;
+    letter-spacing: 3px !important;
+    font-size: 11px;
+}
+
 .card-menu-button {
     pointer-events: all;
     display: flex;
@@ -68,6 +75,13 @@
     text-align: left;
     /* background-color: aqua; */
     width: 100%;
+}
+
+.br_BA .card-menu-button span {
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
+    font-size: 11px !important;
+    letter-spacing: 3px !important;
+    font-size: 11px;
 }
 .card-menu-button img {
     display: block;
@@ -618,6 +632,12 @@
     /* margin-bottom: -2px; */
 }
 
+.br_BA .text-summoner {
+    font-family: 'ChmcBraille_nK5P', 'NotoSansKR_Medium' !important;
+    letter-spacing: 3px !important;
+    margin-top: 3px;
+}
+
 .animated {
     overflow: hidden;
     width: 11rem;
@@ -669,6 +689,13 @@
     text-overflow: ellipsis;
     margin: 1px auto 0 0;
     z-index: 1;
+}
+
+.br_BA .text-sub {
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
+    font-size: 11px !important;
+    letter-spacing: 3px !important;
+    margin: 5px auto 1px 0;
 }
 
 .text-sub-container {

@@ -16,6 +16,7 @@ import common_fi from "./locale/fi_FI/common.json";
 import common_sv from "./locale/sv_SV/common.json";
 import common_jp from "./locale/ja_JP/common.json";
 import common_hi from "./locale/hi_HI/common.json";
+import common_br from "./locale/br_BA/common.json";
 
 i18next.init({
     interpolation: { escapeValue: false },
@@ -28,7 +29,8 @@ i18next.init({
         fi_FI: { common: common_fi },
         sv_SV: { common: common_sv },
         ja_JP: { common: common_jp },
-        hi_HI: { common: common_hi }
+        hi_HI: { common: common_hi },
+        br_BA: { common: common_br }
     },
 });
 

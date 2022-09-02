@@ -30,7 +30,17 @@
 	"settings": {
 		"pages": {
 			"about": {
-				"title": "حول"
+				"title": "حول",
+                "description": "",
+                "thanks": {
+                    "title": "شكرًا",
+                    "Jason Chan": "مجموعة خلفية التطبيق الافتراضية.MISC Champion SPLASH ART.",
+                    "Sephi Lash": "كاترينا سبلاش العمل الفني.",
+                    "Adrien Gonzalez": "بطل مختلف مفاهيم الفن رش.كيتلين.جين.",
+                    "Riot Games": "Champion Splash Art ، أيقونات البطل ، أيقونات الملف الشخصي ، إلخ.",
+                    "Metafy.gg": "بطل الفنون الفنية."
+                },
+                "third-party": "برنامج الطرف الثالث - الترخيص (ق)"
 			},
 			"application": {
 				"items": {
@@ -170,6 +180,7 @@
         "ja_JP": "اليابانية",
         "vi_VI": "الفيتنامية",
         "zh_CN": "الصينية والصين",
-        "zh_TW": "الصينية ، تايوان"
+        "zh_TW": "الصينية ، تايوان",
+        "br_BA": "برايل"
     }
 }

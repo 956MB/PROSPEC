@@ -30,7 +30,17 @@
 	"settings": {
 		"pages": {
 			"about": {
-				"title": "Handla om"
+				"title": "Handla om",
+                "description": "ProSpec är en gratis och öppen källkods Desktop Client för att spektera Professional League of Legends Players.Denna applikation är en slags 'uppgradering' eller alternativ till OP.ggs 'Pro Matches' -funktion.",
+                "thanks": {
+                    "title": "Tack",
+                    "Jason Chan": "Standard app bakgrundsemble.Misc Champion Splash Art.",
+                    "Sephi Lash": "Katarina Splash Artwork.",
+                    "Adrien Gonzalez": "Olika mästare Splash Art Concepts.Caitlyn.Jhin.",
+                    "Riot Games": "Champion Splash Art, Champion -ikoner, profilikoner, etc.",
+                    "Metafy.gg": "Champion Splash Art Cutouts."
+                },
+                "third-party": "Tredjepartsprogramvara - Licens (er)"
 			},
 			"application": {
 				"items": {
@@ -170,6 +180,7 @@
         "ja_JP": "Japanska",
         "vi_VI": "Vietnamesisk",
         "zh_CN": "Kinesiska, Kina",
-        "zh_TW": "Kinesiska, Taiwan"
+        "zh_TW": "Kinesiska, Taiwan",
+        "br_BA": "Blindskrift"
     }
 }

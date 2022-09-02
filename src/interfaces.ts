@@ -227,6 +227,12 @@ export interface ISettingsPageButton {
     text: string;
 }
 
+export interface ISettingsAboutSectionEntries extends Array<ISettingsAboutSectionEntry>{}
+export interface ISettingsAboutSectionEntry {
+    name: string;
+    link: string;
+}
+
 // NOTE: JSON
 
 export  interface IJSONPlayers {

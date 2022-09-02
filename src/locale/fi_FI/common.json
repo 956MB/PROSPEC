@@ -30,7 +30,17 @@
 	"settings": {
 		"pages": {
 			"about": {
-				"title": "Noin"
+				"title": "Noin",
+                "description": "ProSpec on ilmainen ja avoimen lähdekoodin työpöytä -asiakas Professional League of Legends -pelaajille.Tämä sovellus on eräänlainen 'päivitys' tai vaihtoehto OP.GG: n 'Pro Matches' -ominaisuudelle.",
+                "thanks": {
+                    "title": "Kiitos",
+                    "Jason Chan": "Oletussovelluksen taustayhtye.Misc Champion Splash Art.",
+                    "Sephi Lash": "Katarina Splash -teokset.",
+                    "Adrien Gonzalez": "Erilaiset mestari roiskeitaiteen käsitteet.Caitlyn.Jhin.",
+                    "Riot Games": "Champion Splash Art, Champion -kuvakkeet, profiilikuvakkeet jne.",
+                    "Metafy.gg": "Champion Splash Art Cutouts."
+                },
+                "third-party": "Kolmannen osapuolen ohjelmisto - lisenssi (t)"
 			},
 			"application": {
 				"items": {
@@ -170,6 +180,7 @@
         "ja_JP": "japanilainen",
         "vi_VI": "vietnam",
         "zh_CN": "Kiina, Kiina",
-        "zh_TW": "Kiinalainen, Taiwan"
+        "zh_TW": "Kiinalainen, Taiwan",
+        "br_BA": "Pistorasia"
     }
 }
