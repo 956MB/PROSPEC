@@ -138,7 +138,8 @@
 		"searchPlaceholder": "Sök"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} är antingen inte i ett spel, eller åskådare är inte tillgänglig"
+		"playerUnavailable": "{{player}} är antingen inte i ett spel, eller åskådare är inte tillgänglig",
+		"noPlayersLoaded": "Inga spelare laddade"
 	},
     "menus": {
         "spectate": "Vaksam",
@@ -147,5 +148,28 @@
         "afreeca": "Afreeca",
         "favorite": "Favorit",
         "unfavorite": "Ogynnit"
+    },
+    "languages": {
+        "en_EN": "Engelska oss",
+        "ar_AE": "Arabisk",
+        "de_DE": "tysk",
+        "he_HE": "Hebreisk",
+        "fr_FR": "Franska",
+        "it_IT": "Italiensk",
+        "nl_NL": "Holländsk",
+        "sv_SV": "svenska",
+        "fi_FI": "Finska",
+        "hi_HI": "hindi",
+        "pt_PT": "Portugisiska, brasilianska",
+        "pl_PL": "putsa",
+        "ru_RU": "Rysk",
+        "tr_TR": "Turkisk",
+        "cs_CS": "",
+        "el_EL": "",
+        "kr_KR": "Koreansk",
+        "ja_JP": "Japanska",
+        "vi_VI": "Vietnamesisk",
+        "zh_CN": "Kinesiska, Kina",
+        "zh_TW": "Kinesiska, Taiwan"
     }
 }

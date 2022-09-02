@@ -138,7 +138,8 @@
 		"searchPlaceholder": "Search"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} is either not in a game, or spectator is unavailable"
+		"playerUnavailable": "{{player}} is either not in a game, or spectator is unavailable",
+		"noPlayersLoaded": "No players loaded"
 	},
     "menus": {
         "spectate": "Spectate",
@@ -147,5 +148,28 @@
         "afreeca": "Afreeca",
         "favorite": "Favorite",
         "unfavorite": "Unfavorite"
+    },
+    "languages": {
+        "en_EN": "English, US",
+        "ar_AE": "Arabic",
+        "de_DE": "German",
+        "he_HE": "Hebrew",
+        "fr_FR": "French",
+        "it_IT": "Italian",
+        "nl_NL": "Dutch",
+        "sv_SV": "Swedish",
+        "fi_FI": "Finnish",
+        "hi_HI": "Hindi",
+        "pt_PT": "Portuguese, Brazilian",
+        "pl_PL": "Polish",
+        "ru_RU": "Russian",
+        "tr_TR": "Turkish",
+        "cs_CS": "",
+        "el_EL": "",
+        "kr_KR": "Korean",
+        "ja_JP": "Japanese",
+        "vi_VI": "Vietnamese",
+        "zh_CN": "Chinese, China",
+        "zh_TW": "Chinese, Taiwan"
     }
 }

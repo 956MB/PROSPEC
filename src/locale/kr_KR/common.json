@@ -138,7 +138,8 @@
 		"searchPlaceholder": "수색"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} 게임에 있지 않거나 관중을 사용할 수 없습니다"
+		"playerUnavailable": "{{player}} 게임에 있지 않거나 관중을 사용할 수 없습니다",
+		"noPlayersLoaded": "선수가로드되지 않았습니다"
 	},
     "menus": {
         "spectate": "조심스럽게",
@@ -147,5 +148,28 @@
         "afreeca": "Afreeca",
         "favorite": "가장 좋아하는",
         "unfavorite": "좋지 않은"
+    },
+    "languages": {
+        "en_EN": "영어, (미국)",
+        "ar_AE": "아라비아 말",
+        "de_DE": "독일 사람",
+        "he_HE": "헤브라이 사람",
+        "fr_FR": "프랑스 국민",
+        "it_IT": "이탈리아 사람",
+        "nl_NL": "네덜란드 사람",
+        "sv_SV": "스웨덴어",
+        "fi_FI": "핀란드",
+        "hi_HI": "힌디 어",
+        "pt_PT": "포르투갈어, 브라질",
+        "pl_PL": "광택",
+        "ru_RU": "러시아인",
+        "tr_TR": "터키",
+        "cs_CS": "",
+        "el_EL": "",
+        "kr_KR": "한국인",
+        "ja_JP": "일본어",
+        "vi_VI": "베트남어",
+        "zh_CN": "중국, 중국",
+        "zh_TW": "중국어, 대만"
     }
 }

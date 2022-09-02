@@ -138,7 +138,8 @@
 		"searchPlaceholder": "サーチ"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません"
+		"playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません",
+		"noPlayersLoaded": "プレーヤーはロードされていません"
 	},
     "menus": {
         "spectate": "監視されています",
@@ -147,5 +148,28 @@
         "afreeca": "Afreeca",
         "favorite": "お気に入り",
         "unfavorite": "不利です"
+    },
+    "languages": {
+        "en_EN": "英語、私たち",
+        "ar_AE": "アラビア語",
+        "de_DE": "ドイツ人",
+        "he_HE": "ヘブライ語",
+        "fr_FR": "フランス語",
+        "it_IT": "イタリアの",
+        "nl_NL": "オランダの",
+        "sv_SV": "スウェーデンの",
+        "fi_FI": "フィンランド語",
+        "hi_HI": "ヒンディー語",
+        "pt_PT": "ポルトガル語、ブラジル人",
+        "pl_PL": "研磨",
+        "ru_RU": "ロシア",
+        "tr_TR": "トルコ語",
+        "cs_CS": "",
+        "el_EL": "",
+        "kr_KR": "韓国語",
+        "ja_JP": "日本",
+        "vi_VI": "ベトナム人",
+        "zh_CN": "中国、中国",
+        "zh_TW": "中国語、台湾"
     }
 }

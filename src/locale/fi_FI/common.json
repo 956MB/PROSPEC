@@ -138,7 +138,8 @@
 		"searchPlaceholder": "Hae"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä"
+		"playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä",
+		"noPlayersLoaded": "Pelaajia ei ladattu"
 	},
     "menus": {
         "spectate": "Varovasti",
@@ -147,5 +148,28 @@
         "afreeca": "Afreeca",
         "favorite": "Suosikki",
         "unfavorite": "Inhokki"
+    },
+    "languages": {
+        "en_EN": "Englanti me",
+        "ar_AE": "arabialainen",
+        "de_DE": "Saksan kieli",
+        "he_HE": "heprealainen",
+        "fr_FR": "Ranskan kieli",
+        "it_IT": "italialainen",
+        "nl_NL": "Hollannin kieli",
+        "sv_SV": "Ruotsin kieli",
+        "fi_FI": "Suomalainen",
+        "hi_HI": "hindi",
+        "pt_PT": "Brasilialainen",
+        "pl_PL": "Kiillottaa",
+        "ru_RU": "Venäjän kieli",
+        "tr_TR": "Turkkilainen",
+        "cs_CS": "",
+        "el_EL": "",
+        "kr_KR": "Korealainen",
+        "ja_JP": "japanilainen",
+        "vi_VI": "vietnam",
+        "zh_CN": "Kiina, Kiina",
+        "zh_TW": "Kiinalainen, Taiwan"
     }
 }
