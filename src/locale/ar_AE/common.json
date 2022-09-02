@@ -151,7 +151,9 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} إما ليس في لعبة ، أو أن المتفرج غير متوفر",
-		"noPlayersLoaded": "لم يتم تحميل أي لاعبين"
+		"noPlayersLoaded": "لم يتم تحميل أي لاعبين",
+        "copy": "Copy",
+		"copied": "Copied"
 	},
     "menus": {
         "spectate": "بشكل برعي",

@@ -57,7 +57,7 @@ const SettingsPageAbout: React.FC<{
             </div>
             <div className={`settings-about-version-container ${ETooltip.TOOLTIP}`}>
                 <span className={`settings-about-version-text noselect`}>{`v1.1.92.647.ga4397eb7 (Windows 64-bit)`}</span>
-                <span className={`${ETooltip.RIGHT} right-close noselect`}>{`Copy`}</span>
+                <span className={`${ETooltip.RIGHT} right-close noselect`}>{t(`tooltips.copy`)}</span>
             </div>
 
             <div className={`settings-about-description`}>

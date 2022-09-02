@@ -151,7 +151,9 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} 게임에 있지 않거나 관중을 사용할 수 없습니다",
-		"noPlayersLoaded": "선수가로드되지 않았습니다"
+		"noPlayersLoaded": "선수가로드되지 않았습니다",
+        "copy": "복사",
+		"copied": "복사"
 	},
     "menus": {
         "spectate": "조심스럽게",

@@ -151,7 +151,9 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä",
-		"noPlayersLoaded": "Pelaajia ei ladattu"
+		"noPlayersLoaded": "Pelaajia ei ladattu",
+        "copy": "Kopio",
+		"copied": "Kopioitu"
 	},
     "menus": {
         "spectate": "Varovasti",

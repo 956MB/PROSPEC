@@ -151,7 +151,9 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} är antingen inte i ett spel, eller åskådare är inte tillgänglig",
-		"noPlayersLoaded": "Inga spelare laddade"
+		"noPlayersLoaded": "Inga spelare laddade",
+        "copy": "Kopiera",
+		"copied": "Kopierad"
 	},
     "menus": {
         "spectate": "Vaksam",

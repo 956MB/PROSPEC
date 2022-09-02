@@ -151,7 +151,9 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} או לא במשחק, או שהצופה אינו זמין",
-		"noPlayersLoaded": "אף שחקנים לא טענו"
+		"noPlayersLoaded": "אף שחקנים לא טענו",
+        "copy": "עותק",
+		"copied": "מוּעֲתָק"
 	},
     "menus": {
         "spectate": "צפייה",

@@ -151,7 +151,9 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません",
-		"noPlayersLoaded": "プレーヤーはロードされていません"
+		"noPlayersLoaded": "プレーヤーはロードされていません",
+        "copy": "コピー",
+		"copied": "コピー"
 	},
     "menus": {
         "spectate": "監視されています",

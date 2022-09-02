@@ -151,7 +151,9 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} is either not in a game, or spectator is unavailable",
-		"noPlayersLoaded": "No players loaded"
+		"noPlayersLoaded": "No players loaded",
+		"copy": "Copy",
+		"copied": "Copied"
 	},
     "menus": {
         "spectate": "Spectate",

@@ -151,7 +151,9 @@
 	},
 	"tooltips": {
 		"playerUnavailable": "{{player}} या तो एक खेल में नहीं है, या दर्शक अनुपलब्ध है।",
-		"noPlayersLoaded": "कोई खिलाड़ी लोड नहीं हुआ"
+		"noPlayersLoaded": "कोई खिलाड़ी लोड नहीं हुआ",
+        "copy": "प्रतिलिपि",
+		"copied": "कॉपी किया गया"
 	},
     "menus": {
         "spectate": "सावधानी से",
