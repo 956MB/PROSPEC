@@ -17,7 +17,7 @@ const SettingsSection: React.FC<{
     return (
         <div className={`settings-about-section ${sectionOpen ? 'section-open' : null}`}>
             <div className="settings-about-section-title">
-                <span className="settings-about-section-title-text noselect">{sectionTitle}</span>
+                <span className="settings-about-section-title-text noselect">{`${sectionTitle}:`}</span>
                 <span
                     className="settings-about-section-title-show-hide noselect"
                     onClick={() => setSectionOpen(!sectionOpen)}>
