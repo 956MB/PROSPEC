@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { pAbout } from "../../utils";
-import { ISettingsAboutSectionEntries, ISettingsAboutSectionEntry, ISettingsAboutSectionEntryDep, ISettingsAboutSectionEntryDeps } from "../../interfaces";
+import { ISettingsAboutSectionEntries, ISettingsAboutSectionEntryDeps } from "../../interfaces";
 import { ETooltip } from "../../typings";
 import '../css/settings.css';
 
 import * as licenses from '../../imports/licenses'
+import { SettingsSection } from "./SettingsSection";
 
 const SettingsPageAbout: React.FC<{
     pageActive: boolean,
@@ -64,70 +65,18 @@ const SettingsPageAbout: React.FC<{
                 <span className="noselect">{t(pAbout(`description`))}</span>
             </div>
 
-            <div className={`settings-about-section`}>
-                <div className="settings-about-section-title">
-                    <span className="noselect">{`${t(pAbout(`thanks.title`))}:`}</span>
-                </div>
+            <SettingsSection
+                sectionType="credit"
+                sectionTitle={t(pAbout(`thanks.title`))}
+                sectionEntries={credits}
+                sectionOpenInit={true}/>
 
-                <div className="settings-about-section-credit-container">
-                    {React.Children.toArray(
-                        credits.map((credit, i) => (
-                            <div>
-                                <div className="settings-about-section-entry">
-                                    <span className="settings-about-section-entry-name select">{credit.name}</span>
-                                    <span className="settings-about-section-entry-reason noselect">{`${t(pAbout(`thanks.${credit.name}`))}`}</span>
-                                    {/* <span className="settings-about-section-entry-link select">{`${credit.link}`}</span> */}
-                                    <a href={credit.link} target="_blank" rel="noopener noreferrer" className={`settings-about-section-entry-link select`}>{credit.link}</a>
-                                </div>
-                                {i < credits.length - 1 ? <div className="spacer-divider-entry"></div> : null}
-                            </div>
-                        ))
-                    )}
-                </div>
-            </div>
+            <SettingsSection
+                sectionType="dep"
+                sectionTitle={t(pAbout(`dep`))}
+                sectionEntries={deps}
+                sectionOpenInit={false}/>
 
-            <div className={`settings-about-section`}>
-                <div className="settings-about-section-title">
-                    <span className="noselect">{`${t(pAbout(`dep`))}:`}</span>
-                </div>
-
-                <div className={`settings-about-dep-container`}>
-                    {React.Children.toArray(
-                        deps.map((dep, i) => (
-                            <div>
-                                <SettingsSectionEntryCollapse sectionEntry={dep} />
-                                {i < deps.length - 1 ? <div className="spacer-divider-entry"></div> : null}
-                            </div>
-                        ))
-                    )}
-                </div>
-            </div>
-        </div>
-    )
-}
-
-const SettingsSectionEntryCollapse: React.FC<{
-    sectionEntry: ISettingsAboutSectionEntryDep
-}> = ({ sectionEntry }) => {
-    const [entryOpen, setEntryOpen] = useState<boolean>(false);
-
-    return (
-        <div className={`settings-about-section-entry-dep ${entryOpen ? 'entry-open' : null}`}>
-            <div
-                className={`settings-about-entry-inner`}
-                onClick={() => setEntryOpen(!entryOpen)}
-            >
-                <img src={`src/assets/icons/chevron.down.svg`} alt="" className='value-right' />
-                <span className="settings-about-section-entry-name-dep select">{sectionEntry.name}</span>
-                {/* <div className="dots-divider"></div> */}
-                <span className="settings-about-section-entry-link-dep select">{`${sectionEntry.version}`}</span>
-            </div>
-
-            <div className={`settings-about-entry-content`}>
-                <div className="settings-about-entry-content-name select">{sectionEntry.name}</div>
-                {sectionEntry.link ? <div className="settings-about-entry-content-link select">{sectionEntry.link}</div> : null}
-                {sectionEntry.license && sectionEntry.license != "" ? <div className="settings-about-entry-content-license select">{sectionEntry.license}</div> : null}
-            </div>
         </div>
     )
 }

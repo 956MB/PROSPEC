@@ -152,8 +152,10 @@
 	"tooltips": {
 		"playerUnavailable": "{{player}} إما ليس في لعبة ، أو أن المتفرج غير متوفر",
 		"noPlayersLoaded": "لم يتم تحميل أي لاعبين",
-        "copy": "Copy",
-		"copied": "Copied"
+        "copy": "ينسخ",
+		"copied": "نسخ",
+        "show": "يعرض",
+		"hide": "يخفي"
 	},
     "menus": {
         "spectate": "بشكل برعي",

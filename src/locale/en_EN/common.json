@@ -153,7 +153,9 @@
 		"playerUnavailable": "{{player}} is either not in a game, or spectator is unavailable",
 		"noPlayersLoaded": "No players loaded",
 		"copy": "Copy",
-		"copied": "Copied"
+		"copied": "Copied",
+        "show": "Show",
+		"hide": "Hide"
 	},
     "menus": {
         "spectate": "Spectate",
