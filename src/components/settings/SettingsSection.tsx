@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { ISettingsAboutSectionEntries, ISettingsAboutSectionEntryDep } from "../../interfaces";
-import { SettingsSectionEntryCollapse, SettingsSectionEntryCredit } from "./SettingsEntry";
+import { SettingsSectionEntryDep, SettingsSectionEntryCredit } from "./SettingsEntry";
 import '../css/settings.css';
 
 const SettingsSection: React.FC<{
@@ -33,7 +33,7 @@ const SettingsSection: React.FC<{
                             <div>
                                 {sectionType === 'dep'
                                     ?
-                                    <SettingsSectionEntryCollapse sectionEntry={entry as ISettingsAboutSectionEntryDep} />
+                                    <SettingsSectionEntryDep sectionEntry={entry as ISettingsAboutSectionEntryDep} />
                                     :
                                     <SettingsSectionEntryCredit sectionEntry={entry} />
                                 }

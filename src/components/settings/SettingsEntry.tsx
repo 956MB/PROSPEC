@@ -19,7 +19,7 @@ const SettingsSectionEntryCredit: React.FC<{
     )
 }
 
-const SettingsSectionEntryCollapse: React.FC<{
+const SettingsSectionEntryDep: React.FC<{
     sectionEntry: ISettingsAboutSectionEntryDep
 }> = ({ sectionEntry }) => {
     const [t, i18n] = useTranslation('common');
@@ -37,7 +37,10 @@ const SettingsSectionEntryCollapse: React.FC<{
             </div>
 
             <div className={`settings-about-entry-content`}>
-                <div className="settings-about-entry-content-name select">{sectionEntry.name}</div>
+                <div className="settings-about-entry-title-container">
+                    <div className="settings-about-entry-content-name select">{sectionEntry.name}</div>
+                    <div className="settings-about-entry-content-version select">{sectionEntry.version}</div>
+                </div>
                 {sectionEntry.link ? <div className="settings-about-entry-content-link select">{sectionEntry.link}</div> : null}
                 {sectionEntry.license && sectionEntry.license != "" ? <div className="settings-about-entry-content-license select">{sectionEntry.license}</div> : null}
             </div>
@@ -47,5 +50,5 @@ const SettingsSectionEntryCollapse: React.FC<{
 
 export {
     SettingsSectionEntryCredit,
-    SettingsSectionEntryCollapse
+    SettingsSectionEntryDep
 }
