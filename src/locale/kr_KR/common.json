@@ -40,7 +40,7 @@
                     "Riot Games": "챔피언 스플래시 아트, 챔피언 아이콘, 프로필 아이콘 등",
                     "Metafy.gg": "챔피언 스플래시 아트 컷 아웃."
                 },
-                "dep": "타사 소프트웨어 - 라이센스",
+                "package": "타사 소프트웨어 - 라이센스",
                 "github": "Github",
                 "checkForUpdates": "업데이트 확인"
 			},

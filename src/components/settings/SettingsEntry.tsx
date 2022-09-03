@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { pAbout } from "../../utils";
-import { ISettingsAboutSectionEntry, ISettingsAboutSectionEntryDep } from "../../interfaces";
+import { ISettingsAboutSectionEntry, ISettingsAboutSectionEntryPackage } from "../../interfaces";
 import '../css/settings.css';
 
 const SettingsSectionEntryCredit: React.FC<{
     sectionEntry: ISettingsAboutSectionEntry
 }> = ({ sectionEntry }) => {
-    const [t, i18n] = useTranslation('common');
+    const [t] = useTranslation('common');
 
     return (
         <div className="settings-about-section-entry">
@@ -19,10 +19,9 @@ const SettingsSectionEntryCredit: React.FC<{
     )
 }
 
-const SettingsSectionEntryDep: React.FC<{
-    sectionEntry: ISettingsAboutSectionEntryDep
+const SettingsSectionEntryPackage: React.FC<{
+    sectionEntry: ISettingsAboutSectionEntryPackage
 }> = ({ sectionEntry }) => {
-    const [t, i18n] = useTranslation('common');
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
@@ -50,5 +49,5 @@ const SettingsSectionEntryDep: React.FC<{
 
 export {
     SettingsSectionEntryCredit,
-    SettingsSectionEntryDep
+    SettingsSectionEntryPackage
 }

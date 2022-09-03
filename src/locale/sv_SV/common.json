@@ -40,7 +40,7 @@
                     "Riot Games": "Champion Splash Art, Champion -ikoner, profilikoner, etc.",
                     "Metafy.gg": "Champion Splash Art Cutouts."
                 },
-                "dep": "Tredjepartsprogramvara - Licens (er)",
+                "package": "Tredjepartsprogramvara - Licens (er)",
                 "github": "Github",
                 "checkForUpdates": "Sök efter uppdateringar"
 			},

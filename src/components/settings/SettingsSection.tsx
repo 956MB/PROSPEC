@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ISettingsAboutSectionEntries, ISettingsAboutSectionEntryDep } from "../../interfaces";
-import { SettingsSectionEntryDep, SettingsSectionEntryCredit } from "./SettingsEntry";
+import { ISettingsAboutSectionEntries, ISettingsAboutSectionEntryPackage } from "../../interfaces";
+import { SettingsSectionEntryPackage, SettingsSectionEntryCredit } from "./SettingsEntry";
 import '../css/settings.css';
 
 const SettingsSection: React.FC<{
@@ -11,7 +11,7 @@ const SettingsSection: React.FC<{
     sectionEntries: ISettingsAboutSectionEntries,
     sectionOpenInit: boolean
 }> = ({ sectionType, sectionTitle, sectionEntries, sectionOpenInit }) => {
-    const [t, i18n] = useTranslation('common');
+    const [t] = useTranslation('common');
     const [sectionOpen, setSectionOpen] = useState<boolean>(sectionOpenInit);
 
     return (
@@ -31,12 +31,12 @@ const SettingsSection: React.FC<{
                     {React.Children.toArray(
                         sectionEntries.map((entry, i) => (
                             <div>
-                                {sectionType === 'dep'
-                                    ?
-                                    <SettingsSectionEntryDep sectionEntry={entry as ISettingsAboutSectionEntryDep} />
-                                    :
+                                {sectionType === 'credit' ?
                                     <SettingsSectionEntryCredit sectionEntry={entry} />
-                                }
+                                    : null}
+                                {sectionType === 'dep' ?
+                                    <SettingsSectionEntryPackage sectionEntry={entry as ISettingsAboutSectionEntryPackage} />
+                                    : null}
                                 {i < sectionEntries.length - 1 ? <div className="spacer-divider-entry"></div> : null}
                             </div>
                         ))

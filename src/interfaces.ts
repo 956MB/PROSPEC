@@ -1,3 +1,4 @@
+import { ExecOptionsWithStringEncoding } from "child_process";
 import { useState } from "react";
 import { StringIfPlural } from "react-i18next";
 
@@ -55,6 +56,14 @@ export interface IAppBackground {
 export interface IBackground {
     type: string;
     name: string;
+}
+
+export interface IPackages extends Array<IPackage>{}
+export interface IPackage {
+    name: string;
+    version: string;
+    link: string;
+    license: string;
 }
 
 export interface IPlayers extends Array<IPlayer>{}
@@ -233,8 +242,8 @@ export interface ISettingsAboutSectionEntry {
     link?: string;
 }
 
-export interface ISettingsAboutSectionEntryDeps extends Array<ISettingsAboutSectionEntryDep>{}
-export interface ISettingsAboutSectionEntryDep extends Omit<ISettingsAboutSectionEntry, 'name' | 'link'> {
+export interface ISettingsAboutSectionEntryPackages extends Array<ISettingsAboutSectionEntryPackage>{}
+export interface ISettingsAboutSectionEntryPackage extends Omit<ISettingsAboutSectionEntry, 'name' | 'link'> {
     name: string;
     version: string;
     link?: string;
