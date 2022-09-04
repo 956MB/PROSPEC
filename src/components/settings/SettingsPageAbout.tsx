@@ -8,6 +8,7 @@ import '../css/settings.css';
 
 import { SettingsSection } from "./SettingsSection";
 import appPackages from "../../imports/licenses";
+import { getProductName } from "../../package-info";
 
 const SettingsPageAbout: React.FC<{
     pageActive: boolean,
@@ -26,7 +27,7 @@ const SettingsPageAbout: React.FC<{
         },
         {
             type: "change", title: "changelog", initOpen: true, entries: [
-                { version: "3.0.7", date: "August 30th, 2022", changes: [
+                { version: "3.0.7-beta1", date: "August 30th, 2022", changes: [
                     { type: EChangeType.ADDED, change: "Add Warp terminal integration for macOS - #14329. Thanks @lhvy!", issues: [] },
                     { type: EChangeType.ADDED, change: "Add context menu to the Current Branch and Current Repository toolbar - #13148. Thanks @uttiya10!", issues: [] },
                     { type: EChangeType.FIXED, change: "Older versions of Sublime Text and SlickEdit are also recognized as external editors - #15117. Thanks @vbwx!", issues: [] },
@@ -49,7 +50,7 @@ const SettingsPageAbout: React.FC<{
     return (
         <div className={`settings-page-about ${pageActive ? 'page-active' : null}`}>
             <div className='settings-about-title-container'>
-                <span className='settings-about-title-text noselect'>{`ProSpec`}</span>
+                <span className='settings-about-title-text select'>{getProductName()}</span>
                 <a href="https://github.com/956MB/ProSpec" target="_blank" rel="noopener noreferrer" className="settings-about-button">
                     <span>{t(pAbout("github"))}</span>
                 </a>

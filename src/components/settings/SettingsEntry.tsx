@@ -22,19 +22,27 @@ const SettingsSectionEntryCredit: React.FC<{
 }
 
 const SettingsSectionEntryChange: React.FC<{
+    indexClass: string,
     sectionEntry: ISettingsSectionEntryChange
-}> = ({ sectionEntry }) => {
+}> = ({ indexClass, sectionEntry }) => {
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
-        <div className={`settings-about-section-entry-change ${entryOpen ? 'entry-open' : null}`}>
+        <div className={`settings-about-section-entry-change ${entryOpen ? 'entry-open' : null} ${indexClass} margin-left-18`}>
             <div
                 className={`settings-about-entry-inner`}
                 onClick={() => setEntryOpen(!entryOpen)}
             >
+                
                 <img src={`src/assets/icons/chevron.down.svg`} alt="" className='settings-about-section-entry-chevron value-right noselect' />
-                <span className="settings-about-section-entry-version-change noselect">{sectionEntry.version}</span>
-                <span className="settings-about-section-entry-date-change noselect">{sectionEntry.date}</span>
+                {/* TODO: May need to calculate container size if verison numbers are eventually too long */}
+                <div className={`entry-change-version-container`}>
+                    <span className="settings-about-section-entry-version-change noselect">{sectionEntry.version}</span>
+                </div>
+
+                <div className={`entry-change-date-container`}>
+                    <span className="settings-about-section-entry-date-change noselect">{sectionEntry.date}</span>
+                </div>
                 {sectionEntry.changes.length >= 1 ?
                     <span className="settings-about-section-entry-line-change noselect">{sectionEntry.changes.at(0)?.change}</span> : null}
             </div>
@@ -42,7 +50,7 @@ const SettingsSectionEntryChange: React.FC<{
             <div className={`settings-about-entry-content`}>
                 {React.Children.toArray(
                     sectionEntry.changes.map((change, i) => (
-                        <div className={`settings-entry-change-content ${i == 0 ? 'first-change' : null}`}>
+                        <div className={`settings-entry-change-content ${i == 0 ? 'first-change' : i == sectionEntry.changes.length-1 ? 'last-change' : null}`}>
                             <div className={`entry-change-tag-container`}>
                                 {change.type === EChangeType.FIXED ? <span className="entry-tag entry-tag-fixed select">{EChangeType.FIXED}</span> : null}
                                 {change.type === EChangeType.IMPROVED ? <span className="entry-tag entry-tag-improved select">{EChangeType.IMPROVED}</span> : null}
@@ -61,12 +69,13 @@ const SettingsSectionEntryChange: React.FC<{
 }
 
 const SettingsSectionEntryPackage: React.FC<{
+    indexClass: string,
     sectionEntry: ISettingsSectionEntryPackage
-}> = ({ sectionEntry }) => {
+}> = ({ indexClass, sectionEntry }) => {
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
-        <div className={`settings-about-section-entry-package ${entryOpen ? 'entry-open' : null}`}>
+        <div className={`settings-about-section-entry-package ${entryOpen ? 'entry-open' : null} ${indexClass} margin-left-18`}>
             <div
                 className={`settings-about-entry-inner`}
                 onClick={() => setEntryOpen(!entryOpen)}
@@ -77,10 +86,10 @@ const SettingsSectionEntryPackage: React.FC<{
             </div>
 
             <div className={`settings-about-entry-content`}>
-                <div className="settings-about-entry-title-container">
+                {/* <div className="settings-about-entry-title-container">
                     <div className="settings-about-entry-content-name select">{sectionEntry.name}</div>
                     <div className="settings-about-entry-content-version select">{sectionEntry.version}</div>
-                </div>
+                </div> */}
                 {sectionEntry.link ? <div className="settings-about-entry-content-link select">{sectionEntry.link}</div> : null}
                 {sectionEntry.license && sectionEntry.license != "" ? <div className="settings-about-entry-content-license select">{sectionEntry.license}</div> : null}
             </div>

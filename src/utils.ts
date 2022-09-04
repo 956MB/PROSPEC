@@ -94,6 +94,12 @@ export function getLanguageStatic(lang: number): string {
     return LANGS.at(lang)!;
 }
 
+export function getEntryIndexClass(idx: number, length: number): string {
+    if (idx == 0) { return "entry-first"; }
+    if (idx == length-1) { return "entry-last"; }
+    return "";
+}
+
 export function getGroupInfoFromKey(key: any): IPlayerGroupInfo {
     if ((key as string) === EGroupBy.NONE) {
         return { type: EGroupBy.NONE, image: "", text: ""};
