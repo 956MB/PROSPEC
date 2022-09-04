@@ -1,6 +1,7 @@
 import { ExecOptionsWithStringEncoding } from "child_process";
 import { useState } from "react";
 import { StringIfPlural } from "react-i18next";
+import { EChangeType } from "./typings";
 
 export const useInit = (callBack = () => {}) => {
     const [hasBeenCalled, setHasBeenCalled] = useState<boolean>(false);
@@ -236,18 +237,42 @@ export interface ISettingsPageButton {
     text: string;
 }
 
-export interface ISettingsAboutSectionEntries extends Array<ISettingsAboutSectionEntry>{}
-export interface ISettingsAboutSectionEntry {
-    name: string;
+// NOTE: Settings sections and entries (About)
+
+export interface ISettingsSections extends Array<ISettingsSection>{}
+export interface ISettingsSection {
+    type: string;
+    title: string;
+    initOpen: boolean;
+    entries: ISettingsSectionEntries;
+}
+
+export interface ISettingsSectionEntries extends Array<ISettingsSectionEntry>{}
+export interface ISettingsSectionEntry {
+    name?: string;
     link?: string;
 }
 
-export interface ISettingsAboutSectionEntryPackages extends Array<ISettingsAboutSectionEntryPackage>{}
-export interface ISettingsAboutSectionEntryPackage extends Omit<ISettingsAboutSectionEntry, 'name' | 'link'> {
+export interface ISettingsSectionPackageEntries extends Array<ISettingsSectionEntryPackage>{}
+export interface ISettingsSectionEntryPackage extends Omit<ISettingsSectionEntry, 'name' | 'link'> {
     name: string;
     version: string;
     link?: string;
     license?: string;
+}
+
+export interface ISettingsSectionChangeEntries extends Array<ISettingsSectionEntryChange>{}
+export interface ISettingsSectionEntryChange extends Omit<ISettingsSectionEntry, 'name' | 'link'> {
+    version: string;
+    date: string;
+    changes: IAppReleaseChanges;
+}
+
+export interface IAppReleaseChanges extends Array<IAppReleaseChange>{}
+export interface IAppReleaseChange {
+    type: EChangeType;
+    change: string;
+    issues: string[];
 }
 
 // NOTE: JSON

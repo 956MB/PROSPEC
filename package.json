@@ -1,5 +1,6 @@
 {
     "name": "prospec",
+    "productName": "ProSpec",
     "private": true,
     "version": "0.1.0",
     "description": "Desktop client for spectating pro League of Legends players.",
@@ -20,6 +21,7 @@
     },
     "dependencies": {
         "@tauri-apps/api": "^1.0.2",
+        "html-react-parser": "^3.0.4",
         "i18next": "^21.9.1",
         "ini": "^3.0.1",
         "prop-types": "^15.8.1",
@@ -39,6 +41,7 @@
         "@types/react": "^18.0.18",
         "@types/react-dom": "^18.0.6",
         "@vitejs/plugin-react": "^1.3.2",
+        "react-devtools": "^4.25.0",
         "typescript": "^4.8.2",
         "vite": "^2.9.15"
     },

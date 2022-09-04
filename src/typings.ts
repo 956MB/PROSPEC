@@ -1,3 +1,12 @@
+// NOTE: App:
+
+export enum EChangeType {
+    FIXED = 'FIXED',
+    IMPROVED = 'IMPROVED',
+    ADDED = 'ADDED',
+    REMOVED = 'REMOVED'
+}
+
 // NOTE: UI:
 
 export enum EAboutSections {

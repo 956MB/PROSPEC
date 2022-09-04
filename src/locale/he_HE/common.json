@@ -1,36 +1,36 @@
 {
-	"modes": {
-		"ARAM": "ARAM",
-		"URF": "URF",
-		"all": "את כל",
-		"normalBlind": "עיוור רגיל",
-		"normalDraft": "טיוטה רגילה",
-		"rankedFlex": "גמיש מדורג",
-		"rankedSoloDuo": "סולו/צמד מדורגים"
-	},
-	"regions": {
-		"br": "BR",
-		"eun": "EUN",
-		"euw": "EUW",
-		"jp": "JP",
-		"kr": "KR",
-		"na": "NA",
-		"oce": "OCE",
-		"ru": "RU",
-		"world": "עולם"
-	},
-	"roles": {
-		"any": "כל",
-		"bottom": "תחתון",
-		"jungle": "ג'ונגל",
-		"middle": "אמצע",
-		"support": "תמיכה",
-		"top": "חלק עליון"
-	},
-	"settings": {
-		"pages": {
-			"about": {
-				"title": "על אודות",
+    "modes": {
+        "ARAM": "ARAM",
+        "URF": "URF",
+        "all": "את כל",
+        "normalBlind": "עיוור רגיל",
+        "normalDraft": "טיוטה רגילה",
+        "rankedFlex": "גמיש מדורג",
+        "rankedSoloDuo": "סולו/צמד מדורגים"
+    },
+    "regions": {
+        "br": "BR",
+        "eun": "EUN",
+        "euw": "EUW",
+        "jp": "JP",
+        "kr": "KR",
+        "na": "NA",
+        "oce": "OCE",
+        "ru": "RU",
+        "world": "עולם"
+    },
+    "roles": {
+        "any": "כל",
+        "bottom": "תחתון",
+        "jungle": "ג'ונגל",
+        "middle": "אמצע",
+        "support": "תמיכה",
+        "top": "חלק עליון"
+    },
+    "settings": {
+        "pages": {
+            "about": {
+                "title": "על אודות",
                 "description": "PROSPEC הוא לקוח שולחן עבודה בחינם וקוד פתוח עבור שחקני League of Legends המקצועיים.יישום זה הוא מעין 'שדרוג' או אלטרנטיבה לתכונה 'Pro Matches' של OP.GG.",
                 "thanks": {
                     "title": "תודה",
@@ -40,123 +40,124 @@
                     "Riot Games": "Aldsion Splash Art, סמלי אלוף, אייקוני פרופיל וכו '.",
                     "Metafy.gg": "גזרות אמנות של אלוף."
                 },
+                "changelog": "שנה יומן",
                 "package": "תוכנת צד שלישי - רישיון (ים)",
                 "github": "Github",
                 "checkForUpdates": "בדוק עדכונים"
-			},
-			"application": {
-				"items": {
-					"Accent": {
-						"title": "מבטא"
-					},
-					"appScale": {
-						"title": "סולם אפליקציות"
-					},
-					"dark": {
-						"title": "אפל"
-					},
-					"notifications": {
-						"description": "המקצוענים המועדפים מקבלים התראות כשהם מתחילים משחק (רענון אוטומטי)",
-						"title": "התראות מועדפות"
-					},
-					"hardwareAcceleration": {
-						"description": "האצת חומרה משתמשת ב- GPU כדי לגרום ל- ProSpec לרוץ בצורה חלקה יותר",
-						"title": "האצת חומרה"
-					},
-					"keyboardMode": {
-						"description": "מאפשר ניווט באפליקציות באמצעות המקלדת",
-						"title": "מצב מקלדת"
-					},
-					"light": {
-						"title": "אור"
-					},
-					"minimizeToTray": {
-						"description": "כפתור סגור צריך למזער, לא לצאת",
-						"title": "צמצם למגש"
-					},
-					"openOnStartup": {
-						"title": "פתח בהפעלה"
-					},
-					"useBackground": {
-						"description": "בחר אם אפליקציה מציגה תמונות רקע כמו Splash Art",
-						"title": "השתמש ברקעים"
-					},
-					"randomBackground": {
-						"description": "בחר את רקע האפליקציה שנבחר באופן אקראי מבריכת Champion, או הגדר אותה לברירת מחדל ספציפית",
-						"title": "רקע אקראי"
-					},
+            },
+            "application": {
+                "items": {
+                    "Accent": {
+                        "title": "מבטא"
+                    },
+                    "appScale": {
+                        "title": "סולם אפליקציות"
+                    },
+                    "dark": {
+                        "title": "אפל"
+                    },
+                    "notifications": {
+                        "description": "המקצוענים המועדפים מקבלים התראות כשהם מתחילים משחק (רענון אוטומטי)",
+                        "title": "התראות מועדפות"
+                    },
+                    "hardwareAcceleration": {
+                        "description": "האצת חומרה משתמשת ב- GPU כדי לגרום ל- ProSpec לרוץ בצורה חלקה יותר",
+                        "title": "האצת חומרה"
+                    },
+                    "keyboardMode": {
+                        "description": "מאפשר ניווט באפליקציות באמצעות המקלדת",
+                        "title": "מצב מקלדת"
+                    },
+                    "light": {
+                        "title": "אור"
+                    },
+                    "minimizeToTray": {
+                        "description": "כפתור סגור צריך למזער, לא לצאת",
+                        "title": "צמצם למגש"
+                    },
+                    "openOnStartup": {
+                        "title": "פתח בהפעלה"
+                    },
+                    "useBackground": {
+                        "description": "בחר אם אפליקציה מציגה תמונות רקע כמו Splash Art",
+                        "title": "השתמש ברקעים"
+                    },
+                    "randomBackground": {
+                        "description": "בחר את רקע האפליקציה שנבחר באופן אקראי מבריכת Champion, או הגדר אותה לברירת מחדל ספציפית",
+                        "title": "רקע אקראי"
+                    },
                     "liveBackground": {
-						"description": "ישתמש בגרסת האנימציה של אמנות ספלאש, במקום בתמונת ברירת המחדל (אם אפשר)",
-						"title": "רקע חי"
-					},
-					"system": {
-						"title": "מערכת"
-					},
-					"appTheme": {
-						"title": "נושא"
-					}
-				},
-				"title": "יישום"
-			},
-			"content": {
-				"items": {
-					"autoRefresh": {
-						"title": "רענון אוטומטי"
-					},
-					"card": {
-						"title": "כרטיס"
-					},
-					"list": {
-						"title": "רשימה"
-					},
-					"listLayout": {
-						"title": "פריסת רשימה"
-					},
-					"refreshInterval": {
-						"description": "כמה שניות/דקה כדי לרענן את רשימת המקצוענים. 3M+ מומלץ בגלל מגבלות קצב API של LOL",
-						"title": "מרווח רענון"
-					},
-					"showRandomSkins": {
-						"description": "מציג רקע עור אקראי במקום אמנות עור ברירת מחדל",
-						"title": "הצג עורות אקראיים"
-					},
-					"showSummonerIds": {
-						"description": "מציג מזהה זימון נגן (הסתר על בוש), במקום GamerTag (Faker)",
-						"title": "הצג מזהי זימון"
-					},
-					"showTeamLogos": {
-						"description": "מציג לוגו צוות במקום האלוף הנוכחי בכרטיס",
-						"title": "הצג לוגו של צוות"
-					},
-					"useCutouts": {
-						"description": "משתמש בגזרות אלופות שקופות במקום להעמיס אמנות התזה",
-						"title": "השתמש בגזרות"
-					},
+                        "description": "ישתמש בגרסת האנימציה של אמנות ספלאש, במקום בתמונת ברירת המחדל (אם אפשר)",
+                        "title": "רקע חי"
+                    },
+                    "system": {
+                        "title": "מערכת"
+                    },
+                    "appTheme": {
+                        "title": "נושא"
+                    }
+                },
+                "title": "יישום"
+            },
+            "content": {
+                "items": {
+                    "autoRefresh": {
+                        "title": "רענון אוטומטי"
+                    },
+                    "card": {
+                        "title": "כרטיס"
+                    },
+                    "list": {
+                        "title": "רשימה"
+                    },
+                    "listLayout": {
+                        "title": "פריסת רשימה"
+                    },
+                    "refreshInterval": {
+                        "description": "כמה שניות/דקה כדי לרענן את רשימת המקצוענים. 3M+ מומלץ בגלל מגבלות קצב API של LOL",
+                        "title": "מרווח רענון"
+                    },
+                    "showRandomSkins": {
+                        "description": "מציג רקע עור אקראי במקום אמנות עור ברירת מחדל",
+                        "title": "הצג עורות אקראיים"
+                    },
+                    "showSummonerIds": {
+                        "description": "מציג מזהה זימון נגן (הסתר על בוש), במקום GamerTag (Faker)",
+                        "title": "הצג מזהי זימון"
+                    },
+                    "showTeamLogos": {
+                        "description": "מציג לוגו צוות במקום האלוף הנוכחי בכרטיס",
+                        "title": "הצג לוגו של צוות"
+                    },
+                    "useCutouts": {
+                        "description": "משתמש בגזרות אלופות שקופות במקום להעמיס אמנות התזה",
+                        "title": "השתמש בגזרות"
+                    },
                     "showUnavailable": {
-						"description": "מציג כרטיסי נגן שאינם זמינים כרגע לצפייה (שגיאה ב- API של Spectator או Player אינה משחקת כרגע)",
-						"title": "הראה לא זמין"
-					}
-				},
-				"title": "תוכן"
-			},
-			"language": {
-				"title": "שפה"
-			}
-		},
-		"title": "הגדרות"
-	},
-	"titlebar": {
-		"lastRefresh": "רענון אחרון: {{time}}",
-		"searchPlaceholder": "לחפש"
-	},
-	"tooltips": {
-		"playerUnavailable": "{{player}} או לא במשחק, או שהצופה אינו זמין",
-		"noPlayersLoaded": "אף שחקנים לא טענו",
+                        "description": "מציג כרטיסי נגן שאינם זמינים כרגע לצפייה (שגיאה ב- API של Spectator או Player אינה משחקת כרגע)",
+                        "title": "הראה לא זמין"
+                    }
+                },
+                "title": "תוכן"
+            },
+            "language": {
+                "title": "שפה"
+            }
+        },
+        "title": "הגדרות"
+    },
+    "titlebar": {
+        "lastRefresh": "רענון אחרון: {{time}}",
+        "searchPlaceholder": "לחפש"
+    },
+    "tooltips": {
+        "playerUnavailable": "{{player}} או לא במשחק, או שהצופה אינו זמין",
+        "noPlayersLoaded": "אף שחקנים לא טענו",
         "copy": "עותק",
-		"copied": "מוּעֲתָק",
+        "copied": "מוּעֲתָק",
         "show": "הופעה",
-		"hide": "להתחבא"
-	},
+        "hide": "להתחבא"
+    },
     "menus": {
         "spectate": "צפייה",
         "livegame": "משחק חי",

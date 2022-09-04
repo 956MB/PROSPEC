@@ -54,7 +54,6 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
         };
 
         const checkSet = (key: string, val: any, def: any): any => {
-            console.log("???111: ", key, val);
             if (val == null) {
                 settingsStore.set(key, def);
                 return def;
@@ -66,7 +65,6 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
     });
 
     const updateSetting = (key: string, val: any): void => {
-        console.log("???222: ", key, val);
         dispatch({ type: key, payload: val });
 
         settingsStore.set(key, val);

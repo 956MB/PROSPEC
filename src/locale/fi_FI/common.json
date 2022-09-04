@@ -1,36 +1,36 @@
 {
-	"modes": {
-		"ARAM": "ARAM",
-		"URF": "URF",
-		"all": "Kaikki",
-		"normalBlind": "Normaali sokea",
-		"normalDraft": "Normaali luonnos",
-		"rankedFlex": "Sijoitus flex",
-		"rankedSoloDuo": "Sijoitus yksin/duo"
-	},
-	"regions": {
-		"br": "BR",
-		"eun": "EUN",
-		"euw": "EUW",
-		"jp": "JP",
-		"kr": "KR",
-		"na": "NA",
-		"oce": "OCE",
-		"ru": "RU",
-		"world": "Maailman"
-	},
-	"roles": {
-		"any": "Minkä tahansa",
-		"bottom": "Pohja",
-		"jungle": "Viidakko",
-		"middle": "Keski-",
-		"support": "Tuki",
-		"top": "Ylhäältä"
-	},
-	"settings": {
-		"pages": {
-			"about": {
-				"title": "Noin",
+    "modes": {
+        "ARAM": "ARAM",
+        "URF": "URF",
+        "all": "Kaikki",
+        "normalBlind": "Normaali sokea",
+        "normalDraft": "Normaali luonnos",
+        "rankedFlex": "Sijoitus flex",
+        "rankedSoloDuo": "Sijoitus yksin/duo"
+    },
+    "regions": {
+        "br": "BR",
+        "eun": "EUN",
+        "euw": "EUW",
+        "jp": "JP",
+        "kr": "KR",
+        "na": "NA",
+        "oce": "OCE",
+        "ru": "RU",
+        "world": "Maailman"
+    },
+    "roles": {
+        "any": "Minkä tahansa",
+        "bottom": "Pohja",
+        "jungle": "Viidakko",
+        "middle": "Keski-",
+        "support": "Tuki",
+        "top": "Ylhäältä"
+    },
+    "settings": {
+        "pages": {
+            "about": {
+                "title": "Noin",
                 "description": "ProSpec on ilmainen ja avoimen lähdekoodin työpöytä -asiakas Professional League of Legends -pelaajille.Tämä sovellus on eräänlainen 'päivitys' tai vaihtoehto OP.GG: n 'Pro Matches' -ominaisuudelle.",
                 "thanks": {
                     "title": "Kiitos",
@@ -40,123 +40,124 @@
                     "Riot Games": "Champion Splash Art, Champion -kuvakkeet, profiilikuvakkeet jne.",
                     "Metafy.gg": "Champion Splash Art Cutouts."
                 },
+                "changelog": "Vaihtosuunta",
                 "package": "Kolmannen osapuolen ohjelmisto - lisenssi (t)",
                 "github": "Github",
                 "checkForUpdates": "Tarkista päivitykset"
-			},
-			"application": {
-				"items": {
-					"Accent": {
-						"title": "Aksentti"
-					},
-					"appScale": {
-						"title": "Sovellusasteikko"
-					},
-					"dark": {
-						"title": "Tumma"
-					},
-					"notifications": {
-						"description": "Suosikki ammattilaiset saavat ilmoituksia, kun he alkavat peliä (automaattinen päivitys päällä)",
-						"title": "Suosikkiilmoitukset"
-					},
-					"hardwareAcceleration": {
-						"description": "Laitteistoki",
-						"title": "Laitteistokiihdytys"
-					},
-					"keyboardMode": {
-						"description": "Mahdollistaa sovelluksen navigoinnin näppäimistöllä",
-						"title": "Näppäimistötila"
-					},
-					"light": {
-						"title": "Valaistus"
-					},
-					"minimizeToTray": {
-						"description": "Sulje -painikkeen tulisi minimoida, ei poistua",
-						"title": "Minimoida tarjotin"
-					},
-					"openOnStartup": {
-						"title": "Avaa käynnistyksen yhteydessä"
-					},
-					"useBackground": {
-						"description": "Valitse, näyttääkö sovellus taustakuvia, kuten Splash Art",
-						"title": "Käytä taustoja"
-					},
-					"randomBackground": {
-						"description": "Valitse APP -tausta, joka valitaan satunnaisesti Champion Poolista tai aseta se tiettyyn oletusarvoon",
-						"title": "Satunnainen tausta"
-					},
+            },
+            "application": {
+                "items": {
+                    "Accent": {
+                        "title": "Aksentti"
+                    },
+                    "appScale": {
+                        "title": "Sovellusasteikko"
+                    },
+                    "dark": {
+                        "title": "Tumma"
+                    },
+                    "notifications": {
+                        "description": "Suosikki ammattilaiset saavat ilmoituksia, kun he alkavat peliä (automaattinen päivitys päällä)",
+                        "title": "Suosikkiilmoitukset"
+                    },
+                    "hardwareAcceleration": {
+                        "description": "Laitteistoki",
+                        "title": "Laitteistokiihdytys"
+                    },
+                    "keyboardMode": {
+                        "description": "Mahdollistaa sovelluksen navigoinnin näppäimistöllä",
+                        "title": "Näppäimistötila"
+                    },
+                    "light": {
+                        "title": "Valaistus"
+                    },
+                    "minimizeToTray": {
+                        "description": "Sulje -painikkeen tulisi minimoida, ei poistua",
+                        "title": "Minimoida tarjotin"
+                    },
+                    "openOnStartup": {
+                        "title": "Avaa käynnistyksen yhteydessä"
+                    },
+                    "useBackground": {
+                        "description": "Valitse, näyttääkö sovellus taustakuvia, kuten Splash Art",
+                        "title": "Käytä taustoja"
+                    },
+                    "randomBackground": {
+                        "description": "Valitse APP -tausta, joka valitaan satunnaisesti Champion Poolista tai aseta se tiettyyn oletusarvoon",
+                        "title": "Satunnainen tausta"
+                    },
                     "liveBackground": {
-						"description": "Käyttää roisketaiteen animaatiota oletuskuvan sijasta (Jos mahdollista)",
-						"title": "Live -taustat"
-					},
-					"system": {
-						"title": "Järjestelmä"
-					},
-					"appTheme": {
-						"title": "Teema"
-					}
-				},
-				"title": "Soveltaminen"
-			},
-			"content": {
-				"items": {
-					"autoRefresh": {
-						"title": "Automaattinen virkistäminen"
-					},
-					"card": {
-						"title": "Kortti"
-					},
-					"list": {
-						"title": "Lista"
-					},
-					"listLayout": {
-						"title": "Listata asettelu"
-					},
-					"refreshInterval": {
-						"description": "Kuinka monta sekuntia/min päivittää ammattilaisten luettelo (3M+ Suositellaan LOL API -nopeusrajojen vuoksi)",
-						"title": "Virkistysväli"
-					},
-					"showRandomSkins": {
-						"description": "Näyttää satunnaiset ihotaustat oletusarvoisen ihotaiteen sijasta",
-						"title": "Näytä satunnaiset nahat"
-					},
-					"showSummonerIds": {
-						"description": "Näyttää Player Summoner ID (Hide on bush) Gamertagin (Faker) sijasta",
-						"title": "Näytä Summoner IDS"
-					},
-					"showTeamLogos": {
-						"description": "Näyttää joukkueen logon nykyisen mestarin sijasta kortissa",
-						"title": "Näytä tiimin logot"
-					},
-					"useCutouts": {
-						"description": "Käyttää läpinäkyviä mestarien leikkauksia roisketaiteen lataamisen sijasta",
-						"title": "Käytä leikkauksia"
-					},
+                        "description": "Käyttää roisketaiteen animaatiota oletuskuvan sijasta (Jos mahdollista)",
+                        "title": "Live -taustat"
+                    },
+                    "system": {
+                        "title": "Järjestelmä"
+                    },
+                    "appTheme": {
+                        "title": "Teema"
+                    }
+                },
+                "title": "Soveltaminen"
+            },
+            "content": {
+                "items": {
+                    "autoRefresh": {
+                        "title": "Automaattinen virkistäminen"
+                    },
+                    "card": {
+                        "title": "Kortti"
+                    },
+                    "list": {
+                        "title": "Lista"
+                    },
+                    "listLayout": {
+                        "title": "Listata asettelu"
+                    },
+                    "refreshInterval": {
+                        "description": "Kuinka monta sekuntia/min päivittää ammattilaisten luettelo (3M+ Suositellaan LOL API -nopeusrajojen vuoksi)",
+                        "title": "Virkistysväli"
+                    },
+                    "showRandomSkins": {
+                        "description": "Näyttää satunnaiset ihotaustat oletusarvoisen ihotaiteen sijasta",
+                        "title": "Näytä satunnaiset nahat"
+                    },
+                    "showSummonerIds": {
+                        "description": "Näyttää Player Summoner ID (Hide on bush) Gamertagin (Faker) sijasta",
+                        "title": "Näytä Summoner IDS"
+                    },
+                    "showTeamLogos": {
+                        "description": "Näyttää joukkueen logon nykyisen mestarin sijasta kortissa",
+                        "title": "Näytä tiimin logot"
+                    },
+                    "useCutouts": {
+                        "description": "Käyttää läpinäkyviä mestarien leikkauksia roisketaiteen lataamisen sijasta",
+                        "title": "Käytä leikkauksia"
+                    },
                     "showUnavailable": {
-						"description": "Näyttää pelaajien kortteja, joita ei tällä hetkellä ole käytettävissä katsottavaksi (Virhe Spectator API: ssa tai pelaaja ei tällä hetkellä pelaa)",
-						"title": "Ei ole käytettävissä"
-					}
-				},
-				"title": "Sisältö"
-			},
-			"language": {
-				"title": "Kieli"
-			}
-		},
-		"title": "Asetukset"
-	},
-	"titlebar": {
-		"lastRefresh": "Viimeinen virkistys: {{time}}",
-		"searchPlaceholder": "Hae"
-	},
-	"tooltips": {
-		"playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä",
-		"noPlayersLoaded": "Pelaajia ei ladattu",
+                        "description": "Näyttää pelaajien kortteja, joita ei tällä hetkellä ole käytettävissä katsottavaksi (Virhe Spectator API: ssa tai pelaaja ei tällä hetkellä pelaa)",
+                        "title": "Ei ole käytettävissä"
+                    }
+                },
+                "title": "Sisältö"
+            },
+            "language": {
+                "title": "Kieli"
+            }
+        },
+        "title": "Asetukset"
+    },
+    "titlebar": {
+        "lastRefresh": "Viimeinen virkistys: {{time}}",
+        "searchPlaceholder": "Hae"
+    },
+    "tooltips": {
+        "playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä",
+        "noPlayersLoaded": "Pelaajia ei ladattu",
         "copy": "Kopio",
-		"copied": "Kopioitu",
+        "copied": "Kopioitu",
         "show": "Näytä",
-		"hide": "Piilottaa"
-	},
+        "hide": "Piilottaa"
+    },
     "menus": {
         "spectate": "Varovasti",
         "livegame": "Live -peli",

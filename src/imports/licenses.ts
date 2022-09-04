@@ -1,4 +1,4 @@
-import { ISettingsAboutSectionEntryPackage, ISettingsAboutSectionEntryPackages } from "../interfaces";
+import { ISettingsSectionEntryPackage, ISettingsSectionPackageEntries } from "../interfaces";
 
 const tauriLicense = `MIT License
 
@@ -259,29 +259,53 @@ WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
 IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.`;
 
-const IPtauriAppsApi: ISettingsAboutSectionEntryPackage = { name: "@tauri-apps/api", version: "@1.0.2", link: "https://github.com/tauri-apps/tauri", license: tauriLicense };
-const IPtauriAppCli: ISettingsAboutSectionEntryPackage = { name: "@tauri-apps/cli", version: "@1.0.5", link: "https://github.com/tauri-apps/tauri", license: tauriLicense };
-const IPtauriPluginStoreApi: ISettingsAboutSectionEntryPackage = { name: "tauri-plugin-store-api", version: "@0.1.0", link: "https://github.com/tauri-apps/tauri-plugin-store", license: tauriLicense };
-const IPtypesNode: ISettingsAboutSectionEntryPackage = { name: "@types/node", version: "@18.7.14", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: typesNodeLicense };
-const IPtypesReact: ISettingsAboutSectionEntryPackage = { name: "@types/react", version: "@18.0.18", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: typesNodeLicense };
-const IPtypesReactDom: ISettingsAboutSectionEntryPackage = { name: "@types/react-dom", version: "@18.0.6", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: typesNodeLicense };
-const IPpluginReact: ISettingsAboutSectionEntryPackage = { name: "@vitejs/plugin-react", version: "@1.3.2", link: "https://github.com/jsx-eslint/eslint-plugin-react", license: pluginReactLicense };
-const IPpropTypes: ISettingsAboutSectionEntryPackage = { name: "prop-types", version: "@15.8.1", link: "https://github.com/facebook/prop-types", license: reactLicense };
-const IPreact: ISettingsAboutSectionEntryPackage = { name: "react", version: "@18.2.0", link: "https://github.com/facebook/react", license: reactLicense };
-const IPreactDom: ISettingsAboutSectionEntryPackage = { name: "react-dom", version: "@18.2.0", link: "https://github.com/facebook/react", license: reactLicense };
-const IPreactRouterDom: ISettingsAboutSectionEntryPackage = { name: "react-router-dom", version: "@6.3.0", link: "https://github.com/facebook/react", license: reactLicense };
-const IPreactI18next: ISettingsAboutSectionEntryPackage = { name: "react-i18next", version: "@11.18.5", link: "https://github.com/i18next/react-i18next", license: reacti18nextLicense };
-const IPreactDetectClickOutside: ISettingsAboutSectionEntryPackage = { name: "react-detect-click-outside", version: "@1.1.7", link: "https://github.com/zhaluza/react-detect-click-outside", license: "" };
-const IPreactHotkeysHook: ISettingsAboutSectionEntryPackage = { name: "react-hotkeys-hook", version: "@3.4.7", link: "https://github.com/JohannesKlauss/react-hotkeys-hook", license: reactHotkeysHookLicense };
-const IPsemanticUiReact: ISettingsAboutSectionEntryPackage = { name: "semantic-ui-react", version: "@2.1.3", link: "https://github.com/Semantic-Org/Semantic-UI-React", license: semanticUiReactLicense };
-const IPtypescript: ISettingsAboutSectionEntryPackage = { name: "typescript", version: "@4.8.2", link: "https://github.com/Microsoft/TypeScript", license: typescriptLicense };
-const IPvite: ISettingsAboutSectionEntryPackage = { name: "vite", version: "@2.9.15", link: "https://github.com/vitejs/vite", license: viteLicense };
-const IPi18next: ISettingsAboutSectionEntryPackage = { name: "i18next", version: "@21.9.1", link: "https://github.com/i18next/i18next", license: i18nextLicense };
-const IPini: ISettingsAboutSectionEntryPackage = { name: "ini", version: "@3.0.1", link: "https://github.com/npm/ini", license: iniLicense };
-const IPrandom: ISettingsAboutSectionEntryPackage = { name: "random", version: "@3.0.6", link: "https://github.com/transitive-bullshit/random", license: "" };
+const htmlReactParserLicense = `The MIT License
+
+Copyright (c) 2016 Menglin "Mark" Xu <mark@remarkablemark.org>
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`;
+
+const IPtauriAppsApi: ISettingsSectionEntryPackage = { name: "@tauri-apps/api", version: "@1.0.2", link: "https://github.com/tauri-apps/tauri", license: tauriLicense };
+const IPtauriAppCli: ISettingsSectionEntryPackage = { name: "@tauri-apps/cli", version: "@1.0.5", link: "https://github.com/tauri-apps/tauri", license: tauriLicense };
+const IPtauriPluginStoreApi: ISettingsSectionEntryPackage = { name: "tauri-plugin-store-api", version: "@0.1.0", link: "https://github.com/tauri-apps/tauri-plugin-store", license: tauriLicense };
+const IPtypesNode: ISettingsSectionEntryPackage = { name: "@types/node", version: "@18.7.14", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: typesNodeLicense };
+const IPtypesReact: ISettingsSectionEntryPackage = { name: "@types/react", version: "@18.0.18", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: typesNodeLicense };
+const IPtypesReactDom: ISettingsSectionEntryPackage = { name: "@types/react-dom", version: "@18.0.6", link: "https://github.com/DefinitelyTyped/DefinitelyTyped", license: typesNodeLicense };
+const IPpluginReact: ISettingsSectionEntryPackage = { name: "@vitejs/plugin-react", version: "@1.3.2", link: "https://github.com/jsx-eslint/eslint-plugin-react", license: pluginReactLicense };
+const IPpropTypes: ISettingsSectionEntryPackage = { name: "prop-types", version: "@15.8.1", link: "https://github.com/facebook/prop-types", license: reactLicense };
+const IPreact: ISettingsSectionEntryPackage = { name: "react", version: "@18.2.0", link: "https://github.com/facebook/react", license: reactLicense };
+const IPreactDom: ISettingsSectionEntryPackage = { name: "react-dom", version: "@18.2.0", link: "https://github.com/facebook/react", license: reactLicense };
+const IPreactRouterDom: ISettingsSectionEntryPackage = { name: "react-router-dom", version: "@6.3.0", link: "https://github.com/facebook/react", license: reactLicense };
+const IPreactI18next: ISettingsSectionEntryPackage = { name: "react-i18next", version: "@11.18.5", link: "https://github.com/i18next/react-i18next", license: reacti18nextLicense };
+const IPreactDetectClickOutside: ISettingsSectionEntryPackage = { name: "react-detect-click-outside", version: "@1.1.7", link: "https://github.com/zhaluza/react-detect-click-outside", license: "" };
+const IPreactHotkeysHook: ISettingsSectionEntryPackage = { name: "react-hotkeys-hook", version: "@3.4.7", link: "https://github.com/JohannesKlauss/react-hotkeys-hook", license: reactHotkeysHookLicense };
+const IPsemanticUiReact: ISettingsSectionEntryPackage = { name: "semantic-ui-react", version: "@2.1.3", link: "https://github.com/Semantic-Org/Semantic-UI-React", license: semanticUiReactLicense };
+const IPtypescript: ISettingsSectionEntryPackage = { name: "typescript", version: "@4.8.2", link: "https://github.com/Microsoft/TypeScript", license: typescriptLicense };
+const IPvite: ISettingsSectionEntryPackage = { name: "vite", version: "@2.9.15", link: "https://github.com/vitejs/vite", license: viteLicense };
+const IPi18next: ISettingsSectionEntryPackage = { name: "i18next", version: "@21.9.1", link: "https://github.com/i18next/i18next", license: i18nextLicense };
+const IPini: ISettingsSectionEntryPackage = { name: "ini", version: "@3.0.1", link: "https://github.com/npm/ini", license: iniLicense };
+const IPrandom: ISettingsSectionEntryPackage = { name: "random", version: "@3.0.6", link: "https://github.com/transitive-bullshit/random", license: "" };
+const IPhtmlReactParser: ISettingsSectionEntryPackage = { name: "html-react-parser", version: "@3.0.4", link: "https://github.com/remarkablemark/html-react-parser", license: htmlReactParserLicense };
 
 // TODO: Do this dynamically...
-const appPackages: ISettingsAboutSectionEntryPackages = [
+const appPackages: ISettingsSectionPackageEntries = [
     IPtauriAppsApi,
     IPtauriAppCli,
     IPtauriPluginStoreApi,
@@ -297,6 +321,7 @@ const appPackages: ISettingsAboutSectionEntryPackages = [
     IPreactDetectClickOutside,
     IPreactHotkeysHook,
     IPsemanticUiReact,
+    IPhtmlReactParser,
     IPtypescript,
     IPvite,
     IPi18next,

@@ -40,6 +40,7 @@
                     "Riot Games": "Champion splash art, champion icons, profile icons, etc.",
                     "Metafy.gg": "Champion splash art cutouts."
                 },
+                "changelog": "Changelog",
                 "package": "Third-party Software - License(s)",
                 "github": "Github",
                 "checkForUpdates": "Check for updates"

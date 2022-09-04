@@ -1,36 +1,36 @@
 {
-	"modes": {
-		"ARAM": "ARAM",
-		"URF": "URF",
-		"all": "すべて",
-		"normalBlind": "ノーマルブラインド",
-		"normalDraft": "通常ドラフト",
-		"rankedFlex": "ランクフレックス",
-		"rankedSoloDuo": "ランクソロ/デュオ"
-	},
-	"regions": {
-		"br": "BR",
-		"eun": "EUN",
-		"euw": "EUW",
-		"jp": "JP",
-		"kr": "KR",
-		"na": "NA",
-		"oce": "OCE",
-		"ru": "RU",
-		"world": "世界"
-	},
-	"roles": {
-		"any": "どれか",
-		"bottom": "底",
-		"jungle": "密林",
-		"middle": "中間",
-		"support": "サポート",
-		"top": "上"
-	},
-	"settings": {
-		"pages": {
-			"about": {
-				"title": "約",
+    "modes": {
+        "ARAM": "ARAM",
+        "URF": "URF",
+        "all": "すべて",
+        "normalBlind": "ノーマルブラインド",
+        "normalDraft": "通常ドラフト",
+        "rankedFlex": "ランクフレックス",
+        "rankedSoloDuo": "ランクソロ/デュオ"
+    },
+    "regions": {
+        "br": "BR",
+        "eun": "EUN",
+        "euw": "EUW",
+        "jp": "JP",
+        "kr": "KR",
+        "na": "NA",
+        "oce": "OCE",
+        "ru": "RU",
+        "world": "世界"
+    },
+    "roles": {
+        "any": "どれか",
+        "bottom": "底",
+        "jungle": "密林",
+        "middle": "中間",
+        "support": "サポート",
+        "top": "上"
+    },
+    "settings": {
+        "pages": {
+            "about": {
+                "title": "約",
                 "description": "ProSpecは、プロのリーグオブレジェンドプレーヤーを観察するための無料でオープンソースのデスクトップクライアントです。このアプリケーションは、Op.ggの「Pro Matches」機能に代わる「アップグレード」または代替品です。",
                 "thanks": {
                     "title": "ありがとう",
@@ -40,123 +40,124 @@
                     "Riot Games": "チャンピオンスプラッシュアート、チャンピオンアイコン、プロフィールアイコンなど。",
                     "Metafy.gg": "チャンピオンスプラッシュアートカットアウト。"
                 },
+                "changelog": "ログを変更します",
                 "package": "サードパーティのソフトウェア - ライセンス",
                 "github": "Github",
                 "checkForUpdates": "アップデートを確認"
-			},
-			"application": {
-				"items": {
-					"Accent": {
-						"title": "アクセント"
-					},
-					"appScale": {
-						"title": "アプリの規模"
-					},
-					"dark": {
-						"title": "ダーク"
-					},
-					"notifications": {
-						"description": "お気に入りのプロは、ゲームを開始すると通知を受け取ります (自動更新オン)",
-						"title": "お気に入りの通知"
-					},
-					"hardwareAcceleration": {
-						"description": "ハードウェア アクセラレーションは、GPU を使用して ProSpec をよりスムーズに実行します",
-						"title": "ハードウェアアクセラレーション"
-					},
-					"keyboardMode": {
-						"description": "キーボードを使用したアプリ ナビゲーションを有効にします",
-						"title": "キーボードモード"
-					},
-					"light": {
-						"title": "光"
-					},
-					"minimizeToTray": {
-						"description": "閉じるボタンは、終了ではなく最小化する必要があります",
-						"title": "トレイに最小化"
-					},
-					"openOnStartup": {
-						"title": "起動時に開く"
-					},
-					"useBackground": {
-						"description": "アプリがスプラッシュアートのような背景画像を表示するかどうかを選択します",
-						"title": "背景を使用します"
-					},
-					"randomBackground": {
-						"description": "チャンピオンプールからランダムに選択されるアプリの背景を選択するか、特定のデフォルトに設定します",
-						"title": "ランダムな背景"
-					},
+            },
+            "application": {
+                "items": {
+                    "Accent": {
+                        "title": "アクセント"
+                    },
+                    "appScale": {
+                        "title": "アプリの規模"
+                    },
+                    "dark": {
+                        "title": "ダーク"
+                    },
+                    "notifications": {
+                        "description": "お気に入りのプロは、ゲームを開始すると通知を受け取ります (自動更新オン)",
+                        "title": "お気に入りの通知"
+                    },
+                    "hardwareAcceleration": {
+                        "description": "ハードウェア アクセラレーションは、GPU を使用して ProSpec をよりスムーズに実行します",
+                        "title": "ハードウェアアクセラレーション"
+                    },
+                    "keyboardMode": {
+                        "description": "キーボードを使用したアプリ ナビゲーションを有効にします",
+                        "title": "キーボードモード"
+                    },
+                    "light": {
+                        "title": "光"
+                    },
+                    "minimizeToTray": {
+                        "description": "閉じるボタンは、終了ではなく最小化する必要があります",
+                        "title": "トレイに最小化"
+                    },
+                    "openOnStartup": {
+                        "title": "起動時に開く"
+                    },
+                    "useBackground": {
+                        "description": "アプリがスプラッシュアートのような背景画像を表示するかどうかを選択します",
+                        "title": "背景を使用します"
+                    },
+                    "randomBackground": {
+                        "description": "チャンピオンプールからランダムに選択されるアプリの背景を選択するか、特定のデフォルトに設定します",
+                        "title": "ランダムな背景"
+                    },
                     "liveBackground": {
-						"description": "デフォルトの画像ではなく、スプラッシュアートのアニメーションバージョンを使用します（もし可能なら）",
-						"title": "ライブバックグラウンド"
-					},
-					"system": {
-						"title": "システム"
-					},
-					"appTheme": {
-						"title": "テーマ"
-					}
-				},
-				"title": "応用"
-			},
-			"content": {
-				"items": {
-					"autoRefresh": {
-						"title": "自動更新"
-					},
-					"card": {
-						"title": "カード"
-					},
-					"list": {
-						"title": "リスト"
-					},
-					"listLayout": {
-						"title": "リストのレイアウト"
-					},
-					"refreshInterval": {
-						"description": "プロのリストを更新する秒数/分 LoL API のレート制限のため、3 分以上を推奨",
-						"title": "更新間隔"
-					},
-					"showRandomSkins": {
-						"description": "デフォルトのスキン アートの代わりに、ランダムなスキンの背景を表示します",
-						"title": "ランダムスキンを表示"
-					},
-					"showSummonerIds": {
-						"description": "ゲーマータグ (Faker) の代わりに、プレイヤー サモナー ID (Hide on Bush) を表示します",
-						"title": "サモナーIDを表示"
-					},
-					"showTeamLogos": {
-						"description": "カードの現在のチャンピオンの代わりにチームのロゴを表示します",
-						"title": "チームのロゴを表示"
-					},
-					"useCutouts": {
-						"description": "スプラッシュ アートをロードする代わりに、透明なチャンピオン カットアウトを使用します",
-						"title": "カットアウトを使用する"
-					},
+                        "description": "デフォルトの画像ではなく、スプラッシュアートのアニメーションバージョンを使用します（もし可能なら）",
+                        "title": "ライブバックグラウンド"
+                    },
+                    "system": {
+                        "title": "システム"
+                    },
+                    "appTheme": {
+                        "title": "テーマ"
+                    }
+                },
+                "title": "応用"
+            },
+            "content": {
+                "items": {
+                    "autoRefresh": {
+                        "title": "自動更新"
+                    },
+                    "card": {
+                        "title": "カード"
+                    },
+                    "list": {
+                        "title": "リスト"
+                    },
+                    "listLayout": {
+                        "title": "リストのレイアウト"
+                    },
+                    "refreshInterval": {
+                        "description": "プロのリストを更新する秒数/分 LoL API のレート制限のため、3 分以上を推奨",
+                        "title": "更新間隔"
+                    },
+                    "showRandomSkins": {
+                        "description": "デフォルトのスキン アートの代わりに、ランダムなスキンの背景を表示します",
+                        "title": "ランダムスキンを表示"
+                    },
+                    "showSummonerIds": {
+                        "description": "ゲーマータグ (Faker) の代わりに、プレイヤー サモナー ID (Hide on Bush) を表示します",
+                        "title": "サモナーIDを表示"
+                    },
+                    "showTeamLogos": {
+                        "description": "カードの現在のチャンピオンの代わりにチームのロゴを表示します",
+                        "title": "チームのロゴを表示"
+                    },
+                    "useCutouts": {
+                        "description": "スプラッシュ アートをロードする代わりに、透明なチャンピオン カットアウトを使用します",
+                        "title": "カットアウトを使用する"
+                    },
                     "showUnavailable": {
-						"description": "現在、観察することができないプレーヤーカードを表示します（Spectator APIのエラー、またはプレイヤーが現在プレイしていない）",
-						"title": "表示されていないことを示します"
-					}
-				},
-				"title": "コンテンツ"
-			},
-			"language": {
-				"title": "言語"
-			}
-		},
-		"title": "設定"
-	},
-	"titlebar": {
-		"lastRefresh": "最終更新： {{time}}",
-		"searchPlaceholder": "サーチ"
-	},
-	"tooltips": {
-		"playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません",
-		"noPlayersLoaded": "プレーヤーはロードされていません",
+                        "description": "現在、観察することができないプレーヤーカードを表示します（Spectator APIのエラー、またはプレイヤーが現在プレイしていない）",
+                        "title": "表示されていないことを示します"
+                    }
+                },
+                "title": "コンテンツ"
+            },
+            "language": {
+                "title": "言語"
+            }
+        },
+        "title": "設定"
+    },
+    "titlebar": {
+        "lastRefresh": "最終更新： {{time}}",
+        "searchPlaceholder": "サーチ"
+    },
+    "tooltips": {
+        "playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません",
+        "noPlayersLoaded": "プレーヤーはロードされていません",
         "copy": "コピー",
-		"copied": "コピー",
+        "copied": "コピー",
         "show": "見せる",
-		"hide": "隠れる"
-	},
+        "hide": "隠れる"
+    },
     "menus": {
         "spectate": "監視されています",
         "livegame": "ライブゲーム",

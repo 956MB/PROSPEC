@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import parse from 'html-react-parser';
 
-import { pAbout } from "../../utils";
-import { ISettingsAboutSectionEntry, ISettingsAboutSectionEntryPackage } from "../../interfaces";
+import { pAbout, replaceIssueTag } from "../../utils";
+import { ISettingsSectionEntry, ISettingsSectionEntryPackage, ISettingsSectionEntryChange } from "../../interfaces";
 import '../css/settings.css';
+import { EChangeType } from "../../typings";
 
 const SettingsSectionEntryCredit: React.FC<{
-    sectionEntry: ISettingsAboutSectionEntry
+    sectionEntry: ISettingsSectionEntry
 }> = ({ sectionEntry }) => {
     const [t] = useTranslation('common');
 
@@ -19,20 +21,59 @@ const SettingsSectionEntryCredit: React.FC<{
     )
 }
 
-const SettingsSectionEntryPackage: React.FC<{
-    sectionEntry: ISettingsAboutSectionEntryPackage
+const SettingsSectionEntryChange: React.FC<{
+    sectionEntry: ISettingsSectionEntryChange
 }> = ({ sectionEntry }) => {
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
-        <div className={`settings-about-section-entry-dep ${entryOpen ? 'entry-open' : null}`}>
+        <div className={`settings-about-section-entry-change ${entryOpen ? 'entry-open' : null}`}>
             <div
                 className={`settings-about-entry-inner`}
                 onClick={() => setEntryOpen(!entryOpen)}
             >
-                <img src={`src/assets/icons/chevron.down.svg`} alt="" className='value-right' />
-                <span className="settings-about-section-entry-name-dep select">{sectionEntry.name}</span>
-                <span className="settings-about-section-entry-link-dep select">{`${sectionEntry.version}`}</span>
+                <img src={`src/assets/icons/chevron.down.svg`} alt="" className='settings-about-section-entry-chevron value-right noselect' />
+                <span className="settings-about-section-entry-version-change noselect">{sectionEntry.version}</span>
+                <span className="settings-about-section-entry-date-change noselect">{sectionEntry.date}</span>
+                {sectionEntry.changes.length >= 1 ?
+                    <span className="settings-about-section-entry-line-change noselect">{sectionEntry.changes.at(0)?.change}</span> : null}
+            </div>
+
+            <div className={`settings-about-entry-content`}>
+                {React.Children.toArray(
+                    sectionEntry.changes.map((change, i) => (
+                        <div className={`settings-entry-change-content ${i == 0 ? 'first-change' : null}`}>
+                            <div className={`entry-change-tag-container`}>
+                                {change.type === EChangeType.FIXED ? <span className="entry-tag entry-tag-fixed select">{EChangeType.FIXED}</span> : null}
+                                {change.type === EChangeType.IMPROVED ? <span className="entry-tag entry-tag-improved select">{EChangeType.IMPROVED}</span> : null}
+                                {change.type === EChangeType.ADDED ? <span className="entry-tag entry-tag-added select">{EChangeType.ADDED}</span> : null}
+                                {change.type === EChangeType.REMOVED ? <span className="entry-tag entry-tag-removed select">{EChangeType.REMOVED}</span> : null}
+                                {i <= sectionEntry.changes.length - 2 ? <div className="entry-tag-vertical-line"></div> : null}
+                            </div>
+
+                            <span className={`entry-change-text select`}>{parse(replaceIssueTag(change.change))}</span>
+                        </div>
+                    ))
+                )}
+            </div>
+        </div>
+    )
+}
+
+const SettingsSectionEntryPackage: React.FC<{
+    sectionEntry: ISettingsSectionEntryPackage
+}> = ({ sectionEntry }) => {
+    const [entryOpen, setEntryOpen] = useState<boolean>(false);
+
+    return (
+        <div className={`settings-about-section-entry-package ${entryOpen ? 'entry-open' : null}`}>
+            <div
+                className={`settings-about-entry-inner`}
+                onClick={() => setEntryOpen(!entryOpen)}
+            >
+                <img src={`src/assets/icons/chevron.down.svg`} alt="" className='settings-about-section-entry-chevron value-right noselect' />
+                <span className="settings-about-section-entry-name-package noselect">{sectionEntry.name}</span>
+                <span className="settings-about-section-entry-verison-package noselect">{`${sectionEntry.version}`}</span>
             </div>
 
             <div className={`settings-about-entry-content`}>
@@ -49,5 +90,6 @@ const SettingsSectionEntryPackage: React.FC<{
 
 export {
     SettingsSectionEntryCredit,
+    SettingsSectionEntryChange,
     SettingsSectionEntryPackage
 }

@@ -39,6 +39,19 @@ export function replaceVars(str: string, rep: { [key: string]: string }) {
     return ret;
 };
 
+export function replaceIssueTag(text: string): string {
+    const pattern = /#\d+/g;
+    const found = text.match(pattern);
+
+    if (found && found.length >= 1) {
+        const issue = found[0];
+        // TODO: Eventually change link to ProSpec repo
+        const rep = text.replace(pattern, `<a href=https://github.com/desktop/desktop/issues/${issue.substring(1)} target="_blank" rel="noopener noreferrer">${issue}</a>`);
+        return rep;
+    }
+    return text;
+}
+
 export async function checkCutout(champ: string): Promise<string> {
     return "loading";
     const cutouts = await readDir(`assets/dragontail/cutouts/`, { dir: BaseDirectory.Resource, recursive: true });
