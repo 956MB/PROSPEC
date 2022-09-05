@@ -1,4 +1,4 @@
-// NOTE: App:
+// NOTE: UI:
 
 export enum EChangeType {
     FIXED = 'FIXED',
@@ -6,8 +6,6 @@ export enum EChangeType {
     ADDED = 'ADDED',
     REMOVED = 'REMOVED'
 }
-
-// NOTE: UI:
 
 export enum EAboutSections {
     REGION = 'Region:',
@@ -48,7 +46,8 @@ export enum ERoles {
 }
 
 export enum ELanguages {
-    en_EN = 'en_EN',
+    en_US = 'en_US',
+    en_UK = 'en_UK',
     ar_AE = 'ar_AE',
     de_DE = 'de_DE',
     he_HE = 'he_HE',

@@ -166,6 +166,12 @@
         "favorite": "पसंदीदा",
         "unfavorite": "नापसंद करें"
     },
+    "tags": {
+        "FIXED": "हल किया गया",
+        "IMPROVED": "सुधार",
+        "ADDED": "जोड़ा",
+        "REMOVED": "निकाला गया"
+    },
     "languages": {
         "en_EN": "अंग्रेजी हमें",
         "ar_AE": "अरबी",

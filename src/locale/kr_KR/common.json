@@ -166,8 +166,15 @@
         "favorite": "가장 좋아하는",
         "unfavorite": "좋지 않은"
     },
+    "tags": {
+        "FIXED": "결정된",
+        "IMPROVED": "향상",
+        "ADDED": "추가",
+        "REMOVED": "제거됨"
+    },
     "languages": {
-        "en_EN": "영어, (미국)",
+        "en_US": "영어 (US)",
+        "en_UK": "영어 (UK)",
         "ar_AE": "아라비아 말",
         "de_DE": "독일 사람",
         "he_HE": "헤브라이 사람",

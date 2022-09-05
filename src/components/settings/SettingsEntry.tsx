@@ -25,6 +25,7 @@ const SettingsSectionEntryChange: React.FC<{
     indexClass: string,
     sectionEntry: ISettingsSectionEntryChange
 }> = ({ indexClass, sectionEntry }) => {
+    const [t] = useTranslation('common');
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
@@ -52,10 +53,10 @@ const SettingsSectionEntryChange: React.FC<{
                     sectionEntry.changes.map((change, i) => (
                         <div className={`settings-entry-change-content ${i == 0 ? 'first-change' : i == sectionEntry.changes.length-1 ? 'last-change' : null}`}>
                             <div className={`entry-change-tag-container`}>
-                                {change.type === EChangeType.FIXED ? <span className="entry-tag entry-tag-fixed select">{EChangeType.FIXED}</span> : null}
-                                {change.type === EChangeType.IMPROVED ? <span className="entry-tag entry-tag-improved select">{EChangeType.IMPROVED}</span> : null}
-                                {change.type === EChangeType.ADDED ? <span className="entry-tag entry-tag-added select">{EChangeType.ADDED}</span> : null}
-                                {change.type === EChangeType.REMOVED ? <span className="entry-tag entry-tag-removed select">{EChangeType.REMOVED}</span> : null}
+                                {change.type === EChangeType.FIXED ? <span className="entry-tag entry-tag-fixed select">{t(`tags.${EChangeType.FIXED}`)}</span> : null}
+                                {change.type === EChangeType.IMPROVED ? <span className="entry-tag entry-tag-improved select">{t(`tags.${EChangeType.IMPROVED}`)}</span> : null}
+                                {change.type === EChangeType.ADDED ? <span className="entry-tag entry-tag-added select">{t(`tags.${EChangeType.ADDED}`)}</span> : null}
+                                {change.type === EChangeType.REMOVED ? <span className="entry-tag entry-tag-removed select">{t(`tags.${EChangeType.REMOVED}`)}</span> : null}
                                 {i <= sectionEntry.changes.length - 2 ? <div className="entry-tag-vertical-line"></div> : null}
                             </div>
 

@@ -166,6 +166,12 @@
         "favorite": "אהוב",
         "unfavorite": "לא טוב"
     },
+    "tags": {
+        "FIXED": "תוקן",
+        "IMPROVED": "מְשׁוּפָּר",
+        "ADDED": "נוסף",
+        "REMOVED": "הוסר"
+    },
     "languages": {
         "en_EN": "אנגלית ארהב",
         "ar_AE": "עֲרָבִית",

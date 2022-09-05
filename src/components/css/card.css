@@ -544,8 +544,7 @@
     pointer-events: none;
     display: block;
     user-select: none;
-    overflow-y: visible;
-    overflow-x: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
     width: 154px;
     z-index: 3;

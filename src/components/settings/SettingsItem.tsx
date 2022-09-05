@@ -109,7 +109,7 @@ const SettingsItemLanguage: React.FC<{
 
     return (
         <div
-            className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : 'unselected-lang'} ${hasLang ? null : 'lang-disabled'}`}
+            className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : null} ${hasLang ? null : 'lang-disabled'}`}
             onClick={fSelectLanguage}>
             <div className={`circle noselect ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
             <span className={`language-text noselect ${itemValue.lang === ELanguages.br_BA ? 'braille-override' : null}`}>{itemValue.text}</span>

@@ -12,17 +12,17 @@ import * as locales from './imports/locales'
 
 i18next.init({
     interpolation: { escapeValue: false },
-    lng: 'en_EN',
+    lng: 'en_US',
     resources: {
-        en_EN: { common: locales.common_en },
-        ar_AE: { common: locales.common_ar },
-        he_HE: { common: locales.common_he },
-        kr_KR: { common: locales.common_kr },
-        fi_FI: { common: locales.common_fi },
-        sv_SV: { common: locales.common_sv },
-        ja_JP: { common: locales.common_jp },
-        hi_HI: { common: locales.common_hi },
-        br_BA: { common: locales.common_br }
+        "en_US": { common: locales.common_en_us },
+        "en_UK": { common: locales.common_en_uk },
+        "ar_AE": { common: locales.common_ar },
+        "kr_KR": { common: locales.common_kr },
+        "fi_FI": { common: locales.common_fi },
+        "sv_SV": { common: locales.common_sv },
+        "ja_JP": { common: locales.common_jp },
+        "hi_HI": { common: locales.common_hi },
+        "br_BA": { common: locales.common_br }
     },
 });
 

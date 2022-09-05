@@ -166,6 +166,12 @@
         "favorite": "Favorit",
         "unfavorite": "Ogynnit"
     },
+    "tags": {
+        "FIXED": "FAST",
+        "IMPROVED": "FÖRBÄTTRAD",
+        "ADDED": "LAGT TILL",
+        "REMOVED": "TOG BORT"
+    },
     "languages": {
         "en_EN": "Engelska oss",
         "ar_AE": "Arabisk",

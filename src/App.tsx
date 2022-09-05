@@ -21,16 +21,16 @@ function App() {
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
     const { useBackground, liveBackground } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IAppBackground>({
-        primary: { type: "live", name: "Warwick_0" },
-        secondary: { type: "centered", name: "Warwick_0" }
+        primary: { type: "live", name: "Sona_6" },
+        secondary: { type: "centered", name: "Sona_6" }
     });
     const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
 
     useInit(() => {
         const getAppBackground = async () => {
             const randomBG = await randomBackground({
-                primary: { type: "live", name: "Warwick_0" },
-                secondary: { type: "centered", name: "Warwick_0" }
+                primary: { type: "live", name: "Sona_6" },
+                secondary: { type: "centered", name: "Sona_6" }
             });
             setAppBG(randomBG);
         };

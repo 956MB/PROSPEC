@@ -7,6 +7,7 @@ import { ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueS
 import { sTitle, sItemTitle, sItemDescription, mapEnum, getLanguageStatic } from '../../utils';
 
 import closeIcon from '../../assets/icons/close.svg';
+import { SettingsContext } from "../../context/SettingsContext";
 
 import SettingsSidebar from './SettingsSidebar';
 import { SettingsPage, SettingsPageButton } from './SettingsPage';
@@ -131,6 +132,7 @@ const SettingsInner: React.FC<{
 }> = ({ pagesProps, settingsOpen, settingsBackground, FSettingsOpen }) => {
     const { t } = useTranslation('common');
     const [pageActive, setPageActive] = useState<number>(0);
+    const { useBackground } = useContext(SettingsContext);
 
     const isActive = (page: number): boolean => {
         return pageActive == page;
@@ -172,13 +174,16 @@ const SettingsInner: React.FC<{
                 </div>
             </div>
             <div className="settings-dark-overlay"></div>
-            <div
-                className={`${(settingsBackground.secondary.type === 'centered') ? 'settings-background-center' : 'settings-background-left'}`}
-                style={{
-                    backgroundImage:
-                        `url(src/assets/dragontail/${settingsBackground.secondary.type}/${settingsBackground.secondary.name}.jpg)`
-                }}>
-            </div>
+
+            {!useBackground ? null :
+                <div
+                    className={`${(settingsBackground.secondary.type === 'centered') ? 'settings-background-center' : 'settings-background-left'}`}
+                    style={{
+                        backgroundImage:
+                            `url(src/assets/dragontail/${settingsBackground.secondary.type}/${settingsBackground.secondary.name}.jpg)`
+                    }}>
+                </div>
+            }
         </div>
     )
 }

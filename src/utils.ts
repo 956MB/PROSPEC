@@ -89,7 +89,7 @@ export function ifLiveBackground(background: string): boolean {
 
 // NOTE: Gets
 
-const LANGS = [ "English", "العربية", "Deutsch", "עִברִית", "Français", "Italiano", "Nederlands", "Svenska", "Suomi", "हिन्दी", "Português", "Polski", "Русский", "Türkçe", "Čeština", "Ελληνικά", "한국어", "日本語", "Tiếng Việt", "简体中文", "繁體中文", "Braille" ];
+const LANGS = [ "English, US", "English, UK", "العربية", "Deutsch", "עִברִית", "Français", "Italiano", "Nederlands", "Svenska", "Suomi", "हिन्दी", "Português", "Polski", "Русский", "Türkçe", "Čeština", "Ελληνικά", "한국어", "日本語", "Tiếng Việt", "简体中文", "繁體中文", "Braille" ];
 export function getLanguageStatic(lang: number): string {
     return LANGS.at(lang)!;
 }

@@ -166,8 +166,15 @@
         "favorite": "Favorite",
         "unfavorite": "Unfavorite"
     },
+    "tags": {
+        "FIXED": "FIXED",
+        "IMPROVED": "IMPROVED",
+        "ADDED": "ADDED",
+        "REMOVED": "REMOVED"
+    },
     "languages": {
-        "en_EN": "English, US",
+        "en_US": "English (US)",
+        "en_UK": "English (UK)",
         "ar_AE": "Arabic",
         "de_DE": "German",
         "he_HE": "Hebrew",
