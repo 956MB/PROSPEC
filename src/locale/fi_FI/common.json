@@ -29,8 +29,11 @@
     },
     "settings": {
         "pages": {
+            "shortcuts": {
+                "title": "Pikanäppäimet"
+            },
             "about": {
-                "title": "Noin",
+                "title": "Tietoja ProSpec",
                 "description": "ProSpec on ilmainen ja avoimen lähdekoodin työpöytä -asiakas Professional League of Legends -pelaajille.Tämä sovellus on eräänlainen 'päivitys' tai vaihtoehto OP.GG: n 'Pro Matches' -ominaisuudelle.",
                 "thanks": {
                     "title": "Kiitos",
@@ -48,12 +51,15 @@
             "application": {
                 "items": {
                     "Accent": {
+						"description": "",
                         "title": "Aksentti"
                     },
                     "appScale": {
+						"description": "",
                         "title": "Sovellusasteikko"
                     },
                     "dark": {
+						"description": "",
                         "title": "Tumma"
                     },
                     "notifications": {
@@ -69,6 +75,7 @@
                         "title": "Näppäimistötila"
                     },
                     "light": {
+						"description": "",
                         "title": "Valaistus"
                     },
                     "minimizeToTray": {
@@ -76,6 +83,7 @@
                         "title": "Minimoida tarjotin"
                     },
                     "openOnStartup": {
+						"description": "",
                         "title": "Avaa käynnistyksen yhteydessä"
                     },
                     "useBackground": {
@@ -91,9 +99,11 @@
                         "title": "Live -taustat"
                     },
                     "system": {
+						"description": "",
                         "title": "Järjestelmä"
                     },
                     "appTheme": {
+						"description": "",
                         "title": "Teema"
                     }
                 },
@@ -102,15 +112,19 @@
             "content": {
                 "items": {
                     "autoRefresh": {
+						"description": "",
                         "title": "Automaattinen virkistäminen"
                     },
                     "card": {
+						"description": "",
                         "title": "Kortti"
                     },
                     "list": {
+						"description": "",
                         "title": "Lista"
                     },
                     "listLayout": {
+						"description": "",
                         "title": "Listata asettelu"
                     },
                     "refreshInterval": {

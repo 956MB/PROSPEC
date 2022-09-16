@@ -29,6 +29,9 @@
     },
     "settings": {
         "pages": {
+            "shortcuts": {
+				"title": "Keyboard shortcuts"
+            },
             "about": {
                 "title": "About",
                 "description": "ProSpec is a free and open source dekstop client for spectating professional League of Legends players. This application is a sort of 'upgrade' or alternative to OP.GG's 'Pro Matches' feature.",
@@ -48,12 +51,15 @@
             "application": {
                 "items": {
                     "Accent": {
+						"description": "",
                         "title": "Accent"
                     },
                     "appScale": {
+						"description": "",
                         "title": "App scale"
                     },
                     "dark": {
+						"description": "",
                         "title": "Dark"
                     },
                     "notifications": {
@@ -69,6 +75,7 @@
                         "title": "Keyboard mode"
                     },
                     "light": {
+						"description": "",
                         "title": "Light"
                     },
                     "minimizeToTray": {
@@ -76,6 +83,7 @@
                         "title": "Minimize to tray"
                     },
                     "openOnStartup": {
+						"description": "",
                         "title": "Open on startup"
                     },
                     "useBackground": {
@@ -91,9 +99,11 @@
                         "title": "Live backgrounds"
                     },
                     "system": {
+						"description": "",
                         "title": "System"
                     },
                     "appTheme": {
+						"description": "",
                         "title": "Theme"
                     }
                 },
@@ -102,15 +112,19 @@
             "content": {
                 "items": {
                     "autoRefresh": {
+						"description": "",
                         "title": "Auto refresh"
                     },
                     "card": {
+						"description": "",
                         "title": "Card"
                     },
                     "list": {
+						"description": "",
                         "title": "List"
                     },
                     "listLayout": {
+						"description": "",
                         "title": "List layout"
                     },
                     "refreshInterval": {

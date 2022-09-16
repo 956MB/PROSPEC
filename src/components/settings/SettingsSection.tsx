@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISettingsSectionEntryPackage } from "../../interfaces";
+import { ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISettingsSectionEntryPackage } from "../../imports/interfaces";
 import { SettingsSectionEntryPackage, SettingsSectionEntryCredit, SettingsSectionEntryChange } from "./SettingsEntry";
 import '../css/settings.css';
-import { getEntryIndexClass } from "../../utils";
+import { getEntryIndexClass } from "../../imports/utils";
 
 const SettingsSection: React.FC<{
     sectionType: string,
@@ -20,7 +20,7 @@ const SettingsSection: React.FC<{
             <div className="settings-about-section-title">
                 <span className="settings-about-section-title-text noselect">{`${sectionTitle}:`}</span>
                 <span
-                    className="settings-about-section-title-show-hide noselect"
+                    className="settings-about-section-title-show-hide noselect transition-0_08s"
                     onClick={() => setSectionOpen(!sectionOpen)}>
                     {`${t(`${sectionOpen ? 'tooltips.hide' : 'tooltips.show'}`)}`}
                 </span>
@@ -44,7 +44,7 @@ const SettingsSection: React.FC<{
                                     indexClass={getEntryIndexClass(i, sectionEntries.length)}
                                     sectionEntry={entry as ISettingsSectionEntryPackage} />
                                 : null}
-                            {i < sectionEntries.length - 1 ? <div className={`spacer-divider-entry ${sectionType === 'change' || sectionType === 'package' ? 'margin-left-18' : null}`}></div> : null}
+                            {i < sectionEntries.length - 1 ? <div className={`spacer-divider-entry ${sectionType === 'change' || sectionType === 'package' ? 'margin-lr-18' : null}`}></div> : null}
                         </div>
                     ))
                 )}

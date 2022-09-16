@@ -1,4 +1,4 @@
-import { ISettingsSectionEntryPackage, ISettingsSectionPackageEntries } from "../interfaces";
+import { ISettingsSectionEntryPackage, ISettingsSectionPackageEntries } from "./interfaces";
 
 const tauriLicense = `MIT License
 

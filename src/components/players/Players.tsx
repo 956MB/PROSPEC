@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { IPlayerGroups, IPlayers, useInit } from '../../interfaces';
-import '../css/players.css';
+import { Route } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-import { groupByKey, mapEnum, sortByKey } from "../../utils";
+import { IPlayerGroups, IPlayers } from '../../imports/interfaces';
+import '../css/players.css';
+import { groupByKey, mapEnum, sortByKey } from "../../imports/utils";
 import { PlayersGroup } from './PlayersGroup';
 import { SpectatorContext } from "../../context/SpectatorContext";
-import { EGroupBy, ERoles, ETeams, EEMessages } from '../../typings';
-import { useTranslation } from 'react-i18next';
+import { EGroupBy, ERoles, ETeams, EEMessages } from '../../imports/typings';
+import { useInit } from '../../imports/initializers';
 
 const ROLES_SORT = mapEnum(ERoles, "string", () => {}) as string[];
 const TEAMS_SORT = mapEnum(ETeams, "number", (team: number) => { return team.toString() }) as string[];
@@ -53,14 +55,14 @@ const Players: React.FC<{
                 {React.Children.toArray(
                     groupedPlayers.map((group, i) => (
                         <PlayersGroup
-                            players={group.players}
-                            groupPos={(i == 0 ? 'first-group' : (i == groupedPlayers.length-1 ? 'last-group' : ''))}
-                            groupKey={group.key}
-                            globalTime={gameInterval}
-                            menuOpen={menuOpen}
-                            fHandleMenuOpen={(set: number) => setMenuOpen(set)}></PlayersGroup>
-                    ))
-                )}
+                        players={group.players}
+                        groupPos={(i == 0 ? 'first-group' : (i == groupedPlayers.length-1 ? 'last-group' : ''))}
+                        groupKey={group.key}
+                        globalTime={gameInterval}
+                        menuOpen={menuOpen}
+                        fHandleMenuOpen={(set: number) => setMenuOpen(set)}></PlayersGroup>
+                        ))
+                        )}
             </div>
         </div>
     );
@@ -71,9 +73,11 @@ const PlayersNotLoaded: React.FC<{
     const { t } = useTranslation('common');
     
     return (
-        <div className={`players-empty noselect`}>
-            <span>{t(`${EEMessages.NONE_LOADED}`)}</span>
-        </div>
+        <Route path='/empty'>
+            <div className={`players-empty noselect`}>
+                <span>{t(`${EEMessages.NONE_LOADED}`)}</span>
+            </div>
+        </Route>
     )
 }
 

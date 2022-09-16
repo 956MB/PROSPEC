@@ -2,9 +2,9 @@ import React, { Suspense, Component, useState, useEffect, useRef } from 'react';
 // import { useHotkeys } from 'react-hotkeys-hook'
 import './css/options.css';
 
-import { IOptionsSection, IOptionsSections, IOptionsSectionChamp, IOptionsSectionsChamp, IOptionsButton, IOptionsButtonChamp, ISelectedChamps } from '../interfaces';
-import { EButtonImages, EEMessages, ETooltip } from '../typings';
-import { getChampionFromId } from '../utils';
+import { IOptionsSection, IOptionsSections, IOptionsSectionChamp, IOptionsSectionsChamp, IOptionsButton, IOptionsButtonChamp, ISelectedChamps } from '../imports/interfaces';
+import { EButtonImages, EEMessages, ETooltip } from '../imports/typings';
+import { getChampionFromId } from '../imports/utils';
 
 import closeIcon from '../assets/icons/close.svg';
 import { useTranslation } from 'react-i18next';

@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import parse from 'html-react-parser';
 
-import { pAbout, replaceIssueTag } from "../../utils";
-import { ISettingsSectionEntry, ISettingsSectionEntryPackage, ISettingsSectionEntryChange } from "../../interfaces";
+import { pAbout, replaceIssueTag } from "../../imports/utils";
+import { ISettingsSectionEntry, ISettingsSectionEntryPackage, ISettingsSectionEntryChange } from "../../imports/interfaces";
 import '../css/settings.css';
-import { EChangeType } from "../../typings";
+import { EChangeType } from "../../imports/typings";
 
 const SettingsSectionEntryCredit: React.FC<{
     sectionEntry: ISettingsSectionEntry
@@ -29,7 +29,7 @@ const SettingsSectionEntryChange: React.FC<{
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
-        <div className={`settings-about-section-entry-change ${entryOpen ? 'entry-open' : null} ${indexClass} margin-left-18`}>
+        <div className={`settings-about-section-entry-change ${entryOpen ? 'entry-open' : null} ${indexClass} margin-lr-18`}>
             <div
                 className={`settings-about-entry-inner`}
                 onClick={() => setEntryOpen(!entryOpen)}
@@ -76,7 +76,7 @@ const SettingsSectionEntryPackage: React.FC<{
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
-        <div className={`settings-about-section-entry-package ${entryOpen ? 'entry-open' : null} ${indexClass} margin-left-18`}>
+        <div className={`settings-about-section-entry-package ${entryOpen ? 'entry-open' : null} ${indexClass} margin-lr-18`}>
             <div
                 className={`settings-about-entry-inner`}
                 onClick={() => setEntryOpen(!entryOpen)}

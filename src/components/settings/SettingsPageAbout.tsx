@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { pAbout } from "../../utils";
-import { ISettingsSectionChangeEntries, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISettingsSectionPackageEntries, ISettingsSections } from "../../interfaces";
-import { EChangeType, ETooltip } from "../../typings";
+import { pAbout } from "../../imports/utils";
+import { ISettingsSectionChangeEntries, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISettingsSectionPackageEntries, ISettingsSections } from "../../imports/interfaces";
+import { EChangeType, ETooltip } from "../../imports/typings";
 import '../css/settings.css';
 
 import { SettingsSection } from "./SettingsSection";

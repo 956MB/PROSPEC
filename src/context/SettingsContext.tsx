@@ -3,9 +3,10 @@ import React, { createContext, startTransition, useEffect, useReducer, useState 
 import { useTranslation } from "react-i18next";
 import { Store } from 'tauri-plugin-store-api';
 
-import { IReducerAction, ISettingsStates, useInit } from "../interfaces";
-import { ELanguages, ESettingsStates } from "../typings";
-import { mapEnum, mapEnumKeys } from "../utils";
+import { IReducerAction, ISettingsStates } from "../imports/interfaces";
+import { ELanguages, ESettingsStates } from "../imports/typings";
+import { mapEnum, mapEnumKeys } from "../imports/utils";
+import { useInit } from '../imports/initializers';
 
 const DEFAULTS = [0, false, 5, true, false, false, false, true, 0, 0, false, true, false, false, true, false, false, true, 0];
 const BOOLS: string[] = [ ESettingsStates.AUTO_REFRESH, ESettingsStates.SHOW_SUMMONER_IDS, ESettingsStates.SHOW_RANDOM_SKINS, ESettingsStates.USE_CUTOUTS, ESettingsStates.SHOW_TEAM_LOGOS, ESettingsStates.SHOW_UNAVAILABLE, ESettingsStates.OPEN_ON_STARTUP, ESettingsStates.MINIMIZE_TO_TRAY, ESettingsStates.HARDWARE_ACCELERATION, ESettingsStates.USE_BACKGROUND, ESettingsStates.RANDOM_BACKGROUND, ESettingsStates.LIVE_BACKGROUND, ESettingsStates.KEYBOARD_MODE, ESettingsStates.NOTIFICATIONS ];

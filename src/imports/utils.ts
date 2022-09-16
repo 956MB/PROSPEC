@@ -1,9 +1,7 @@
-import { IAppBackground, IBackground, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISummonerAccount } from "./interfaces";
+import { IAppBackground, IBackground, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISummonerAccount } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
-import { BlobOptions } from "buffer";
 import random from 'random'
-import { useTranslation } from "react-i18next";
 
 // const { t } = useTranslation('common');
 
@@ -391,45 +389,6 @@ export function roleType(role: string): string { return (role === ERoles.ANY) ? 
 export function roleFile(role: string): string { return (role === ERoles.ANY) ? '.svg' : '.png'; }
 
 
-// NOTE: Prototypes:
-
-declare global {
-    interface Array<T> {
-        filterRegions(regions: ERegions[]): Array<T>;
-        filterRoles(roles: ERoles[]): Array<T>;
-        // filterChampions(champions: EChampions[]): Array<T>;
-        filterUniquePlayers(min?: number, max?: number): Array<T>;
-        filterRandomize(): Array<T>;
-    }
-}
-if (!Array.prototype.filterRegions) {
-    Array.prototype.filterRegions = function (this: ISummonerAccount[], regions: ERegions[]): ISummonerAccount[] {
-        return this.filter((player) => (regions.length >= 1) ? regions.includes(player.region as ERegions) : this);
-    }
-}
-if (!Array.prototype.filterRoles) {
-    Array.prototype.filterRoles = function (this: ISummonerAccount[], roles: ERoles[]): ISummonerAccount[] {
-        return this.filter((player) => (roles.length >= 1) ? roles.includes(player.role as ERoles) : this);
-    }
-}
-// if (!Array.prototype.filterChampions) {
-//     Array.prototype.filterChampions = function (this: ISummonerAccount[], champions: EChampions[]): ISummonerAccount[] {
-//         return this.filter((player) => (champions.length >= 1) ? champions.includes(player. as ERoles) : this);
-//     }
-// }
-if (!Array.prototype.filterUniquePlayers) {
-    Array.prototype.filterUniquePlayers = function (this: ISummonerAccount[], min: number, max: number): ISummonerAccount[] {
-        const unique = [...new Map(this.map(item => [item.playerName, item])).values()];
-        return unique.slice(min, max);
-    }
-}
-if (!Array.prototype.filterRandomize) {
-    Array.prototype.filterRandomize = function (this: ISummonerAccount[]): ISummonerAccount[] {
-        return this.sort(() => 0.5 - random.float())
-    }
-}
-
-
 // NOTE: TRANSLATION:
 
 export function oMode(mode: string): string { return `modes.${mode}` }
@@ -440,6 +399,38 @@ export function sItemTitle(page: string, item: string): string { return `setting
 export function sItemDescription(page: string, item: string): string { return `settings.pages.${page}.items.${item}.description` }
 export function pAbout(item: string): string { return `settings.pages.about.${item}` }
 
+// NOTE: Form settings items:
+
+export function FormSettingsPage(index: number, type: string, title: string, items: ISettingsItems): ISettingsPage {
+    return { index: index, type: type, title: sTitle(title), items: items }
+}
+export function FormSettingsPageLang(index: number, type: string, title: string, selected: number, items: ISettingsItems): ISettingsPageLanguage {
+    return { index: index, type: type, title: sTitle(title), selected: selected, items: items }
+}
+export function SettingsItemSpacer(): ISettingsItem { return { itemValue: { type: "spacer", value: false } }; }
+export function SettingsItemBoolean(section: string, key: string, value: boolean, children: ISettingsItems | undefined = undefined): ISettingsItem {
+    return {
+        title: sItemTitle(section, key),
+        description: sItemDescription(section, key),
+        itemValue: { type: 'boolean', value: value, key: key } as ISettingsItemValueBool,
+        childValues: children
+    }
+}
+export function ItemValueSelection(index: number, section: string, value: string, ignoreTranslation: boolean): ISettingsItemValueSelection {
+    return { index: index, text: ignoreTranslation ? value : sItemTitle(section, value) };
+}
+export function SettingsItemSelector(section: string, key: string, value: number, selections: string[], ignoreTranslation: boolean = false): ISettingsItem {
+    return {
+        title: sItemTitle(section, key), itemValue: {
+            type: 'selector', key: key, value: value, options: selections.map((value, i) => { return ItemValueSelection(i, section, value, ignoreTranslation) }) as ISettingsItemValueSelections
+        } as ISettingsItemValueSelector
+    }
+}
+export function SettingsItemLanguage(value: number, text: string, lang: string): ISettingsItem {
+    return {
+        itemValue: { type: "lang", value: value, text: text, lang: lang as string } as ISettingsItemValueLanguage
+    }
+}
 
 // NOTE: RANDOM:
 
@@ -482,9 +473,6 @@ export async function randomBackground(override?: IAppBackground): Promise<IAppB
     return {
         primary: {
             type: override != null ? override.primary.type : primaryType,
-            name: override != null ? override.primary.name : primaryName },
-        secondary: {
-            type: override != null ? override.secondary.type : secondaryType,
-            name: override != null ? override.secondary.name : secondaryName }
+            name: override != null ? override.primary.name : primaryName }
     }  as IAppBackground;
 }

@@ -29,8 +29,11 @@
     },
     "settings": {
         "pages": {
+            "shortcuts": {
+				"title": "Tangentbordsgenvägar"
+            },
             "about": {
-                "title": "Handla om",
+                "title": "Om ProSpec",
                 "description": "ProSpec är en gratis och öppen källkods Desktop Client för att spektera Professional League of Legends Players.Denna applikation är en slags 'uppgradering' eller alternativ till OP.ggs 'Pro Matches' -funktion.",
                 "thanks": {
                     "title": "Tack",
@@ -48,12 +51,15 @@
             "application": {
                 "items": {
                     "Accent": {
+						"description": "",
                         "title": "Accent"
                     },
                     "appScale": {
+						"description": "",
                         "title": "Ansökan skala"
                     },
                     "dark": {
+						"description": "",
                         "title": "Mörk"
                     },
                     "notifications": {
@@ -69,6 +75,7 @@
                         "title": "Tangentbordsläge"
                     },
                     "light": {
+						"description": "",
                         "title": "Ljus"
                     },
                     "minimizeToTray": {
@@ -76,6 +83,7 @@
                         "title": "Minimera till bricka"
                     },
                     "openOnStartup": {
+						"description": "",
                         "title": "Öppna vid start"
                     },
                     "useBackground": {
@@ -91,9 +99,11 @@
                         "title": "Levande bakgrunder"
                     },
                     "system": {
+						"description": "",
                         "title": "Systemet"
                     },
                     "appTheme": {
+						"description": "",
                         "title": "Tema"
                     }
                 },
@@ -102,15 +112,19 @@
             "content": {
                 "items": {
                     "autoRefresh": {
+						"description": "",
                         "title": "Automatisk omladdning"
                     },
                     "card": {
+						"description": "",
                         "title": "Kort"
                     },
                     "list": {
+						"description": "",
                         "title": "Lista"
                     },
                     "listLayout": {
+						"description": "",
                         "title": "Listlayout"
                     },
                     "refreshInterval": {

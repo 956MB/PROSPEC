@@ -126,6 +126,7 @@ export enum ESettingsStates {
     OPEN_ON_STARTUP = 'openOnStartup',
     MINIMIZE_TO_TRAY = 'minimizeToTray',
     HARDWARE_ACCELERATION = 'hardwareAcceleration',
+    ANIMATIONS = 'showAnimations',
     USE_BACKGROUND = 'useBackground',
     RANDOM_BACKGROUND = 'randomBackground',
     LIVE_BACKGROUND = 'liveBackground',

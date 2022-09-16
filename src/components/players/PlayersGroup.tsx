@@ -1,11 +1,12 @@
 import { useTranslation } from "react-i18next";
 import React, { useState, useContext } from "react";
 
-import { IPlayerGroupInfo, IPlayers, useInit } from "../../interfaces";
+import { IPlayerGroupInfo, IPlayers } from "../../imports/interfaces";
 import Card from "../cards/Card";
-import { EGroupBy, ETooltip } from "../../typings";
+import { EGroupBy, ETooltip } from "../../imports/typings";
 import { SettingsContext } from "../../context/SettingsContext";
-import { getGroupInfoFromKey } from "../../utils";
+import { getGroupInfoFromKey } from "../../imports/utils";
+import { useInit } from '../../imports/initializers';
 
 const PlayersGroup: React.FC<{
     players: IPlayers,

@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import '../css/settings.css';
 
-import { ISettingsItemValueLanguage, ISettingsPage, ISettingsPageButton, ISettingsPageLanguage } from "../../interfaces";
+import { ISettingsItemValueLanguage, ISettingsPage, ISettingsPageButton, ISettingsPageLanguage } from "../../imports/interfaces";
 import { SettingsItem, SettingsItemLanguage, SettingsItemSpacer } from "./SettingsItem";
 
 const SettingsPage: React.FC<{
@@ -48,7 +48,7 @@ const SettingsPageButton: React.FC<{
     return (
         <div className={`settings-page-button ${pageActive ? 'page-button-active' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
             <div className='page-button-inner'>
-                <span className='page-button-text'>{t(buttonProps.text)}</span>
+                <span className='page-button-text transition-0_08s'>{t(buttonProps.text)}</span>
             </div>
         </div>
     )

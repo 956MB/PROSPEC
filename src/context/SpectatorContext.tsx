@@ -1,7 +1,8 @@
 import React, { createContext, useState } from "react";
 
-import { ISummonerAccount, ISummonerAccounts, useInit } from "../interfaces";
-import { EGroupBy, EModes, ERegions, ERoles } from "../typings";
+import { ISummonerAccount, ISummonerAccounts } from "../imports/interfaces";
+import { EGroupBy, EModes, ERegions, ERoles } from "../imports/typings";
+import { useInit } from '../imports/initializers';
 
 // JSON imports
 import * as KR from '../data/players/lck.json';
@@ -16,8 +17,8 @@ export const SpectatorContext = createContext<ISpectatorContext>({
 
 const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactNode }> = ({ initPlayers, children }) => {
     const [regionFilter, setRegionFilter] = useState<ERegions[]>([ERegions.KR]);
-    const [modeFilter, setModeFilter] = useState<EModes[]>([EModes.RANKED_SOLODUO]);
-    const [roleFilter, setRoleFilter] = useState<ERoles[]>([ERoles.MIDDLE]);
+    const [modeFilter, setModeFilter] = useState<EModes[]>([]);
+    const [roleFilter, setRoleFilter] = useState<ERoles[]>([]);
     const [groupBy, setGroupBy] = useState<EGroupBy>(EGroupBy.ROLE);
     const [accountsLoaded, setAccountsLoaded] = useState<boolean>(false);
     const [allAccounts, setAllAccounts] = useState<ISummonerAccount[]>([]);

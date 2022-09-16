@@ -29,8 +29,11 @@
     },
     "settings": {
         "pages": {
+            "shortcuts": {
+				"title": "키 바인드"
+            },
             "about": {
-                "title": "에 대한",
+                "title": "ProSpec 에 대해",
                 "description": "ProSpec은 Professional League of Legends 플레이어를 관습하기위한 무료 및 오픈 소스 데스크탑 클라이언트입니다.이 응용 프로그램은 일종의 '업그레이드'또는 OP.GG의 'Pro Matches'기능에 대한 대안입니다.",
                 "thanks": {
                     "title": "감사",
@@ -48,12 +51,15 @@
             "application": {
                 "items": {
                     "Accent": {
+						"description": "",
                         "title": "악센트"
                     },
                     "appScale": {
+						"description": "",
                         "title": "앱 스케일"
                     },
                     "dark": {
+						"description": "",
                         "title": "어두운"
                     },
                     "notifications": {
@@ -69,6 +75,7 @@
                         "title": "키보드 모드"
                     },
                     "light": {
+						"description": "",
                         "title": "빛"
                     },
                     "minimizeToTray": {
@@ -76,6 +83,7 @@
                         "title": "트레이를 최소화하십시오"
                     },
                     "openOnStartup": {
+						"description": "",
                         "title": "스타트 업에 열립니다"
                     },
                     "useBackground": {
@@ -91,9 +99,11 @@
                         "title": "라이브 배경"
                     },
                     "system": {
+						"description": "",
                         "title": "체계"
                     },
                     "appTheme": {
+						"description": "",
                         "title": "주제"
                     }
                 },
@@ -102,12 +112,15 @@
             "content": {
                 "items": {
                     "autoRefresh": {
+						"description": "",
                         "title": "자동 새로 고침"
                     },
                     "card": {
+						"description": "",
                         "title": "카드"
                     },
                     "list": {
+						"description": "",
                         "title": "목록"
                     },
                     "listLayout": {

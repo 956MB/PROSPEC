@@ -16,7 +16,7 @@
             "all": true,
             "fs": {
                 "scope": [
-                    "$APP/**", "$APP/src/**", "$APP/src/data/**", "$APP/src/bats/**", "$APP/src/assets/**" ,"$DOWNLOAD/**", "$RESOURCE/**", "/data/**", "data/**"
+                    "$APP/**", "$APP/src/**", "$APP/src/data/**", "$APP/src/imports/**", "$APP/src/bats/**", "$APP/src/assets/**" ,"$DOWNLOAD/**", "$RESOURCE/**", "/data/**", "data/**"
                 ],
                 "all": true
             }
@@ -67,7 +67,7 @@
                 "fullscreen": false,
                 "height": 830,
                 "minHeight": 565,
-                "width": 1480,
+                "width": 1080,
                 "minWidth": 1080,
                 "decorations": false
             }

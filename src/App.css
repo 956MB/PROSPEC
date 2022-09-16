@@ -73,6 +73,13 @@ body {
     user-select: text;          /* Likely future */   
 }
 
+.transition-0_08s {
+    transition: all 0.08s ease;
+}
+.transition-0_1s {
+    transition: all 0.1s ease;
+}
+
 img {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
@@ -290,6 +297,7 @@ img {
     top: 0;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     opacity: 0.70;
     width: 100%;
     height: 100%;
@@ -307,6 +315,7 @@ img {
     height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     object-fit: cover;
     filter: grayscale(1);
     opacity: 0.70;
@@ -322,7 +331,7 @@ img {
     min-width: 100vw;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(25, 25, 25, 0.935);
+    background-color: rgba(20, 20, 20, 0.93);
     z-index: 1;
 }
 

@@ -3,9 +3,9 @@ import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import '../css/card.css';
 
-import { IPlayer } from "../../interfaces";
+import { IPlayer } from "../../imports/interfaces";
 import { SettingsContext } from '../../context/SettingsContext';
-import { whichStream } from "../../utils";
+import { whichStream } from "../../imports/utils";
 
 const CardMenu: React.FC<{
     player: IPlayer,

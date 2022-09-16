@@ -1,7 +1,7 @@
 // import { replaceVars } from './utils';
 // import { fs } from '@tauri-apps/api';
-import { EModes, ERegions, ERoles } from './typings';
-import { ISummonerAccount, ISummonerAccounts, IJSONPlayers, IJSONPlayer, IJSONAccount } from './interfaces';
+import { EModes, ERegions, ERoles } from './imports/typings';
+import { ISummonerAccount, ISummonerAccounts, IJSONPlayers, IJSONPlayer, IJSONAccount } from './imports/interfaces';
 
 // JSON imports
 import * as KR from './data/players/lck.json';

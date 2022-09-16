@@ -3,11 +3,12 @@ import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import '../css/settings.css';
 
-import { unull } from "../../utils";
-import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, useInit } from "../../interfaces";
+import { unull } from "../../imports/utils";
+import { ISettingsItem, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector } from "../../imports/interfaces";
+import { useInit } from '../../imports/initializers';
 import { SettingsContext } from '../../context/SettingsContext';
 import { useDetectClickOutside } from "react-detect-click-outside";
-import { ELanguages, ESettingsStates } from '../../typings';
+import { ELanguages, ESettingsStates } from '../../imports/typings';
 import { t } from "i18next";
 
 const SettingsItem: React.FC<{

@@ -1,48 +1,41 @@
 import React, { Suspense, useContext, useEffect, useMemo, useState } from "react";
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import './App.css';
 
-import Titlebar from './components/titlebar';
+import Titlebar from './components/titlebar/Titlebar';
 import Settings from "./components/settings/Settings";
 import ProSpec from "./prospec";
-import { IAppBackground, IPlayers, useInit } from "./interfaces";
+import { IAppBackground, IPlayers } from "./imports/interfaces";
 // const Players = React.lazy(() => import("./components/players/Players"));
 
-import { EChampions, ERegions } from "./typings";
-import { getRegion, ifLiveBackground, randomActive, randomBackground, randomEnum, randomNumber } from "./utils";
+import { EChampions, ERegions } from "./imports/typings";
+import { getRegion, ifLiveBackground, randomActive, randomBackground, randomEnum, randomNumber } from "./imports/utils";
+import "./imports/prototypes"
 import { Players, PlayersNotLoaded } from "./components/players/Players";
 
 import { SpectatorContext } from "./context/SpectatorContext";
 import { SettingsContext } from "./context/SettingsContext";
 import { useTranslation } from "react-i18next";
+import SettingsSidebar from "./components/settings/SettingsSidebar";
+import { useInit } from "./imports/initializers";
 
 function App() {
+    const navigate = useNavigate();
     const { i18n } = useTranslation('common');
     // const proSpec = useMemo(() => new ProSpec(false), []);
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
-    const { useBackground, liveBackground } = useContext(SettingsContext);
+    const { useBackground, liveBackground, autoRefresh } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IAppBackground>({
-        primary: { type: "live", name: "Sona_6" },
-        secondary: { type: "centered", name: "Sona_6" }
+        primary: { type: "live", name: "Sona_6" }
     });
     const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
-
-    useInit(() => {
-        const getAppBackground = async () => {
-            const randomBG = await randomBackground({
-                primary: { type: "live", name: "Sona_6" },
-                secondary: { type: "centered", name: "Sona_6" }
-            });
-            setAppBG(randomBG);
-        };
-        getAppBackground();
-    });
-
     const [playersLoaded, setPlayersLoaded] = useState<boolean>(false);
     const [players, setPlayers] = useState<IPlayers>([]);
     const [playersKey, setPlayersKey] = useState<number>(0);
 
-    const FSettingsOpen = (set: boolean = false) => {
-        setSettingsOpen(set);
+    const fSettingsOpen = (set?: boolean) => {
+        setSettingsOpen(set ? set : !settingsOpen);
+        navigate(settingsOpen ? '/' : '/settings', {replace: true});
     }
 
     const refreshPlayers = () => {
@@ -56,7 +49,7 @@ function App() {
             setPlayers(
                 allAccounts
                     .filterRegions(regionFilter)
-                    // .filterRoles(roleFilter)
+                    .filterRoles(roleFilter)
                     .filterRandomize()
                     .filterUniquePlayers(0, 35)
                     // .slice(0, 45)
@@ -70,20 +63,41 @@ function App() {
         }
     }
 
+    useInit(() => {
+        const getAppBackground = async () => {
+            const randomBG = await randomBackground({
+                primary: { type: "live", name: "Sona_6" }
+            });
+            setAppBG(randomBG);
+        };
+        getAppBackground();
+
+        if (autoRefresh) {
+            refreshPlayers();
+        }
+    });
+
     return (
         <div
             className={`app ${settingsOpen ? 'settings-open' : null} ${i18n.language}`}
             onContextMenu={(e) => {
                 e.preventDefault();
             }}>
-            <Settings appBackground={appBG} settingsOpen={settingsOpen} FSettingsOpen={FSettingsOpen} />
-            <Titlebar settingsOpen={settingsOpen} refreshPlayers={refreshPlayers} />
-            {playersLoaded
-                ?
-                <Players key={playersKey} players={players} />
-                :
-                <PlayersNotLoaded/>
-            }
+
+            <SettingsSidebar fSettingsOpen={fSettingsOpen} />
+            <Titlebar fSettingsOpen={fSettingsOpen} fRefreshPlayers={refreshPlayers} />
+
+            <Routes>
+                <Route path='/' element={
+                    playersLoaded ?
+                        <Players key={playersKey} players={players} /> : null
+                } />
+
+                <Route path='/settings' element={
+                    <Settings fSettingsOpen={fSettingsOpen} />
+                } />
+            </Routes>
+
             <div className="dark-overlay"></div>
 
             {!useBackground ? null :

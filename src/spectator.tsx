@@ -1,9 +1,9 @@
 import { exec } from 'child_process';
 // import { appDir, join } from '@tauri-apps/api/path';
 // import { convertFileSrc } from '@tauri-apps/api/tauri';
-import { replaceVars } from './utils';
+import { replaceVars } from './imports/utils';
 import { fs } from '@tauri-apps/api';
-import { ISpectatorResult } from './interfaces';
+import { ISpectatorResult } from './imports/interfaces';
 // const appDirPath = await appDir();
 // const filePath = await join(appDirPath, 'assets/logos/drx.png');
 // const assetUrl = convertFileSrc(filePath);

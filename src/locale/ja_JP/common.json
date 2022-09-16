@@ -29,8 +29,11 @@
     },
     "settings": {
         "pages": {
+            "shortcuts": {
+				"title": "ショートカット"
+            },
             "about": {
-                "title": "約",
+                "title": "プロスペックについて",
                 "description": "ProSpecは、プロのリーグオブレジェンドプレーヤーを観察するための無料でオープンソースのデスクトップクライアントです。このアプリケーションは、Op.ggの「Pro Matches」機能に代わる「アップグレード」または代替品です。",
                 "thanks": {
                     "title": "ありがとう",
@@ -48,12 +51,15 @@
             "application": {
                 "items": {
                     "Accent": {
+						"description": "",
                         "title": "アクセント"
                     },
                     "appScale": {
+						"description": "",
                         "title": "アプリの規模"
                     },
                     "dark": {
+						"description": "",
                         "title": "ダーク"
                     },
                     "notifications": {
@@ -69,6 +75,7 @@
                         "title": "キーボードモード"
                     },
                     "light": {
+						"description": "",
                         "title": "光"
                     },
                     "minimizeToTray": {
@@ -76,6 +83,7 @@
                         "title": "トレイに最小化"
                     },
                     "openOnStartup": {
+						"description": "",
                         "title": "起動時に開く"
                     },
                     "useBackground": {
@@ -91,9 +99,11 @@
                         "title": "ライブバックグラウンド"
                     },
                     "system": {
+						"description": "",
                         "title": "システム"
                     },
                     "appTheme": {
+						"description": "",
                         "title": "テーマ"
                     }
                 },
@@ -102,15 +112,19 @@
             "content": {
                 "items": {
                     "autoRefresh": {
+						"description": "",
                         "title": "自動更新"
                     },
                     "card": {
+						"description": "",
                         "title": "カード"
                     },
                     "list": {
+						"description": "",
                         "title": "リスト"
                     },
                     "listLayout": {
+						"description": "",
                         "title": "リストのレイアウト"
                     },
                     "refreshInterval": {

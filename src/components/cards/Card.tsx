@@ -2,10 +2,10 @@ import React, { useState, useReducer, useContext } from 'react';
 import '../css/card.css';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
-import { formPlayerImage, getChampionFromId, getTeamFromNumber, secondsToTime, randomNumber } from '../../utils';
-import { IMenuOrigin, IPlayer, ICardStates, IReducerAction } from '../../interfaces';
+import { formPlayerImage, getChampionFromId, getTeamFromNumber, secondsToTime, randomNumber } from '../../imports/utils';
+import { IMenuOrigin, IPlayer, ICardStates, IReducerAction } from '../../imports/interfaces';
 
-import { EButtonImages, EEMessages, ECardReducerStates, ETooltip } from '../../typings';
+import { EButtonImages, EEMessages, ECardReducerStates, ETooltip } from '../../imports/typings';
 import { useTranslation } from 'react-i18next';
 import { SettingsContext } from '../../context/SettingsContext';
 

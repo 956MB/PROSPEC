@@ -1,14 +1,6 @@
 import { ExecOptionsWithStringEncoding } from "child_process";
-import { useState } from "react";
 import { StringIfPlural } from "react-i18next";
 import { EChangeType } from "./typings";
-
-export const useInit = (callBack = () => {}) => {
-    const [hasBeenCalled, setHasBeenCalled] = useState<boolean>(false);
-    if (hasBeenCalled) return;
-    callBack();
-    setHasBeenCalled(true);
-}
 
 // NOTE: Reducers
 
@@ -51,7 +43,6 @@ export interface ISettingsStates {
 
 export interface IAppBackground {
     primary: IBackground;
-    secondary: IBackground;
 }
 
 export interface IBackground {
