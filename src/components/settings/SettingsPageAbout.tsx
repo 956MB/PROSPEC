@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { pAbout } from "../../imports/utils";
+import { FormSettingsSection, pAbout, SectionEntryCredit, SettingsEntryChange, SettingsEntryRelease } from "../../imports/utils";
 import { ISettingsSectionChangeEntries, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISettingsSectionPackageEntries, ISettingsSections } from "../../imports/interfaces";
 import { EChangeType, ETooltip } from "../../imports/typings";
 import '../css/settings.css';
@@ -16,35 +16,30 @@ const SettingsPageAbout: React.FC<{
     const [t] = useTranslation('common');
 
     const [sections, setSections] = useState<ISettingsSections>([
-        {
-            type: "credit", title: "thanks.title", initOpen: true, entries: [
-                { name: "Jason Chan", link: "https://www.artstation.com/jasonchan" },
-                { name: "Sephi Lash", link: "https://www.artstation.com/sephilash" },
-                { name: "Adrien Gonzalez", link: "https://www.artstation.com/adrieng" },
-                { name: "Riot Games", link: "https://www.riotgames.com" },
-                { name: "Metafy.gg", link: "https://metafy.gg/" },
-            ]
-        },
-        {
-            type: "change", title: "changelog", initOpen: true, entries: [
-                { version: "3.0.7-beta1", date: "August 30th, 2022", changes: [
-                    { type: EChangeType.ADDED, change: "Add Warp terminal integration for macOS - #14329. Thanks @lhvy!", issues: [] },
-                    { type: EChangeType.ADDED, change: "Add context menu to the Current Branch and Current Repository toolbar - #13148. Thanks @uttiya10!", issues: [] },
-                    { type: EChangeType.FIXED, change: "Older versions of Sublime Text and SlickEdit are also recognized as external editors - #15117. Thanks @vbwx!", issues: [] },
-                    { type: EChangeType.IMPROVED, change: "Display a banner when we have a pretext release note to highlight the new feature - #14620", issues: [] },
-                    { type: EChangeType.REMOVED, change: "Outdated new drag and drop and split diff new feature callouts removed - #14463", issues: [] },
-                ] } as ISettingsSectionEntryChange,
-                { version: "3.0.6", date: "August 24th, 2022", changes: [
-                    { type: EChangeType.FIXED, change: "Do not show login prompt when repositories are fetched - #15163", issues: [] }
-                ] } as ISettingsSectionEntryChange
-            ] as ISettingsSectionEntries
-        },
-        {
-            type: "package", title: "package", initOpen: false, entries:
-                appPackages.map((_package) => {
-                    return _package;
-                })
-        },
+        FormSettingsSection("credit", "thanks.title", [
+            SectionEntryCredit("Jason Chan", "https://www.artstation.com/jasonchan"),
+            SectionEntryCredit("Sephi Lash", "https://www.artstation.com/sephilash"),
+            SectionEntryCredit("Adrien Gonzalez", "https://www.artstation.com/adrieng"),
+            SectionEntryCredit("Riot Games", "https://www.riotgames.com"),
+            SectionEntryCredit("Metafy.gg", "https://metafy.gg/")
+        ], true),
+        FormSettingsSection("change", "changelog", [
+            SettingsEntryChange("3.0.7-beta1", "August 30th, 2022", [
+                SettingsEntryRelease(EChangeType.ADDED, "Add Warp terminal integration for macOS - #14329. Thanks @lhvy!"),
+                SettingsEntryRelease(EChangeType.ADDED, "Add context menu to the Current Branch and Current Repository toolbar - #13148. Thanks @uttiya10!"),
+                SettingsEntryRelease(EChangeType.FIXED, "Older versions of Sublime Text and SlickEdit are also recognized as external editors - #15117. Thanks @vbwx!"),
+                SettingsEntryRelease(EChangeType.IMPROVED, "Display a banner when we have a pretext release note to highlight the new feature - #14620"),
+                SettingsEntryRelease(EChangeType.REMOVED, "Outdated new drag and drop and split diff new feature callouts removed - #14463")
+            ]),
+            SettingsEntryChange("3.0.6", "August 24th, 2022", [
+                SettingsEntryRelease(EChangeType.FIXED, "Do not show login prompt when repositories are fetched - #15163"),
+            ]),
+        ], true),
+        FormSettingsSection("package", "package",
+            appPackages.map((_package) => {
+                return _package;
+            })
+        )
     ]);
 
     return (

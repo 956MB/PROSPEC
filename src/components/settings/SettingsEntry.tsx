@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import parse from 'html-react-parser';
 
-import { pAbout, replaceIssueTag } from "../../imports/utils";
+import { firstLastClass, pAbout, replaceIssueTag } from "../../imports/utils";
 import { ISettingsSectionEntry, ISettingsSectionEntryPackage, ISettingsSectionEntryChange } from "../../imports/interfaces";
 import '../css/settings.css';
 import { EChangeType } from "../../imports/typings";
 
 const SettingsSectionEntryCredit: React.FC<{
+    positionClass: string,
     sectionEntry: ISettingsSectionEntry
-}> = ({ sectionEntry }) => {
+}> = ({ positionClass, sectionEntry }) => {
     const [t] = useTranslation('common');
 
     return (
-        <div className="settings-about-section-entry">
+        <div className={`settings-about-section-entry ${positionClass}`}>
             <span className="settings-about-section-entry-name select">{sectionEntry.name}</span>
             <span className="settings-about-section-entry-reason noselect">{`${t(pAbout(`thanks.${sectionEntry.name}`))}`}</span>
             <a href={sectionEntry.link} target="_blank" rel="noopener noreferrer" className={`settings-about-section-entry-link select`}>{sectionEntry.link}</a>
@@ -22,14 +23,14 @@ const SettingsSectionEntryCredit: React.FC<{
 }
 
 const SettingsSectionEntryChange: React.FC<{
-    indexClass: string,
+    positionClass: string,
     sectionEntry: ISettingsSectionEntryChange
-}> = ({ indexClass, sectionEntry }) => {
+}> = ({ positionClass, sectionEntry }) => {
     const [t] = useTranslation('common');
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
-        <div className={`settings-about-section-entry-change ${entryOpen ? 'entry-open' : null} ${indexClass} margin-lr-18`}>
+        <div className={`settings-about-section-entry-change ${entryOpen ? 'entry-open' : null} ${positionClass} margin-lr-18`}>
             <div
                 className={`settings-about-entry-inner`}
                 onClick={() => setEntryOpen(!entryOpen)}
@@ -51,13 +52,12 @@ const SettingsSectionEntryChange: React.FC<{
             <div className={`settings-about-entry-content`}>
                 {React.Children.toArray(
                     sectionEntry.changes.map((change, i) => (
-                        <div className={`settings-entry-change-content ${i == 0 ? 'first-change' : i == sectionEntry.changes.length-1 ? 'last-change' : null}`}>
+                        <div className={`settings-entry-change-content ${firstLastClass(i, sectionEntry.changes.length, "first-entry", "last-entry")}`}>
                             <div className={`entry-change-tag-container`}>
                                 {change.type === EChangeType.FIXED ? <span className="entry-tag entry-tag-fixed select">{t(`tags.${EChangeType.FIXED}`)}</span> : null}
                                 {change.type === EChangeType.IMPROVED ? <span className="entry-tag entry-tag-improved select">{t(`tags.${EChangeType.IMPROVED}`)}</span> : null}
                                 {change.type === EChangeType.ADDED ? <span className="entry-tag entry-tag-added select">{t(`tags.${EChangeType.ADDED}`)}</span> : null}
                                 {change.type === EChangeType.REMOVED ? <span className="entry-tag entry-tag-removed select">{t(`tags.${EChangeType.REMOVED}`)}</span> : null}
-                                {i <= sectionEntry.changes.length - 2 ? <div className="entry-tag-vertical-line"></div> : null}
                             </div>
 
                             <span className={`entry-change-text select`}>{parse(replaceIssueTag(change.change))}</span>
@@ -70,13 +70,13 @@ const SettingsSectionEntryChange: React.FC<{
 }
 
 const SettingsSectionEntryPackage: React.FC<{
-    indexClass: string,
+    positionClass: string,
     sectionEntry: ISettingsSectionEntryPackage
-}> = ({ indexClass, sectionEntry }) => {
+}> = ({ positionClass, sectionEntry }) => {
     const [entryOpen, setEntryOpen] = useState<boolean>(false);
 
     return (
-        <div className={`settings-about-section-entry-package ${entryOpen ? 'entry-open' : null} ${indexClass} margin-lr-18`}>
+        <div className={`settings-about-section-entry-package ${entryOpen ? 'entry-open' : null} ${positionClass} margin-lr-18`}>
             <div
                 className={`settings-about-entry-inner`}
                 onClick={() => setEntryOpen(!entryOpen)}

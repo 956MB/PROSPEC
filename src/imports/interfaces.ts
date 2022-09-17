@@ -246,19 +246,19 @@ export interface ISettingsSectionEntry {
     link?: string;
 }
 
+export interface ISettingsSectionChangeEntries extends Array<ISettingsSectionEntryChange>{}
+export interface ISettingsSectionEntryChange extends Omit<ISettingsSectionEntry, 'name' | 'link'> {
+    version: string;
+    date: string;
+    changes: IAppReleaseChanges;
+}
+
 export interface ISettingsSectionPackageEntries extends Array<ISettingsSectionEntryPackage>{}
 export interface ISettingsSectionEntryPackage extends Omit<ISettingsSectionEntry, 'name' | 'link'> {
     name: string;
     version: string;
     link?: string;
     license?: string;
-}
-
-export interface ISettingsSectionChangeEntries extends Array<ISettingsSectionEntryChange>{}
-export interface ISettingsSectionEntryChange extends Omit<ISettingsSectionEntry, 'name' | 'link'> {
-    version: string;
-    date: string;
-    changes: IAppReleaseChanges;
 }
 
 export interface IAppReleaseChanges extends Array<IAppReleaseChange>{}

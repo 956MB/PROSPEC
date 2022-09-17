@@ -21,6 +21,9 @@ serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 tauri = { version = "1.1.0", features = ["api-all"] }
 
+[dev-dependencies]
+windows = "0.32.0"
+
 [dependencies.tauri-plugin-store]
 git = "https://github.com/tauri-apps/tauri-plugin-store"
 branch = "dev"

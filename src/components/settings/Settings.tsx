@@ -115,7 +115,7 @@ const SettingsInner: React.FC<{
     return (
         <div className={`settings-inner`} >
             <div className='settings-content'>
-                <div className='settings-topbar-container'>
+                <div data-tauri-drag-region className='settings-topbar-container'>
                     <div className='settings-topbar-left'>
                         <span className='settings-title-text'>{`${t('settings.title')}`}</span>
                     </div>

@@ -4,12 +4,10 @@ import './App.css';
 
 import Titlebar from './components/titlebar/Titlebar';
 import Settings from "./components/settings/Settings";
-import ProSpec from "./prospec";
 import { IBackground, IPlayers } from "./imports/interfaces";
-// const Players = React.lazy(() => import("./components/players/Players"));
 
-import { EChampions, ERegions } from "./imports/typings";
-import { getRegion, ifLiveBackground, randomActive, randomBackground, randomEnum, randomNumber } from "./imports/utils";
+import { EChampions } from "./imports/typings";
+import { getRegion, randomActive, getRandomBackground, randomEnum, randomNumber } from "./imports/utils";
 import "./imports/prototypes"
 import { Players, PlayersNotLoaded } from "./components/players/Players";
 
@@ -22,9 +20,9 @@ import { useInit } from "./imports/initializers";
 function App() {
     const navigate = useNavigate();
     const { i18n } = useTranslation('common');
-    // const proSpec = useMemo(() => new ProSpec(false), []);
+    
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
-    const { useBackground, liveBackground, autoRefresh } = useContext(SettingsContext);
+    const { useBackground, liveBackground, autoRefresh, randomBackground } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IBackground>({
         type: "live", name: "Sona_6"
     });
@@ -44,15 +42,12 @@ function App() {
         setPlayers([]);
 
         if (accountsLoaded) {
-            console.log("LOADED");
-            // console.log(allAccounts);
             setPlayers(
                 allAccounts
                     .filterRegions(regionFilter)
                     .filterRoles(roleFilter)
                     .filterRandomize()
                     .filterUniquePlayers(0, 35)
-                    // .slice(0, 45)
                     .map((player, i) => {
                         return {
                             id: i, active: randomActive(), champion: randomEnum(EChampions, []), summoner: { accountName: player.accountName, playerName: player.playerName, team: player.team, summonerId: "", summonerPuuid: "", region: player.region, role: player.role, stream: player.stream }, gameInfo: { region: getRegion(player.region).use, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) }
@@ -65,16 +60,11 @@ function App() {
 
     useInit(() => {
         const getAppBackground = async () => {
-            const randomBG = await randomBackground(
-                // { type: "live", name: "Sona_6" }
-            );
+            const randomBG = await getRandomBackground();
             setAppBG(randomBG);
         };
-        getAppBackground();
-
-        if (autoRefresh) {
-            refreshPlayers();
-        }
+        if (randomBackground) { getAppBackground(); }
+        if (autoRefresh) { refreshPlayers(); }
     });
 
     return (
@@ -104,10 +94,10 @@ function App() {
                 liveBackground && appBG.type === "live"
                     ?
                     <video autoPlay muted loop className="app-background-video">
-                        <source src={`src/assets/dragontail/${appBG.type}/${appBG.name}`} type="video/mp4" />
+                        <source src={`src/assets/dragontail/live/${appBG.name}.webm`} type="video/mp4" />
                     </video>
                     :
-                    <div className="app-background" style={{ backgroundImage: `url(src/assets/dragontail/${appBG.type}/${appBG.name})` }}></div>
+                    <div className="app-background" style={{ backgroundImage: `url(src/assets/dragontail/splash/${appBG.name}.jpg)` }}></div>
             }
         </div>
     );

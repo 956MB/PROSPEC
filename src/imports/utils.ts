@@ -1,5 +1,5 @@
-import { IBackground, IBackgroundInfo, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISummonerAccount } from "./interfaces";
-import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages } from "./typings";
+import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISummonerAccount } from "./interfaces";
+import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages, EChangeType } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import random from 'random'
 
@@ -89,6 +89,10 @@ function ifShort(short: string, long: string, isShort: boolean): string {
 
 export function ifLiveBackground(background: string): boolean {
     return background.includes(".mp4") || background.includes(".webm");
+}
+
+export function firstLastClass(index: number, len: number, first: string, last: string): string {
+    return `${index == 0 ? first : ""} ${index == len-1 ? last : ""}`
 }
 
 // NOTE: Gets
@@ -437,6 +441,18 @@ export function SettingsItemLanguage(value: number, text: string, lang: string):
         itemValue: { type: "lang", value: value, text: text, lang: lang as string } as ISettingsItemValueLanguage
     }
 }
+export function FormSettingsSection(type: string, title: string, entries?: ISettingsSectionEntries, initOpen?: boolean): ISettingsSection {
+    return { type: type, title: title, initOpen: initOpen ? initOpen : false, entries: entries ? entries : [] }
+}
+export function SectionEntryCredit(name: string, link: string): ISettingsSectionEntry {
+    return { name: name, link: link }
+}
+export function SettingsEntryChange(version: string, date: string, changes?: IAppReleaseChanges): ISettingsSectionEntry {
+    return { version: version, date: date, changes: changes ? changes : [] } as ISettingsSectionEntry;
+}
+export function SettingsEntryRelease(type: EChangeType, change: string, issues?: string[]): IAppReleaseChange {
+    return { type: type, change: change, issues: issues ? issues : [] } as IAppReleaseChange;
+}
 
 // NOTE: RANDOM:
 
@@ -464,17 +480,16 @@ export function randomActive(): boolean {
     return (notRandomNumbers[idx] != 4);
 }
 
-export async function randomBackground(override?: IBackground): Promise<IBackground> {
-    let randomOrSplash = random.boolean();
-    const bgs = await readDir(`assets/dragontail/${randomOrSplash ? 'random' : 'splash'}/`, { dir: BaseDirectory.Resource, recursive: true });
+export async function getRandomBackground(override?: IBackground): Promise<IBackground> {
+    const bgs = await readDir(`assets/dragontail/splash/`, { dir: BaseDirectory.Resource, recursive: true });
     let entry = bgs.at(randomNumber(0, bgs.length - 1))?.name;
     const checkBG = await checkLiveBackground(entry!);
     const ifLive = checkBG.ext === '.webm';
 
     console.log(`DEBUG: Random background selected [\"${checkBG.name}\", live: ${ifLive}]`);
 
-    let primaryType = randomOrSplash ? "random" : (ifLive ? "live" : "splash");
-    let primaryName = `${checkBG.name}.${checkBG.ext}`;
+    let primaryType = ifLive ? "live" : "splash";
+    let primaryName = `${checkBG.name}`;
 
     return {
         type: override != null ? override.type : primaryType,

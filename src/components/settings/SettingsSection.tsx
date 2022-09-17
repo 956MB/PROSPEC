@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISettingsSectionEntryPackage } from "../../imports/interfaces";
 import { SettingsSectionEntryPackage, SettingsSectionEntryCredit, SettingsSectionEntryChange } from "./SettingsEntry";
 import '../css/settings.css';
-import { getEntryIndexClass } from "../../imports/utils";
+import { firstLastClass, getEntryIndexClass } from "../../imports/utils";
 
 const SettingsSection: React.FC<{
     sectionType: string,
@@ -32,16 +32,17 @@ const SettingsSection: React.FC<{
                         <div>
                             {sectionType === 'credit' ?
                                 <SettingsSectionEntryCredit
+                                    positionClass={firstLastClass(i, sectionEntries.length, "first-entry", "last-entry")}
                                     sectionEntry={entry as ISettingsSectionEntry} />
                                 : null}
                             {sectionType === 'change' ?
                                 <SettingsSectionEntryChange
-                                    indexClass={getEntryIndexClass(i, sectionEntries.length)}
+                                    positionClass={getEntryIndexClass(i, sectionEntries.length)}
                                     sectionEntry={entry as ISettingsSectionEntryChange} />
                                 : null}
                             {sectionType === 'package' ?
                                 <SettingsSectionEntryPackage
-                                    indexClass={getEntryIndexClass(i, sectionEntries.length)}
+                                    positionClass={getEntryIndexClass(i, sectionEntries.length)}
                                     sectionEntry={entry as ISettingsSectionEntryPackage} />
                                 : null}
                             {i < sectionEntries.length - 1 ? <div className={`spacer-divider-entry ${sectionType === 'change' || sectionType === 'package' ? 'margin-lr-18' : null}`}></div> : null}
