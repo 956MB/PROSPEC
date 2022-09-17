@@ -31,6 +31,7 @@ export interface ISettingsStates {
     openOnStartup: boolean;
     minimizeToTray: boolean;
     hardwareAcceleration: boolean;
+    showAnimations: boolean;
     useBackground: boolean;
     randomBackground: boolean;
     liveBackground: boolean;
@@ -41,13 +42,14 @@ export interface ISettingsStates {
 
 // NOTE: Objects
 
-export interface IAppBackground {
-    primary: IBackground;
-}
-
 export interface IBackground {
     type: string;
     name: string;
+}
+
+export interface IBackgroundInfo {
+    name: string;
+    ext: string;
 }
 
 export interface IPackages extends Array<IPackage>{}

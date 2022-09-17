@@ -4,14 +4,13 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import '../css/settings.css';
 import { ESettingsStates, ELanguages } from '../../imports/typings';
-import { ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelector, ISettingsPages, ISettingsPageLanguage, IAppBackground, ISettingsItems } from '../../imports/interfaces';
-import { sTitle, sItemTitle, sItemDescription, mapEnum, getLanguageStatic, SettingsItemBoolean, SettingsItemSpacer, SettingsItemSelector, ItemValueSelection, FormSettingsPage, FormSettingsPageLang, SettingsItemLanguage } from '../../imports/utils';
+import { ISettingsItemValueLanguage, ISettingsPages, ISettingsPageLanguage, ISettingsItems } from '../../imports/interfaces';
+import {  mapEnum, getLanguageStatic, SettingsItemBoolean, SettingsItemSpacer, SettingsItemSelector, FormSettingsPage, FormSettingsPageLang } from '../../imports/utils';
 
 import { SettingsContext } from "../../context/SettingsContext";
 
 import { SettingsPage, SettingsPageButton } from './SettingsPage';
 import { SettingsPageAbout } from './SettingsPageAbout';
-import { useDelayUnmount, useInit } from '../../imports/initializers';
 
 const Settings: React.FC<{
     fSettingsOpen: (set: boolean) => void
@@ -67,7 +66,9 @@ const Settings: React.FC<{
             SettingsItemBoolean('application', ESettingsStates.NOTIFICATIONS, true)
         ])
         ,
-        FormSettingsPageLang(2, "lang", 'language', 0,
+        FormSettingsPage(2, "list", 'shortcuts')
+        ,
+        FormSettingsPageLang(3, "lang", 'language', 0,
             mapEnum(ELanguages, "string", (lang: ELanguages, i: number) => {
                 return {
                     itemValue: { type: 'lang', value: i, text: getLanguageStatic(i), lang: lang as string } as ISettingsItemValueLanguage
@@ -75,7 +76,7 @@ const Settings: React.FC<{
             }) as ISettingsItems
         ) as ISettingsPageLanguage
         ,
-        FormSettingsPage(3, "about", 'about', [])
+        FormSettingsPage(4, "about", 'about')
     ]
     )
 
@@ -114,14 +115,18 @@ const SettingsInner: React.FC<{
     return (
         <div className={`settings-inner`} >
             <div className='settings-content'>
-                <div className='settings-buttons-container'>
+                <div className='settings-topbar-container'>
+                    <div className='settings-topbar-left'>
+                        <span className='settings-title-text'>{`${t('settings.title')}`}</span>
+                    </div>
                     <div className='settings-page-button-container'>
                         {React.Children.toArray(
                             pagesProps.map((page, i) => (
                                 <SettingsPageButton key={page.index} pageActive={isActive(page.index)} buttonProps={{ index: page.index, text: page.title }} FPageSwitch={FPageSwitch} />
-                            ))
-                        )}
+                                ))
+                                )}
                     </div>
+                    <div className='settings-topbar-right'></div>
                 </div>
 
                 <div className='settings-page-container'>

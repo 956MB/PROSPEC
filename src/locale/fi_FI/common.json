@@ -33,8 +33,8 @@
                 "title": "Pikanäppäimet"
             },
             "about": {
-                "title": "Tietoja ProSpec",
-                "description": "ProSpec on ilmainen ja avoimen lähdekoodin työpöytä -asiakas Professional League of Legends -pelaajille.Tämä sovellus on eräänlainen 'päivitys' tai vaihtoehto OP.GG: n 'Pro Matches' -ominaisuudelle.",
+                "title": "Tietoja PROSPEC",
+                "description": "PROSPEC on ilmainen ja avoimen lähdekoodin työpöytä -asiakas Professional League of Legends -pelaajien seurantaan ja katsomiseen.Tämä sovellus on eräänlainen 'päivitys' tai vaihtoehto OP.GG: n 'Pro Matches' -ominaisuudelle.",
                 "thanks": {
                     "title": "Kiitos",
                     "Jason Chan": "Oletussovelluksen taustayhtye.Misc Champion Splash Art.",
@@ -70,6 +70,10 @@
                         "description": "Laitteistoki",
                         "title": "Laitteistokiihdytys"
                     },
+                    "showAnimations": {
+						"description": "Näytä UI -animaatiosovellus leveäksi",
+						"title": "Animaatiot"
+					},
                     "keyboardMode": {
                         "description": "Mahdollistaa sovelluksen navigoinnin näppäimistöllä",
                         "title": "Näppäimistötila"

@@ -31,7 +31,7 @@
 		"pages": {
 			"about": {
 				"title": "About",
-                "description": "ProSpec is a free and open source dekstop client for spectating professional League of Legends players. This application is a sort of 'upgrade' or alternative to OP.GG's 'Pro Matches' feature.",
+                "description": "PROSPEC is a free and open source dekstop client for spectating professional League of Legends players. This application is a sort of 'upgrade' or alternative to OP.GG's 'Pro Matches' feature.",
                 "thanks": {
                     "title": "Thanks",
                     "Jason Chan": "Default app background ensemble. Misc champion splash art.",
@@ -61,8 +61,12 @@
 						"title": "Favorite notifications"
 					},
 					"hardwareAcceleration": {
-						"description": "Hardware acceleration uses the GPU to make the ProSpec run more smoothly",
+						"description": "Hardware acceleration uses the GPU to make the PROSPEC run more smoothly",
 						"title": "Hardware acceleration"
+					},
+                    "showAnimations": {
+						"description": "Show UI animations app wide",
+						"title": "Animations"
 					},
 					"keyboardMode": {
 						"description": "Enables app navigation using the keyboard",

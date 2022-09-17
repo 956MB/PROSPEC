@@ -4,17 +4,57 @@ import { useTranslation } from "react-i18next";
 import { Store } from 'tauri-plugin-store-api';
 
 import { IReducerAction, ISettingsStates } from "../imports/interfaces";
-import { ELanguages, ESettingsStates } from "../imports/typings";
+import { ELanguages, ESettingsStates as SS } from "../imports/typings";
 import { mapEnum, mapEnumKeys } from "../imports/utils";
 import { useInit } from '../imports/initializers';
 
-const DEFAULTS = [0, false, 5, true, false, false, false, true, 0, 0, false, true, false, false, true, false, false, true, 0];
-const BOOLS: string[] = [ ESettingsStates.AUTO_REFRESH, ESettingsStates.SHOW_SUMMONER_IDS, ESettingsStates.SHOW_RANDOM_SKINS, ESettingsStates.USE_CUTOUTS, ESettingsStates.SHOW_TEAM_LOGOS, ESettingsStates.SHOW_UNAVAILABLE, ESettingsStates.OPEN_ON_STARTUP, ESettingsStates.MINIMIZE_TO_TRAY, ESettingsStates.HARDWARE_ACCELERATION, ESettingsStates.USE_BACKGROUND, ESettingsStates.RANDOM_BACKGROUND, ESettingsStates.LIVE_BACKGROUND, ESettingsStates.KEYBOARD_MODE, ESettingsStates.NOTIFICATIONS ];
-const NUMS: string[] = [ ESettingsStates.LIST_LAYOUT, ESettingsStates.REFRESH_INTERVAL, ESettingsStates.APP_THEME, ESettingsStates.APP_SCALE, ESettingsStates.APP_LANGUAGE ];
+const SS_DEFAULTS = [
+    0,      // LIST_LAYOUT
+    false,  // AUTO_REFRESH
+    5,      // REFRESH_INTERVAL
+    true,   // SHOW_SUMMONER_IDS
+    false,  // SHOW_RANDOM_SKINS
+    false,  // USE_CUTOUTS
+    false,  // SHOW_TEAM_LOGOS
+    true,   // SHOW_UNAVAILABLE
+    0,      // APP_THEME
+    0,      // APP_SCALE
+    false,  // OPEN_ON_STARTUP
+    true,   // MINIMIZE_TO_TRAY
+    false,  // HARDWARE_ACCELERATION
+    true,   // ANIMATIONS
+    false,  // USE_BACKGROUND
+    true,   // RANDOM_BACKGROUND
+    false,  // LIVE_BACKGROUND
+    false,  // KEYBOARD_MODE
+    true,   // NOTIFICATIONS
+    0       // APP_LANGUAGE
+];
+const BOOLS: string[] = [ SS.AUTO_REFRESH, SS.SHOW_SUMMONER_IDS, SS.SHOW_RANDOM_SKINS, SS.USE_CUTOUTS, SS.SHOW_TEAM_LOGOS, SS.SHOW_UNAVAILABLE, SS.OPEN_ON_STARTUP, SS.MINIMIZE_TO_TRAY, SS.HARDWARE_ACCELERATION, SS.ANIMATIONS, SS.USE_BACKGROUND, SS.RANDOM_BACKGROUND, SS.LIVE_BACKGROUND, SS.KEYBOARD_MODE, SS.NOTIFICATIONS ];
+const NUMS: string[] = [ SS.LIST_LAYOUT, SS.REFRESH_INTERVAL, SS.APP_THEME, SS.APP_SCALE, SS.APP_LANGUAGE ];
 const LANGS = mapEnumKeys(ELanguages);
 
 export const SettingsContext = createContext({
-    listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, showUnavailable: true, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, useBackground: false, randomBackground: true, liveBackground: false, keyboardMode: false, notifications: true, appLanguage: 0,
+    listLayout: 0,
+    autoRefresh: false,
+    refreshInterval: 5,
+    showSummonerIds: true,
+    showRandomSkins: false,
+    useCutouts: false,
+    showTeamLogos: false,
+    showUnavailable: true,
+    appTheme: 0,
+    appScale: 0,
+    openOnStartup: false,
+    minimizeToTray: true,
+    hardwareAcceleration: false,
+    showAnimations: true,
+    useBackground: false,
+    randomBackground: true,
+    liveBackground: false,
+    keyboardMode: false,
+    notifications: true,
+    appLanguage: 0,
     updateSetting: (key: string, val: any) => { },
     getSetting: (key: string): any => { },
 })
@@ -31,7 +71,7 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
     const { i18n } = useTranslation('common');
 
     const [state, dispatch] = useReducer(settingsReducer, {
-        listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, showUnavailable: true, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, useBackground: false, randomBackground: true, liveBackground: false, keyboardMode: false, notifications: true, appLanguage: 0,
+        listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, showUnavailable: true, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, showAnimations: true, useBackground: false, randomBackground: true, liveBackground: false, keyboardMode: false, notifications: true, appLanguage: 0,
     })
 
     useInit(() => {
@@ -39,12 +79,12 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
             settingsStore.load();
             // settingsStore.reset();
 
-            mapEnum(ESettingsStates, "string", async (redState: ESettingsStates, i: number) => {
+            mapEnum(SS, "string", async (redState: SS, i: number) => {
                 const value = await settingsStore.get(redState);
-                dispatch({ type: redState, payload: checkSet(redState, value, DEFAULTS[i]) });
+                dispatch({ type: redState, payload: checkSet(redState, value, SS_DEFAULTS[i]) });
 
                 // Sets stored language from save
-                if (redState == ESettingsStates.APP_LANGUAGE) {
+                if (redState == SS.APP_LANGUAGE) {
                     const savedLang = LANGS.at(value as number);
                     i18n.changeLanguage(savedLang);
                 }
@@ -79,7 +119,26 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
 
     return (
         <SettingsContext.Provider value={{
-            listLayout: state.listLayout, autoRefresh: state.autoRefresh, refreshInterval: state.refreshInterval, showSummonerIds: state.showSummonerIds, showRandomSkins: state.showRandomSkins, useCutouts: state.useCutouts, showTeamLogos: state.showTeamLogos, showUnavailable: state.showUnavailable, appTheme: state.appTheme, appScale: state.appScale, openOnStartup: state.openOnStartup, minimizeToTray: state.minimizeToTray, hardwareAcceleration: state.hardwareAcceleration, useBackground: state.useBackground, randomBackground: state.randomBackground, liveBackground: state.liveBackground, keyboardMode: state.keyboardMode, notifications: state.notifications, appLanguage: state.appLanguage,
+            listLayout: state.listLayout,
+            autoRefresh: state.autoRefresh,
+            refreshInterval: state.refreshInterval,
+            showSummonerIds: state.showSummonerIds,
+            showRandomSkins: state.showRandomSkins,
+            useCutouts: state.useCutouts,
+            showTeamLogos: state.showTeamLogos,
+            showUnavailable: state.showUnavailable,
+            appTheme: state.appTheme,
+            appScale: state.appScale,
+            openOnStartup: state.openOnStartup,
+            minimizeToTray: state.minimizeToTray,
+            hardwareAcceleration: state.hardwareAcceleration,
+            showAnimations: state.showAnimations,
+            useBackground: state.useBackground,
+            randomBackground: state.randomBackground,
+            liveBackground: state.liveBackground,
+            keyboardMode: state.keyboardMode,
+            notifications: state.notifications,
+            appLanguage: state.appLanguage,
 
             updateSetting, getSetting
         }}>

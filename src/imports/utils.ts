@@ -1,4 +1,4 @@
-import { IAppBackground, IBackground, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISummonerAccount } from "./interfaces";
+import { IBackground, IBackgroundInfo, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISummonerAccount } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import random from 'random'
@@ -15,6 +15,11 @@ export function ending(sec: number, _true: string): string | null {
 
 function escapeRegExp(str: string) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+function removeExtension(file: string): IBackgroundInfo {
+    const re = /\.[^/.]+$/;
+    const ext = file.split('.').pop();
+    return { name: file.replace(re, ""), ext: ext! };
 }
 
 export function secondsToTime(secs: number): string {
@@ -60,12 +65,13 @@ export async function checkCutout(champ: string): Promise<string> {
     return "loading";
 }
 
-export async function checkLiveBackground(champ: string): Promise<boolean> {
+export async function checkLiveBackground(champ: string): Promise<IBackgroundInfo> {
+    const bgInfo = removeExtension(champ);
     const live = await readDir(`assets/dragontail/live/`, { dir: BaseDirectory.Resource, recursive: true });
     for (const entry of live) {
-        if (entry.name === `${champ}.webm`) { return true; }
+        if (entry.name === `${bgInfo.name}.webm`) { return {name: bgInfo.name, ext: '.webm'}; }
     }
-    return false;
+    return {name: bgInfo.name, ext: bgInfo.ext};
 }
 
 export function cutUnderscore(str: string): string {
@@ -401,11 +407,11 @@ export function pAbout(item: string): string { return `settings.pages.about.${it
 
 // NOTE: Form settings items:
 
-export function FormSettingsPage(index: number, type: string, title: string, items: ISettingsItems): ISettingsPage {
-    return { index: index, type: type, title: sTitle(title), items: items }
+export function FormSettingsPage(index: number, type: string, title: string, items?: ISettingsItems): ISettingsPage {
+    return { index: index, type: type, title: sTitle(title), items: items ? items : [] }
 }
-export function FormSettingsPageLang(index: number, type: string, title: string, selected: number, items: ISettingsItems): ISettingsPageLanguage {
-    return { index: index, type: type, title: sTitle(title), selected: selected, items: items }
+export function FormSettingsPageLang(index: number, type: string, title: string, selected: number, items?: ISettingsItems): ISettingsPageLanguage {
+    return { index: index, type: type, title: sTitle(title), selected: selected, items: items ? items : [] }
 }
 export function SettingsItemSpacer(): ISettingsItem { return { itemValue: { type: "spacer", value: false } }; }
 export function SettingsItemBoolean(section: string, key: string, value: boolean, children: ISettingsItems | undefined = undefined): ISettingsItem {
@@ -442,7 +448,7 @@ export function randomKDA(): string {
     return `${randomNumber(0, 10)}/${randomNumber(0, 10)}/${randomNumber(0, 10)}`;
 }
 
-export function randomEnum<T>(useEnum: T, filter: EChampions[]): T[keyof T] {
+export function randomEnum<T extends object>(useEnum: T, filter: EChampions[]): T[keyof T] {
     const enumValues = Object.keys(useEnum)
         .map(n => Number.parseInt(n))
         // .filter(n => (filter.length >= 1) ? filter.includes(n) : false)
@@ -458,21 +464,20 @@ export function randomActive(): boolean {
     return (notRandomNumbers[idx] != 4);
 }
 
-export async function randomBackground(override?: IAppBackground): Promise<IAppBackground> {
-    // const randomOrChamp = false;
+export async function randomBackground(override?: IBackground): Promise<IBackground> {
     let randomOrSplash = random.boolean();
     const bgs = await readDir(`assets/dragontail/${randomOrSplash ? 'random' : 'splash'}/`, { dir: BaseDirectory.Resource, recursive: true });
     let entry = bgs.at(randomNumber(0, bgs.length - 1))?.name;
-    const ifLive = await checkLiveBackground(entry!);
+    const checkBG = await checkLiveBackground(entry!);
+    const ifLive = checkBG.ext === '.webm';
+
+    console.log(`DEBUG: Random background selected [\"${checkBG.name}\", live: ${ifLive}]`);
 
     let primaryType = randomOrSplash ? "random" : (ifLive ? "live" : "splash");
-    let primaryName = entry!;
-    let secondaryType = randomOrSplash ? "random" : "centered";
-    let secondaryName = entry!;
+    let primaryName = `${checkBG.name}.${checkBG.ext}`;
 
     return {
-        primary: {
-            type: override != null ? override.primary.type : primaryType,
-            name: override != null ? override.primary.name : primaryName }
-    }  as IAppBackground;
+        type: override != null ? override.type : primaryType,
+        name: override != null ? override.name : primaryName
+    }
 }

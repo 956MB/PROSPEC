@@ -1,9 +1,9 @@
 {
     "name": "prospec",
-    "productName": "ProSpec",
-    "private": true,
+    "productName": "PROSPEC",
+    "private": false,
     "version": "0.1.0",
-    "description": "Desktop client for spectating pro League of Legends players.",
+    "description": "Desktop client for tracking and spectating pro League of Legends players.",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -17,10 +17,11 @@
         "start": "vite",
         "build": "tsc && vite build",
         "tauri": "tauri",
-        "clean": "rimraf -g \"src-tauri/target/*\" && rimraf -g \"src-tauri/assets/*\" && rimraf -g \"dist/*\""
+        "clean": "rimraf -g \"src-tauri/target/*\" && rimraf -g \"src-tauri/assets/*\" && rimraf -g \"dist/*\" && rimraf -g \"node_modules/*\""
     },
     "dependencies": {
-        "@tauri-apps/api": "^1.0.2",
+        "@tauri-apps/api": "^1.1.0",
+        "@tauri-apps/cli": "^1.1.1",
         "@types/react-transition-group": "^4.4.5",
         "framer-motion": "^7.3.5",
         "html-react-parser": "^3.0.4",
@@ -39,7 +40,6 @@
         "tauri-plugin-store-api": "github:tauri-apps/tauri-plugin-store#dev"
     },
     "devDependencies": {
-        "@tauri-apps/cli": "^1.0.5",
         "@types/node": "^18.7.14",
         "@types/react": "^18.0.18",
         "@types/react-dom": "^18.0.6",

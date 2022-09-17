@@ -33,8 +33,8 @@
 				"title": "Tangentbordsgenvägar"
             },
             "about": {
-                "title": "Om ProSpec",
-                "description": "ProSpec är en gratis och öppen källkods Desktop Client för att spektera Professional League of Legends Players.Denna applikation är en slags 'uppgradering' eller alternativ till OP.ggs 'Pro Matches' -funktion.",
+                "title": "Om PROSPEC",
+                "description": "Prospec är en gratis och öppen källkod för skrivbordsklient för att spåra och spektera Professional League of Legends Players.Denna applikation är en slags 'uppgradering' eller alternativ till OP.ggs 'Pro Matches' -funktion.",
                 "thanks": {
                     "title": "Tack",
                     "Jason Chan": "Standard app bakgrundsemble.Misc Champion Splash Art.",
@@ -67,9 +67,13 @@
                         "title": "Favoritaviseringar"
                     },
                     "hardwareAcceleration": {
-                        "description": "Hårdvaruacceleration använder GPU:n för att få ProSpec att fungera smidigare",
+                        "description": "Hårdvaruacceleration använder GPU:n för att få PROSPEC att fungera smidigare",
                         "title": "Hårdvaruacceleration"
                     },
+                    "showAnimations": {
+						"description": "Visa UI -animationer App Wide",
+						"title": "Animationer"
+					},
                     "keyboardMode": {
                         "description": "Aktiverar appnavigering med tangentbordet",
                         "title": "Tangentbordsläge"

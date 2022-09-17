@@ -1,11 +1,11 @@
 import React, { Suspense, useContext, useEffect, useMemo, useState } from "react";
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
 import './App.css';
 
 import Titlebar from './components/titlebar/Titlebar';
 import Settings from "./components/settings/Settings";
 import ProSpec from "./prospec";
-import { IAppBackground, IPlayers } from "./imports/interfaces";
+import { IBackground, IPlayers } from "./imports/interfaces";
 // const Players = React.lazy(() => import("./components/players/Players"));
 
 import { EChampions, ERegions } from "./imports/typings";
@@ -25,8 +25,8 @@ function App() {
     // const proSpec = useMemo(() => new ProSpec(false), []);
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
     const { useBackground, liveBackground, autoRefresh } = useContext(SettingsContext);
-    const [appBG, setAppBG] = useState<IAppBackground>({
-        primary: { type: "live", name: "Sona_6" }
+    const [appBG, setAppBG] = useState<IBackground>({
+        type: "live", name: "Sona_6"
     });
     const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
     const [playersLoaded, setPlayersLoaded] = useState<boolean>(false);
@@ -65,9 +65,9 @@ function App() {
 
     useInit(() => {
         const getAppBackground = async () => {
-            const randomBG = await randomBackground({
-                primary: { type: "live", name: "Sona_6" }
-            });
+            const randomBG = await randomBackground(
+                // { type: "live", name: "Sona_6" }
+            );
             setAppBG(randomBG);
         };
         getAppBackground();
@@ -101,13 +101,13 @@ function App() {
             <div className="dark-overlay"></div>
 
             {!useBackground ? null :
-                liveBackground && appBG.primary.type === "live"
+                liveBackground && appBG.type === "live"
                     ?
                     <video autoPlay muted loop className="app-background-video">
-                        <source src={`src/assets/dragontail/${liveBackground ? appBG.primary.type : "splash"}/${appBG.primary.name}.webm`} type="video/mp4" />
+                        <source src={`src/assets/dragontail/${appBG.type}/${appBG.name}`} type="video/mp4" />
                     </video>
                     :
-                    <div className="app-background" style={{ backgroundImage: `url(src/assets/dragontail/${liveBackground ? appBG.primary.type : "splash"}/${appBG.primary.name}.jpg)` }}></div>
+                    <div className="app-background" style={{ backgroundImage: `url(src/assets/dragontail/${appBG.type}/${appBG.name})` }}></div>
             }
         </div>
     );

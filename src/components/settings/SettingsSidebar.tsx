@@ -13,14 +13,6 @@ const SettingsSidebar: React.FC<{
     return (
         <div className={`settings-sidebar`} >
             <div
-                className={`vertical-button ${ETooltip.TOOLTIP}`}
-                onClick={() => null} id={'discord-button'}
-            >
-                <img src={discordIcon} alt="discord" />
-                <span className={`${ETooltip.RIGHT} right-far`}>{`Discord`}</span>
-            </div>
-
-            <div
                 className={`vertical-button sidebar-settings-button ${ETooltip.TOOLTIP}`}
                 id="settings-button"
                 onClick={() => fSettingsOpen()}
