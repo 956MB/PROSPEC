@@ -13,7 +13,7 @@ import { t } from "i18next";
 
 const SettingsItem: React.FC<{
     itemProps: ISettingsItem,
-    itemZIndex: number
+    itemZIndex: number,
 }> = ({ itemProps, itemZIndex }) => {
     const { t } = useTranslation('common');
     const { updateSetting, getSetting } = useContext(SettingsContext);
@@ -98,9 +98,10 @@ const SettingsItemLanguage: React.FC<{
 }> = ({ itemValue, langSelected, fLangSelect }) => {
     const { t, i18n } = useTranslation('common');
     const { updateSetting } = useContext(SettingsContext);
-    const [hasLang, setHasLang] = useState<boolean>(i18n.hasResourceBundle(itemValue.lang, 'common'));
+    // const [hasLang, setHasLang] = useState<boolean>(i18n.hasResourceBundle(itemValue.lang, 'common'));
 
     const fSelectLanguage = () => {
+        console.log(langSelected, itemValue.value, itemValue.lang);
         if (langSelected != itemValue.value) {
             fLangSelect(itemValue.value);
             i18n.changeLanguage(itemValue.lang);
@@ -110,16 +111,16 @@ const SettingsItemLanguage: React.FC<{
 
     return (
         <div
-            className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : null} ${hasLang ? null : 'lang-disabled'}`}
+            className={`item-language ${langSelected == itemValue.value ? 'selected-lang' : null}`}
             onClick={fSelectLanguage}>
             <div className={`circle noselect ${langSelected == itemValue.value ? 'onSelected' : 'offUnselected'}`}></div>
             <span className={`language-text noselect ${itemValue.lang === ELanguages.br_BA ? 'braille-override' : null}`}>{itemValue.text}</span>
-            {!hasLang ? null :
+            {/* {!hasLang ? null : */}
                 <div className="language-flag-container">
-                    <span className={`language-lang noselect`}>{t(`languages.${itemValue.lang}`)}</span>
+                    {/* <span className={`language-lang noselect`}>{itemValue.lang}</span> */}
                     <img src={`src/assets/flags/${itemValue.lang}.png`} alt="lang-flag" className={`item-language-flag`} />
                 </div>
-            }
+            {/* } */}
         </div>
     )
 }

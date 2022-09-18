@@ -159,17 +159,18 @@
                 "title": "Sisältö"
             },
             "language": {
-                "title": "Kieli"
+                "title": "Kieli",
+                "add": "Etkö näe haluamasi kieltä? <a href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lisää se!</a>"
             }
         },
         "title": "Asetukset"
     },
     "titlebar": {
-        "lastRefresh": "Viimeinen virkistys: {{time}}",
+        "lastRefresh": "Viimeinen virkistys: {{insert}}",
         "searchPlaceholder": "Hae"
     },
     "tooltips": {
-        "playerUnavailable": "{{player}} ei joko pelissä tai katsoja ei ole käytettävissä",
+        "playerUnavailable": "{{insert}} ei joko pelissä tai katsoja ei ole käytettävissä",
         "noPlayersLoaded": "Pelaajia ei ladattu",
         "copy": "Kopio",
         "copied": "Kopioitu",
@@ -190,29 +191,8 @@
         "ADDED": "LISÄ",
         "REMOVED": "POISTETTU"
     },
-    "languages": {
-        "en_US": "Englanti (US)",
-        "en_UK": "Englanti (UK)",
-        "ar_AE": "Arabialainen",
-        "de_DE": "Saksan kieli",
-        "he_HE": "Heprealainen",
-        "fr_FR": "Ranskan kieli",
-        "it_IT": "Italialainen",
-        "nl_NL": "Hollannin kieli",
-        "sv_SV": "Ruotsin kieli",
-        "fi_FI": "Suomalainen",
-        "hi_HI": "Hindi",
-        "pt_PT": "Brasilialainen",
-        "pl_PL": "Kiillottaa",
-        "ru_RU": "Venäjän kieli",
-        "tr_TR": "Turkkilainen",
-        "cs_CS": "",
-        "el_EL": "",
-        "kr_KR": "Korealainen",
-        "ja_JP": "Japanilainen",
-        "vi_VI": "Vietnam",
-        "zh_CN": "Kiina, Kiina",
-        "zh_TW": "Kiinalainen, Taiwan",
-        "br_BA": "Pistorasia"
+    "language": {
+        "text": "Suomi",
+        "lang": "Suomalainen"
     }
 }

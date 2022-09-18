@@ -3,19 +3,6 @@
 version = 3
 
 [[package]]
-name = "PROSPEC"
-version = "0.1.0"
-dependencies = [
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "tauri-plugin-store",
- "window-shadows",
- "windows 0.32.0",
-]
-
-[[package]]
 name = "adler"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1983,6 +1970,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dd96a1e8ed2596c337f8eae5f24924ec83f5ad5ab21ea8e455d3566c69fbcaf7"
 dependencies = [
  "unicode-ident",
+]
+
+[[package]]
+name = "prospec"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-store",
+ "window-shadows",
+ "windows 0.32.0",
 ]
 
 [[package]]

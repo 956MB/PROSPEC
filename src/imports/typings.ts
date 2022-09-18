@@ -48,26 +48,10 @@ export enum ERoles {
 export enum ELanguages {
     en_US = 'en_US',
     en_UK = 'en_UK',
-    ar_AE = 'ar_AE',
-    de_DE = 'de_DE',
-    he_HE = 'he_HE',
-    fr_FR = 'fr_FR',
-    it_IT = 'it_IT',
-    nl_NL = 'nl_NL',
     sv_SV = 'sv_SV',
     fi_FI = 'fi_FI',
-    hi_HI = 'hi_HI',
-    pt_PT = 'pt_PT',
-    pl_PL = 'pl_PL',
-    ru_RU = 'ru_RU',
-    tr_TR = 'tr_TR',
-    cs_CS = 'cs_CS',
-    el_EL = 'el_EL',
     kr_KR = 'kr_KR',
     ja_JP = 'ja_JP',
-    vi_VI = 'vi_VI',
-    zh_CN = 'zh_CN',
-    zh_TW = 'zh_TW',
     br_BA = 'br_BA'
 }
 

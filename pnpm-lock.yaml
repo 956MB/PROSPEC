@@ -11,6 +11,10 @@ specifiers:
   framer-motion: ^7.3.5
   html-react-parser: ^3.0.4
   i18next: ^21.9.1
+  i18next-chained-backend: ^3.1.0
+  i18next-http-backend: ^1.4.1
+  i18next-multiload-backend-adapter: ^1.0.0
+  i18next-resources-to-backend: ^1.0.0
   ini: ^3.0.1
   prop-types: ^15.8.1
   random: ^3.0.6
@@ -34,6 +38,10 @@ dependencies:
   framer-motion: 7.3.5_biqbaboplfbrettd7655fr4n2y
   html-react-parser: 3.0.4_react@18.2.0
   i18next: 21.9.1
+  i18next-chained-backend: 3.1.0
+  i18next-http-backend: 1.4.1
+  i18next-multiload-backend-adapter: 1.0.0
+  i18next-resources-to-backend: 1.0.0
   ini: 3.0.1
   prop-types: 15.8.1
   random: 3.0.6
@@ -288,6 +296,12 @@ packages:
       '@babel/plugin-syntax-jsx': 7.18.6_@babel+core@7.18.13
       '@babel/types': 7.18.13
     dev: true
+
+  /@babel/runtime/7.14.0:
+    resolution: {integrity: sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==}
+    dependencies:
+      regenerator-runtime: 0.13.9
+    dev: false
 
   /@babel/runtime/7.18.9:
     resolution: {integrity: sha512-lkqXDcvlFT5rvEjiu6+QYO+1GXrEHRo2LOtS7E4GtX5ESIZOgepqsZBVIj6Pv+a6zqsya9VCgiK1KAK4BvJDAw==}
@@ -851,6 +865,14 @@ packages:
     dependencies:
       capture-stack-trace: 1.0.1
     dev: true
+
+  /cross-fetch/3.1.5:
+    resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
+    dependencies:
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /cross-spawn/5.1.0:
     resolution: {integrity: sha512-pTgQJ5KC0d2hcY8eyL1IzlBPYjTkyH72XRZPnLyKus2mBfNjQs3klqbJU2VILqZryAZUt9JOb3h/mWMy23/f5A==}
@@ -1510,6 +1532,30 @@ packages:
     resolution: {integrity: sha512-carPklcUh7ROWRK7Cv27RPtdhYhUsela/ue5/jKzjegVvXDqM2ILE9Q2BGn9JZJh1g87cp56su/FgQSzcWS8cQ==}
     dev: true
 
+  /i18next-chained-backend/3.1.0:
+    resolution: {integrity: sha512-ltWy0fPMrtXjq0rSLo7s4ZF92LGvVsO47hhV3czaZXzMzhpFva6LVKMyDT7x82R8vAyB7VAeyGLBvMiW4W543A==}
+    dependencies:
+      '@babel/runtime': 7.18.9
+    dev: false
+
+  /i18next-http-backend/1.4.1:
+    resolution: {integrity: sha512-s4Q9hK2jS29iyhniMP82z+yYY8riGTrWbnyvsSzi5TaF7Le4E7b5deTmtuaRuab9fdDcYXtcwdBgawZG+JCEjA==}
+    dependencies:
+      cross-fetch: 3.1.5
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /i18next-multiload-backend-adapter/1.0.0:
+    resolution: {integrity: sha512-rZd/Qmr7KkGktVgJa78GPLXEnd51OyB2I9qmbI/mXKPm3MWbXwplIApqmZgxkPC9ce+b8Jnk227qX62W9SaLPQ==}
+    dev: false
+
+  /i18next-resources-to-backend/1.0.0:
+    resolution: {integrity: sha512-mxntiPK84guqzYP/0T4OwU6BWda57ar7Tw5pU8BjM8dS4rULOtYU4JHMXfCbqZhNQEPCrp1WrVBEPk6yOze8jw==}
+    dependencies:
+      '@babel/runtime': 7.14.0
+    dev: false
+
   /i18next/21.9.1:
     resolution: {integrity: sha512-ITbDrAjbRR73spZAiu6+ex5WNlHRr1mY+acDi2ioTHuUiviJqSz269Le1xHAf0QaQ6GgIHResUhQNcxGwa/PhA==}
     dependencies:
@@ -1743,6 +1789,18 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
+
+  /node-fetch/2.6.7:
+    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: false
 
   /node-releases/2.0.6:
     resolution: {integrity: sha512-PiVXnNuFm5+iYkLBNeq5211hvO38y63T0i2KKh2KnUs3RpzJ+JtODFjkD8yjLwnDkTYF1eKXheUwdssR+NRZdg==}
@@ -2334,6 +2392,10 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
+  /tr46/0.0.3:
+    resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
+    dev: false
+
   /tslib/2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: false
@@ -2455,6 +2517,17 @@ packages:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
+
+  /webidl-conversions/3.0.1:
+    resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
+    dev: false
+
+  /whatwg-url/5.0.0:
+    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
+    dependencies:
+      tr46: 0.0.3
+      webidl-conversions: 3.0.1
     dev: false
 
   /which/1.3.1:

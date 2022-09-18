@@ -1,4 +1,4 @@
-import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISummonerAccount } from "./interfaces";
+import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ILanguageResource, ILanguageResources, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISummonerAccount } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages, EChangeType } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import random from 'random'
@@ -49,7 +49,7 @@ export function replaceIssueTag(text: string): string {
     if (found && found.length >= 1) {
         const issue = found[0];
         // TODO: Eventually change link to ProSpec repo
-        const rep = text.replace(pattern, `<a href=https://github.com/desktop/desktop/issues/${issue.substring(1)} target="_blank" rel="noopener noreferrer">${issue}</a>`);
+        const rep = text.replace(pattern, `<a title=https://github.com/desktop/desktop/issues/${issue.substring(1)} href=https://github.com/desktop/desktop/issues/${issue.substring(1)} target="_blank" rel="noopener noreferrer">${issue}</a>`);
         return rep;
     }
     return text;
@@ -95,9 +95,19 @@ export function firstLastClass(index: number, len: number, first: string, last: 
     return `${index == 0 ? first : ""} ${index == len-1 ? last : ""}`
 }
 
+export function sortLanguages(langs: ILanguageResources): ILanguageResources {
+    const first = ["br_BA", "en_UK", "en_US"];
+    langs.sort((a, b) => a.text.localeCompare(b.text));
+    first.forEach((lang) => {
+        langs.sort((x, y) =>  x.lang == lang ? -1 : y.lang == lang ? 1 : 0 );
+    })
+
+    return langs;
+}
+
 // NOTE: Gets
 
-const LANGS = [ "English, US", "English, UK", "العربية", "Deutsch", "עִברִית", "Français", "Italiano", "Nederlands", "Svenska", "Suomi", "हिन्दी", "Português", "Polski", "Русский", "Türkçe", "Čeština", "Ελληνικά", "한국어", "日本語", "Tiếng Việt", "简体中文", "繁體中文", "Braille" ];
+const LANGS = [ "English, US", "English, UK", "Svenska", "Suomi", "한국어", "日本語", "Braille" ];
 export function getLanguageStatic(lang: number): string {
     return LANGS.at(lang)!;
 }

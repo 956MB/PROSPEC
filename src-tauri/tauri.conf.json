@@ -8,7 +8,7 @@
         "distDir": "../dist"
     },
     "package": {
-        "productName": "ProSpec",
+        "productName": "PROSPEC",
         "version": "0.1.0"
     },
     "tauri": {
@@ -43,6 +43,7 @@
             },
             "resources": [
                 "assets/**",
+                "locales/**",
                 "data/**",
                 "bats/*"
             ],
@@ -62,7 +63,7 @@
         },
         "windows": [
             {
-                "title": "ProSpec",
+                "title": "PROSPEC",
                 "resizable": true,
                 "fullscreen": false,
                 "height": 830,

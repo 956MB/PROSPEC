@@ -46,7 +46,7 @@ const SettingsPageAbout: React.FC<{
         <div className={`settings-page-about ${pageActive ? 'page-active' : null}`}>
             <div className='settings-about-title-container'>
                 <span className='settings-about-title-text select'>{getProductName()}</span>
-                <a href="https://github.com/956MB/ProSpec" target="_blank" rel="noopener noreferrer" className="settings-about-button">
+                <a href="https://github.com/956MB/PROSPEC" target="_blank" rel="noopener noreferrer" className="settings-about-button">
                     <span>{t(pAbout("github"))}</span>
                 </a>
                 <div className="settings-about-button-accent">

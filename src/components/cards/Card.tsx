@@ -86,7 +86,7 @@ const Card: React.FC<{
                     <h1 className="loading-dot dot-one">.</h1>
                     <h1 className="loading-dot dot-two">.</h1>
                     <h1 className="loading-dot dot-three">.</h1>
-                    <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, { player: playerProps.summoner.playerName })}</span>
+                    <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, { insert: playerProps.summoner.playerName })}</span>
                 </div>
                 <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${player}.webp)` }}></div>
                 <div className={`card-champ noselect`} style={champStyles}></div>

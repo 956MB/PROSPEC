@@ -1,11 +1,11 @@
 [package]
-name = "PROSPEC"
+name = "prospec"
 version = "0.1.0"
 description = "Desktop client for tracking and spectating pro League of Legends players."
 authors = ["you"]
 license = "MIT"
-repository = "git+https://github.com/956MB/ProSpec.git"
-default-run = "PROSPEC"
+repository = "git+https://github.com/956MB/PROSPEC.git"
+default-run = "prospec"
 edition = "2021"
 rust-version = "1.57"
 

@@ -11,10 +11,14 @@ import { SettingsContext } from "../../context/SettingsContext";
 
 import { SettingsPage, SettingsPageButton } from './SettingsPage';
 import { SettingsPageAbout } from './SettingsPageAbout';
+import { getFixedT } from 'i18next';
+import { useInit } from '../../imports/initializers';
 
 const Settings: React.FC<{
     fSettingsOpen: (set: boolean) => void
 }> = ({ fSettingsOpen }) => {
+    const { t, i18n } = useTranslation('common');
+    const { langs } = useContext(SettingsContext);
     const [isMounted, setIsMounted] = useState(true);
     const [settings, setSettings] = useState<ISettingsPages>([
         FormSettingsPage(0, "list", 'content', [
@@ -69,26 +73,25 @@ const Settings: React.FC<{
         FormSettingsPage(2, "list", 'shortcuts')
         ,
         FormSettingsPageLang(3, "lang", 'language', 0,
-            mapEnum(ELanguages, "string", (lang: ELanguages, i: number) => {
+            langs.map((lang, i) => {
                 return {
-                    itemValue: { type: 'lang', value: i, text: getLanguageStatic(i), lang: lang as string } as ISettingsItemValueLanguage
+                    itemValue: { type: 'lang', value: i, text: lang.text, lang: lang.lang } as ISettingsItemValueLanguage
                 }
-            }) as ISettingsItems
-        ) as ISettingsPageLanguage
+            })
+        )
         ,
         FormSettingsPage(4, "about", 'about')
-    ]
-    )
+    ]);
 
     return (
         <AnimatePresence>
             {isMounted && (
                 <motion.div
                     className='settings-outer'
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.15 }}
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1.0 }}
+                    exit={{ opacity: 0, scale: 1.0 }}
+                    transition={{ type: "spring", damping: 15, stiffness: 250, duration: 0.05 }}
                 >
                     <SettingsInner pagesProps={settings} fSettingsOpen={fSettingsOpen} />
                 </motion.div>

@@ -1,5 +1,3 @@
-import { ExecOptionsWithStringEncoding } from "child_process";
-import { StringIfPlural } from "react-i18next";
 import { EChangeType } from "./typings";
 
 // NOTE: Reducers
@@ -119,6 +117,14 @@ export interface IRegion {
 export interface ISpectatorResult {
     status: boolean;
     file: string
+}
+
+// NOTE: Languages
+
+export interface ILanguageResources extends Array<ILanguageResource>{}
+export interface ILanguageResource {
+    lang: string;
+    text: string;
 }
 
 // NOTE: UI

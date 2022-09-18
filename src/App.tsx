@@ -1,5 +1,5 @@
 import React, { Suspense, useContext, useEffect, useMemo, useState } from "react";
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 
 import Titlebar from './components/titlebar/Titlebar';
@@ -19,6 +19,7 @@ import { useInit } from "./imports/initializers";
 
 function App() {
     const navigate = useNavigate();
+    const location = useLocation();
     const { i18n } = useTranslation('common');
     
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
@@ -65,6 +66,7 @@ function App() {
         };
         if (randomBackground) { getAppBackground(); }
         if (autoRefresh) { refreshPlayers(); }
+        if (location.pathname === '/settings') { setSettingsOpen(true); }
     });
 
     return (

@@ -3,9 +3,9 @@ import React, { createContext, startTransition, useEffect, useReducer, useState 
 import { useTranslation } from "react-i18next";
 import { Store } from 'tauri-plugin-store-api';
 
-import { IReducerAction, ISettingsStates } from "../imports/interfaces";
+import { ILanguageResources, IReducerAction, ISettingsStates } from "../imports/interfaces";
 import { ELanguages, ESettingsStates as SS } from "../imports/typings";
-import { mapEnum, mapEnumKeys } from "../imports/utils";
+import { sortLanguages, mapEnum, mapEnumKeys } from "../imports/utils";
 import { useInit } from '../imports/initializers';
 
 const SS_DEFAULTS = [
@@ -55,8 +55,9 @@ export const SettingsContext = createContext({
     keyboardMode: false,
     notifications: true,
     appLanguage: 0,
+    langs: [] as ILanguageResources,
     updateSetting: (key: string, val: any) => { },
-    getSetting: (key: string): any => { },
+    getSetting: (key: string): any => { }
 })
 
 const settingsReducer = (state: ISettingsStates, action: IReducerAction): ISettingsStates => {
@@ -66,13 +67,14 @@ const settingsReducer = (state: ISettingsStates, action: IReducerAction): ISetti
     return state;
 }
 
-const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const SettingsProvider: React.FC<{ langs: ILanguageResources, children: React.ReactNode }> = ({ langs, children }) => {
     const settingsStore = new Store('.settings.dat');
     const { i18n } = useTranslation('common');
 
     const [state, dispatch] = useReducer(settingsReducer, {
-        listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, showUnavailable: true, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, showAnimations: true, useBackground: false, randomBackground: true, liveBackground: false, keyboardMode: false, notifications: true, appLanguage: 0,
-    })
+        listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, showUnavailable: true, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, showAnimations: true, useBackground: false, randomBackground: true, liveBackground: false, keyboardMode: false, notifications: true, appLanguage: 0
+    });
+    const [_langs, setLangs] = useState(sortLanguages(langs));
 
     useInit(() => {
         const initSettings = async () => {
@@ -85,7 +87,7 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
 
                 // Sets stored language from save
                 if (redState == SS.APP_LANGUAGE) {
-                    const savedLang = LANGS.at(value as number);
+                    const savedLang = _langs.map((lang) => lang.lang).at(value as number);
                     i18n.changeLanguage(savedLang);
                 }
             })
@@ -139,8 +141,9 @@ const SettingsProvider: React.FC<{ children: React.ReactNode }> = ({ children })
             keyboardMode: state.keyboardMode,
             notifications: state.notifications,
             appLanguage: state.appLanguage,
+            langs: _langs,
 
-            updateSetting, getSetting
+            updateSetting, getSetting,
         }}>
             {children}
         </SettingsContext.Provider>

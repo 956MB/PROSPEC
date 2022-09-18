@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import '../css/settings.css';
+import parse from 'html-react-parser';
 
+import '../css/settings.css';
 import { ISettingsItemValueLanguage, ISettingsPage, ISettingsPageButton, ISettingsPageLanguage } from "../../imports/interfaces";
 import { SettingsItem, SettingsItemLanguage, SettingsItemSpacer } from "./SettingsItem";
 
@@ -25,15 +26,23 @@ const SettingsPage: React.FC<{
 
                     const valueLang = item.itemValue as ISettingsItemValueLanguage
                     return pageProps.type === 'lang'
-                        ? <SettingsItemLanguage
+                        ?
+                        <SettingsItemLanguage
                             itemValue={item.itemValue as ISettingsItemValueLanguage}
                             langSelected={i18n.language === valueLang.lang ? valueLang.value : -1}
                             fLangSelect={fLangSelect}></SettingsItemLanguage>
-                        : <SettingsItem
+                        :
+                        <SettingsItem
                             itemProps={item}
                             itemZIndex={pageProps.items.length - i}></SettingsItem>
                 })
             )}
+
+            {pageProps.type === 'lang' ?
+                <div className="add-language-notice">
+                    <span>{parse(t(`settings.pages.language.add`))}</span>
+                </div>
+            :   null}
         </div>
     )
 }

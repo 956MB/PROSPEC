@@ -29,9 +29,12 @@
 	},
 	"settings": {
 		"pages": {
+            "shortcuts": {
+				"title": "Keyboard shortcuts"
+            },
 			"about": {
-				"title": "About",
-                "description": "PROSPEC is a free and open source dekstop client for spectating professional League of Legends players. This application is a sort of 'upgrade' or alternative to OP.GG's 'Pro Matches' feature.",
+				"title": "About PROSPEC",
+                "description": "PROSPEC is a free and open source desktop client for tracking and spectating professional League of Legends players. This application is a sort of 'upgrade' or alternative to OP.GG's 'Pro Matches' feature.",
                 "thanks": {
                     "title": "Thanks",
                     "Jason Chan": "Default app background ensemble. Misc champion splash art.",
@@ -48,12 +51,15 @@
 			"application": {
 				"items": {
 					"Accent": {
+						"description": "",
 						"title": "Accent"
 					},
 					"appScale": {
+						"description": "",
 						"title": "App scale"
 					},
 					"dark": {
+						"description": "",
 						"title": "Dark"
 					},
 					"notifications": {
@@ -73,6 +79,7 @@
 						"title": "Keyboard mode"
 					},
 					"light": {
+						"description": "",
 						"title": "Light"
 					},
 					"minimizeToTray": {
@@ -80,6 +87,7 @@
 						"title": "Minimize to tray"
 					},
 					"openOnStartup": {
+						"description": "",
 						"title": "Open on startup"
 					},
                     "useBackground": {
@@ -95,9 +103,11 @@
 						"title": "Live backgrounds"
 					},
 					"system": {
+						"description": "",
 						"title": "System"
 					},
 					"appTheme": {
+						"description": "",
 						"title": "Theme"
 					}
 				},
@@ -106,15 +116,19 @@
 			"content": {
 				"items": {
 					"autoRefresh": {
+						"description": "",
 						"title": "Auto refresh"
 					},
 					"card": {
+						"description": "",
 						"title": "Card"
 					},
 					"list": {
+						"description": "",
 						"title": "List"
 					},
 					"listLayout": {
+						"description": "",
 						"title": "List layout"
 					},
 					"refreshInterval": {
@@ -145,17 +159,18 @@
 				"title": "Content"
 			},
 			"language": {
-				"title": "Language"
+                "title": "Language",
+                "add": "Don't see the language you want? <a href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Add it!</a>"
 			}
 		},
 		"title": "Settings"
 	},
 	"titlebar": {
-		"lastRefresh": "Last refresh: {{time}}",
+		"lastRefresh": "Last refresh: {{insert}}",
 		"searchPlaceholder": "Search"
 	},
 	"tooltips": {
-		"playerUnavailable": "{{player}} is either not in a game, or spectator is unavailable",
+		"playerUnavailable": "{{insert}} is either not in a game, or spectator is unavailable",
 		"noPlayersLoaded": "No players loaded",
 		"copy": "Copy",
 		"copied": "Copied",
@@ -176,29 +191,8 @@
         "ADDED": "ADDED",
         "REMOVED": "REMOVED"
     },
-    "languages": {
-        "en_US": "English (US)",
-        "en_UK": "English (UK)",
-        "ar_AE": "Arabic",
-        "de_DE": "German",
-        "he_HE": "Hebrew",
-        "fr_FR": "French",
-        "it_IT": "Italian",
-        "nl_NL": "Dutch",
-        "sv_SV": "Swedish",
-        "fi_FI": "Finnish",
-        "hi_HI": "Hindi",
-        "pt_PT": "Portuguese, Brazilian",
-        "pl_PL": "Polish",
-        "ru_RU": "Russian",
-        "tr_TR": "Turkish",
-        "cs_CS": "",
-        "el_EL": "",
-        "kr_KR": "Korean",
-        "ja_JP": "Japanese",
-        "vi_VI": "Vietnamese",
-        "zh_CN": "Chinese, China",
-        "zh_TW": "Chinese, Taiwan",
-        "br_BA": "Braille"
+    "language": {
+        "text": "English, US",
+        "lang": "English, US"
     }
 }

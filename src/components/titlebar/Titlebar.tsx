@@ -112,7 +112,7 @@ const Titlebar: React.FC<{
                             onClick={() => fRefreshPlayers()}>
                             <img src={refreshIcon} alt="refresh" id="titlebar-refresh" />
                         </button>
-                        <span className='refresh-text noselect'>{t('titlebar.lastRefresh', {time: '8:34 PM'})}</span>
+                        <span className='refresh-text noselect'>{t('titlebar.lastRefresh', {insert: '8:34 PM'})}</span>
                     </div>
 
                     {/* <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/> */}

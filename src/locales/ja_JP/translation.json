@@ -159,17 +159,18 @@
                 "title": "コンテンツ"
             },
             "language": {
-                "title": "言語"
+                "title": "言語",
+                "add": "あなたが望む言語が見えませんか？ <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">追加！</a>"
             }
         },
         "title": "設定"
     },
     "titlebar": {
-        "lastRefresh": "最終更新： {{time}}",
+        "lastRefresh": "最終更新： {{insert}}",
         "searchPlaceholder": "サーチ"
     },
     "tooltips": {
-        "playerUnavailable": "{{player}} ゲーム内ではないか、観客は利用できません",
+        "playerUnavailable": "{{insert}} ゲーム内ではないか、観客は利用できません",
         "noPlayersLoaded": "プレーヤーはロードされていません",
         "copy": "コピー",
         "copied": "コピー",
@@ -190,29 +191,8 @@
         "ADDED": "追加した",
         "REMOVED": "削除"
     },
-    "languages": {
-        "en_US": "英語 (アメリカ)",
-        "en_UK": "英語 (イギリス)",
-        "ar_AE": "アラビア語",
-        "de_DE": "ドイツ人",
-        "he_HE": "ヘブライ語",
-        "fr_FR": "フランス語",
-        "it_IT": "イタリアの",
-        "nl_NL": "オランダの",
-        "sv_SV": "スウェーデンの",
-        "fi_FI": "フィンランド語",
-        "hi_HI": "ヒンディー語",
-        "pt_PT": "ポルトガル語、ブラジル人",
-        "pl_PL": "研磨",
-        "ru_RU": "ロシア",
-        "tr_TR": "トルコ語",
-        "cs_CS": "",
-        "el_EL": "",
-        "kr_KR": "韓国語",
-        "ja_JP": "日本",
-        "vi_VI": "ベトナム人",
-        "zh_CN": "中国、中国",
-        "zh_TW": "中国語、台湾",
-        "br_BA": "点字"
+    "language": {
+        "text": "日本",
+        "lang": "日本"
     }
 }
