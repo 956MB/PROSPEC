@@ -11,9 +11,11 @@ async function importLanguages(): Promise<ILanguageResources> {
             const translation = locale.children[0].name;
             if (translation && translation === 'translation.json') {
                 const contents = await readTextFile(`locales/${lang}/${translation}`, { dir: BaseDirectory.Resource });
-                const obj = JSON.parse(contents);
-                const langText = obj["language"]["text"] as string;
-                resources.push({lang: lang, text: langText} as ILanguageResource);
+                if (contents) {
+                    const obj = JSON.parse(contents);
+                    const langText = obj["language"]["text"] as string;
+                    resources.push({lang: lang, text: langText} as ILanguageResource);
+                }
             }
         }
     }

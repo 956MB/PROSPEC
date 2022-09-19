@@ -5,6 +5,7 @@ html {
 body {
     margin: 0;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 /* width */
@@ -288,6 +289,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    border-radius: 10px;
 }
 
 .app-background {
