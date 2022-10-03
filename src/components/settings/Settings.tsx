@@ -62,9 +62,9 @@ const Settings: React.FC<{
             SettingsItemSpacer()
             ,
             SettingsItemBoolean('application', ESettingsStates.USE_BACKGROUND, false, [
-                SettingsItemBoolean('application', ESettingsStates.RANDOM_BACKGROUND, true),
+                SettingsItemBoolean('application', ESettingsStates.RANDOM_BACKGROUND, true, [], () => fRefreshBackground()),
                 SettingsItemBoolean('application', ESettingsStates.LIVE_BACKGROUND, false)
-            ], () => fRefreshBackground())
+            ])
             ,
             SettingsItemBoolean('application', ESettingsStates.KEYBOARD_MODE, false)
             ,

@@ -6,18 +6,19 @@ import '../../css/settings.css';
 import { ISidebarButton } from "../../../imports/interfaces";
 
 const SidebarButton: React.FC<{
+    extraClass: string,
     buttonProps: ISidebarButton
-}> = ({ buttonProps }) => {
+}> = ({ extraClass, buttonProps }) => {
     const { t } = useTranslation('common');
     const location = useLocation();
 
     return (
         <div
-            className={`sidebar-button ${location.pathname === buttonProps.page ? 'sidebar-button-active' : null} ${ETooltip.TOOLTIP} ${buttonProps.extraClasses}`}
+            className={`sidebar-button ${location.pathname === buttonProps.page ? 'sidebar-button-active' : null} ${ETooltip.TOOLTIP} ${extraClass}`}
             onClick={() => buttonProps.action(buttonProps.page as string)}
         >
             <img src={buttonProps.icon} alt="gear" />
-            <span className={`${ETooltip.RIGHT} right-far noselect`}>{`${t(buttonProps.title)}`}</span>
+            <span className={`${ETooltip.RIGHTDELAY} right-far noselect`}>{`${t(buttonProps.title)}`}</span>
         </div>
     )
 }

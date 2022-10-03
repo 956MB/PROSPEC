@@ -129,6 +129,11 @@ export interface ILanguageResource {
 
 // NOTE: UI
 
+export interface IPageState {
+    currentPage: number;
+    levels: number
+}
+
 export interface IMenuOrigin {
     x: number;
     y: number;
@@ -180,7 +185,6 @@ export interface IOptionsSectionsChamp {
 
 export interface ISidebarButtons extends Array<ISidebarButton>{}
 export interface ISidebarButton {
-    extraClasses?: string;
     title: string;
     icon: string;
     page: string;

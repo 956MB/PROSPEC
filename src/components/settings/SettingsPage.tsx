@@ -58,6 +58,8 @@ const SettingsPageButton: React.FC<{
         <div className={`settings-page-button ${pageActive ? 'page-button-active' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
             <div className='page-button-inner'>
                 <span className='page-button-text transition-0_08s'>{t(buttonProps.text)}</span>
+                {/* <span className='page-button-text transition-0_08s'>{t(buttonProps.text)}</span> */}
+                <div className="page-border-bottom"></div>
             </div>
         </div>
     )

@@ -465,8 +465,8 @@ export function SettingsEntryRelease(type: EChangeType, change: string, issues?:
     return { type: type, change: change, issues: issues ? issues : [] } as IAppReleaseChange;
 }
 
-export function FormSidebarButton(title: string, icon: string, page: string, action: () => void, extraClasses?: string): ISidebarButton {
-    return { title: title, icon: icon, page: page, action: action, extraClasses: extraClasses ? extraClasses : "" };
+export function FormSidebarButton(title: string, icon: string, page: string, action: () => void): ISidebarButton {
+    return { title: title, icon: icon, page: page, action: action };
 }
 
 // NOTE: RANDOM:

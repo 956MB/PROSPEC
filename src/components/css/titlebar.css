@@ -63,7 +63,7 @@
     background: rgba(255, 255, 255, 0.03);
     border-radius: 15px;
     height: 30px;
-    padding: 0 12px 0 0;
+    padding: 0 13px 0 0;
     margin: 0 0 0 4px;
     backdrop-filter: blur(12px);
 }
@@ -102,22 +102,26 @@
     background-color: rgba(255, 255, 255, 0.03);
 }
 
-#backward-button {
+#navigation-button {
     pointer-events: none;
     opacity: 0.5;
 }
-.settings-open #backward-button {
+.active-navigation-button {
+    opacity: 1.0 !important;
+    pointer-events: all !important;
+}
+/* .settings-open #backward-button {
     opacity: 1.0 !important;
     pointer-events: all;
-}
-#forward-button {
-    opacity: 1.0;
+} */
+/* #forward-button {
+    opacity: 0.5;
     pointer-events: all;
-}
-.settings-open #forward-button {
+} */
+/* .settings-open #forward-button {
     opacity: 0.5 !important;
     pointer-events: none;
-}
+} */
 
 .controls-group {
     user-select: none;

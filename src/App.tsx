@@ -4,7 +4,7 @@ import './App.css';
 
 import Titlebar from './components/titlebar/Titlebar';
 import Settings from "./components/settings/Settings";
-import { IBackground, IPlayers } from "./imports/interfaces";
+import { IBackground, IPlayers, IPageState } from "./imports/interfaces";
 
 import { EChampions } from "./imports/typings";
 import { getRegion, randomActive, getRandomBackground, randomEnum, randomNumber } from "./imports/utils";
@@ -31,13 +31,20 @@ function App() {
     const [playersLoaded, setPlayersLoaded] = useState<boolean>(false);
     const [players, setPlayers] = useState<IPlayers>([]);
     const [playersKey, setPlayersKey] = useState<number>(0);
-
-    const fSettingsOpen = (page: string, open: boolean) => {
-        console.log(page, open);
-        setSettingsOpen(open);
-        navigate(settingsOpen ? '/settings' : page, { replace: true });
+    
+    const [pageState, setPageState] = useState<IPageState>({ currentPage: 0, levels: 1 });
+    const fNavigateDirection = (dir: number) => {
+        const add = dir == 1 ? 1 : 0;
+        setPageState({ currentPage: pageState.currentPage + dir, levels: pageState.levels + add});
+        navigate(dir);
     }
 
+    const fSettingsOpen = (page: string, open: boolean) => {
+        setSettingsOpen(open);
+        navigate(settingsOpen ? '/settings' : page, { replace: false });
+        setPageState({ currentPage: pageState.currentPage + 1, levels: pageState.levels + 1});
+        console.log(page, open, pageState.currentPage, pageState.levels);
+    }
     const refreshPlayers = () => {
         setPlayersLoaded(false);
         setPlayersKey(playersKey + 1);
@@ -64,7 +71,6 @@ function App() {
         const randomBG = await getRandomBackground();
         setAppBG(randomBG);
     };
-
     useInit(() => {
         if (randomBackground) { getAppBackground(); }
         if (autoRefresh) { refreshPlayers(); }
@@ -81,7 +87,8 @@ function App() {
             <SettingsSidebar
                 fSettingsOpen={fSettingsOpen} />
             <Titlebar
-                fSettingsOpen={fSettingsOpen}
+                pageState={pageState}
+                fNavigateDirection={fNavigateDirection}
                 fRefreshPlayers={refreshPlayers} />
 
             <Routes>

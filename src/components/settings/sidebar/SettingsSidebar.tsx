@@ -32,6 +32,7 @@ const SettingsSidebar: React.FC<{
                 {React.Children.toArray(
                     pagesButtons.map((button) => (
                         <SidebarButton
+                            extraClass={`borders-bottom`}
                             buttonProps={button} />
                     ))
                 )}
@@ -41,6 +42,7 @@ const SettingsSidebar: React.FC<{
                 {React.Children.toArray(
                     lowerButtons.map((button) => (
                         <SidebarButton
+                            extraClass="borders-top"
                             buttonProps={button} />
                     ))
                 )}

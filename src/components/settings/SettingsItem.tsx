@@ -18,7 +18,7 @@ const SettingsItem: React.FC<{
     itemZIndex: number,
 }> = ({ itemProps, itemZIndex }) => {
     const { t } = useTranslation('common');
-    const { updateSetting, getSetting, useBackground } = useContext(SettingsContext);
+    const { updateSetting, getSetting, randomBackground } = useContext(SettingsContext);
     const [noDescription, setNoDescription] = useState<boolean>(itemProps.description === '' || itemProps.description === undefined);
     const [parentEanbled, setParentEnabled] = useState<boolean>(itemProps.itemValue.value);
 
@@ -46,7 +46,7 @@ const SettingsItem: React.FC<{
                 </div>
 
                 <div className={`${itemProps.itemValue.type === 'boolean' ? 'item-value-container' : 'item-value-selector-container'}`}>
-                    {useBackground && itemProps.secondaryAction ? 
+                    {randomBackground && itemProps.secondaryAction ? 
                         <button
                             className="titlebar-button refresh-group-button settings-secondary-action noselect"
                             id='refresh-button'
@@ -75,6 +75,15 @@ const SettingsItem: React.FC<{
                         </div>
 
                         <div className={`${child.itemValue.type === 'boolean' ? 'item-value-container' : 'item-value-selector-container'}`}>
+                            {randomBackground && child.secondaryAction ? 
+                                <button
+                                    className="titlebar-button refresh-group-button settings-secondary-action noselect"
+                                    id='refresh-button'
+                                    onClick={() => child.secondaryAction?.()}>
+                                    <img src={refreshIcon} alt="refresh" id="titlebar-refresh" />
+                                </button>
+                            : null}
+
                             {child.itemValue.type === 'boolean'
                                 ? <SettingsItemBool
                                     boolProps={child.itemValue as ISettingsItemValueBool}

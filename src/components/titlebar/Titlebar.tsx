@@ -6,7 +6,7 @@ import '../css/titlebar.css';
 
 import { Options } from '../options';
 import { EAboutSections, EButtonImages, EChampions, EModes, ERegions, ERoles } from '../../imports/typings';
-import { IOptionsButton, IOptionsButtonChamp, IOptionsSections, IOptionsSectionsChamp, ISelectedChamps } from '../../imports/interfaces';
+import { IOptionsButton, IOptionsButtonChamp, IOptionsSections, IOptionsSectionsChamp, IPageState, ISelectedChamps } from '../../imports/interfaces';
 import { getChampionFromId, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap, oMode, oRole, oRegion } from '../../imports/utils';
 
 import backwardIcon from '../../assets/icons/chevron.backward.svg';
@@ -20,9 +20,10 @@ import closeIcon from '../../assets/icons/close.svg';
 import { SpectatorContext } from "../../context/SpectatorContext";
 
 const Titlebar: React.FC<{
-    fSettingsOpen: (page: string, open: boolean) => void,
+    pageState: IPageState,
+    fNavigateDirection: (dir: number) => void,
     fRefreshPlayers: () => void
-}> = ({ fSettingsOpen, fRefreshPlayers }) => {
+}> = ({ pageState, fNavigateDirection, fRefreshPlayers }) => {
     const navigate = useNavigate();
     const { regionFilter, modeFilter, roleFilter } = useContext(SpectatorContext);
     const { t } = useTranslation('common');
@@ -91,16 +92,16 @@ const Titlebar: React.FC<{
             <div className='titlebar-inner'>
                 <div className='refresh-group'>
                     <button
-                        className="titlebar-button refresh-group-button noselect"
-                        id='backward-button'
-                        onClick={() => fSettingsOpen("/", false)}
+                        className={`titlebar-button refresh-group-button ${(pageState.levels >= 2 && pageState.currentPage >= 1) ? 'active-navigation-button' : null} noselect`}
+                        id='navigation-button'
+                        onClick={() => fNavigateDirection(-1)}
                         >
                         <img src={backwardIcon} alt="backward" id="titlebar-back" />
                     </button>
                     <button
-                        className="titlebar-button refresh-group-button noselect"
-                        id='forward-button'
-                        onClick={() => fSettingsOpen("/settings", true)}
+                        className={`titlebar-button refresh-group-button ${pageState.currentPage <= pageState.levels-2 ? 'active-navigation-button' : null} noselect`}
+                        id='navigation-button'
+                        onClick={() => fNavigateDirection(1)}
                         >
                         <img src={forwardIcon} alt="forward" id="titlebar-forward" />
                     </button>
