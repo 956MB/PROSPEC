@@ -15,8 +15,9 @@ import { getFixedT } from 'i18next';
 import { useInit } from '../../imports/initializers';
 
 const Settings: React.FC<{
-    fSettingsOpen: (set: boolean) => void
-}> = ({ fSettingsOpen }) => {
+    fRefreshBackground: () => void,
+    fSettingsOpen: (page: string, settingsOpen: boolean) => void
+}> = ({ fRefreshBackground, fSettingsOpen }) => {
     const { t, i18n } = useTranslation('common');
     const { langs } = useContext(SettingsContext);
     const [isMounted, setIsMounted] = useState(true);
@@ -63,7 +64,7 @@ const Settings: React.FC<{
             SettingsItemBoolean('application', ESettingsStates.USE_BACKGROUND, false, [
                 SettingsItemBoolean('application', ESettingsStates.RANDOM_BACKGROUND, true),
                 SettingsItemBoolean('application', ESettingsStates.LIVE_BACKGROUND, false)
-            ])
+            ], () => fRefreshBackground())
             ,
             SettingsItemBoolean('application', ESettingsStates.KEYBOARD_MODE, false)
             ,
@@ -102,7 +103,7 @@ const Settings: React.FC<{
 
 const SettingsInner: React.FC<{
     pagesProps: ISettingsPages,
-    fSettingsOpen: (set: boolean) => void
+    fSettingsOpen: (page: string, open: boolean) => void
 }> = ({ pagesProps, fSettingsOpen }) => {
     const { t } = useTranslation('common');
     const [pageActive, setPageActive] = useState<number>(0);

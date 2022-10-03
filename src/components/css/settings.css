@@ -84,9 +84,8 @@
     top: 0;
     display: flex;
     align-items: center;
-    align-content: flex-end;
-    vertical-align: bottom;
-    justify-content: flex-end;
+    align-content: center;
+    justify-content: center;
     flex-direction: column;
     width: 55px;
     height: 100%;
@@ -94,42 +93,71 @@
     z-index: 5;
     /* padding: 0 0 40px 0; */
     /* background-color: rgb(0, 0, 0); */
-    background-color: rgb(61, 61, 61);
+    background-color: rgb(59, 59, 59);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.vertical-button {
+.sidebar-button {
     pointer-events: all;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     border: none;
-    margin: 0 5px 10px 6px;
-    height: 42px;
-    width: 42px;
+    padding: 25px 0 25px 1px;
+    width: 100%;
     cursor: pointer;
-    border-radius: 5px;
+    border-top: 1px solid rgb(37, 37, 37);
+    /* box-shadow: 0px 2px 0 rgb(88, 88, 88); */
+    box-shadow: inset 0px 1px 0 rgb(83, 83, 83);
+    transition: all 0.07s ease;
 }
 
-.vertical-button:active img {
+.sidebar-button:active img {
     opacity: 0.4 !important;
 }
 
-.vertical-button img {
+.sidebar-button img {
     opacity: 0.25;
     user-select: none;
     pointer-events: none;
 }
-.vertical-button:hover img {
-    opacity: 0.5;
+.sidebar-button:hover {
+    background-color: rgb(70, 70, 70);
+}
+.sidebar-button:hover img {
+    opacity: 0.6;
+}
+
+.icon-flip {
+    transform: scaleX(-1);
+    margin-left: 2px;
 }
 
 #settings-button {
     margin-bottom: 14px !important;
 }
-
-.settings-open .sidebar-settings-button img {
+.sidebar-button-active {
+    background-color: rgb(65, 65, 65);
+}
+.sidebar-button-active img {
     opacity: 0.55 !important;
+}
+
+.sidebar-group {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.pages-group {
+    box-sizing: border-box;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-bottom: 1px solid rgb(83, 83, 83);
+    box-shadow: inset 0px -1px 0 rgb(37, 37, 37);
 }
 
 .settings-outer .settings-inner {
@@ -1161,12 +1189,28 @@
 
 /* NOTE: Bool */
 
+.settings-secondary-action {
+    margin-right: 20px;
+    padding: 0 0 0 1px;
+}
+
+.settings-secondary-action:hover
+{
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(4px);
+}
+.settings-secondary-action:active {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+}
+
 .item-value-container {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    position: relative;
     align-items: center;
+    align-content: center;
     width: 125px;
     height: 32px;
     pointer-events: all;

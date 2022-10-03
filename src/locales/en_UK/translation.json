@@ -155,6 +155,14 @@
 		"lastRefresh": "Last refresh: {{insert}}",
 		"searchPlaceholder": "Search"
 	},
+    "sidebar": {
+        "settings": "Settings",
+        "live": "Find Games",
+        "players": "Player Database",
+        "history": "Recent Games",
+        "cq": "Champions Queue",
+        "favorites": "Favorites"
+    },
 	"tooltips": {
 		"playerUnavailable": "{{insert}} is either not in a game, or spectator is unavailable",
 		"noPlayersLoaded": "No players loaded",

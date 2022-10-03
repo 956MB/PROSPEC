@@ -1,6 +1,7 @@
 
 import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 import '../css/settings.css';
 
 import { unull } from "../../imports/utils";
@@ -9,14 +10,15 @@ import { useInit } from '../../imports/initializers';
 import { SettingsContext } from '../../context/SettingsContext';
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { ELanguages, ESettingsStates } from '../../imports/typings';
-import { t } from "i18next";
+
+import refreshIcon from '../../assets/icons/arrow.clockwise.svg';
 
 const SettingsItem: React.FC<{
     itemProps: ISettingsItem,
     itemZIndex: number,
 }> = ({ itemProps, itemZIndex }) => {
     const { t } = useTranslation('common');
-    const { updateSetting, getSetting } = useContext(SettingsContext);
+    const { updateSetting, getSetting, useBackground } = useContext(SettingsContext);
     const [noDescription, setNoDescription] = useState<boolean>(itemProps.description === '' || itemProps.description === undefined);
     const [parentEanbled, setParentEnabled] = useState<boolean>(itemProps.itemValue.value);
 
@@ -44,6 +46,15 @@ const SettingsItem: React.FC<{
                 </div>
 
                 <div className={`${itemProps.itemValue.type === 'boolean' ? 'item-value-container' : 'item-value-selector-container'}`}>
+                    {useBackground && itemProps.secondaryAction ? 
+                        <button
+                            className="titlebar-button refresh-group-button settings-secondary-action noselect"
+                            id='refresh-button'
+                            onClick={() => itemProps.secondaryAction?.()}>
+                            <img src={refreshIcon} alt="refresh" id="titlebar-refresh" />
+                        </button>
+                    : null}
+
                     {itemProps.itemValue.type === 'boolean'
                         ? <SettingsItemBool
                             boolProps={itemProps.itemValue as ISettingsItemValueBool}

@@ -93,11 +93,11 @@
 
 .refresh-group-button {
     margin: 0 4px 0 0;
-    transition: all 0.09s ease;
+    transition: all 0.07s ease;
 }
-.refresh-group-button img {
-    transition: all 0.09s ease;
-}
+/* .refresh-group-button img {
+    transition: all 0.07s ease;
+} */
 #refresh-button {
     background-color: rgba(255, 255, 255, 0.03);
 }

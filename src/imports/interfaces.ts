@@ -178,6 +178,15 @@ export interface IOptionsSectionsChamp {
     sections: IOptionsSectionChamp[];
 }
 
+export interface ISidebarButtons extends Array<ISidebarButton>{}
+export interface ISidebarButton {
+    extraClasses?: string;
+    title: string;
+    icon: string;
+    page: string;
+    action: (val?: any) => void;
+}
+
 // NOTE: Settings
 
 export interface ISettingsPages extends Array<ISettingsPage>{}
@@ -198,6 +207,7 @@ export interface ISettingsItem {
     description?: string;
     itemValue: ISettingsItemValue;
     childValues?: ISettingsItems;
+    secondaryAction?: () => void;
 }
 
 export interface ISettingsItemValue {

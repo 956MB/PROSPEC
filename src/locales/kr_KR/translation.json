@@ -168,6 +168,14 @@
         "lastRefresh": "마지막 새로 고침: {{insert}}",
         "searchPlaceholder": "수색"
     },
+    "sidebar": {
+        "settings": "설정",
+        "live": "게임을 찾으십시오",
+        "players": "플레이어 데이터베이스",
+        "history": "최근 게임",
+        "cq": "챔피언 큐",
+        "favorites": "즐겨 찾기"
+    },
     "tooltips": {
         "playerUnavailable": "{{insert}} 게임에 있지 않거나 관중을 사용할 수 없습니다",
         "noPlayersLoaded": "선수가로드되지 않았습니다",

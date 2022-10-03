@@ -246,9 +246,9 @@ img {
     100% { right: 100%; }
 }
 @keyframes fadeInRightFar {
-    50% { left: 112%; }
-    75% { left: 124%; }
-    100% { left: 131%; }
+    50% { left: 105%; }
+    75% { left: 110%; }
+    100% { left: 115%; }
 }
 @keyframes fadeInLeftFar {
     50% { right: 112%; }

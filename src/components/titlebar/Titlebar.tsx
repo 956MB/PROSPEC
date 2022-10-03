@@ -20,7 +20,7 @@ import closeIcon from '../../assets/icons/close.svg';
 import { SpectatorContext } from "../../context/SpectatorContext";
 
 const Titlebar: React.FC<{
-    fSettingsOpen: (set?: boolean) => void,
+    fSettingsOpen: (page: string, open: boolean) => void,
     fRefreshPlayers: () => void
 }> = ({ fSettingsOpen, fRefreshPlayers }) => {
     const navigate = useNavigate();
@@ -93,14 +93,14 @@ const Titlebar: React.FC<{
                     <button
                         className="titlebar-button refresh-group-button noselect"
                         id='backward-button'
-                        onClick={() => fSettingsOpen(false)}
+                        onClick={() => fSettingsOpen("/", false)}
                         >
                         <img src={backwardIcon} alt="backward" id="titlebar-back" />
                     </button>
                     <button
                         className="titlebar-button refresh-group-button noselect"
                         id='forward-button'
-                        onClick={() => fSettingsOpen(true)}
+                        onClick={() => fSettingsOpen("/settings", true)}
                         >
                         <img src={forwardIcon} alt="forward" id="titlebar-forward" />
                     </button>

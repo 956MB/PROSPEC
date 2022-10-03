@@ -169,6 +169,14 @@
         "lastRefresh": "Viimeinen virkistys: {{insert}}",
         "searchPlaceholder": "Hae"
     },
+    "sidebar": {
+        "settings": "Asetukset",
+        "live": "Löytää pelejä",
+        "players": "Pelaajatietokanta",
+        "history": "Viimeaikaiset pelit",
+        "cq": "Mestarit jono",
+        "favorites": "Suosikit"
+    },
     "tooltips": {
         "playerUnavailable": "{{insert}} ei joko pelissä tai katsoja ei ole käytettävissä",
         "noPlayersLoaded": "Pelaajia ei ladattu",

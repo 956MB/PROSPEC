@@ -1,4 +1,4 @@
-import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ILanguageResource, ILanguageResources, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISummonerAccount } from "./interfaces";
+import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ILanguageResource, ILanguageResources, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISidebarButton, ISummonerAccount } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages, EChangeType } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 import random from 'random'
@@ -419,7 +419,7 @@ export function sItemTitle(page: string, item: string): string { return `setting
 export function sItemDescription(page: string, item: string): string { return `settings.pages.${page}.items.${item}.description` }
 export function pAbout(item: string): string { return `settings.pages.about.${item}` }
 
-// NOTE: Form settings items:
+// NOTE: Form interfaces:
 
 export function FormSettingsPage(index: number, type: string, title: string, items?: ISettingsItems): ISettingsPage {
     return { index: index, type: type, title: sTitle(title), items: items ? items : [] }
@@ -428,12 +428,13 @@ export function FormSettingsPageLang(index: number, type: string, title: string,
     return { index: index, type: type, title: sTitle(title), selected: selected, items: items ? items : [] }
 }
 export function SettingsItemSpacer(): ISettingsItem { return { itemValue: { type: "spacer", value: false } }; }
-export function SettingsItemBoolean(section: string, key: string, value: boolean, children: ISettingsItems | undefined = undefined): ISettingsItem {
+export function SettingsItemBoolean(section: string, key: string, value: boolean, children?: ISettingsItems, secondaryAction?: () => void): ISettingsItem {
     return {
         title: sItemTitle(section, key),
         description: sItemDescription(section, key),
         itemValue: { type: 'boolean', value: value, key: key } as ISettingsItemValueBool,
-        childValues: children
+        childValues: children,
+        secondaryAction: secondaryAction
     }
 }
 export function ItemValueSelection(index: number, section: string, value: string, ignoreTranslation: boolean): ISettingsItemValueSelection {
@@ -462,6 +463,10 @@ export function SettingsEntryChange(version: string, date: string, changes?: IAp
 }
 export function SettingsEntryRelease(type: EChangeType, change: string, issues?: string[]): IAppReleaseChange {
     return { type: type, change: change, issues: issues ? issues : [] } as IAppReleaseChange;
+}
+
+export function FormSidebarButton(title: string, icon: string, page: string, action: () => void, extraClasses?: string): ISidebarButton {
+    return { title: title, icon: icon, page: page, action: action, extraClasses: extraClasses ? extraClasses : "" };
 }
 
 // NOTE: RANDOM:

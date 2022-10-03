@@ -14,14 +14,14 @@ import { Players, PlayersNotLoaded } from "./components/players/Players";
 import { SpectatorContext } from "./context/SpectatorContext";
 import { SettingsContext } from "./context/SettingsContext";
 import { useTranslation } from "react-i18next";
-import SettingsSidebar from "./components/settings/SettingsSidebar";
+import SettingsSidebar from "./components/settings/sidebar/SettingsSidebar";
 import { useInit } from "./imports/initializers";
 
 function App() {
     const navigate = useNavigate();
     const location = useLocation();
     const { i18n } = useTranslation('common');
-    
+
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
     const { useBackground, liveBackground, autoRefresh, randomBackground } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IBackground>({
@@ -32,9 +32,10 @@ function App() {
     const [players, setPlayers] = useState<IPlayers>([]);
     const [playersKey, setPlayersKey] = useState<number>(0);
 
-    const fSettingsOpen = (set?: boolean) => {
-        setSettingsOpen(set ? set : !settingsOpen);
-        navigate(settingsOpen ? '/' : '/settings', {replace: true});
+    const fSettingsOpen = (page: string, open: boolean) => {
+        console.log(page, open);
+        setSettingsOpen(open);
+        navigate(settingsOpen ? '/settings' : page, { replace: true });
     }
 
     const refreshPlayers = () => {
@@ -59,11 +60,12 @@ function App() {
         }
     }
 
+    const getAppBackground = async () => {
+        const randomBG = await getRandomBackground();
+        setAppBG(randomBG);
+    };
+
     useInit(() => {
-        const getAppBackground = async () => {
-            const randomBG = await getRandomBackground();
-            setAppBG(randomBG);
-        };
         if (randomBackground) { getAppBackground(); }
         if (autoRefresh) { refreshPlayers(); }
         if (location.pathname === '/settings') { setSettingsOpen(true); }
@@ -76,8 +78,11 @@ function App() {
                 e.preventDefault();
             }}>
 
-            <SettingsSidebar fSettingsOpen={fSettingsOpen} />
-            <Titlebar fSettingsOpen={fSettingsOpen} fRefreshPlayers={refreshPlayers} />
+            <SettingsSidebar
+                fSettingsOpen={fSettingsOpen} />
+            <Titlebar
+                fSettingsOpen={fSettingsOpen}
+                fRefreshPlayers={refreshPlayers} />
 
             <Routes>
                 <Route path='/' element={
@@ -86,7 +91,9 @@ function App() {
                 } />
 
                 <Route path='/settings' element={
-                    <Settings fSettingsOpen={fSettingsOpen} />
+                    <Settings
+                        fRefreshBackground={getAppBackground}    
+                        fSettingsOpen={fSettingsOpen} />
                 } />
             </Routes>
 

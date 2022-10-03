@@ -169,6 +169,14 @@
         "lastRefresh": "最終更新： {{insert}}",
         "searchPlaceholder": "サーチ"
     },
+    "sidebar": {
+        "settings": "設定",
+        "live": "ゲームを見つけます",
+        "players": "プレーヤーデータベース",
+        "history": "最近のゲーム",
+        "cq": "チャンピオンズキュー",
+        "favorites": "お気に入り"
+    },
     "tooltips": {
         "playerUnavailable": "{{insert}} ゲーム内ではないか、観客は利用できません",
         "noPlayersLoaded": "プレーヤーはロードされていません",

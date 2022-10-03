@@ -169,6 +169,14 @@
         "lastRefresh": "Senaste uppdatering: {{insert}}",
         "searchPlaceholder": "Sök"
     },
+    "sidebar": {
+        "settings": "Inställningar",
+        "live": "Hitta spel",
+        "players": "Speldatabas",
+        "history": "Senaste spel",
+        "cq": "Kammarkö",
+        "favorites": "Favoriter"
+    },
     "tooltips": {
         "playerUnavailable": "{{insert}} är antingen inte i ett spel, eller åskådare är inte tillgänglig",
         "noPlayersLoaded": "Inga spelare laddade",
