@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { appWindow } from '@tauri-apps/api/window';
 import { useTranslation } from "react-i18next";
 import '../css/titlebar.css';
@@ -12,18 +12,20 @@ import { getChampionFromId, included, mapEnum, modeImage, modeType, regionFile, 
 import backwardIcon from '../../assets/icons/chevron.backward.svg';
 import forwardIcon from '../../assets/icons/chevron.forward.svg';
 import refreshIcon from '../../assets/icons/arrow.clockwise.svg';
-
 import minIcon from '../../assets/icons/min.svg';
 import maxIcon from '../../assets/icons/max.svg';
 import closeIcon from '../../assets/icons/close.svg';
 
 import { SpectatorContext } from "../../context/SpectatorContext";
+import TitlebarNavigationButton from './TitlebarNavigationButton';
+import TitlebarControlsButton from './TitlebarControlsButton';
 
 const Titlebar: React.FC<{
     pageState: IPageState,
     fNavigateDirection: (dir: number) => void,
     fRefreshPlayers: () => void
 }> = ({ pageState, fNavigateDirection, fRefreshPlayers }) => {
+    const location = useLocation();
     const navigate = useNavigate();
     const { regionFilter, modeFilter, roleFilter } = useContext(SpectatorContext);
     const { t } = useTranslation('common');
@@ -91,30 +93,21 @@ const Titlebar: React.FC<{
         <div data-tauri-drag-region className="titlebar">
             <div className='titlebar-inner'>
                 <div className='refresh-group'>
-                    <button
-                        className={`titlebar-button refresh-group-button ${(pageState.levels >= 2 && pageState.currentPage >= 1) ? 'active-navigation-button' : null} noselect`}
-                        id='navigation-button'
-                        onClick={() => fNavigateDirection(-1)}
-                        >
-                        <img src={backwardIcon} alt="backward" id="titlebar-back" />
-                    </button>
-                    <button
-                        className={`titlebar-button refresh-group-button ${pageState.currentPage <= pageState.levels-2 ? 'active-navigation-button' : null} noselect`}
-                        id='navigation-button'
-                        onClick={() => fNavigateDirection(1)}
-                        >
-                        <img src={forwardIcon} alt="forward" id="titlebar-forward" />
-                    </button>
+                    <TitlebarNavigationButton buttonIcon={backwardIcon}
+                        buttonClasses={`navigation-button ${(pageState.pages.length >= 2 && pageState.currentPage > 0) ? 'active-navigation-button' : null} nav-back`}
+                        onClick={() => fNavigateDirection(-1)}/>
+                    <TitlebarNavigationButton buttonIcon={forwardIcon}
+                        buttonClasses={`navigation-button ${(pageState.pages.length >= 2 && pageState.currentPage < pageState.pages.length-1) ? 'active-navigation-button' : null} nav-forward`}
+                        onClick={() => fNavigateDirection(1)}/>
 
-                    <div className='titlebar-button-group'>
-                        <button
-                            className="titlebar-button refresh-group-button noselect"
-                            id='refresh-button'
-                            onClick={() => fRefreshPlayers()}>
-                            <img src={refreshIcon} alt="refresh" id="titlebar-refresh" />
-                        </button>
-                        <span className='refresh-text noselect'>{t('titlebar.lastRefresh', {insert: '8:34 PM'})}</span>
-                    </div>
+                    {location.pathname === "/" ?
+                        <div className='titlebar-button-group'>
+                            <TitlebarNavigationButton buttonIcon={refreshIcon}
+                                buttonClasses={`nav-refresh refresh-button`}
+                                onClick={() => fRefreshPlayers()}/>
+                            <span className='refresh-text noselect'>{t('titlebar.lastRefresh', {insert: '8:34 PM'})}</span>
+                        </div>
+                    : null}
 
                     {/* <SearchBar value={inputValue} fOnChange={fInputChange} searchDisabled={settingsOpen} fClearSearch={() => setInputValue("")}/> */}
                 </div>
@@ -122,24 +115,9 @@ const Titlebar: React.FC<{
                 {/* <Options optionsDisabled={settingsOpen} optionsProps={sections} optionsChampProps={sectionsChamp} selectedChamps={selectedChamps} updateSelectedChampions={updateSelectedChampions} /> */}
 
                 <div className='controls-group'>
-                    <button
-                        className="titlebar-controls-button"
-                        id="titlebar-minimize"
-                        onClick={() => appWindow.minimize()}>
-                        <img src={minIcon} alt="minimize" />
-                    </button>
-                    <button
-                        className="titlebar-controls-button"
-                        id="titlebar-maximize"
-                        onClick={() => appWindow.toggleMaximize()}>
-                        <img src={maxIcon} alt="maximize" />
-                    </button>
-                    <button
-                        className="titlebar-controls-button"
-                        id="titlebar-close"
-                        onClick={() => appWindow.close()}>
-                        <img src={closeIcon} alt="close" />
-                    </button>
+                    <TitlebarControlsButton buttonIcon={minIcon} buttonId={"titlebar-minimize"} onClick={() => appWindow.minimize()}/>
+                    <TitlebarControlsButton buttonIcon={maxIcon} buttonId={"titlebar-maximize"} onClick={() => appWindow.toggleMaximize()}/>
+                    <TitlebarControlsButton buttonIcon={closeIcon} buttonId={"titlebar-close"} onClick={() => appWindow.close()}/>
                 </div>
             </div>
         </div>

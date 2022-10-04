@@ -43,6 +43,7 @@ export interface ISettingsStates {
 export interface IBackground {
     type: string;
     name: string;
+    ext: string;
 }
 
 export interface IBackgroundInfo {
@@ -131,7 +132,7 @@ export interface ILanguageResource {
 
 export interface IPageState {
     currentPage: number;
-    levels: number
+    pages: string[]
 }
 
 export interface IMenuOrigin {

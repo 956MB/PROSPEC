@@ -13,17 +13,17 @@ import playersIcon from '../../../assets/icons/person.svg';
 import searchIcon from '../../../assets/icons/search.large.svg';
 
 const SettingsSidebar: React.FC<{
-    fSettingsOpen: (page: string, open: boolean) => void
-}> = ({ fSettingsOpen }) => {
+    fNavigatePage: (page: string) => void
+}> = ({ fNavigatePage }) => {
     const { t } = useTranslation('common');
     const [pagesButtons, setPagesButtons] = useState<ISidebarButtons>([
-        FormSidebarButton("sidebar.live", searchIcon, "/", () => fSettingsOpen("/", false)),
-        FormSidebarButton("sidebar.history", historyIcon, "/history", () => fSettingsOpen("/favorites", false)),
-        FormSidebarButton("sidebar.players", playersIcon, "/players", () => fSettingsOpen("/players", false)),
-        FormSidebarButton("sidebar.cq", trophyIcon, "/champsqueue", () => fSettingsOpen("/champsqueue", false)),
+        FormSidebarButton("sidebar.live", searchIcon, "/", () => fNavigatePage("/")),
+        FormSidebarButton("sidebar.history", historyIcon, "/history", () => fNavigatePage("/favorites")),
+        FormSidebarButton("sidebar.players", playersIcon, "/players", () => fNavigatePage("/players")),
+        FormSidebarButton("sidebar.cq", trophyIcon, "/champsqueue", () => fNavigatePage("/champsqueue")),
     ])
     const [lowerButtons, setLowerButtons] = useState<ISidebarButtons>([
-        FormSidebarButton("sidebar.settings", gearIcon, "/settings", () => fSettingsOpen("/settings", true))
+        FormSidebarButton("sidebar.settings", gearIcon, "/settings", () => fNavigatePage("/settings"))
     ])
 
     return (

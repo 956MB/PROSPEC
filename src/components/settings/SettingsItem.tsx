@@ -1,7 +1,6 @@
 
 import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { t } from "i18next";
 import '../css/settings.css';
 
 import { unull } from "../../imports/utils";

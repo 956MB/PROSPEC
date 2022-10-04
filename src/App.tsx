@@ -25,26 +25,22 @@ function App() {
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
     const { useBackground, liveBackground, autoRefresh, randomBackground } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IBackground>({
-        type: "live", name: "Sona_6"
+        type: "random", name: "W22_Music_Video_Banner_v2", ext: "jpg"
     });
-    const [settingsOpen, setSettingsOpen] = useState<boolean>(false);
     const [playersLoaded, setPlayersLoaded] = useState<boolean>(false);
     const [players, setPlayers] = useState<IPlayers>([]);
     const [playersKey, setPlayersKey] = useState<number>(0);
     
-    const [pageState, setPageState] = useState<IPageState>({ currentPage: 0, levels: 1 });
-    const fNavigateDirection = (dir: number) => {
-        const add = dir == 1 ? 1 : 0;
-        setPageState({ currentPage: pageState.currentPage + dir, levels: pageState.levels + add});
+    const [pageState, setPageState] = useState<IPageState>({ currentPage: 0, pages: ["/"] });
+    const fNavigateDirection = (dir: number, replace: boolean = false) => {
+        setPageState({ currentPage: pageState.currentPage + dir, pages: pageState.pages});
         navigate(dir);
     }
-
-    const fSettingsOpen = (page: string, open: boolean) => {
-        setSettingsOpen(open);
-        navigate(settingsOpen ? '/settings' : page, { replace: false });
-        setPageState({ currentPage: pageState.currentPage + 1, levels: pageState.levels + 1});
-        console.log(page, open, pageState.currentPage, pageState.levels);
+    const fNavigatePage = (page: string) => {
+        setPageState({ currentPage: pageState.currentPage + 1, pages: [...pageState.pages, page]});
+        navigate(page, { replace: false });
     }
+
     const refreshPlayers = () => {
         setPlayersLoaded(false);
         setPlayersKey(playersKey + 1);
@@ -68,28 +64,23 @@ function App() {
     }
 
     const getAppBackground = async () => {
-        const randomBG = await getRandomBackground();
+        const randomBG = await getRandomBackground(appBG);
         setAppBG(randomBG);
     };
     useInit(() => {
         if (randomBackground) { getAppBackground(); }
         if (autoRefresh) { refreshPlayers(); }
-        if (location.pathname === '/settings') { setSettingsOpen(true); }
     });
 
     return (
         <div
-            className={`app ${settingsOpen ? 'settings-open' : null} ${i18n.language}`}
+            className={`app ${i18n.language}`}
             onContextMenu={(e) => {
                 e.preventDefault();
             }}>
 
-            <SettingsSidebar
-                fSettingsOpen={fSettingsOpen} />
-            <Titlebar
-                pageState={pageState}
-                fNavigateDirection={fNavigateDirection}
-                fRefreshPlayers={refreshPlayers} />
+            <SettingsSidebar fNavigatePage={fNavigatePage} />
+            <Titlebar pageState={pageState} fNavigateDirection={fNavigateDirection} fRefreshPlayers={refreshPlayers} />
 
             <Routes>
                 <Route path='/' element={
@@ -98,9 +89,7 @@ function App() {
                 } />
 
                 <Route path='/settings' element={
-                    <Settings
-                        fRefreshBackground={getAppBackground}    
-                        fSettingsOpen={fSettingsOpen} />
+                    <Settings fRefreshBackground={getAppBackground} fNavigatePage={fNavigatePage} />
                 } />
             </Routes>
 
@@ -110,10 +99,10 @@ function App() {
                 liveBackground && appBG.type === "live"
                     ?
                     <video autoPlay muted loop className="app-background-video">
-                        <source src={`src/assets/dragontail/live/${appBG.name}.webm`} type="video/mp4" />
+                        <source src={`src/assets/dragontail/${appBG.type}/${appBG.name}.${appBG.ext}`} type="video/mp4" />
                     </video>
                     :
-                    <div className="app-background" style={{ backgroundImage: `url(src/assets/dragontail/splash/${appBG.name}.jpg)` }}></div>
+                    <div className="app-background" style={{ backgroundImage: `url(src/assets/dragontail/${appBG.type}/${appBG.name}.${appBG.ext})` }}></div>
             }
         </div>
     );

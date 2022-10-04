@@ -20,8 +20,8 @@
     flex-grow: 1;
     width: 100%;
     z-index: 2;
-    padding-left: 65px;
-    /* backdrop-filter: blur(12px); */
+    padding-left: 70px;
+    /* backdrop-filter: blur(8px); */
     /* background-color: #22222296; */
 }
 
@@ -98,15 +98,16 @@
 /* .refresh-group-button img {
     transition: all 0.07s ease;
 } */
-#refresh-button {
-    background-color: rgba(255, 255, 255, 0.03);
+.refresh-button {
+    background-color: rgba(255, 255, 255, 0.03) !important;
 }
 
-#navigation-button {
+.navigation-button {
     pointer-events: none;
     opacity: 0.5;
 }
 .active-navigation-button {
+    cursor: pointer !important;
     opacity: 1.0 !important;
     pointer-events: all !important;
 }
@@ -135,26 +136,23 @@
     padding-left: 8px;
 }
 
-#titlebar-back {
+.nav-back img {
     margin: 1px 2px 0 0;
 }
-#titlebar-forward {
+.nav-forward img {
     margin: 1px 0 0 2px;
 }
-#titlebar-refresh {
+.nav-refresh img {
     margin: 1px 0 0 2px;
 }
 
-.titlebar-button-edge:hover,
-.titlebar-button:hover,
+.active-navigation-button:hover,
 .titlebar-controls-button:hover
 {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.08);
 }
 .titlebar-button:active {
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(4px);
 }
 
 .titlebar-button img {
@@ -167,7 +165,8 @@
     opacity: 0.25;
     user-select: none;
 }
-.titlebar-button:hover img,
+.refresh-button:hover img,
+.active-navigation-button:hover img,
 .titlebar-controls-button:hover img
 {
     opacity: 0.7;

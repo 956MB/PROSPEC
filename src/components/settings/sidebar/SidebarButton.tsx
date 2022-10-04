@@ -15,7 +15,7 @@ const SidebarButton: React.FC<{
     return (
         <div
             className={`sidebar-button ${location.pathname === buttonProps.page ? 'sidebar-button-active' : null} ${ETooltip.TOOLTIP} ${extraClass}`}
-            onClick={() => buttonProps.action(buttonProps.page as string)}
+            onClick={buttonProps.action}
         >
             <img src={buttonProps.icon} alt="gear" />
             <span className={`${ETooltip.RIGHTDELAY} right-far noselect`}>{`${t(buttonProps.title)}`}</span>

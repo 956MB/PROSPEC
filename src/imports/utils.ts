@@ -496,18 +496,21 @@ export function randomActive(): boolean {
 }
 
 export async function getRandomBackground(override?: IBackground): Promise<IBackground> {
-    const bgs = await readDir(`assets/dragontail/splash/`, { dir: BaseDirectory.Resource, recursive: true });
-    let entry = bgs.at(randomNumber(0, bgs.length - 1))?.name;
-    const checkBG = await checkLiveBackground(entry!);
-    const ifLive = checkBG.ext === '.webm';
+    if (!override) {
+        const dir = randomNumber(0, 1) == 0 ? "splash" : "random";
+        const bgs = await readDir(`assets/dragontail/${dir}/`, { dir: BaseDirectory.Resource, recursive: true });
+        let entry = bgs.at(randomNumber(0, bgs.length - 1))?.name;
+        const checkBG = await checkLiveBackground(entry!);
+        const ifLive = checkBG.ext === '.webm';
+    
+        console.log(`DEBUG: Random background selected [\"${checkBG.name}\", live: ${ifLive}]`);
+    
+        let bgType = ifLive ? "live" : dir;
+        let bgName = checkBG.name;
+        let bgExt = checkBG.ext;
 
-    console.log(`DEBUG: Random background selected [\"${checkBG.name}\", live: ${ifLive}]`);
-
-    let primaryType = ifLive ? "live" : "splash";
-    let primaryName = `${checkBG.name}`;
-
-    return {
-        type: override != null ? override.type : primaryType,
-        name: override != null ? override.name : primaryName
+        return { type: bgType, name: bgName, ext: bgExt }
     }
+
+    return { type: override.type, name: override.name, ext: override.ext }
 }

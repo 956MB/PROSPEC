@@ -8,11 +8,25 @@ import { useInit } from '../imports/initializers';
 import * as KR from '../data/players/lck.json';
 
 interface ISpectatorContext {
-    regionFilter: ERegions[], modeFilter: EModes[], roleFilter: ERoles[], groupBy: EGroupBy, accountsLoaded: boolean, allAccounts: ISummonerAccount[]
+    regionFilter: ERegions[];
+    modeFilter: EModes[];
+    roleFilter: ERoles[];
+    groupBy: EGroupBy;
+    accountsLoaded: boolean;
+    allAccounts: ISummonerAccount[];
+    updateFilter: (update: string, newFilter: any[], reset: boolean) => void;
+    updateGroup: (newGroup: EGroupBy) => void;
 }
 
 export const SpectatorContext = createContext<ISpectatorContext>({
-    regionFilter: [], modeFilter: [], roleFilter: [], groupBy: EGroupBy.ROLE, accountsLoaded: false, allAccounts: []
+    regionFilter: [],
+    modeFilter: [],
+    roleFilter: [],
+    groupBy: EGroupBy.ROLE,
+    accountsLoaded: false,
+    allAccounts: [],
+    updateFilter: () => null,
+    updateGroup: () => null,
 })
 
 const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactNode }> = ({ initPlayers, children }) => {
@@ -47,9 +61,27 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
         }
     });
 
+    const updateFilter = (update: string, newFilter: any[], reset: boolean = false): void => {
+        switch (update) {
+            case "region": setRegionFilter(reset ? [] : newFilter as ERegions[]); break;
+            case "mode": setModeFilter(reset ? [] : newFilter as EModes[]); break;
+            case "role": setRoleFilter(reset ? [] : newFilter as ERoles[]); break;
+        }
+    }
+    const updateGroup = (newGroup: EGroupBy): void => {
+        setGroupBy(newGroup);
+    }
+
     return (
         <SpectatorContext.Provider value={{
-            regionFilter, modeFilter, roleFilter, groupBy, accountsLoaded, allAccounts
+            regionFilter,
+            modeFilter,
+            roleFilter,
+            groupBy,
+            accountsLoaded,
+            allAccounts,
+            updateFilter,
+            updateGroup
         }}>
             {children}
         </SpectatorContext.Provider>
