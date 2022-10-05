@@ -18,7 +18,7 @@ const SidebarButton: React.FC<{
             onClick={buttonProps.action}
         >
             <img src={buttonProps.icon} alt="gear" />
-            <span className={`${ETooltip.RIGHTDELAY} right-far noselect`}>{`${t(buttonProps.title)}`}</span>
+            <span className={`${location.pathname === buttonProps.page ? ETooltip.RIGHT : ETooltip.RIGHTDELAY} right-far noselect`}>{`${t(buttonProps.title)}`}</span>
         </div>
     )
 }

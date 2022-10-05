@@ -102,7 +102,6 @@ export enum ESettingsStates {
     REFRESH_INTERVAL = 'refreshInterval',
     SHOW_SUMMONER_IDS = 'showSummonerIds',
     SHOW_RANDOM_SKINS = 'showRandomSkins',
-    USE_CUTOUTS = 'useCutouts',
     SHOW_TEAM_LOGOS = 'showTeamLogos',
     SHOW_UNAVAILABLE = 'showUnavailable',
     APP_THEME = 'appTheme',

@@ -7,14 +7,14 @@ import '../css/titlebar.css';
 import { Options } from '../options';
 import { EAboutSections, EButtonImages, EChampions, EModes, ERegions, ERoles } from '../../imports/typings';
 import { IOptionsButton, IOptionsButtonChamp, IOptionsSections, IOptionsSectionsChamp, IPageState, ISelectedChamps } from '../../imports/interfaces';
-import { getChampionFromId, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap, oMode, oRole, oRegion } from '../../imports/utils';
+import { getChampionFromId, included, mapEnum, modeImage, modeType, regionFile, regionFolder, regionType, roleFile, roleType, sliceMap, oMode, oRole, oRegion, checkNavForward, checkNavBackward } from '../../imports/utils';
 
-import backwardIcon from '../../assets/icons/chevron.backward.svg';
-import forwardIcon from '../../assets/icons/chevron.forward.svg';
-import refreshIcon from '../../assets/icons/arrow.clockwise.svg';
-import minIcon from '../../assets/icons/min.svg';
-import maxIcon from '../../assets/icons/max.svg';
-import closeIcon from '../../assets/icons/close.svg';
+import backwardIcon from '../../assets/icons/UIcons/fi-br-angle-left.svg';
+import forwardIcon from '../../assets/icons/UIcons/fi-br-angle-right.svg';
+import refreshIcon from '../../assets/icons/UIcons/fi-rr-refresh.svg';
+import minIcon from '../../assets/icons/default/minimize-active-light.ico';
+import maxIcon from '../../assets/icons/default/maximize-active-light.ico';
+import closeIcon from '../../assets/icons/UIcons/fi-rs-cross.svg';
 
 import { SpectatorContext } from "../../context/SpectatorContext";
 import TitlebarNavigationButton from './TitlebarNavigationButton';
@@ -94,10 +94,10 @@ const Titlebar: React.FC<{
             <div className='titlebar-inner'>
                 <div className='refresh-group'>
                     <TitlebarNavigationButton buttonIcon={backwardIcon}
-                        buttonClasses={`navigation-button ${(pageState.pages.length >= 2 && pageState.currentPage > 0) ? 'active-navigation-button' : null} nav-back`}
+                        buttonClasses={`navigation-button ${checkNavBackward(pageState) ? 'active-navigation-button' : null} nav-back`}
                         onClick={() => fNavigateDirection(-1)}/>
                     <TitlebarNavigationButton buttonIcon={forwardIcon}
-                        buttonClasses={`navigation-button ${(pageState.pages.length >= 2 && pageState.currentPage < pageState.pages.length-1) ? 'active-navigation-button' : null} nav-forward`}
+                        buttonClasses={`navigation-button ${checkNavForward(pageState) ? 'active-navigation-button' : null} nav-forward`}
                         onClick={() => fNavigateDirection(1)}/>
 
                     {location.pathname === "/" ?

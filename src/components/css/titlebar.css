@@ -76,7 +76,7 @@
     background-color: transparent;
     border: none;
     width: 46px;
-    height: 100%;
+    height: 70%;
     cursor: pointer;
 }
 
@@ -130,7 +130,7 @@
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     height: 100%;
     flex: 1;
     padding-left: 8px;
@@ -143,7 +143,7 @@
     margin: 1px 0 0 2px;
 }
 .nav-refresh img {
-    margin: 1px 0 0 2px;
+    margin: 1px 1px 0 0;
 }
 
 .active-navigation-button:hover,
@@ -164,6 +164,7 @@
 .titlebar-controls-button img {
     opacity: 0.25;
     user-select: none;
+    width: 11px;
 }
 .refresh-button:hover img,
 .active-navigation-button:hover img,
@@ -193,7 +194,7 @@
     background: #E81123 !important;
 }
 #titlebar-close:hover img {
-    opacity: 0.95 !important;
+    opacity: 1.0 !important;
 }
 
 .button-disabled {

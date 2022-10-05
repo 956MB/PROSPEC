@@ -10,7 +10,7 @@ import { SettingsContext } from '../../context/SettingsContext';
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { ELanguages, ESettingsStates } from '../../imports/typings';
 
-import refreshIcon from '../../assets/icons/arrow.clockwise.svg';
+import refreshIcon from '../../assets/icons/UIcons/fi-rr-refresh.svg';
 
 const SettingsItem: React.FC<{
     itemProps: ISettingsItem,

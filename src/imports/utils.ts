@@ -1,9 +1,8 @@
-import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ILanguageResource, ILanguageResources, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISidebarButton, ISummonerAccount } from "./interfaces";
+import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ILanguageResource, ILanguageResources, IPageState, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISidebarButton, ISummonerAccount } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages, EChangeType } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
-import random from 'random'
 
-// const { t } = useTranslation('common');
+import Rand, {PRNG} from 'rand-seed';
 
 export function unull() {
     return () => null
@@ -409,7 +408,24 @@ export function roleType(role: string): string { return (role === ERoles.ANY) ? 
 export function roleFile(role: string): string { return (role === ERoles.ANY) ? '.svg' : '.png'; }
 
 
-// NOTE: TRANSLATION:
+// NOTE: Pages:
+
+export function checkNavBackward(state: IPageState): boolean {
+    return (state.pages.length >= 2 && state.currentPage > 0);
+}
+export function checkNavForward(state: IPageState): boolean {
+    return (state.pages.length >= 2 && state.currentPage < state.pages.length-1);
+}
+export function checkPreviousBack(state: IPageState, newPage: string): boolean {
+    const next = state.currentPage-1;
+    return (next >= 0 && state.pages.at(next) === newPage);
+}
+export function checkPreviousForward(state: IPageState, newPage: string): boolean {
+    const next = state.currentPage+1;
+    return (next <= state.pages.length-1 && state.pages.at(next) === newPage);
+}
+
+// NOTE: Translation:
 
 export function oMode(mode: string): string { return `modes.${mode}` }
 export function oRole(role: string): string { return `roles.${role}` }
@@ -474,6 +490,10 @@ export function FormSidebarButton(title: string, icon: string, page: string, act
 export function randomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+export function randomNumberSeed(champ: string, min: number, max: number): number {
+    const rand = new Rand(champ, PRNG.mulberry32);
+    return Math.floor(rand.next() * (max - min + 1)) + min;
+}
 
 export function randomKDA(): string {
     return `${randomNumber(0, 10)}/${randomNumber(0, 10)}/${randomNumber(0, 10)}`;
@@ -487,6 +507,16 @@ export function randomEnum<T extends object>(useEnum: T, filter: EChampions[]): 
     const randomIndex = Math.floor(Math.random() * enumValues.length)
     const randomEnumValue = enumValues[randomIndex]
     return randomEnumValue;
+}
+
+export async function randomSkin(champ: string): Promise<string> {
+    const champLower = champ.toLowerCase();
+    const all = await readDir(`assets/dragontail/loading/`, { dir: BaseDirectory.Resource, recursive: true });
+    const matching = all.filter(champ => champ.name?.toLowerCase().includes(champLower));
+    const entry = matching.at(randomNumberSeed(champLower, 0, matching.length - 1))?.name;
+    const num = removeExtension(entry ?? `${champ}_0.jpg`).name.split('_').pop();
+    // console.log(champ, num);
+    return num ?? "0";
 }
 
 export function randomActive(): boolean {

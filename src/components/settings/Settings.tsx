@@ -28,9 +28,7 @@ const Settings: React.FC<{
             SettingsItemBoolean('content', ESettingsStates.AUTO_REFRESH, false),
             SettingsItemSpacer(),
             SettingsItemBoolean('content', ESettingsStates.SHOW_SUMMONER_IDS, true),
-            SettingsItemBoolean('content', ESettingsStates.SHOW_RANDOM_SKINS, true, [
-                SettingsItemBoolean('content', ESettingsStates.USE_CUTOUTS, false)
-            ]),
+            SettingsItemBoolean('content', ESettingsStates.SHOW_RANDOM_SKINS, true),
             SettingsItemBoolean('content', ESettingsStates.SHOW_TEAM_LOGOS, false),
             SettingsItemBoolean('content', ESettingsStates.SHOW_UNAVAILABLE, true)
         ])

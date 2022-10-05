@@ -4,10 +4,10 @@ import './App.css';
 
 import Titlebar from './components/titlebar/Titlebar';
 import Settings from "./components/settings/Settings";
-import { IBackground, IPlayers, IPageState } from "./imports/interfaces";
+import { IBackground, IPlayers, IPageState, ISummonerAccount, IPlayer } from "./imports/interfaces";
 
 import { EChampions } from "./imports/typings";
-import { getRegion, randomActive, getRandomBackground, randomEnum, randomNumber } from "./imports/utils";
+import { getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, checkPreviousBack, checkNavForward, checkPreviousForward, randomSkin, getChampionFromId } from "./imports/utils";
 import "./imports/prototypes"
 import { Players, PlayersNotLoaded } from "./components/players/Players";
 
@@ -30,14 +30,16 @@ function App() {
     const [playersLoaded, setPlayersLoaded] = useState<boolean>(false);
     const [players, setPlayers] = useState<IPlayers>([]);
     const [playersKey, setPlayersKey] = useState<number>(0);
-    
+
     const [pageState, setPageState] = useState<IPageState>({ currentPage: 0, pages: ["/"] });
     const fNavigateDirection = (dir: number, replace: boolean = false) => {
-        setPageState({ currentPage: pageState.currentPage + dir, pages: pageState.pages});
+        setPageState({ currentPage: pageState.currentPage + dir, pages: pageState.pages });
         navigate(dir);
     }
     const fNavigatePage = (page: string) => {
-        setPageState({ currentPage: pageState.currentPage + 1, pages: [...pageState.pages, page]});
+        if (checkPreviousBack(pageState, page)) { navigate(-1); return; }
+        if (checkPreviousForward(pageState, page)) { navigate(1); return; }
+        setPageState({ currentPage: pageState.currentPage + 1, pages: [...pageState.pages, page] });
         navigate(page, { replace: false });
     }
 
@@ -47,20 +49,43 @@ function App() {
         setPlayers([]);
 
         if (accountsLoaded) {
-            setPlayers(
-                allAccounts
-                    .filterRegions(regionFilter)
-                    .filterRoles(roleFilter)
-                    .filterRandomize()
-                    .filterUniquePlayers(0, 35)
-                    .map((player, i) => {
-                        return {
-                            id: i, active: randomActive(), champion: randomEnum(EChampions, []), summoner: { accountName: player.accountName, playerName: player.playerName, team: player.team, summonerId: "", summonerPuuid: "", region: player.region, role: player.role, stream: player.stream }, gameInfo: { region: getRegion(player.region).use, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) }
-                        }
-                    })
-            );
-            setPlayersLoaded(true);
+            loopPlayers();
         }
+    }
+
+    const loopPlayers = async () => {
+        let filteredPlayers: IPlayers = await Promise.all(
+            allAccounts
+                .filterRegions(regionFilter).filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 15)
+                .map(async (player, i): Promise<IPlayer> => {
+                    let randomC = getChampionFromId(randomEnum(EChampions, []))!;
+                    return {
+                        id: i,
+                        active: randomActive(),
+                        champion: randomC,
+                        skin: await randomSkin(randomC.name),
+                        summoner: {
+                            accountName: player.accountName,
+                            playerName: player.playerName,
+                            playerImage: player.playerImage,
+                            team: player.team,
+                            summonerId: "",
+                            summonerPuuid: "",
+                            region: player.region,
+                            role: player.role,
+                            stream: player.stream
+                        },
+                        gameInfo: {
+                            region: getRegion(player.region).use,
+                            encryptionKey: "",
+                            gameId: "",
+                            gameTime: randomNumber(60, 1800)
+                        }
+                    }
+                })
+        )
+        setPlayers(filteredPlayers);
+        setPlayersLoaded(true);
     }
 
     const getAppBackground = async () => {

@@ -6,6 +6,7 @@ import { useInit } from '../imports/initializers';
 
 // JSON imports
 import * as KR from '../data/players/lck.json';
+import { formPlayerImage, getTeamFromNumber } from "../imports/utils";
 
 interface ISpectatorContext {
     regionFilter: ERegions[];
@@ -46,7 +47,18 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
                         let account = player.accounts[a];
 
                         if (account.id != undefined || account.puuid != undefined) {
-                            let playerAccountI: ISummonerAccount = { accountName: account.name, playerName: player.player, team: player.team, summonerId: account.id, summonerPuuid: account.puuid, region: account.region, role: player.role, stream: player.stream }
+                            let teamShort = getTeamFromNumber(player.team, true);
+                            let playerAccountI: ISummonerAccount = {
+                                accountName: account.name,
+                                playerName: player.player,
+                                playerImage: formPlayerImage(teamShort, player.player),
+                                team: {short: teamShort, long: getTeamFromNumber(player.team, false)},
+                                summonerId: account.id,
+                                summonerPuuid: account.puuid,
+                                region: account.region,
+                                role: player.role,
+                                stream: player.stream
+                            }
                             setAllAccounts(prevAccounts => [...prevAccounts, playerAccountI]);
                         }
                     }

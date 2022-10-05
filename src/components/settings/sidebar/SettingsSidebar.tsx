@@ -6,11 +6,11 @@ import '../../css/settings.css';
 import { ISidebarButtons } from "../../../imports/interfaces";
 import { FormSidebarButton } from "../../../imports/utils";
 
-import gearIcon from '../../../assets/icons/gear.svg';
-import historyIcon from '../../../assets/icons/clock.arrow.circlepath.svg';
-import trophyIcon from '../../../assets/icons/trophy.svg';
-import playersIcon from '../../../assets/icons/person.svg';
-import searchIcon from '../../../assets/icons/search.large.svg';
+import settingsIcon from '../../../assets/icons/UIcons/fr-rr-settings.svg';
+import historyIcon from '../../../assets/icons/UIcons/fi-rr-time-past.svg';
+import trophyIcon from '../../../assets/icons/UIcons/fi-rr-trophy.svg';
+import playersIcon from '../../../assets/icons/UIcons/fi-rs-user.svg';
+import searchIcon from '../../../assets/icons/UIcons/fi-rr-search.svg';
 
 const SettingsSidebar: React.FC<{
     fNavigatePage: (page: string) => void
@@ -18,12 +18,12 @@ const SettingsSidebar: React.FC<{
     const { t } = useTranslation('common');
     const [pagesButtons, setPagesButtons] = useState<ISidebarButtons>([
         FormSidebarButton("sidebar.live", searchIcon, "/", () => fNavigatePage("/")),
-        FormSidebarButton("sidebar.history", historyIcon, "/history", () => fNavigatePage("/favorites")),
-        FormSidebarButton("sidebar.players", playersIcon, "/players", () => fNavigatePage("/players")),
         FormSidebarButton("sidebar.cq", trophyIcon, "/champsqueue", () => fNavigatePage("/champsqueue")),
+        FormSidebarButton("sidebar.players", playersIcon, "/players", () => fNavigatePage("/players")),
+        FormSidebarButton("sidebar.history", historyIcon, "/history", () => fNavigatePage("/favorites")),
     ])
     const [lowerButtons, setLowerButtons] = useState<ISidebarButtons>([
-        FormSidebarButton("sidebar.settings", gearIcon, "/settings", () => fNavigatePage("/settings"))
+        FormSidebarButton("sidebar.settings", settingsIcon, "/settings", () => fNavigatePage("/settings"))
     ])
 
     return (

@@ -21,7 +21,6 @@ export interface ISettingsStates {
     refreshInterval: number;
     showSummonerIds: boolean;
     showRandomSkins: boolean;
-    useCutouts: boolean;
     showTeamLogos: boolean;
     showUnavailable: boolean;
     appTheme: number;
@@ -63,7 +62,8 @@ export interface IPlayers extends Array<IPlayer>{}
 export interface IPlayer { 
     id: number;
     active: boolean;
-    champion: number;
+    champion: IChampion;
+    skin: string;
     summoner: ISummonerAccount;
     gameInfo: IGameInfo;
 }
@@ -88,12 +88,18 @@ export interface ISummonerAccounts extends Array<ISummonerAccount>{}
 export interface ISummonerAccount {
     accountName: string;
     playerName: string;
-    team: number;
+    playerImage: string;
+    team: ITeamStrings;
     summonerId: string;
     summonerPuuid: string;
     region: string;
     role: string;
     stream: string;
+}
+
+export interface ITeamStrings {
+    short: string;
+    long: string;
 }
 
 export interface IGameInfo {

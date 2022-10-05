@@ -14,7 +14,6 @@ const SS_DEFAULTS = [
     5,      // REFRESH_INTERVAL
     true,   // SHOW_SUMMONER_IDS
     false,  // SHOW_RANDOM_SKINS
-    false,  // USE_CUTOUTS
     false,  // SHOW_TEAM_LOGOS
     true,   // SHOW_UNAVAILABLE
     0,      // APP_THEME
@@ -30,7 +29,7 @@ const SS_DEFAULTS = [
     true,   // NOTIFICATIONS
     0       // APP_LANGUAGE
 ];
-const BOOLS: string[] = [ SS.AUTO_REFRESH, SS.SHOW_SUMMONER_IDS, SS.SHOW_RANDOM_SKINS, SS.USE_CUTOUTS, SS.SHOW_TEAM_LOGOS, SS.SHOW_UNAVAILABLE, SS.OPEN_ON_STARTUP, SS.MINIMIZE_TO_TRAY, SS.HARDWARE_ACCELERATION, SS.ANIMATIONS, SS.USE_BACKGROUND, SS.RANDOM_BACKGROUND, SS.LIVE_BACKGROUND, SS.KEYBOARD_MODE, SS.NOTIFICATIONS ];
+const BOOLS: string[] = [ SS.AUTO_REFRESH, SS.SHOW_SUMMONER_IDS, SS.SHOW_RANDOM_SKINS, SS.SHOW_TEAM_LOGOS, SS.SHOW_UNAVAILABLE, SS.OPEN_ON_STARTUP, SS.MINIMIZE_TO_TRAY, SS.HARDWARE_ACCELERATION, SS.ANIMATIONS, SS.USE_BACKGROUND, SS.RANDOM_BACKGROUND, SS.LIVE_BACKGROUND, SS.KEYBOARD_MODE, SS.NOTIFICATIONS ];
 const NUMS: string[] = [ SS.LIST_LAYOUT, SS.REFRESH_INTERVAL, SS.APP_THEME, SS.APP_SCALE, SS.APP_LANGUAGE ];
 const LANGS = mapEnumKeys(ELanguages);
 
@@ -40,7 +39,6 @@ export const SettingsContext = createContext({
     refreshInterval: 5,
     showSummonerIds: true,
     showRandomSkins: false,
-    useCutouts: false,
     showTeamLogos: false,
     showUnavailable: true,
     appTheme: 0,
@@ -72,7 +70,7 @@ const SettingsProvider: React.FC<{ langs: ILanguageResources, children: React.Re
     const { i18n } = useTranslation('common');
 
     const [state, dispatch] = useReducer(settingsReducer, {
-        listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, useCutouts: false, showTeamLogos: false, showUnavailable: true, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, showAnimations: true, useBackground: false, randomBackground: true, liveBackground: false, keyboardMode: false, notifications: true, appLanguage: 0
+        listLayout: 0, autoRefresh: false, refreshInterval: 5, showSummonerIds: true, showRandomSkins: false, showTeamLogos: false, showUnavailable: true, appTheme: 0, appScale: 0, openOnStartup: false, minimizeToTray: true, hardwareAcceleration: false, showAnimations: true, useBackground: false, randomBackground: true, liveBackground: false, keyboardMode: false, notifications: true, appLanguage: 0
     });
     const [_langs, setLangs] = useState(sortLanguages(langs));
 
@@ -126,7 +124,6 @@ const SettingsProvider: React.FC<{ langs: ILanguageResources, children: React.Re
             refreshInterval: state.refreshInterval,
             showSummonerIds: state.showSummonerIds,
             showRandomSkins: state.showRandomSkins,
-            useCutouts: state.useCutouts,
             showTeamLogos: state.showTeamLogos,
             showUnavailable: state.showUnavailable,
             appTheme: state.appTheme,

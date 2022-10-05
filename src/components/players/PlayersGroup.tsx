@@ -8,6 +8,9 @@ import { SettingsContext } from "../../context/SettingsContext";
 import { getGroupInfoFromKey } from "../../imports/utils";
 import { useInit } from '../../imports/initializers';
 
+import RenderIfVisible from 'react-render-if-visible'
+const CARD_HEIGHT = 213;
+
 const PlayersGroup: React.FC<{
     players: IPlayers,
     groupPos: string,
@@ -49,11 +52,13 @@ const PlayersGroup: React.FC<{
                 {React.Children.toArray(
                     players.map(player => {
                         return (!showUnavailable && !player.active) ? null :
-                            <Card
-                                playerProps={player}
-                                globalTime={globalTime}
-                                menuOpen={menuOpen == player.id}
-                                fHandleMenuOpen={fHandleMenuOpen}></Card>
+                            <RenderIfVisible defaultHeight={CARD_HEIGHT}>
+                                <Card
+                                    playerProps={player}
+                                    globalTime={globalTime}
+                                    menuOpen={menuOpen == player.id}
+                                    fHandleMenuOpen={fHandleMenuOpen}></Card>
+                            </RenderIfVisible>
                     })
                 )}
             </div>
@@ -62,6 +67,4 @@ const PlayersGroup: React.FC<{
 
 }
 
-export {
-    PlayersGroup
-}
+export default PlayersGroup;

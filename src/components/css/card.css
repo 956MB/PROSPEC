@@ -90,16 +90,16 @@
 }
 
 .tv-icon {
-    height: 16px;
-    width: 16px;
+    height: 18px;
+    width: 18px;
 }
 .chart-icon {
     height: 14px;
     width: 15px;
 }
 .arrow-icon {
-    height: 12px;
-    width: 13px;
+    height: 13px;
+    width: 14px;
 }
 .heart-icon {
     height: 16px;
@@ -114,64 +114,64 @@
     transform: scale(1.0);
 }
 .icon-bounce {
-    transform: scale(1.15);
+    transform: scale(1.17);
 }
 
 .tvNormal {
     background-color: var(--menu-icon-normal);
-    mask: url('src/assets/icons/tv.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/tv.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-rr-screen.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-rr-screen.svg') no-repeat center / contain;
 }
 .tvHovered {
     background-color: var(--accent);
-    mask: url('src/assets/icons/tv.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/tv.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-rr-screen.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-rr-screen.svg') no-repeat center / contain;
 }
 .chartNormal {
     background-color: var(--menu-icon-normal);
-    mask: url('src/assets/icons/chart.xyaxis.line.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/chart.xyaxis.line.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-br-stats.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-br-stats.svg') no-repeat center / contain;
 }
 .chartHovered {
     background-color: var(--accent);
-    mask: url('src/assets/icons/chart.xyaxis.line.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/chart.xyaxis.line.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-br-stats.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-br-stats.svg') no-repeat center / contain;
 }
 .arrowNormal {
     background-color: var(--menu-icon-normal);
-    mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-rr-arrow.up.right.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-rr-arrow.up.right.svg') no-repeat center / contain;
 }
 .arrowHovered {
     background-color: var(--accent);
-    mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-rr-arrow.up.right.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-rr-arrow.up.right.svg') no-repeat center / contain;
 }
 .arrowDisabled {
     background-color: var(--menu-icon-disabled);
-    mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/arrow.up.right.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-rr-arrow.up.right.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-rr-arrow.up.right.svg') no-repeat center / contain;
 }
 .heartFavorited {
     background-color: var(--accent-favorite);
-    mask: url('src/assets/icons/heart.fill.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/heart.fill.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-rr-heart.fill.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-rr-heart.fill.svg') no-repeat center / contain;
 }
 .heartUnfavorited {
     background-color: var(--menu-icon-normal);
-    mask: url('src/assets/icons/heart.svg') no-repeat center / contain;
-    -webkit-mask: url('src/assets/icons/heart.svg') no-repeat center / contain;
+    mask: url('src/assets/icons/UIcons/fi-rr-heart.svg') no-repeat center / contain;
+    -webkit-mask: url('src/assets/icons/UIcons/fi-rr-heart.svg') no-repeat center / contain;
 }
 
 .menu-icon-container {
     display: flex;
     position: relative;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     width: 36px;
     height: 30px;
     border-radius: 0;
-    padding: 0 2px 0 12px;
+    padding: 0 8px 0 12px;
 
 }
 
@@ -300,7 +300,8 @@
 .player-card-clicked .card-image,
 .player-card:hover .card-image
 {
-    filter: grayscale(1) brightness(1.1) opacity(0.55) !important;
+    opacity: 0.65;
+    filter: grayscale(0) brightness(1.1) opacity(1.0) !important;
 }
 .card-unavailable:hover {
     background-color: rgba(25, 25, 25, 0.65);

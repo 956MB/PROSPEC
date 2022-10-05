@@ -137,7 +137,7 @@
     margin-bottom: 14px !important;
 }
 .sidebar-button-active {
-    background-color: rgb(69, 69, 69);
+    background-color: rgb(70, 70, 70);
 }
 .sidebar-button-active img {
     opacity: 0.60 !important;
@@ -1216,7 +1216,7 @@
     padding: 0 0 0 1px;
     background-color: rgba(255, 255, 255, 0.03) !important;
 }.settings-secondary-action img {
-    margin: 1px 0 0 1px;
+    margin: 1px 1px 0 0;
 }
 .settings-secondary-action:hover
 {
