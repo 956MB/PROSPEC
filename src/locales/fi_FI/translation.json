@@ -27,6 +27,26 @@
         "support": "Tuki",
         "top": "Ylhäältä"
     },
+    "cq": {
+        "pages": {
+            "streams": {
+                "title": "Virrat"
+            },
+            "leaderboards": {
+                "title": "Tulostaulut",
+                "controls": {
+                    "rank": "SIJOITUS",
+                    "lp": "LP",
+                    "name": "NIMI",
+                    "socials": "SOSIAALIT"
+                }
+            },
+            "matches": {
+                "title": "Ottelut"
+            }
+        },
+        "title": "Mestarit jono"
+    },
     "settings": {
         "pages": {
             "shortcuts": {
@@ -167,7 +187,9 @@
     },
     "titlebar": {
         "lastRefresh": "Viimeinen virkistys: {{insert}}",
-        "searchPlaceholder": "Hae"
+        "searchPlaceholder": "Hae",
+        "searchSettingsPlaceholder": "Hakuasetukset",
+        "searchPlayersPlaceholder": "Hakupelaajat"
     },
     "sidebar": {
         "settings": "Asetukset",

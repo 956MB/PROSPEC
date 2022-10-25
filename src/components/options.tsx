@@ -6,8 +6,8 @@ import { IOptionsSection, IOptionsSections, IOptionsSectionChamp, IOptionsSectio
 import { EButtonImages, EEMessages, ETooltip } from '../imports/typings';
 import { getChampionFromId } from '../imports/utils';
 
-import closeIcon from '../assets/icons/close.svg';
 import { useTranslation } from 'react-i18next';
+import { closeIcon } from '../imports/icons';
 
 const Options: React.FC<{
     optionsDisabled: boolean,

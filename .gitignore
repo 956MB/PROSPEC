@@ -142,3 +142,4 @@ src-tauri/target/*
 /src/locale/prospec.babel
 *.psd
 profiling
+.fleet

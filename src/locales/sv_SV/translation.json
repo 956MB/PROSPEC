@@ -27,6 +27,26 @@
         "support": "Stöd",
         "top": "Topp"
     },
+    "cq": {
+        "pages": {
+            "streams": {
+                "title": "Bäckar"
+            },
+            "leaderboards": {
+                "title": "Topplistor",
+                "controls": {
+                    "rank": "RANG",
+                    "lp": "LP",
+                    "name": "NAMN",
+                    "socials": "SOCIALA"
+                }
+            },
+            "matches": {
+                "title": "Tändstickor"
+            }
+        },
+        "title": "Kammarkö"
+    },
     "settings": {
         "pages": {
             "shortcuts": {
@@ -167,7 +187,9 @@
     },
     "titlebar": {
         "lastRefresh": "Senaste uppdatering: {{insert}}",
-        "searchPlaceholder": "Sök"
+        "searchPlaceholder": "Sök",
+        "searchSettingsPlaceholder": "Sökinställningar",
+        "searchPlayersPlaceholder": "Sökspelare"
     },
     "sidebar": {
         "settings": "Inställningar",

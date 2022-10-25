@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
-import { ETooltip } from '../../../imports/typings';
-import '../../css/settings.css';
+import { ETooltip } from '../../imports/typings';
+import '../css/settings.css';
 
-import { ISidebarButton } from "../../../imports/interfaces";
+import { ISidebarButton } from "../../imports/interfaces";
 
 const SidebarButton: React.FC<{
     extraClass: string,

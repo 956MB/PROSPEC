@@ -295,6 +295,22 @@ export interface IAppReleaseChange {
     issues: string[];
 }
 
+// NOTE: Champions queue
+
+export interface ICQPages extends Array<ICQPage>{}
+export interface ICQPage {
+    index: number;
+    title: string;
+    url?: string;
+}
+
+export interface ICQLeaderboardEntries extends Array<ICQLeaderboardEntry>{}
+export interface ICQLeaderboardEntry {
+    rank: number;
+    lp: number;
+    playerInfo: ISummonerAccount;
+}
+
 // NOTE: JSON
 
 export  interface IJSONPlayers {

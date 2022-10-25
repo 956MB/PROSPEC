@@ -2,16 +2,14 @@ import React, { useState, useReducer, useContext } from 'react';
 import '../css/card.css';
 import { useDetectClickOutside } from 'react-detect-click-outside';
 
-import { formPlayerImage, getChampionFromId, getTeamFromNumber, secondsToTime, randomNumber, randomSkin } from '../../imports/utils';
+import { secondsToTime, randomNumber } from '../../imports/utils';
 import { IMenuOrigin, IPlayer, ICardStates, IReducerAction } from '../../imports/interfaces';
 
 import { EButtonImages, EEMessages, ECardReducerStates, ETooltip } from '../../imports/typings';
 import { useTranslation } from 'react-i18next';
 import { SettingsContext } from '../../context/SettingsContext';
 
-import dragIcon from '../../assets/icons/dots.svg';
 import { CardMenu } from './CardMenu';
-import { useInit } from '../../imports/initializers';
 
 const cardReducer = (state: ICardStates, action: IReducerAction): ICardStates => {
     switch (action.type) {
@@ -36,7 +34,13 @@ const Card: React.FC<{
     const [champ, setChamp] = useState<string>(playerProps.champion.name);
     const [glow, setGlow] = useState<string>(playerProps.champion.color);
 
-    const [state, dispatch] = useReducer(cardReducer, { level: randomNumber(30, 500), gameTime: playerProps.gameInfo.gameTime, backgroundDir: "loading", menuOrigin: { x: 0, y: 0 }, cardPressed: false })
+    const [state, dispatch] = useReducer(cardReducer, {
+        level: randomNumber(30, 500),
+        gameTime: playerProps.gameInfo.gameTime,
+        backgroundDir: "loading",
+        menuOrigin: { x: 0, y: 0 },
+        cardPressed: false
+    })
 
     const toggleMenuClosed = (e: any) => {
         e.stopPropagation();
@@ -86,7 +90,12 @@ const Card: React.FC<{
                 <span className='game-timer-text'>{`${secondsToTime(state.gameTime + globalTime)}`}</span>
                 {/* <img src={dragIcon} alt="drag" className='card-drag noselect' /> */}
                 {/* <div className='blur-small'></div> */}
-                <div className={state.backgroundDir === "loading" ? 'card-image' : 'card-image-cutout'} style={{ backgroundImage: `url(src/assets/dragontail/${state.backgroundDir}/${champ}${state.backgroundDir === "loading" ? `_${showRandomSkins ? playerProps.skin : 0}.jpg` : '.png'})` }}></div>
+                <div
+                    className={state.backgroundDir === "loading" ? 'card-image' : 'card-image-cutout'}
+                    style={{
+                        backgroundImage: `url(src/assets/dragontail/${state.backgroundDir}/${champ}${
+                            state.backgroundDir === "loading" ? `_${showRandomSkins ? playerProps.skin : 0}.jpg` : '.png'})`
+                    }}></div>
 
                 <div className='card-content'>
                     <div className='text-container'>

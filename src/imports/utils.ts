@@ -1,16 +1,13 @@
-import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ILanguageResource, ILanguageResources, IPageState, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISettingsSectionEntryChange, ISidebarButton, ISummonerAccount } from "./interfaces";
-import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, ELanguages, EChangeType } from "./typings";
+import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ICQLeaderboardEntry, ICQPage, ILanguageResources, IPageState, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISidebarButton, ISummonerAccount } from "./interfaces";
+import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, EChangeType } from "./typings";
 import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
 
 import Rand, {PRNG} from 'rand-seed';
 
-export function unull() {
-    return () => null
-}
-
-export function ending(sec: number, _true: string): string | null {
-    return sec >= 1800 ? _true : null
-}
+export function unull() { return () => null }
+export function ending(sec: number, _true: string): string | null { return sec >= 1800 ? _true : null }
+export function isEven(num: number) { return num % 2 == 0; }
+export function isOdd(num: number) { return Math.abs(num % 2) == 1; }
 
 function escapeRegExp(str: string) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -22,13 +19,10 @@ function removeExtension(file: string): IBackgroundInfo {
 }
 
 export function secondsToTime(secs: number): string {
-    let hours = Math.floor(secs / (60 * 60));
-
-    let divisor_for_minutes = secs % (60 * 60);
-    let minutes = Math.floor(divisor_for_minutes / 60);
-
-    let divisor_for_seconds = divisor_for_minutes % 60;
-    let seconds = Math.ceil(divisor_for_seconds);
+    let dminutes = secs % (60 * 60);
+    let minutes = Math.floor(dminutes / 60);
+    let dseconds = dminutes % 60;
+    let seconds = Math.ceil(dseconds);
 
     return `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 }
@@ -52,16 +46,6 @@ export function replaceIssueTag(text: string): string {
         return rep;
     }
     return text;
-}
-
-export async function checkCutout(champ: string): Promise<string> {
-    return "loading";
-    const cutouts = await readDir(`assets/dragontail/cutouts/`, { dir: BaseDirectory.Resource, recursive: true });
-
-    for (const entry of cutouts) {
-        if (entry.name === `${champ}.png`) { return "cutouts"; }
-    }
-    return "loading";
 }
 
 export async function checkLiveBackground(champ: string): Promise<IBackgroundInfo> {
@@ -122,7 +106,7 @@ export function getGroupInfoFromKey(key: any): IPlayerGroupInfo {
         return { type: EGroupBy.NONE, image: "", text: ""};
     }
     if (Object.values(ERoles).includes(key as ERoles)) {
-        return { type: "icon", image: `icons/${key as string}.png`, text: key as string};
+        return { type: "icon", image: `icons/lanes/${key as string}.png`, text: key as string};
     }
 
     const keys = Object.keys(ETeams).filter(k => typeof ETeams[k as any] === "number");
@@ -410,6 +394,8 @@ export function roleFile(role: string): string { return (role === ERoles.ANY) ? 
 
 // NOTE: Pages:
 
+export function isPageActive(current: number, page: number): boolean { return current == page; }
+
 export function checkNavBackward(state: IPageState): boolean {
     return (state.pages.length >= 2 && state.currentPage > 0);
 }
@@ -434,6 +420,8 @@ export function sTitle(page: string): string { return `settings.pages.${page}.ti
 export function sItemTitle(page: string, item: string): string { return `settings.pages.${page}.items.${item}.title` }
 export function sItemDescription(page: string, item: string): string { return `settings.pages.${page}.items.${item}.description` }
 export function pAbout(item: string): string { return `settings.pages.about.${item}` }
+export function cqTitle(page: string): string { return `cq.pages.${page}.title` }
+export function cqControls(item: string): string { return `cq.pages.leaderboards.controls.${item}` }
 
 // NOTE: Form interfaces:
 
@@ -485,6 +473,13 @@ export function FormSidebarButton(title: string, icon: string, page: string, act
     return { title: title, icon: icon, page: page, action: action };
 }
 
+export function FormCQPage(index: number, title: string, url?: string): ICQPage {
+    return { index: index, title: cqTitle(title), url: url ? url : "" }
+}
+export function FormCQLeaderboardEntry(rank: number, lp: number, player: ISummonerAccount): ICQLeaderboardEntry {
+    return { rank: rank, lp: lp, playerInfo: player };
+}
+
 // NOTE: RANDOM:
 
 export function randomNumber(min: number, max: number): number {
@@ -502,7 +497,6 @@ export function randomKDA(): string {
 export function randomEnum<T extends object>(useEnum: T, filter: EChampions[]): T[keyof T] {
     const enumValues = Object.keys(useEnum)
         .map(n => Number.parseInt(n))
-        // .filter(n => (filter.length >= 1) ? filter.includes(n) : false)
         .filter(n => !Number.isNaN(n)) as unknown as T[keyof T][]
     const randomIndex = Math.floor(Math.random() * enumValues.length)
     const randomEnumValue = enumValues[randomIndex]
@@ -515,7 +509,6 @@ export async function randomSkin(champ: string): Promise<string> {
     const matching = all.filter(champ => champ.name?.toLowerCase().includes(champLower));
     const entry = matching.at(randomNumberSeed(champLower, 0, matching.length - 1))?.name;
     const num = removeExtension(entry ?? `${champ}_0.jpg`).name.split('_').pop();
-    // console.log(champ, num);
     return num ?? "0";
 }
 

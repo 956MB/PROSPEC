@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import parse from 'html-react-parser';
+import '../css/settings.css';
 
 import { firstLastClass, pAbout, replaceIssueTag } from "../../imports/utils";
 import { ISettingsSectionEntry, ISettingsSectionEntryPackage, ISettingsSectionEntryChange } from "../../imports/interfaces";
-import '../css/settings.css';
 import { EChangeType } from "../../imports/typings";
+import { downIcon } from "../../imports/icons";
 
 const SettingsSectionEntryCredit: React.FC<{
     positionClass: string,
@@ -36,7 +37,7 @@ const SettingsSectionEntryChange: React.FC<{
                 onClick={() => setEntryOpen(!entryOpen)}
             >
                 
-                <img src={`src/assets/icons/chevron.down.svg`} alt="" className='settings-about-section-entry-chevron value-right noselect' />
+                <img src={downIcon} alt="" className='settings-about-section-entry-chevron value-right noselect' />
                 {/* TODO: May need to calculate container size if verison numbers are eventually too long */}
                 <div className={`entry-change-version-container`}>
                     <span className="settings-about-section-entry-version-change noselect">{sectionEntry.version}</span>
@@ -81,7 +82,7 @@ const SettingsSectionEntryPackage: React.FC<{
                 className={`settings-about-entry-inner`}
                 onClick={() => setEntryOpen(!entryOpen)}
             >
-                <img src={`src/assets/icons/chevron.down.svg`} alt="" className='settings-about-section-entry-chevron value-right noselect' />
+                <img src={downIcon} alt="" className='settings-about-section-entry-chevron value-right noselect' />
                 <span className="settings-about-section-entry-name-package noselect">{sectionEntry.name}</span>
                 <span className="settings-about-section-entry-verison-package noselect">{`${sectionEntry.version}`}</span>
             </div>

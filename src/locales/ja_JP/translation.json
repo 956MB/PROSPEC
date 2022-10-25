@@ -27,6 +27,26 @@
         "support": "サポート",
         "top": "上"
     },
+    "cq": {
+        "pages": {
+            "streams": {
+                "title": "ストリーム"
+            },
+            "leaderboards": {
+                "title": "リーダーボード",
+                "controls": {
+                    "rank": "スプリットランク",
+                    "lp": "LP",
+                    "name": "名前",
+                    "socials": "社会"
+                }
+            },
+            "matches": {
+                "title": "マッチ"
+            }
+        },
+        "title": "チャンピオンズキュー"
+    },
     "settings": {
         "pages": {
             "shortcuts": {
@@ -167,7 +187,9 @@
     },
     "titlebar": {
         "lastRefresh": "最終更新： {{insert}}",
-        "searchPlaceholder": "サーチ"
+        "searchPlaceholder": "探す",
+        "searchSettingsPlaceholder": "設定を検索します",
+        "searchPlayersPlaceholder": "プレイヤーを検索します"
     },
     "sidebar": {
         "settings": "設定",

@@ -129,12 +129,19 @@ export enum EEMessages {
 
 // NOTE: LOL:
 
+export enum ECQData {
+    URL = 'https://d1fodqbtqsx6d3.cloudfront.net/${DATA}.json',
+    MATCHES = 'matches',
+    LEADERBOARDS = 'leaderboards'
+}
+
 export enum ELeagues {
     LCK = 'LCK',
     LPL = 'LPL',
     LCS = 'LCS',
     LJL = 'LJL',
     LLA = 'LLA',
+    LEC = 'LEC',
 }
 
 export enum ETeams {

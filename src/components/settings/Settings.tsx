@@ -3,16 +3,14 @@ import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion"
 
 import '../css/settings.css';
-import { ESettingsStates, ELanguages } from '../../imports/typings';
-import { ISettingsItemValueLanguage, ISettingsPages, ISettingsPageLanguage, ISettingsItems } from '../../imports/interfaces';
-import { mapEnum, getLanguageStatic, SettingsItemBoolean, SettingsItemSpacer, SettingsItemSelector, FormSettingsPage, FormSettingsPageLang } from '../../imports/utils';
+import { ESettingsStates } from '../../imports/typings';
+import { ISettingsItemValueLanguage, ISettingsPages } from '../../imports/interfaces';
+import { SettingsItemBoolean, SettingsItemSpacer, SettingsItemSelector, FormSettingsPage, FormSettingsPageLang, isPageActive } from '../../imports/utils';
 
 import { SettingsContext } from "../../context/SettingsContext";
 
 import { SettingsPage, SettingsPageButton } from './SettingsPage';
 import { SettingsPageAbout } from './SettingsPageAbout';
-import { getFixedT } from 'i18next';
-import { useInit } from '../../imports/initializers';
 
 const Settings: React.FC<{
     fRefreshBackground: () => void,
@@ -89,13 +87,7 @@ const SettingsInner: React.FC<{
 }> = ({ pagesProps }) => {
     const { t } = useTranslation('common');
     const [pageActive, setPageActive] = useState<number>(0);
-
-    const isActive = (page: number): boolean => {
-        return pageActive == page;
-    }
-    const FPageSwitch = (active: number) => {
-        setPageActive(active);
-    }
+    const FPageSwitch = (active: number) => { setPageActive(active); }
 
     return (
         <div className={`settings-inner`} >
@@ -107,7 +99,10 @@ const SettingsInner: React.FC<{
                     <div className='settings-page-button-container'>
                         {React.Children.toArray(
                             pagesProps.map((page, i) => (
-                                <SettingsPageButton key={page.index} pageActive={isActive(page.index)} buttonProps={{ index: page.index, text: page.title }} FPageSwitch={FPageSwitch} />
+                                <SettingsPageButton
+                                    pageActive={isPageActive(pageActive, i)}
+                                    buttonProps={{ index: page.index, text: page.title }}
+                                    FPageSwitch={FPageSwitch} />
                             ))
                         )}
                     </div>
@@ -119,9 +114,9 @@ const SettingsInner: React.FC<{
                         pagesProps.map((page, i) => (
                             page.type === 'about'
                                 ?
-                                <SettingsPageAbout pageActive={isActive(i)} />
+                                <SettingsPageAbout pageActive={isPageActive(pageActive, i)} />
                                 :
-                                <SettingsPage key={page.index} pageProps={page} pageActive={isActive(i)} />
+                                <SettingsPage pageProps={page} pageActive={isPageActive(pageActive, i)} />
                         ))
                     )}
                 </div>

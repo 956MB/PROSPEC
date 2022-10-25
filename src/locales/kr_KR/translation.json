@@ -27,6 +27,26 @@
         "support": "지원하다",
         "top": "맨 위"
     },
+    "cq": {
+        "pages": {
+            "streams": {
+                "title": "스트림"
+            },
+            "leaderboards": {
+                "title": "리더 보드",
+                "controls": {
+                    "rank": "분할 순위",
+                    "lp": "LP",
+                    "name": "이름",
+                    "socials": "소셜"
+                }
+            },
+            "matches": {
+                "title": "성냥"
+            }
+        },
+        "title": "챔피언 큐"
+    },
     "settings": {
         "pages": {
             "shortcuts": {
@@ -166,7 +186,9 @@
     },
     "titlebar": {
         "lastRefresh": "마지막 새로 고침: {{insert}}",
-        "searchPlaceholder": "수색"
+        "searchPlaceholder": "검색",
+        "searchSettingsPlaceholder": "검색 설정",
+        "searchPlayersPlaceholder": "검색 플레이어"
     },
     "sidebar": {
         "settings": "설정",

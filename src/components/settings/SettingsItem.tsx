@@ -9,8 +9,7 @@ import { useInit } from '../../imports/initializers';
 import { SettingsContext } from '../../context/SettingsContext';
 import { useDetectClickOutside } from "react-detect-click-outside";
 import { ELanguages, ESettingsStates } from '../../imports/typings';
-
-import refreshIcon from '../../assets/icons/UIcons/fi-rr-refresh.svg';
+import { downIcon, refreshIcon } from "../../imports/icons";
 
 const SettingsItem: React.FC<{
     itemProps: ISettingsItem,
@@ -210,7 +209,7 @@ const SettingsItemSelector: React.FC<{
         >
             <div className={`item-value-selector`} onClick={() => setSelectorOpen(!selectorOpen)}>
                 <span className={`value-text noselect`}>{t(selectorProps.options[selectorValue].text)}</span>
-                <img src={`src/assets/icons/chevron.down.svg`} alt="" className='value-right' />
+                <img src={downIcon} alt="" className='value-right' />
             </div>
 
             {!selectorOpen ? null :

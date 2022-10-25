@@ -2,12 +2,14 @@
     "compilerOptions": {
         "outDir": "./build/",
         "baseUrl": "./",
-        "target": "ES2022",
+        "target": "ESNext",
         "module": "ESNext",
         "useDefineForClassFields": true,
         "lib": [
             "DOM",
             "DOM.Iterable",
+            "ES2017",
+            "ES2019",
             "ESNext"
         ],
         "allowJs": true,
@@ -26,6 +28,7 @@
         "src/**/*.ts",
         "src/**/*.tsx"
     ],
+    "files": ["./src/types.d.ts"],
     "references": [
         {
             "path": "./tsconfig.node.json"

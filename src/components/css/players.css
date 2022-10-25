@@ -34,6 +34,8 @@
     -o-transition: all 0.15s ease;  
     -ms-transition: all 0.15s ease;
     transition: all 0.15s ease;
+    /* background-color: rgb(50, 50, 50); */
+    margin-bottom: 10px;
 }
 
 .group-sidebar {

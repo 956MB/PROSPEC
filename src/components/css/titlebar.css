@@ -1,6 +1,6 @@
 :root {
-    --searchbar-normal: rgba(50, 50, 50, 0.60);
-    --searchbar-focus: rgba(50, 50, 50, 0.75);
+    --searchbar-normal: rgba(255, 255, 255, 0.03);
+    --searchbar-focus: rgba(255, 255, 255, 0.20);
 }
 
 .titlebar {
@@ -63,7 +63,7 @@
     background: rgba(255, 255, 255, 0.03);
     border-radius: 15px;
     height: 30px;
-    padding: 0 13px 0 0;
+    padding: 0 14px 0 0;
     margin: 0 0 0 4px;
     backdrop-filter: blur(12px);
 }
@@ -162,7 +162,7 @@
     /* background-color: #e8112359; */
 }
 .titlebar-controls-button img {
-    opacity: 0.25;
+    opacity: 0.70;
     user-select: none;
     width: 11px;
 }
@@ -170,7 +170,7 @@
 .active-navigation-button:hover img,
 .titlebar-controls-button:hover img
 {
-    opacity: 0.7;
+    opacity: 0.70;
 }
 
 .titlebar-button-edge-left {
@@ -219,10 +219,10 @@
 
 .search-bar {
     margin-right: 7px;
-    margin-left: 4px;
+    margin-left: 8px;
     float: right;
     position: relative;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(12px);
 }
 
 .search-bar-active input[type=text] {

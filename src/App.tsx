@@ -1,21 +1,22 @@
-import React, { Suspense, useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useState } from "react";
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 
 import Titlebar from './components/titlebar/Titlebar';
 import Settings from "./components/settings/Settings";
-import { IBackground, IPlayers, IPageState, ISummonerAccount, IPlayer } from "./imports/interfaces";
+import { IBackground, IPlayers, IPageState, IPlayer } from "./imports/interfaces";
 
 import { EChampions } from "./imports/typings";
-import { getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, checkPreviousBack, checkNavForward, checkPreviousForward, randomSkin, getChampionFromId } from "./imports/utils";
+import { getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, checkPreviousBack, checkPreviousForward, randomSkin, getChampionFromId } from "./imports/utils";
 import "./imports/prototypes"
 import { Players, PlayersNotLoaded } from "./components/players/Players";
 
 import { SpectatorContext } from "./context/SpectatorContext";
 import { SettingsContext } from "./context/SettingsContext";
 import { useTranslation } from "react-i18next";
-import SettingsSidebar from "./components/settings/sidebar/SettingsSidebar";
+import Sidebar from "./components/sidebar/Sidebar";
 import { useInit } from "./imports/initializers";
+import { ChampionsQueue } from "./components/cq/ChampionsQueue";
 
 function App() {
     const navigate = useNavigate();
@@ -56,7 +57,7 @@ function App() {
     const loopPlayers = async () => {
         let filteredPlayers: IPlayers = await Promise.all(
             allAccounts
-                .filterRegions(regionFilter).filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 15)
+                .filterRegions(regionFilter).filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 5)
                 .map(async (player, i): Promise<IPlayer> => {
                     let randomC = getChampionFromId(randomEnum(EChampions, []))!;
                     return {
@@ -104,15 +105,16 @@ function App() {
                 e.preventDefault();
             }}>
 
-            <SettingsSidebar fNavigatePage={fNavigatePage} />
+            <Sidebar fNavigatePage={fNavigatePage} />
             <Titlebar pageState={pageState} fNavigateDirection={fNavigateDirection} fRefreshPlayers={refreshPlayers} />
 
             <Routes>
                 <Route path='/' element={
-                    playersLoaded ?
-                        <Players key={playersKey} players={players} /> : null
+                    playersLoaded ? <Players key={playersKey} players={players} /> : null
                 } />
-
+                <Route path='/champsqueue' element={
+                    <ChampionsQueue/>
+                } />
                 <Route path='/settings' element={
                     <Settings fRefreshBackground={getAppBackground} fNavigatePage={fNavigatePage} />
                 } />

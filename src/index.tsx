@@ -1,4 +1,3 @@
-import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom';
 import App from './App'
@@ -7,7 +6,7 @@ import './index.css'
 import SpectatorProvider from "./context/SpectatorContext";
 import SettingsProvider from "./context/SettingsContext";
 
-import { I18nextProvider, initReactI18next } from "react-i18next";
+import { I18nextProvider } from "react-i18next";
 import i18next from "i18next";
 import backend from "i18next-http-backend";
 import * as locales from './locales/locales'

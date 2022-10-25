@@ -27,6 +27,26 @@
 		"support": "Support",
 		"top": "Top"
 	},
+    "cq": {
+        "pages": {
+            "streams": {
+                "title": "Streams"
+            },
+            "leaderboards": {
+                "title": "Leaderboards",
+                "controls": {
+                    "rank": "SPLIT RANK",
+                    "lp": "LP",
+                    "name": "NAME",
+                    "socials": "SOCIALS"
+                }
+            },
+            "matches": {
+                "title": "Matches"
+            }
+        },
+        "title": "Champions Queue"
+    },
 	"settings": {
 		"pages": {
 			"about": {
@@ -153,7 +173,9 @@
 	},
 	"titlebar": {
 		"lastRefresh": "Last refresh: {{insert}}",
-		"searchPlaceholder": "Search"
+        "searchPlaceholder": "Search",
+        "searchSettingsPlaceholder": "Search settings",
+        "searchPlayersPlaceholder": "Search players"
 	},
     "sidebar": {
         "settings": "Settings",
