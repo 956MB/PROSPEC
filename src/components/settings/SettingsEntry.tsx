@@ -24,11 +24,12 @@ const SettingsSectionEntryCredit: React.FC<{
 }
 
 const SettingsSectionEntryChange: React.FC<{
+    index: number,
     positionClass: string,
     sectionEntry: ISettingsSectionEntryChange
-}> = ({ positionClass, sectionEntry }) => {
+}> = ({ index, positionClass, sectionEntry }) => {
     const [t] = useTranslation('common');
-    const [entryOpen, setEntryOpen] = useState<boolean>(false);
+    const [entryOpen, setEntryOpen] = useState<boolean>(index == 0);
 
     return (
         <div className={`settings-about-section-entry-change ${entryOpen ? 'entry-open' : null} ${positionClass} margin-lr-18`}>

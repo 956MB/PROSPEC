@@ -24,10 +24,10 @@ const cardReducer = (state: ICardStates, action: IReducerAction): ICardStates =>
 
 const Card: React.FC<{
     playerProps: IPlayer,
-    globalTime: number,
+    globalInterval: number,
     menuOpen: boolean,
     fHandleMenuOpen: (set: number) => void
-}> = ({ playerProps, globalTime, menuOpen, fHandleMenuOpen }) => {
+}> = ({ playerProps, globalInterval, menuOpen, fHandleMenuOpen }) => {
     const { t } = useTranslation('common');
     const { showSummonerIds, showRandomSkins } = useContext(SettingsContext);
     const [playerFavorited, setPlayerFavorited] = useState<boolean>(false);
@@ -37,7 +37,7 @@ const Card: React.FC<{
     const [state, dispatch] = useReducer(cardReducer, {
         level: randomNumber(30, 500),
         gameTime: playerProps.gameInfo.gameTime,
-        backgroundDir: "loading",
+        backgroundDir: "centered",
         menuOrigin: { x: 0, y: 0 },
         cardPressed: false
     })
@@ -48,6 +48,7 @@ const Card: React.FC<{
         if (menuOpen) { fHandleMenuOpen(-1); }
     }
     const toggleMenuOpen = (e: any) => {
+        // TODO: detect if menu being opened will be outside viewport, change menu x/y to show inside
         e.preventDefault(); e.stopPropagation();
 
         const rect = e.currentTarget.getBoundingClientRect();
@@ -63,14 +64,20 @@ const Card: React.FC<{
     const cardRef = useDetectClickOutside({ onTriggered: toggleMenuClosed });
     const champStyles = {
         backgroundImage: `url(src/assets/dragontail/champion/${champ}.png)`,
-        boxShadow: `0 0 100px 10px rgba(${!glow ? '255, 255, 255' : glow}, 0.20)`,
-        opacity: `${(!playerProps.active && state.cardPressed) ? '0.5' : '1.0'}`,
+//        boxShadow: `0 0 100px 10px rgba(${!glow ? '255, 255, 255' : glow}, 0.20)`,
+//        outline: `2px solid rgba(${!glow ? '255, 255, 255' : glow}, 0.10)`,
+        opacity: `${(!playerProps.active && state.cardPressed) ? '0.5' : '0.80'}`,
     };
 
     return (
         <div className={`card-outer`}>
             {(menuOpen)
-                ? <CardMenu player={playerProps} favorited={playerFavorited} fToggleFavorited={() => setPlayerFavorited(!playerFavorited)} menuX={state.menuOrigin.x} menuY={state.menuOrigin.y} /> : null}
+                ? <CardMenu
+                    player={playerProps}
+                    favorited={playerFavorited}
+                    fToggleFavorited={() => setPlayerFavorited(!playerFavorited)}
+                    menuX={state.menuOrigin.x}
+                    menuY={state.menuOrigin.y} /> : null}
 
             <div
                 className={`player-card ${!playerProps.active ? 'card-unavailable' : null}`}
@@ -79,29 +86,32 @@ const Card: React.FC<{
                 onMouseUp={() => dispatch({ type: ECardReducerStates.CARD_PRESSED, payload: false })}
                 ref={cardRef}
             >
+                <span className='game-timer-text'>{`${secondsToTime(state.gameTime + globalInterval)}`}</span>
                 <div className={`loading-dots ${ETooltip.TOOLTIP}`}>
                     <h1 className="loading-dot dot-one">.</h1>
                     <h1 className="loading-dot dot-two">.</h1>
                     <h1 className="loading-dot dot-three">.</h1>
                     <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, { insert: playerProps.summoner.playerName })}</span>
                 </div>
-                <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${playerProps.summoner.playerImage}.webp)` }}></div>
                 <div className={`card-champ noselect`} style={champStyles}></div>
-                <span className='game-timer-text'>{`${secondsToTime(state.gameTime + globalTime)}`}</span>
                 {/* <img src={dragIcon} alt="drag" className='card-drag noselect' /> */}
                 {/* <div className='blur-small'></div> */}
+                <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${playerProps.summoner.playerImage})` }}></div>
                 <div
-                    className={state.backgroundDir === "loading" ? 'card-image' : 'card-image-cutout'}
+                    className={state.backgroundDir === "centered" ? 'card-image' : 'card-image-cutout'}
                     style={{
                         backgroundImage: `url(src/assets/dragontail/${state.backgroundDir}/${champ}${
-                            state.backgroundDir === "loading" ? `_${showRandomSkins ? playerProps.skin : 0}.jpg` : '.png'})`
+                            state.backgroundDir === "centered" ? `_0.jpg` : '.png'})`
                     }}></div>
 
                 <div className='card-content'>
                     <div className='text-container'>
-                        <span className='text-summoner'>
-                            {showSummonerIds ? playerProps.summoner.accountName : playerProps.summoner.playerName}
-                        </span>
+                        <div className={`summoner-container`}>
+                            <img src={`src/assets/icons/lanes/${playerProps.summoner.role}.png`} alt="role" className='card-role noselect' />
+                            <span className='text-summoner'>
+                                {showSummonerIds ? playerProps.summoner.accountName : playerProps.summoner.playerName}
+                            </span>
+                        </div>
                         <div className='text-sub-container'>
                             <span className='text-sub noselect'>{`${playerProps.summoner.team.long}`}</span>
                         </div>

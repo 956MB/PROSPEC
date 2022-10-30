@@ -180,7 +180,8 @@
             },
             "language": {
                 "title": "Språk",
-                "add": "Ser du inte det språk du vill ha? <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lägg till det!</a>"
+                "question": "Ser du inte det språk du vill ha?",
+                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lägg till det!</a>"
             }
         },
         "title": "Inställningar"
@@ -199,8 +200,13 @@
         "cq": "Kammarkö",
         "favorites": "Favoriter"
     },
+    "titles": {
+        "favorites": "Favoriter",
+        "all": "Alla spelare"
+    },
     "tooltips": {
         "playerUnavailable": "{{insert}} är antingen inte i ett spel, eller åskådare är inte tillgänglig",
+        "noFavorites": "Inga favoriter tillagda",
         "noPlayersLoaded": "Inga spelare laddade",
         "copy": "Kopiera",
         "copied": "Kopierad",

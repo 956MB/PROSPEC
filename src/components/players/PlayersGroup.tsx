@@ -15,10 +15,10 @@ const PlayersGroup: React.FC<{
     players: IPlayers,
     groupPos: string,
     groupKey: string,
-    globalTime: number,
+    globalInterval: number,
     menuOpen: number,
     fHandleMenuOpen: (set: number) => void
-}> = ({ players, groupPos, groupKey, globalTime, menuOpen, fHandleMenuOpen }) => {
+}> = ({ players, groupPos, groupKey, globalInterval, menuOpen, fHandleMenuOpen }) => {
     const { t } = useTranslation('common');
     const { showUnavailable } = useContext(SettingsContext);
 
@@ -31,10 +31,10 @@ const PlayersGroup: React.FC<{
     });
 
     return (
-        <div className={`pros-group ${groupPos} ${groupCollapsed ? 'group-collapsed' : null}`}>
+        <div className={`pros-group ${groupInfo.type === EGroupBy.NONE ? 'unsorted-group' : null} ${groupPos} ${groupCollapsed ? 'group-collapsed' : null}`}>
             {groupInfo.type === EGroupBy.NONE ? null :
                 <div className='group-sidebar' onClick={() => setGroupCollapsed(!groupCollapsed)}>
-                    <div className='group-divider divider-left'></div>
+                    <div className='hor-divider divider-left'></div>
                     {groupInfo.type === "icon"
                         ?
                         <div className={`group-info`}>
@@ -44,7 +44,7 @@ const PlayersGroup: React.FC<{
                         :
                         <span className={`group-divider-text`}>{groupInfo.text}</span>
                     }
-                    <div className='group-divider divider-right'></div>
+                    <div className='hor-divider divider-right'></div>
                 </div>
             }
 
@@ -55,7 +55,7 @@ const PlayersGroup: React.FC<{
                             <RenderIfVisible defaultHeight={CARD_HEIGHT}>
                                 <Card
                                     playerProps={player}
-                                    globalTime={globalTime}
+                                    globalInterval={globalInterval}
                                     menuOpen={menuOpen == player.id}
                                     fHandleMenuOpen={fHandleMenuOpen}></Card>
                             </RenderIfVisible>

@@ -51,7 +51,7 @@ const Settings: React.FC<{
             SettingsItemBoolean('application', ESettingsStates.NOTIFICATIONS, true)
         ])
         ,
-        FormSettingsPage(2, "list", 'shortcuts')
+        FormSettingsPage(2, "list", 'shortcuts', [], true)
         ,
         FormSettingsPageLang(3, "lang", 'language', 0,
             langs.map((lang, i) => {
@@ -101,7 +101,7 @@ const SettingsInner: React.FC<{
                             pagesProps.map((page, i) => (
                                 <SettingsPageButton
                                     pageActive={isPageActive(pageActive, i)}
-                                    buttonProps={{ index: page.index, text: page.title }}
+                                    buttonProps={{ index: page.index, text: page.title, disabled: page.disabled }}
                                     FPageSwitch={FPageSwitch} />
                             ))
                         )}

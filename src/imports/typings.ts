@@ -171,7 +171,7 @@ export enum ETeamNames {
     KT_SHORT = 'KT',
     KT_LONG = 'KT Rolster',
     KDF_SHORT = 'KDF',
-    KDF_LONG = 'KDF',
+    KDF_LONG = 'Kwangdong Freecs',
     LSB_SHORT = 'LSB',
     LSB_LONG = 'Liiv SANDBOX',
     NS_SHORT = 'NS',

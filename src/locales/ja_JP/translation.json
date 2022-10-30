@@ -180,7 +180,8 @@
             },
             "language": {
                 "title": "言語",
-                "add": "あなたが望む言語が見えませんか？ <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">追加！</a>"
+                "question": "あなたが望む言語が見えませんか？",
+                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">追加！</a>"
             }
         },
         "title": "設定"
@@ -199,8 +200,13 @@
         "cq": "チャンピオンズキュー",
         "favorites": "お気に入り"
     },
+    "titles": {
+        "favorites": "お気に入り",
+        "all": "すべてのプレイヤー"
+    },
     "tooltips": {
         "playerUnavailable": "{{insert}} ゲーム内ではないか、観客は利用できません",
+        "noFavorites": "お気に入りは追加されていません",
         "noPlayersLoaded": "プレーヤーはロードされていません",
         "copy": "コピー",
         "copied": "コピー",

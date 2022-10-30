@@ -10,20 +10,13 @@ const SettingsSection: React.FC<{
     sectionType: string,
     sectionTitle: string,
     sectionEntries: ISettingsSectionEntries,
-    sectionOpenInit: boolean
-}> = ({ sectionType, sectionTitle, sectionEntries, sectionOpenInit }) => {
+}> = ({ sectionType, sectionTitle, sectionEntries }) => {
     const [t] = useTranslation('common');
-    const [sectionOpen, setSectionOpen] = useState<boolean>(sectionOpenInit);
 
     return (
-        <div className={`settings-about-section ${!sectionOpen ? 'section-closed' : null}`}>
+        <div className={`settings-about-section`}>
             <div className="settings-about-section-title">
-                <span className="settings-about-section-title-text noselect">{`${sectionTitle}:`}</span>
-                <span
-                    className="settings-about-section-title-show-hide noselect transition-0_08s"
-                    onClick={() => setSectionOpen(!sectionOpen)}>
-                    {`${t(`${sectionOpen ? 'tooltips.hide' : 'tooltips.show'}`)}`}
-                </span>
+                <span className="settings-about-section-title-text noselect">{`${sectionTitle}`}</span>
             </div>
 
             <div className={`${(sectionType === 'package' || sectionType === 'change') ? 'settings-about-scroll-container' : 'settings-about-credit-container'}`}>
@@ -37,6 +30,7 @@ const SettingsSection: React.FC<{
                                 : null}
                             {sectionType === 'change' ?
                                 <SettingsSectionEntryChange
+                                    index={i}
                                     positionClass={getEntryIndexClass(i, sectionEntries.length)}
                                     sectionEntry={entry as ISettingsSectionEntryChange} />
                                 : null}

@@ -40,6 +40,7 @@ const SettingsPage: React.FC<{
 
             {pageProps.type === 'lang' ?
                 <div className="add-language-notice">
+                    <span>{t(`settings.pages.language.question`)}</span>
                     <span>{parse(t(`settings.pages.language.add`))}</span>
                 </div>
             :   null}
@@ -55,7 +56,7 @@ const SettingsPageButton: React.FC<{
     const { t } = useTranslation('common');
 
     return (
-        <div className={`settings-page-button ${pageActive ? 'page-button-active' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
+        <div className={`settings-page-button ${pageActive ? 'page-button-active' : null} ${buttonProps.disabled ? 'page-button-disabled' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
             <div className='page-button-inner'>
                 <span className='page-button-text transition-0_08s'>{t(buttonProps.text)}</span>
                 {/* <span className='page-button-text transition-0_08s'>{t(buttonProps.text)}</span> */}

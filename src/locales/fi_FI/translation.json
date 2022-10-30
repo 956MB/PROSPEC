@@ -180,7 +180,8 @@
             },
             "language": {
                 "title": "Kieli",
-                "add": "Etkö näe haluamasi kieltä? <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lisää se!</a>"
+                "question": "Etkö näe haluamasi kieltä?",
+                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lisää se!</a>"
             }
         },
         "title": "Asetukset"
@@ -199,8 +200,13 @@
         "cq": "Mestarit jono",
         "favorites": "Suosikit"
     },
+    "titles": {
+        "favorites": "Suosikit",
+        "all": "Kaikki pelaajat"
+    },
     "tooltips": {
         "playerUnavailable": "{{insert}} ei joko pelissä tai katsoja ei ole käytettävissä",
+        "noFavorites": "Ei suosikkeja lisätty",
         "noPlayersLoaded": "Pelaajia ei ladattu",
         "copy": "Kopio",
         "copied": "Kopioitu",

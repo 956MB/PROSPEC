@@ -6,7 +6,7 @@ import { useInit } from '../imports/initializers';
 
 // JSON imports
 import * as KR from '../data/players/lck.json';
-import { formPlayerImage, getTeamFromNumber } from "../imports/utils";
+import {currentYearN, formPlayerImage, getFallbackPhoto, getTeamFromNumber} from "../imports/utils";
 
 interface ISpectatorContext {
     regionFilter: ERegions[];
@@ -23,7 +23,7 @@ export const SpectatorContext = createContext<ISpectatorContext>({
     regionFilter: [],
     modeFilter: [],
     roleFilter: [],
-    groupBy: EGroupBy.ROLE,
+    groupBy: EGroupBy.NONE,
     accountsLoaded: false,
     allAccounts: [],
     updateFilter: () => null,
@@ -34,25 +34,26 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
     const [regionFilter, setRegionFilter] = useState<ERegions[]>([ERegions.KR]);
     const [modeFilter, setModeFilter] = useState<EModes[]>([]);
     const [roleFilter, setRoleFilter] = useState<ERoles[]>([]);
-    const [groupBy, setGroupBy] = useState<EGroupBy>(EGroupBy.ROLE);
+    const [groupBy, setGroupBy] = useState<EGroupBy>(EGroupBy.NONE);
     const [accountsLoaded, setAccountsLoaded] = useState<boolean>(false);
     const [allAccounts, setAllAccounts] = useState<ISummonerAccount[]>([]);
 
     useInit(() => {
-        const loadPlayers = () => {
+        const loadPlayers = async () => {
             if (!accountsLoaded) {
+                const year = currentYearN();
                 for (const p in KR.players) {
                     let player = KR.players[p];
                     for (const a in player.accounts) {
                         let account = player.accounts[a];
 
                         if (account.id != undefined || account.puuid != undefined) {
-                            let teamShort = getTeamFromNumber(player.team, true);
+                            let teamNum = getTeamFromNumber(player.team);
                             let playerAccountI: ISummonerAccount = {
                                 accountName: account.name,
                                 playerName: player.player,
-                                playerImage: formPlayerImage(teamShort, player.player),
-                                team: {short: teamShort, long: getTeamFromNumber(player.team, false)},
+                                playerImage: await getFallbackPhoto(`${teamNum.short}_${player.player}`, year),
+                                team: teamNum,
                                 summonerId: account.id,
                                 summonerPuuid: account.puuid,
                                 region: account.region,

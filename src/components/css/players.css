@@ -1,5 +1,7 @@
 :root {
     color-scheme: dark;
+    --section-badge-bg: 10, 10, 10, 0.70;
+    --section-badge-empty: 15, 15, 15, 0.50;
 }
 
 .pros-container {
@@ -16,11 +18,80 @@
 .last-group {
     margin-bottom: 30px;
 }
+.unsorted-group {
+    padding-top: 10px !important;
+}
 
 .pros-scroll {
     height: 100%;
     overflow-x: hidden;
     overflow-y: overlay;
+}
+
+.players-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: flex-start;
+    padding: 0 20px 0 20px;
+/*    background-color: red;*/
+}
+
+.players-section-title {
+    font-family: 'Inter_Medium', serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.80);
+    white-space: nowrap;
+    text-align: left;
+    letter-spacing: .06em;
+}
+
+.players-section-title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    margin: 20px 13px 10px 13px;
+}
+
+.players-section-badge {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.players-section-badge span {
+    font-family: 'RobotoMono_Regular', serif;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.40);
+    pointer-events: none;
+    z-index: 2;
+    user-select: none;
+}
+
+.players-section-empty {
+    font-family: 'Inter_Regular', serif;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 12px;
+    user-select: none;
+    background-color: rgba(var(--card-bg));
+/*    background-color: rgba(255, 255, 255, 0.03);*/
+/*    outline: 1px solid rgba(255, 255, 255, 0.1);*/
+    backdrop-filter: blur(12px);
+    padding: 5px 10px 5px 10px;
+    margin: 15px auto 0 auto;
+    letter-spacing: .02em;
 }
 
 .pros-group {
@@ -34,7 +105,6 @@
     -o-transition: all 0.15s ease;  
     -ms-transition: all 0.15s ease;
     transition: all 0.15s ease;
-    /* background-color: rgb(50, 50, 50); */
     margin-bottom: 10px;
 }
 
@@ -60,9 +130,9 @@
     margin: 0 13px 0 13px;
 }
 
-.group-divider {
+.hor-divider {
     height: 1px;
-    flex: 1;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.10);
 }
 
@@ -71,7 +141,7 @@
 }
 
 .group-divider-text {
-    font-family: 'RobotoMono_Regular';
+    font-family: 'RobotoMono_Regular', serif;
     font-size: 12px;
     margin: 0 13px 0 13px;
     color: rgba(255, 255, 255, 0.45);
@@ -140,7 +210,7 @@
 }
 
 .players-empty span {
-    font-family: 'Inter_Medium';
+    font-family: 'Inter_Medium', serif;
     font-size: 22px;
     color: rgba(255, 255, 255, 0.15);
     margin-bottom: 47px;
@@ -148,6 +218,6 @@
 }
 
 .br_BA .players-empty span {
-    font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium', serif !important;
     letter-spacing: 3px !important;
 }

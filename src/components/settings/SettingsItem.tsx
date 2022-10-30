@@ -208,7 +208,7 @@ const SettingsItemSelector: React.FC<{
             ref={selectorRef}
         >
             <div className={`item-value-selector`} onClick={() => setSelectorOpen(!selectorOpen)}>
-                <span className={`value-text noselect`}>{t(selectorProps.options[selectorValue].text)}</span>
+                <span className={`value-text value-selected noselect`}>{t(selectorProps.options[selectorValue].text)}</span>
                 <img src={downIcon} alt="" className='value-right' />
             </div>
 
@@ -218,7 +218,7 @@ const SettingsItemSelector: React.FC<{
                         selectorProps.options.map((item, i) =>
                             <div className={`item-dropdown-button`} onClick={() => newSelectorValue(i)}>
                                 {/* <div className={`circle ${item.index == selectorProps.value ? 'onSelected' : null}`}></div> */}
-                                <span className='value-text noselect'>{t(item.text)}</span>
+                                <span className={`value-text ${item.index == selectorProps.value ? 'value-selected' : null} noselect`}>{t(item.text)}</span>
                             </div>
                         )
                     )}

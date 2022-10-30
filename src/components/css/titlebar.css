@@ -158,7 +158,7 @@
 .titlebar-button img {
     opacity: 0.30;
     /* width: 15px; */
-    height: 13px;
+    height: 14px;
     /* background-color: #e8112359; */
 }
 .titlebar-controls-button img {
@@ -223,6 +223,7 @@
     float: right;
     position: relative;
     backdrop-filter: blur(12px);
+    border-radius: 15px;
 }
 
 .search-bar-active input[type=text] {

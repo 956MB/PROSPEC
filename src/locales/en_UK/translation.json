@@ -166,7 +166,8 @@
 			},
 			"language": {
 				"title": "Language",
-                "add": "Don't see the language you want? <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Add it!</a>"
+                "question": "Don't see the language you want?",
+                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Add it!</a>"
 			}
 		},
 		"title": "Settings"
@@ -185,9 +186,14 @@
         "cq": "Champions Queue",
         "favorites": "Favorites"
     },
+    "titles": {
+        "favorites": "Favorites",
+        "all": "All players"
+    },
 	"tooltips": {
 		"playerUnavailable": "{{insert}} is either not in a game, or spectator is unavailable",
-		"noPlayersLoaded": "No players loaded",
+		"noFavorites": "No favorites added",
+        "noPlayersLoaded": "No players loaded",
 		"copy": "Copy",
 		"copied": "Copied",
         "show": "Show",

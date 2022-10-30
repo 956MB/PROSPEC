@@ -35,7 +35,7 @@ const CardMenu: React.FC<{
     return (
         <div className={`card-menu`} style={{ top: menuY, left: menuX }}>
             <div className="card-menu-upper">
-                <span className='card-menu-info noselect'>{`${showSummonerIds ? player.summoner.accountName : player.summoner.playerName}:`}</span>
+                <span className='card-menu-title noselect'>{`${showSummonerIds ? player.summoner.accountName : player.summoner.playerName}:`}</span>
 
                 <div className='card-menu-button' onClick={(event) => stopPropagation(event, () => {})}>
                     <div className='menu-icon-container'>

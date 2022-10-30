@@ -1,6 +1,6 @@
-import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ICQLeaderboardEntry, ICQPage, ILanguageResources, IPageState, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISidebarButton, ISummonerAccount } from "./interfaces";
+import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ICQLeaderboardEntry, ICQPage, ILanguageResources, IPageState, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISidebarButton, ISummonerAccount, ITeamInfo } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, EChangeType } from "./typings";
-import { readDir, BaseDirectory } from '@tauri-apps/api/fs';
+import { readDir, BaseDirectory, exists } from '@tauri-apps/api/fs';
 
 import Rand, {PRNG} from 'rand-seed';
 
@@ -62,8 +62,7 @@ export function cutUnderscore(str: string): string {
 }
 
 export function formPlayerImage(team: string, player: string): string {
-    const retImage = `${team.toUpperCase()}_${player}_2022`;
-    return retImage;
+    return `${team.toUpperCase()}_${player}`;
 }
 
 function ifShort(short: string, long: string, isShort: boolean): string {
@@ -90,6 +89,10 @@ export function sortLanguages(langs: ILanguageResources): ILanguageResources {
 
 // NOTE: Gets
 
+export function currentYearN(): number {
+    return (new Date()).getFullYear();
+}
+
 const LANGS = [ "English, US", "English, UK", "Svenska", "Suomi", "한국어", "日本語", "Braille" ];
 export function getLanguageStatic(lang: number): string {
     return LANGS.at(lang)!;
@@ -99,6 +102,18 @@ export function getEntryIndexClass(idx: number, length: number): string {
     if (idx == 0) { return "entry-first"; }
     if (idx == length-1) { return "entry-last"; }
     return "";
+}
+
+export async function getFallbackPhoto(playerImage: string, year: number): Promise<string> {
+    // TODO: fs/exists not being Promise<boolean> will be fixed in next tauri release
+    for (let i = 0; i < 3; i++) {
+        let uYear = year - i;
+        let check = await exists(`src/assets/photos/${uYear}/${playerImage}_${uYear}.webp`, { dir: BaseDirectory.Resource });
+        if (check !== undefined) {
+            return `${uYear}/${playerImage}_${uYear}.webp`;
+        }
+    }
+    return "fallback.webp";
 }
 
 export function getGroupInfoFromKey(key: any): IPlayerGroupInfo {
@@ -296,35 +311,35 @@ export function getChampionFromId(champion: number): IChampion | undefined {
     }
 }
 
-export function getTeamFromString(team: string): number {
+export function getTeamInfoFromString(team: string): ITeamInfo {
     switch (team) {
-        case "DRX": return ETeams.DRX;
-        case "DK": return ETeams.DK;
-        case "BRO": return ETeams.BRO;
-        case "GEN": return ETeams.GEN;
-        case "HLE": return ETeams.HLE;
-        case "KT": return ETeams.KT;
-        case "KDF": return ETeams.KDF;
-        case "LSB": return ETeams.LSB;
-        case "NS": return ETeams.NS;
-        case "T1": return ETeams.T1;
-        default: return -1;
+        case "DRX": return {short: ETeamNames.DRX_SHORT, long: ETeamNames.DRX_LONG, accent: "90, 141, 255"};
+        case "DK": return {short: ETeamNames.DK_SHORT, long: ETeamNames.DK_LONG, accent: "35, 201, 202"};
+        case "BRO": return {short: ETeamNames.BRO_SHORT, long: ETeamNames.BRO_LONG, accent: "0, 112, 168"};
+        case "GEN": return {short: ETeamNames.GEN_SHORT, long: ETeamNames.GEN_LONG, accent: "216, 174, 46"};
+        case "HLE": return {short: ETeamNames.HLE_SHORT, long: ETeamNames.HLE_LONG, accent: "243, 115, 35"};
+        case "KT": return {short: ETeamNames.KT_SHORT, long: ETeamNames.KT_LONG, accent: "255, 10, 6"};
+        case "KDF": return {short: ETeamNames.KDF_SHORT, long: ETeamNames.KDF_LONG, accent: "255, 66, 25"};
+        case "LSB": return {short: ETeamNames.LSB_SHORT, long: ETeamNames.LSB_LONG, accent: "255, 201, 0"};
+        case "NS": return {short: ETeamNames.NS_SHORT, long: ETeamNames.NS_LONG, accent: "236, 28, 36"};
+        case "T1": return {short: ETeamNames.T1_SHORT, long: ETeamNames.T1_LONG, accent: "226, 1, 45"};
+        default: return {short: "", long: "", accent: ""};
     }
 }
 
-export function getTeamFromNumber(team: number, short: boolean): string {
+export function getTeamFromNumber(team: number): ITeamInfo {
     switch (team) {
-        case ETeams.DRX: return ifShort(ETeamNames.DRX_SHORT, ETeamNames.DRX_LONG, short);
-        case ETeams.DK: return ifShort(ETeamNames.DK_SHORT, ETeamNames.DK_LONG, short);
-        case ETeams.BRO: return ifShort(ETeamNames.BRO_SHORT, ETeamNames.BRO_LONG, short);
-        case ETeams.GEN: return ifShort(ETeamNames.GEN_SHORT, ETeamNames.GEN_LONG, short);
-        case ETeams.HLE: return ifShort(ETeamNames.HLE_SHORT, ETeamNames.HLE_LONG, short);
-        case ETeams.KT: return ifShort(ETeamNames.KT_SHORT, ETeamNames.KT_LONG, short);
-        case ETeams.KDF: return ifShort(ETeamNames.KDF_SHORT, ETeamNames.KDF_LONG, short);
-        case ETeams.LSB: return ifShort(ETeamNames.LSB_SHORT, ETeamNames.LSB_LONG, short);
-        case ETeams.NS: return ifShort(ETeamNames.NS_SHORT, ETeamNames.NS_LONG, short);
-        case ETeams.T1: return ifShort(ETeamNames.T1_SHORT, ETeamNames.T1_LONG, short);
-        default: return "";
+        case ETeams.DRX: return {short: ETeamNames.DRX_SHORT, long: ETeamNames.DRX_LONG, accent: "90, 141, 255"};
+        case ETeams.DK: return {short: ETeamNames.DK_SHORT, long: ETeamNames.DK_LONG, accent: "35, 201, 202"};
+        case ETeams.BRO: return {short: ETeamNames.BRO_SHORT, long: ETeamNames.BRO_LONG, accent: "0, 112, 168"};
+        case ETeams.GEN: return {short: ETeamNames.GEN_SHORT, long: ETeamNames.GEN_LONG, accent: "216, 174, 46"};
+        case ETeams.HLE: return {short: ETeamNames.HLE_SHORT, long: ETeamNames.HLE_LONG, accent: "243, 115, 35"};
+        case ETeams.KT: return {short: ETeamNames.KT_SHORT, long: ETeamNames.KT_LONG, accent: "255, 10, 6"};
+        case ETeams.KDF: return {short: ETeamNames.KDF_SHORT, long: ETeamNames.KDF_LONG, accent: "255, 66, 25"};
+        case ETeams.LSB: return {short: ETeamNames.LSB_SHORT, long: ETeamNames.LSB_LONG, accent: "255, 201, 0"};
+        case ETeams.NS: return {short: ETeamNames.NS_SHORT, long: ETeamNames.NS_LONG, accent: "236, 28, 36"};
+        case ETeams.T1: return {short: ETeamNames.T1_SHORT, long: ETeamNames.T1_LONG, accent: "226, 1, 45"};
+        default: return {short: "", long: "", accent: ""};
     }
 }
 
@@ -346,6 +361,10 @@ export function whichStream(stream: string): string {
     return stream.includes("twitch") ? 'Twitch' : 'Afreeca';
 }
 
+export function filterBy(players: IPlayers, expression: (filter: IPlayer) => boolean): IPlayers {
+    return players.filter(expression);
+}
+
 export const groupByKey = <T, K extends keyof any>(arr: T[], key: (i: T) => K) =>
     arr.reduce((groups, item) => {
         (groups[key(item)] ||= []).push(item);
@@ -359,6 +378,12 @@ export function sortByKey(record: Record<string, IPlayer[]>, sortArr: string[]):
     
     const sorted = result.sort((a, b) => sortArr.indexOf(a.key) - sortArr.indexOf(b.key));
     return sorted as IPlayerGroups;
+}
+
+export function getGroupsLen(groups: IPlayerGroups): number {
+    let count: number = 0;
+    groups.forEach((group) => count += group.players.length);
+    return count;
 }
 
 export function mapEnum(enumerable: any, type: string, fn: Function): any[] {
@@ -425,11 +450,11 @@ export function cqControls(item: string): string { return `cq.pages.leaderboards
 
 // NOTE: Form interfaces:
 
-export function FormSettingsPage(index: number, type: string, title: string, items?: ISettingsItems): ISettingsPage {
-    return { index: index, type: type, title: sTitle(title), items: items ? items : [] }
+export function FormSettingsPage(index: number, type: string, title: string, items?: ISettingsItems, disabled?: boolean): ISettingsPage {
+    return { index: index, type: type, title: sTitle(title), items: items ? items : [], disabled: disabled ? disabled : false }
 }
-export function FormSettingsPageLang(index: number, type: string, title: string, selected: number, items?: ISettingsItems): ISettingsPageLanguage {
-    return { index: index, type: type, title: sTitle(title), selected: selected, items: items ? items : [] }
+export function FormSettingsPageLang(index: number, type: string, title: string, selected: number, items?: ISettingsItems, disabled?: boolean): ISettingsPageLanguage {
+    return { index: index, type: type, title: sTitle(title), selected: selected, items: items ? items : [], disabled: disabled ? disabled : false }
 }
 export function SettingsItemSpacer(): ISettingsItem { return { itemValue: { type: "spacer", value: false } }; }
 export function SettingsItemBoolean(section: string, key: string, value: boolean, children?: ISettingsItems, secondaryAction?: () => void): ISettingsItem {
@@ -469,8 +494,8 @@ export function SettingsEntryRelease(type: EChangeType, change: string, issues?:
     return { type: type, change: change, issues: issues ? issues : [] } as IAppReleaseChange;
 }
 
-export function FormSidebarButton(title: string, icon: string, page: string, action: () => void): ISidebarButton {
-    return { title: title, icon: icon, page: page, action: action };
+export function FormSidebarButton(id: string, title: string, icon: string, page: string, action: () => void): ISidebarButton {
+    return { id: id, title: title, icon: icon, page: page, action: action };
 }
 
 export function FormCQPage(index: number, title: string, url?: string): ICQPage {
@@ -537,3 +562,8 @@ export async function getRandomBackground(override?: IBackground): Promise<IBack
 
     return { type: override.type, name: override.name, ext: override.ext }
 }
+
+export const pickNRandom = <T extends unknown> (arr: T[], n: number): T[] => {
+    const shuffled = Array.from(arr).sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, n);
+};

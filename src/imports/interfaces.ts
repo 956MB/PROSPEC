@@ -1,3 +1,4 @@
+import { None } from "framer-motion";
 import { EChangeType } from "./typings";
 
 // NOTE: Reducers
@@ -62,6 +63,7 @@ export interface IPlayers extends Array<IPlayer>{}
 export interface IPlayer { 
     id: number;
     active: boolean;
+    favorite: boolean;
     champion: IChampion;
     skin: string;
     summoner: ISummonerAccount;
@@ -89,7 +91,7 @@ export interface ISummonerAccount {
     accountName: string;
     playerName: string;
     playerImage: string;
-    team: ITeamStrings;
+    team: ITeamInfo;
     summonerId: string;
     summonerPuuid: string;
     region: string;
@@ -97,9 +99,10 @@ export interface ISummonerAccount {
     stream: string;
 }
 
-export interface ITeamStrings {
+export interface ITeamInfo {
     short: string;
     long: string;
+    accent: string;
 }
 
 export interface IGameInfo {
@@ -192,8 +195,9 @@ export interface IOptionsSectionsChamp {
 
 export interface ISidebarButtons extends Array<ISidebarButton>{}
 export interface ISidebarButton {
+    id: string;
     title: string;
-    icon: string;
+    icon: string | undefined;
     page: string;
     action: (val?: any) => void;
 }
@@ -206,6 +210,7 @@ export interface ISettingsPage {
     type: string;
     title: string;
     items: ISettingsItems;
+    disabled: boolean;
 }
 
 export interface ISettingsPageLanguage extends ISettingsPage {
@@ -255,6 +260,7 @@ export interface ISettingsItemValueLanguage extends Omit<ISettingsItemValue, 'va
 export interface ISettingsPageButton {
     index: number;
     text: string;
+    disabled: boolean;
 }
 
 // NOTE: Settings sections and entries (About)

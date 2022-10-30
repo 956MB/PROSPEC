@@ -16,13 +16,6 @@ const SettingsPageAbout: React.FC<{
     const [t] = useTranslation('common');
 
     const [sections, setSections] = useState<ISettingsSections>([
-        FormSettingsSection("credit", "thanks.title", [
-            SectionEntryCredit("Jason Chan", "https://www.artstation.com/jasonchan"),
-            SectionEntryCredit("Sephi Lash", "https://www.artstation.com/sephilash"),
-            SectionEntryCredit("Adrien Gonzalez", "https://www.artstation.com/adrieng"),
-            SectionEntryCredit("Riot Games", "https://www.riotgames.com"),
-            SectionEntryCredit("Metafy.gg", "https://metafy.gg/")
-        ], true),
         FormSettingsSection("change", "changelog", [
             SettingsEntryChange("3.0.7-beta1", "August 30th, 2022", [
                 SettingsEntryRelease(EChangeType.ADDED, "Add Warp terminal integration for macOS - #14329. Thanks @lhvy!"),
@@ -39,7 +32,14 @@ const SettingsPageAbout: React.FC<{
             appPackages.map((_package) => {
                 return _package;
             })
-        )
+        ),
+        FormSettingsSection("credit", "thanks.title", [
+            SectionEntryCredit("Jason Chan", "https://www.artstation.com/jasonchan"),
+            SectionEntryCredit("Sephi Lash", "https://www.artstation.com/sephilash"),
+            SectionEntryCredit("Adrien Gonzalez", "https://www.artstation.com/adrieng"),
+            SectionEntryCredit("Riot Games", "https://www.riotgames.com"),
+            SectionEntryCredit("Metafy.gg", "https://metafy.gg/")
+        ], true),
     ]);
 
     return (
@@ -59,7 +59,7 @@ const SettingsPageAbout: React.FC<{
             </div>
 
             <div className={`settings-about-description`}>
-                <span className="noselect">{t(pAbout(`description`))}</span>
+                <span className="select">{t(pAbout(`description`))}</span>
             </div>
 
             {React.Children.toArray(
@@ -67,8 +67,7 @@ const SettingsPageAbout: React.FC<{
                     <SettingsSection
                         sectionType={section.type}
                         sectionTitle={t(pAbout(section.title))}
-                        sectionEntries={section.entries}
-                        sectionOpenInit={section.initOpen} />
+                        sectionEntries={section.entries} />
                 ))
             )}
         </div>

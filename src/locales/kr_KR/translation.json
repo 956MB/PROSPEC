@@ -179,7 +179,8 @@
             },
             "language": {
                 "title": "언어",
-                "add": "원하는 언어가 보이지 않습니까? <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">그것을 추가하십시오!</a>"
+                "question": "원하는 언어가 보이지 않습니까?",
+                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">그것을 추가하십시오!</a>"
             }
         },
         "title": "기본 설정"
@@ -198,8 +199,13 @@
         "cq": "챔피언 큐",
         "favorites": "즐겨 찾기"
     },
+    "titles": {
+        "favorites": "즐겨 찾기",
+        "all": "모든 플레이어"
+    },
     "tooltips": {
         "playerUnavailable": "{{insert}} 게임에 있지 않거나 관중을 사용할 수 없습니다",
+        "noFavorites": "즐겨 찾기가 추가되지 않았습니다",
         "noPlayersLoaded": "선수가로드되지 않았습니다",
         "copy": "복사",
         "copied": "복사",

@@ -7,7 +7,7 @@ import Settings from "./components/settings/Settings";
 import { IBackground, IPlayers, IPageState, IPlayer } from "./imports/interfaces";
 
 import { EChampions } from "./imports/typings";
-import { getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, checkPreviousBack, checkPreviousForward, randomSkin, getChampionFromId } from "./imports/utils";
+import { getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, checkPreviousBack, checkPreviousForward, randomSkin, getChampionFromId, pickNRandom } from "./imports/utils";
 import "./imports/prototypes"
 import { Players, PlayersNotLoaded } from "./components/players/Players";
 
@@ -26,10 +26,11 @@ function App() {
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
     const { useBackground, liveBackground, autoRefresh, randomBackground } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IBackground>({
-        type: "random", name: "W22_Music_Video_Banner_v2", ext: "jpg"
+        type: "random", name: "FrightNight_Renata_and_Nautilus_Final", ext: "jpg"
     });
     const [playersLoaded, setPlayersLoaded] = useState<boolean>(false);
-    const [players, setPlayers] = useState<IPlayers>([]);
+    const [playersAll, setPlayersAll] = useState<IPlayers>([]);
+    const [sidebarFavorites, setSidebarFavorites] = useState<IPlayers>([]);
     const [playersKey, setPlayersKey] = useState<number>(0);
 
     const [pageState, setPageState] = useState<IPageState>({ currentPage: 0, pages: ["/"] });
@@ -38,8 +39,8 @@ function App() {
         navigate(dir);
     }
     const fNavigatePage = (page: string) => {
-        if (checkPreviousBack(pageState, page)) { navigate(-1); return; }
-        if (checkPreviousForward(pageState, page)) { navigate(1); return; }
+//        if (checkPreviousBack(pageState, page)) { navigate(-1); return; }
+//        if (checkPreviousForward(pageState, page)) { navigate(1); return; }
         setPageState({ currentPage: pageState.currentPage + 1, pages: [...pageState.pages, page] });
         navigate(page, { replace: false });
     }
@@ -47,7 +48,7 @@ function App() {
     const refreshPlayers = () => {
         setPlayersLoaded(false);
         setPlayersKey(playersKey + 1);
-        setPlayers([]);
+        setPlayersAll([]);
 
         if (accountsLoaded) {
             loopPlayers();
@@ -57,12 +58,13 @@ function App() {
     const loopPlayers = async () => {
         let filteredPlayers: IPlayers = await Promise.all(
             allAccounts
-                .filterRegions(regionFilter).filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 5)
+                .filterRegions(regionFilter).filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 12)
                 .map(async (player, i): Promise<IPlayer> => {
                     let randomC = getChampionFromId(randomEnum(EChampions, []))!;
                     return {
                         id: i,
                         active: randomActive(),
+                        favorite: i <= 2,
                         champion: randomC,
                         skin: await randomSkin(randomC.name),
                         summoner: {
@@ -85,7 +87,8 @@ function App() {
                     }
                 })
         )
-        setPlayers(filteredPlayers);
+        setPlayersAll(filteredPlayers);
+        setSidebarFavorites(pickNRandom(filteredPlayers, 4) as IPlayers);
         setPlayersLoaded(true);
     }
 
@@ -105,12 +108,12 @@ function App() {
                 e.preventDefault();
             }}>
 
-            <Sidebar fNavigatePage={fNavigatePage} />
+            <Sidebar favorites={sidebarFavorites} fNavigatePage={fNavigatePage} />
             <Titlebar pageState={pageState} fNavigateDirection={fNavigateDirection} fRefreshPlayers={refreshPlayers} />
 
             <Routes>
                 <Route path='/' element={
-                    playersLoaded ? <Players key={playersKey} players={players} /> : null
+                    playersLoaded ? <Players key={playersKey} players={playersAll} /> : null
                 } />
                 <Route path='/champsqueue' element={
                     <ChampionsQueue/>
