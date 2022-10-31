@@ -30,7 +30,7 @@ const Card: React.FC<{
 }> = ({ playerProps, globalInterval, menuOpen, fHandleMenuOpen }) => {
     const { t } = useTranslation('common');
     const { showSummonerIds, showRandomSkins } = useContext(SettingsContext);
-    const [playerFavorited, setPlayerFavorited] = useState<boolean>(false);
+    const [playerFavorited, setPlayerFavorited] = useState<boolean>(playerProps.favorite);
     const [champ, setChamp] = useState<string>(playerProps.champion.name);
     const [glow, setGlow] = useState<string>(playerProps.champion.color);
 
@@ -91,12 +91,12 @@ const Card: React.FC<{
                     <h1 className="loading-dot dot-one">.</h1>
                     <h1 className="loading-dot dot-two">.</h1>
                     <h1 className="loading-dot dot-three">.</h1>
-                    <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, { insert: playerProps.summoner.playerName })}</span>
+                    <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, { insert: playerProps.playerInfo.playerName })}</span>
                 </div>
                 <div className={`card-champ noselect`} style={champStyles}></div>
                 {/* <img src={dragIcon} alt="drag" className='card-drag noselect' /> */}
                 {/* <div className='blur-small'></div> */}
-                <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${playerProps.summoner.playerImage})` }}></div>
+                <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${playerProps.playerInfo.playerImage})` }}></div>
                 <div
                     className={state.backgroundDir === "centered" ? 'card-image' : 'card-image-cutout'}
                     style={{
@@ -107,13 +107,13 @@ const Card: React.FC<{
                 <div className='card-content'>
                     <div className='text-container'>
                         <div className={`summoner-container`}>
-                            <img src={`src/assets/icons/lanes/${playerProps.summoner.role}.png`} alt="role" className='card-role noselect' />
+                            <img src={`src/assets/icons/lanes/${playerProps.playerInfo.role}.png`} alt="role" className='card-role noselect' />
                             <span className='text-summoner'>
-                                {showSummonerIds ? playerProps.summoner.accountName : playerProps.summoner.playerName}
+                                {showSummonerIds ? playerProps.playerAccount.summonerName : playerProps.playerInfo.playerName}
                             </span>
                         </div>
                         <div className='text-sub-container'>
-                            <span className='text-sub noselect'>{`${playerProps.summoner.team.long}`}</span>
+                            <span className='text-sub noselect'>{`${playerProps.playerInfo.team.long}`}</span>
                         </div>
                     </div>
                 </div>

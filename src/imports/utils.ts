@@ -1,4 +1,4 @@
-import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ICQLeaderboardEntry, ICQPage, ILanguageResources, IPageState, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISidebarButton, ISummonerAccount, ITeamInfo } from "./interfaces";
+import { IAppReleaseChange, IAppReleaseChanges, IBackground, IBackgroundInfo, IChampion, ICQLeaderboardEntry, ICQPage, ILanguageResources, IPageState, IPlayer, IPlayerGroupInfo, IPlayerGroups, IPlayers, IRegion, ISettingsItem, ISettingsItems, ISettingsItemValueBool, ISettingsItemValueLanguage, ISettingsItemValueSelection, ISettingsItemValueSelections, ISettingsItemValueSelector, ISettingsPage, ISettingsPageLanguage, ISettingsSection, ISettingsSectionEntries, ISettingsSectionEntry, ISidebarButton, ISummoner, ITeamInfo } from "./interfaces";
 import { ETeams, ETeamNames, EChampions, ERegions, EButtonImages, EModes, ERoles, EGroupBy, EChangeType } from "./typings";
 import { readDir, BaseDirectory, exists } from '@tauri-apps/api/fs';
 
@@ -501,7 +501,7 @@ export function FormSidebarButton(id: string, title: string, icon: string, page:
 export function FormCQPage(index: number, title: string, url?: string): ICQPage {
     return { index: index, title: cqTitle(title), url: url ? url : "" }
 }
-export function FormCQLeaderboardEntry(rank: number, lp: number, player: ISummonerAccount): ICQLeaderboardEntry {
+export function FormCQLeaderboardEntry(rank: number, lp: number, player: ISummoner): ICQLeaderboardEntry {
     return { rank: rank, lp: lp, playerInfo: player };
 }
 
@@ -563,6 +563,9 @@ export async function getRandomBackground(override?: IBackground): Promise<IBack
     return { type: override.type, name: override.name, ext: override.ext }
 }
 
+export const arrayRandom = <T extends unknown> (arr: T[]): T => {
+    return arr[Math.floor(Math.random() * arr.length)]
+};
 export const pickNRandom = <T extends unknown> (arr: T[], n: number): T[] => {
     const shuffled = Array.from(arr).sort(() => 0.5 - Math.random());
     return shuffled.slice(0, n);

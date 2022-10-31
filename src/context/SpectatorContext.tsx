@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 
-import { ISummonerAccount, ISummonerAccounts } from "../imports/interfaces";
+import { ISummoner, ISummoners, ISummonerAccount, ISummonerAccounts } from "../imports/interfaces";
 import { EGroupBy, EModes, ERegions, ERoles } from "../imports/typings";
 import { useInit } from '../imports/initializers';
 
@@ -14,7 +14,7 @@ interface ISpectatorContext {
     roleFilter: ERoles[];
     groupBy: EGroupBy;
     accountsLoaded: boolean;
-    allAccounts: ISummonerAccount[];
+    allAccounts: ISummoner[];
     updateFilter: (update: string, newFilter: any[], reset: boolean) => void;
     updateGroup: (newGroup: EGroupBy) => void;
 }
@@ -36,7 +36,7 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
     const [roleFilter, setRoleFilter] = useState<ERoles[]>([]);
     const [groupBy, setGroupBy] = useState<EGroupBy>(EGroupBy.NONE);
     const [accountsLoaded, setAccountsLoaded] = useState<boolean>(false);
-    const [allAccounts, setAllAccounts] = useState<ISummonerAccount[]>([]);
+    const [allAccounts, setAllAccounts] = useState<ISummoner[]>([]);
 
     useInit(() => {
         const loadPlayers = async () => {
@@ -44,24 +44,35 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
                 const year = currentYearN();
                 for (const p in KR.players) {
                     let player = KR.players[p];
-                    for (const a in player.accounts) {
-                        let account = player.accounts[a];
 
-                        if (account.id != undefined || account.puuid != undefined) {
-                            let teamNum = getTeamFromNumber(player.team);
-                            let playerAccountI: ISummonerAccount = {
-                                accountName: account.name,
-                                playerName: player.player,
+                    // checking if player has accounts to use, otherwise skip
+                    if (player.accounts && player.accounts.length) {
+                        let playerAccounts: ISummonerAccounts = []
+                        for (const a in player.accounts) {
+                            let account = player.accounts[a];
+                            if (account.id != undefined && account.puuid != undefined && account.name != undefined) {
+                                let newAccount: ISummonerAccount = {} as ISummonerAccount;
+                                newAccount.summonerName = account.name;
+                                newAccount.summonerId = account.id;
+                                newAccount.summonerPuuid = account.puuid;
+                                newAccount.region = account.region;
+                                playerAccounts.push(newAccount);
+                            }
+                        }
+
+                        let teamNum = getTeamFromNumber(player.team);
+                        let playerAccountI: ISummoner = {
+                            playerInfo: {
+                                playerName: player.player as string,
                                 playerImage: await getFallbackPhoto(`${teamNum.short}_${player.player}`, year),
                                 team: teamNum,
-                                summonerId: account.id,
-                                summonerPuuid: account.puuid,
-                                region: account.region,
-                                role: player.role,
-                                stream: player.stream
-                            }
-                            setAllAccounts(prevAccounts => [...prevAccounts, playerAccountI]);
+                                role: player.role as string,
+                                stream: player.stream as string
+                            },
+                            playerAccounts: playerAccounts,
                         }
+
+                        setAllAccounts(prevAccounts => [...prevAccounts, playerAccountI]);
                     }
                 }
     

@@ -66,7 +66,8 @@ export interface IPlayer {
     favorite: boolean;
     champion: IChampion;
     skin: string;
-    summoner: ISummonerAccount;
+    playerInfo: ISummonerInfo;
+    playerAccount: ISummonerAccount;
     gameInfo: IGameInfo;
 }
 
@@ -86,17 +87,26 @@ export interface ISelectedChamps {
     champs: number[];
 }
 
-export interface ISummonerAccounts extends Array<ISummonerAccount>{}
-export interface ISummonerAccount {
-    accountName: string;
+export interface ISummoners extends Array<ISummoner>{}
+export interface ISummoner {
+    playerInfo: ISummonerInfo;
+    playerAccounts: ISummonerAccounts;
+}
+
+export interface ISummonerInfo {
     playerName: string;
     playerImage: string;
     team: ITeamInfo;
+    role: string;
+    stream: string;
+}
+
+export interface ISummonerAccounts extends Array<ISummonerAccount>{}
+export interface ISummonerAccount {
+    summonerName: string;
     summonerId: string;
     summonerPuuid: string;
     region: string;
-    role: string;
-    stream: string;
 }
 
 export interface ITeamInfo {
@@ -314,7 +324,7 @@ export interface ICQLeaderboardEntries extends Array<ICQLeaderboardEntry>{}
 export interface ICQLeaderboardEntry {
     rank: number;
     lp: number;
-    playerInfo: ISummonerAccount;
+    playerInfo: ISummoner;
 }
 
 // NOTE: JSON

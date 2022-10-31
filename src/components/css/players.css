@@ -41,7 +41,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-content: flex-start;
-    padding: 0 20px 0 20px;
+    padding: 0 17px 0 0;
 /*    background-color: red;*/
 }
 
@@ -60,7 +60,7 @@
     justify-content: flex-start;
     align-content: center;
     align-items: center;
-    margin: 20px 13px 10px 13px;
+    margin: 20px 13px 10px 33px;
 }
 
 .players-section-badge {
@@ -193,7 +193,7 @@
     transition: max-height 0.45s;
     grid-template-columns: repeat(auto-fill, 180px);
     gap: 20px 16px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .group-collapsed .pros-grid {

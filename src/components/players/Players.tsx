@@ -27,15 +27,14 @@ const Players: React.FC<{
     const { groupBy } = useContext(SpectatorContext);
 
     const groupPlayers = () => {
-        console.log("players GROUPED::");
         let pFavorites = filterBy(usePlayersState, p => p.favorite);
         let pRest = filterBy(usePlayersState, p => !p.favorite);
         let grouped: IPlayerGroups = [];
 
         if (groupBy == EGroupBy.ROLE) {
-            grouped = sortByKey(groupByKey(pRest, player => player.summoner.role), ROLES_SORT);
+            grouped = sortByKey(groupByKey(pRest, player => player.playerInfo.role), ROLES_SORT);
         } else if (groupBy == EGroupBy.TEAM) {
-            grouped = sortByKey(groupByKey(pRest, player => player.summoner.team.short), TEAMS_SORT);
+            grouped = sortByKey(groupByKey(pRest, player => player.playerInfo.team.short), TEAMS_SORT);
         } else if (groupBy == EGroupBy.NONE) {
             grouped = [{ key: EGroupBy.NONE, players: pRest }] as IPlayerGroups;
         }
@@ -47,7 +46,6 @@ const Players: React.FC<{
     useEffect(() => {
         if (usePlayersState) {
             setUsePlayersState(players);
-            console.log("players SET::");
             groupPlayers();
         }
 

@@ -35,7 +35,7 @@ const CardMenu: React.FC<{
     return (
         <div className={`card-menu`} style={{ top: menuY, left: menuX }}>
             <div className="card-menu-upper">
-                <span className='card-menu-title noselect'>{`${showSummonerIds ? player.summoner.accountName : player.summoner.playerName}:`}</span>
+                <span className='card-menu-title noselect'>{`${showSummonerIds ? player.playerAccount.summonerName : player.playerInfo.playerName}:`}</span>
 
                 <div className='card-menu-button' onClick={(event) => stopPropagation(event, () => {})}>
                     <div className='menu-icon-container'>
@@ -50,13 +50,13 @@ const CardMenu: React.FC<{
                     <span className='noselect'>{t('menus.livegame')}</span>
                 </div>
                 
-                {player.summoner.stream === "" ? null
+                {player.playerInfo.stream === "" ? null
                     :
-                    <div className='card-menu-button' onClick={(event) => stopPropagation(event, () => openInNewTab(player.summoner.stream))}>
+                <div className='card-menu-button' onClick={(event) => stopPropagation(event, () => openInNewTab(player.playerInfo.stream))}>
                         <div className='menu-icon-container'>
                             <div className={`arrow-icon arrowNormal`}></div>
                         </div>
-                        <span className='noselect'>{t(whichStream(player.summoner.stream))}</span>
+                    <span className='noselect'>{t(whichStream(player.playerInfo.stream))}</span>
                     </div>}
             </div>
             

@@ -319,7 +319,7 @@
 .player-card-clicked,
 .player-card:hover
 {
-    background-color: rgb(var(--card-bg-hovered));
+    background-color: var(--card-bg-hovered);
     box-shadow: 0 0 20px 0 var(--card-bg-hovered-shadow);
 }
 .player-card-clicked .card-image,

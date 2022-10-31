@@ -7,7 +7,7 @@ import Settings from "./components/settings/Settings";
 import { IBackground, IPlayers, IPageState, IPlayer } from "./imports/interfaces";
 
 import { EChampions } from "./imports/typings";
-import { filterBy, getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, randomSkin, getChampionFromId } from "./imports/utils";
+import { filterBy, getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, randomSkin, getChampionFromId, arrayRandom } from "./imports/utils";
 import "./imports/prototypes"
 import { Players, PlayersNotLoaded } from "./components/players/Players";
 
@@ -28,7 +28,6 @@ function App() {
     const [appBG, setAppBG] = useState<IBackground>({
         type: "random", name: "FrightNight_Renata_and_Nautilus_Final", ext: "jpg"
     });
-    const [playersLoaded, setPlayersLoaded] = useState<boolean>(false);
     const [playersAll, setPlayersAll] = useState<IPlayers>([]);
     const [sidebarFavorites, setSidebarFavorites] = useState<IPlayers>([]);
     const [playersKey, setPlayersKey] = useState<number>(0);
@@ -39,59 +38,42 @@ function App() {
         navigate(dir);
     }
     const fNavigatePage = (page: string) => {
-//        if (checkPreviousBack(pageState, page)) { navigate(-1); return; }
-//        if (checkPreviousForward(pageState, page)) { navigate(1); return; }
         setPageState({ currentPage: pageState.currentPage + 1, pages: [...pageState.pages, page] });
         navigate(page, { replace: false });
     }
-
-    const refreshPlayers = () => {
-//        setPlayersAll([]);
-        setPlayersLoaded(true);
-
-//        if (accountsLoaded) {
-//            loopPlayers();
-//        }
-    }
-
 
     const getAppBackground = async () => {
         const randomBG = await getRandomBackground(appBG);
         setAppBG(randomBG);
     };
 
-    useEffect(() => {
-        const loopPlayers = async () => {
-            let filteredPlayers = await Promise.all(
-                allAccounts
-                    .filterRegions(regionFilter).filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 12)
-                    .map(async (player, i): Promise<IPlayer> => {
-                        let randomC = getChampionFromId(randomEnum(EChampions, []))!;
-                        return {
-                            id: i,
-                            active: randomActive(),
-                            favorite: i <= 2,
-                            champion: randomC,
-                            skin: await randomSkin(randomC.name),
-                            summoner: { accountName: player.accountName, playerName: player.playerName, playerImage: player.playerImage, team: player.team, summonerId: "", summonerPuuid: "", region: player.region, role: player.role, stream: player.stream
-                            },
-                            gameInfo: { region: getRegion(player.region).use, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800)
-                            }
-                        }
-                    })
-            ).then((data) => {
-                setPlayersAll(data);
-                setSidebarFavorites(filterBy(data, p => p.favorite));
-                setPlayersKey(playersKey + 1);
-                setPlayersLoaded(false);
-                console.log("players LOOPEDEND::");
-            })
-        }
+    const refreshPlayers = () => {
+        setPlayersAll([]);
+        loopPlayers();
+    }
 
-        if (accountsLoaded && playersLoaded) {
-            loopPlayers();
-        }
-    })
+    const loopPlayers = async () => {
+        console.log("loopPlayers CALLED::");
+        await Promise.all(allAccounts.filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 12).map(async (summoner, ip) => {
+            let accounts = summoner.playerAccounts.filterRegions(regionFilter);
+            let selectedAccount = arrayRandom(accounts);
+            let randomC = getChampionFromId(randomEnum(EChampions, []))!;
+            let playerI = {
+                id: ip,
+                active: randomActive(),
+                favorite: ip <= 2, // TODO: testing, use real favorites later
+                champion: randomC,
+                skin: await randomSkin(randomC.name),
+                playerInfo: summoner.playerInfo,
+                playerAccount: selectedAccount,
+                gameInfo: { region: getRegion(selectedAccount.region).use, encryptionKey: "", gameId: "", gameTime: randomNumber(60, 1800) }
+            }
+
+            setPlayersAll(prevPlayers => [...prevPlayers, playerI]);
+        })).then(() => {
+            setPlayersKey(playersKey + 1);
+        });
+    }
     useInit(() => {
         if (randomBackground) { getAppBackground(); }
         if (autoRefresh) { refreshPlayers(); }
