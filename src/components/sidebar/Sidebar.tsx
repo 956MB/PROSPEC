@@ -52,17 +52,17 @@ const Sidebar: React.FC<{
             </div>
 
             {/* <div className={`favorites-group`}>
-                <div className="favorites-scroll">
-                    {React.Children.toArray(
-                        favorites.map((favorite) => (
-                            <SidebarFavorite
-                                extraClass={""}
-                                buttonProps={{} as ISidebarButton}
-                                favoriteProps={favorite}
-                                globalInterval={gameInterval} />
-                        ))
-                    )}
-                </div>
+            <div className="favorites-scroll">
+            {React.Children.toArray(
+            favorites.map((favorite) => (
+            <SidebarFavorite
+            extraClass={""}
+            buttonProps={{} as ISidebarButton}
+            favoriteProps={favorite}
+            globalInterval={gameInterval} />
+            ))
+            )}
+            </div>
             </div> */}
 
             <div className={`sidebar-group`}>

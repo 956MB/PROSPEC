@@ -1,6 +1,12 @@
 :root {
-    --app-background: 21,21,21,0.85;
-    --app-background-overlay: 25,25,25,1.0;
+    --app-background: rgba(21,21,21,0.85);
+    --app-background-overlay: rgba(25,25,25,1.0);
+    --app-scrollbar-track: rgba(35, 35, 35, 0.90);
+    --app-scrollbar-thumb: rgba(255, 255, 255, 0.18);
+    --app-scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
+    --app-scrollbar-thumb-active: rgba(255, 255, 255, 0.35);
+    --tooltip-bg: rgba(15, 15, 15, 0.95);
+    --tooltip-text-fg: rgba(255, 255, 255, 0.702);
 }
 
 html {
@@ -21,7 +27,7 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background-color: rgba(35, 35, 35, 0.90);
+    background-color: var(--app-scrollbar-track);
     border: 6px solid transparent;
     border-radius: 10px;
     background-clip: content-box;
@@ -33,21 +39,21 @@ body {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     /* background: #888; */
-    background-color: rgba(255, 255, 255, 0.18);
+background-color: var(--app-scrollbar-thumb);
     border: 6px solid transparent;
     border-radius: 10px;
     background-clip: content-box;
 }
 /* Handle hover */
 ::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: var(--app-scrollbar-thumb-hover);
     border: 6px solid transparent;
     border-radius: 10px;
     background-clip: content-box;
 }
 /* Handle active */
 ::-webkit-scrollbar-thumb:active {
-    background-color: rgba(255, 255, 255, 0.35);
+    background-color: var(--app-scrollbar-thumb-active);
     border: 6px solid transparent;
     border-radius: 10px;
     background-clip: content-box;
@@ -168,10 +174,10 @@ img {
 
 .tooltip .tooltip-text {
     display: none;
-    background-color: rgba(15, 15, 15, 0.95);
-    color: rgba(255, 255, 255, 0.702);
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text-fg);
     text-align: center;
-    font-family: 'RobotoMono_Regular';
+    font-family: 'RobotoMono_Regular', serif;
     border-radius: 5px;
     padding: 3px 8px 4px 8px;
     font-size: 11px;
@@ -181,10 +187,10 @@ img {
 
 .tooltip .tooltip-text-delay {
     display: block;
-    background-color: rgba(15, 15, 15, 0.95);
-    color: rgba(255, 255, 255, 0.702);
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text-fg);
     text-align: center;
-    font-family: 'RobotoMono_Regular';
+    font-family: 'RobotoMono_Regular', serif;
     border-radius: 5px;
     padding: 3px 8px 4px 8px;
     font-size: 11px;
@@ -198,7 +204,7 @@ img {
 .br_BA .tooltip .tooltip-text,
 .br_BA .tooltip .tooltip-text-delay
 {
-    font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium', serif !important;
     letter-spacing: 3px !important;
 }
 
@@ -305,7 +311,7 @@ img {
 }
 
 .app {
-    background-color: rgba(var(--app-background));
+    background-color: var(--app-background);
     background-repeat: no-repeat;
     background-size: cover;
     min-width: 1040px;
@@ -360,7 +366,7 @@ img {
     height: 100%;
     /* background-color: rgba(21, 21, 21, 0.85); */
     /* background-image: linear-gradient(rgba(21, 21, 21, 0.85), var(--app-background)); */
-    background-image: linear-gradient(0deg, rgba(var(--app-background-overlay)) 0%, rgba(var(--app-background-overlay)) 30%, rgba(var(--app-background)) 100%);
+    background-image: linear-gradient(0deg, var(--app-background-overlay) 0%, var(--app-background-overlay) 30%, var(--app-background) 100%);
     z-index: 1;
 }
 

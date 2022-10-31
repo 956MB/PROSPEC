@@ -1,15 +1,31 @@
 :root {
-    --card-bg: 16, 16, 16, 0.70;
-    --card-bg-hovered: 9, 9, 9, 0.90;
-    --card-bg-hovered-shadow: 0, 0, 0, 0.25;
     --accent-favorite: rgba(255, 0, 65, 1.0);
-
-    --card-menu-bg-shadow: 0, 0, 0, 0.35;
-    --card-menu-title-fg: 255, 255, 255, 0.50;
-    --card-menu-item-text-fg: 255, 255, 255, 0.80;
-    --card-menu-item-text-hovered-fg: 255, 255, 255, 0.95;
-    --card-menu-item-text-active-hovered-fg: 255, 255, 255, 0.75;
-    --card-menu-divider: 255, 255, 255, 0.10;
+    --card-ending-text-fg: rgba(255, 52, 79, 0.877);
+    --card-unavailable: rgba(25, 25, 25, 0.65);
+    --card-unavailable-hover: rgba(25, 25, 25, 0.65);
+    --card-unavailable-loading-dots: rgba(10, 10, 10, 0.30);
+    --card-unavailable-ending-text-fg: rgba(255, 52, 79, 0.877);
+    --card-unavailable-summoner-text-fg: rgba(255, 255, 255, 0.40);
+    --card-image-bg: rgba(135, 135, 135, 0.103);
+    --card-image-border: rgba(255, 255, 255, 0.08);
+    --card-image-border-2: rgba(255, 255, 255, 0.2);
+    --card-image-mask-1: rgba(0,0,0,1);
+    --card-image-mask-40: rgba(0,0,0,0.40);
+    --card-bg: rgba(16, 16, 16, 0.70);
+    --card-bg-hovered: rgba(9, 9, 9, 0.90);
+    --card-bg-hovered-shadow: rgba(0, 0, 0, 0.25);
+    --card-game-timer: rgba(15, 15, 15, 0.90);
+    --card-game-timer-text-fg: rgba(255, 255, 255, 0.60);
+    --card-text-sub: rgba(255, 255, 255, 0.50);
+    --card-text-sub-active: rgba(255, 255, 255, 0.80);
+    --card-text-sub-hover: rgba(255, 255, 255, 0.75);
+    --card-text-sub-clicked: rgba(255, 255, 255, 0.75);
+    --card-menu-bg-shadow: rgba(0, 0, 0, 0.35);
+    --card-menu-title-fg: rgba(255, 255, 255, 0.50);
+    --card-menu-item-text-fg: rgba(255, 255, 255, 0.80);
+    --card-menu-item-text-hovered-fg: rgba(255, 255, 255, 0.95);
+    --card-menu-item-text-active-hovered-fg: rgba(255, 255, 255, 0.75);
+    --card-menu-divider: rgba(255, 255, 255, 0.10);
     --card-menu-button-disabled: rgba(66, 66, 66, 0.25);
     --card-menu-button-normal: rgba(66, 66, 66, 0.90);
     --card-menu-button-pressed: rgba(85, 85, 85, 0.25);
@@ -27,7 +43,7 @@
     z-index: 99 !important;
     background-color: rgb(13, 13, 13, 0.99);
     border-radius: 5px;
-    box-shadow: 0 0 15px 0px rgba(var(--card-menu-bg-shadow));
+    box-shadow: 0 0 15px 0px var(--card-menu-bg-shadow);
 }
 
 .card-menu-upper {
@@ -51,7 +67,7 @@
     padding: 0 12px 0 12px;
     font-family: 'Inter_Medium', serif;
     font-size: 12px;
-    color: rgba(var(--card-menu-title-fg));
+    color: var(--card-menu-title-fg);
     white-space: nowrap;
     text-align: left;
     height: 30px;
@@ -61,7 +77,6 @@
     font-family: 'ChmcBraille_nK5P', 'RobotoMono_Regular', serif !important;
     font-size: 11px !important;
     letter-spacing: 3px !important;
-    font-size: 11px;
 }
 
 .card-menu-button {
@@ -79,7 +94,7 @@
 .card-menu-button span {
     font-family: 'Inter_Medium', serif;
     font-size: 12px;
-    color: rgba(var(--card-menu-item-text-fg));
+    color: var(--card-menu-item-text-fg);
     white-space: nowrap;
     text-align: left;
     width: 100%;
@@ -89,7 +104,6 @@
     font-family: 'ChmcBraille_nK5P', 'Inter_Medium', serif !important;
     font-size: 11px !important;
     letter-spacing: 3px !important;
-    font-size: 11px;
 }
 .card-menu-button img {
     display: block;
@@ -200,7 +214,7 @@
 
 .menu-divider {
     height: 1px;
-    background-color: rgba(var(--card-menu-divider));
+    background-color: var(--card-menu-divider);
 }
 
 .card-menu-button:hover {
@@ -211,13 +225,13 @@
 }
 
 .card-menu-button:hover span {
-    color: rgba(var(--card-menu-item-text-hovered-fg));
+    color: var(--card-menu-item-text-hovered-fg);
 }
 .card-menu-button:hover img {
     opacity: 0.95;
 }
 .card-menu-button:active span {
-    color: rgba(var(--card-menu-item-text-active-hovered-fg));
+    color: var(--card-menu-item-text-active-hovered-fg);
 }
 
 .card-outer {
@@ -239,7 +253,7 @@
     backface-visibility: hidden !important;
     z-index: 10;
     cursor: pointer;
-    background-color: rgba(var(--card-bg));
+    background-color: var(--card-bg);
     backdrop-filter: blur(6px);
     transition: background-color 0.075s ease-in-out;
 }
@@ -249,7 +263,7 @@
     filter: grayscale(1) !important;
     overflow: visible;
     z-index: 90 !important;
-    background-color: rgba(25, 25, 25, 0.65);
+    background-color: var(--card-unavailable);
 }
 
 .card-unavailable:active {
@@ -274,10 +288,10 @@
     background-size: 320px;
     pointer-events: none;
     box-sizing: border-box;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--card-image-border-2);
     z-index: 1;
-    mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.20)));
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.20)));
+    mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-40)));
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-40)));
 }
 
 .card-unavailable .card-image {
@@ -306,18 +320,18 @@
 .player-card:hover
 {
     background-color: rgb(var(--card-bg-hovered));
-    box-shadow: 0 0 20px 0px rgba(var(--card-bg-hovered-shadow));
+    box-shadow: 0 0 20px 0 var(--card-bg-hovered-shadow);
 }
 .player-card-clicked .card-image,
 .player-card:hover .card-image
 {
     opacity: 0.65;
     filter: grayscale(0) brightness(1.1) opacity(1.0) !important;
-    mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.40)));
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.40)));
+    mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-40)));
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-40)));
 }
 .card-unavailable:hover {
-    background-color: rgba(25, 25, 25, 0.65);
+    background-color: var(--card-unavailable-hover);
     box-shadow: none;
 }
 
@@ -361,7 +375,6 @@
     z-index: 3;
     pointer-events: none;
     background-repeat: no-repeat;
-    background-size: contain;
     background-position: bottom;
     /* TODO: player photos get blurry RIGHT AT 'background-size: 186px'... DONT KNOW WHY */
     /* NOTE: annnnndd maybe 187px???? idk */
@@ -381,12 +394,11 @@
     bottom: 10px;
     border-radius: 6px;
     background-repeat: no-repeat;
-    background-size: contain;
     background-position: center;
     pointer-events: none;
     background-size: 40px;
-    background-color: rgba(135, 135, 135, 0.103);
-    border: 1px solid rgb(255, 255, 255, 0.08);
+    background-color: var(--card-image-bg);
+    border: 1px solid var(--card-image-border);
     z-index: 3;
 }
 
@@ -398,12 +410,10 @@
     top: 7px;
     border-radius: 4px 4px 0 0;
     background-repeat: no-repeat;
-    pointer-events: none;
-    background-size: contain;
     background-position: center;
     pointer-events: all;
     background-size: 55px;
-    background-color: rgba(135, 135, 135, 0.10);
+    background-color: var(--card-image-bg);
     z-index: 2;
 }
 .player-card:hover .card-champ {
@@ -437,30 +447,6 @@
     display: none;
 }
 
-.player-level {
-    pointer-events: none;
-    background-color: rgba(10, 10, 10, 1.0);
-    z-index: 4 !important;
-    color: rgba(255, 255, 255, 0.90);
-    text-align: center;
-    font-family: 'RobotoMono_Regular', serif;
-    border-radius: 12px;
-    padding: 2px 6px 2px 6px;
-    font-size: 10px;
-}
-
-.blur-small {
-    position: absolute;
-    height: 52px;
-    width: 52px;
-    left: 12px;
-    pointer-events: none;
-    bottom: 16px;
-    border-radius: 7px;
-    background-color: rgba(135, 135, 135, 0.10);  
-    z-index: 2;
-}
-
 .card-unavailable .blur-small {
     display: none;
 }
@@ -477,7 +463,7 @@
     pointer-events: all;
     top: 4px;
     right: 4px;
-    background-color: rgba(15, 15, 15, 0.90);
+    background-color: var(--card-game-timer);
     z-index: 2;
 }
 
@@ -486,14 +472,14 @@
     left: 7px;
     top: 54px;
     width: 47px;
-    background-color: rgba(var(--card-bg));
+    background-color: var(--card-bg);
     backdrop-filter: blur(8px);
     padding: 4px 0 3px 0;
     border-radius: 0 0 6px 0;
     font-family: 'RobotoMono_Regular', serif !important;
     text-align: center;
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.60);
+    color: var(--card-game-timer-text-fg);
     pointer-events: none;
     z-index: 2 !important;
     user-select: none;
@@ -521,7 +507,7 @@
     text-align: center;
     z-index: 4;
     user-select: none;
-    background-color: rgba(10, 10, 10, 0.30);
+    background-color: var(--card-unavailable-loading-dots);
     padding: 2px 0 0 0;
     backdrop-filter: blur(8px);
 }
@@ -558,7 +544,7 @@
 }
 
 .ending-text {
-    color: rgba(255, 52, 79, 0.877) !important;
+    color: var(--card-ending-text-fg) !important;
 }
 .ending-svg {
     filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
@@ -638,7 +624,7 @@
     0%,
     25% {
       transform: translateX(0%);
-      left: 0%;
+      left: 0;
     }
     75%,
     100% {
@@ -650,7 +636,7 @@
 .card-unavailable .text-summoner {
     max-height: 58px;
     margin: 8px 0 5px 0;
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--card-unavailable-summoner-text-fg);
     text-align: center !important;
     overflow-y: visible;
     overflow-x: visible;
@@ -660,10 +646,9 @@
 .text-sub {
     font-family: 'RobotoMono_Regular', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.50);
+    color: var(--card-text-sub);
     pointer-events: none;
     user-select: none;
-    white-space: nowrap;
     white-space: nowrap;
     overflow: visible;
     text-overflow: ellipsis;
@@ -714,23 +699,23 @@
 
 .card-unavailable .ending-text
 {
-    color: rgba(255, 52, 79, 0.877) !important;
+    color: var(--card-unavailable-ending-text-fg) !important;
 }
 
 .player-card:hover .text-sub,
 .player-card-clicked .text-sub
 {
-    color: rgba(255, 255, 255, 0.75);
+    color: var(--card-text-sub-hover);
 }
 
 .player-card:hover .game-timer-text,
 .player-card-clicked .game-timer-text
 {
     color: var(--accent);
-    background-color: rgba(var(--card-bg-hovered));
+    background-color: var(--card-bg-hovered);
 }
 .player-card:active .text-sub {
-    color: rgba(255, 255, 255, 0.80);
+    color: var(--card-text-sub-active);
 }
 .player-card:hover .clock-svg,
 .player-card-clicked .clock-svg
@@ -739,16 +724,4 @@
 }
 .player-card:active .clock-svg {
     opacity: 0.8;
-}
-
-@keyframes blinkEnding {
-    0% {
-        box-shadow: 0 0 100px 12px rgba(255, 52, 79, 0.40);
-    }
-    50% {
-        box-shadow: 0 0 100px 12px rgba(255, 52, 79, 0.80);
-    }
-    100% {
-        box-shadow: 0 0 100px 12px rgba(255, 52, 79, 0.40);
-    }
 }

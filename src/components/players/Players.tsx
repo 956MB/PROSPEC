@@ -17,18 +17,19 @@ const TEAMS_SORT = mapEnum(ETeams, "number", (team: number) => { return team.toS
 const Players: React.FC<{
     players: IPlayers,
 }> = ({ players }) => {
+    const [usePlayersState, setUsePlayersState] = useState<IPlayers>(players);
     const [intervalActive, setIntervalActive] = useState<boolean>(false);
     const [gameInterval, setGameInterval] = useState<number>(0);
     const [menuOpen, setMenuOpen] = useState<number>(-1);
 
-    const [totalPlayers, setTotalPlayers] = useState<number>(players.length);
     const [groupedPlayersFavorites, setGroupedPlayersFavorites] = useState<IPlayerGroups>([]);
     const [groupedPlayersRest, setGroupedPlayersRest] = useState<IPlayerGroups>([]);
     const { groupBy } = useContext(SpectatorContext);
 
-    useInit(() => {
-        let pFavorites = filterBy(players, p => p.favorite);
-        let pRest = filterBy(players, p => !p.favorite);
+    const groupPlayers = () => {
+        console.log("players GROUPED::");
+        let pFavorites = filterBy(usePlayersState, p => p.favorite);
+        let pRest = filterBy(usePlayersState, p => !p.favorite);
         let grouped: IPlayerGroups = [];
 
         if (groupBy == EGroupBy.ROLE) {
@@ -41,9 +42,15 @@ const Players: React.FC<{
 
         setGroupedPlayersFavorites(pFavorites.length >= 1 ? [{ key: EGroupBy.NONE, players: pFavorites }] : []);
         setGroupedPlayersRest(grouped);
-    });
+    };
 
     useEffect(() => {
+        if (usePlayersState) {
+            setUsePlayersState(players);
+            console.log("players SET::");
+            groupPlayers();
+        }
+
         if (intervalActive) {
             let interval = setInterval(() => {
                 setGameInterval(gameInterval + 1);
@@ -53,12 +60,13 @@ const Players: React.FC<{
                 clearInterval(interval);
             };
         }
-    });
+    }, [usePlayersState]);
 
     return (
         <div className='pros-container noselect'>
             <div className='pros-scroll'>
                 <PlayersSection sectionTitle={`titles.favorites`} sectionPlayers={getGroupsLen(groupedPlayersFavorites)} sectionEmptyMessage={`tooltips.noFavorites`} />
+
                 {groupedPlayersFavorites.length >= 1 ?
                     React.Children.toArray(
                         groupedPlayersFavorites.map((group, i) => (

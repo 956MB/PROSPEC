@@ -1,6 +1,15 @@
 :root {
+    --titlebar-button-group: rgba(255, 255, 255, 0.03);
+    --titlebar-refresh-button: rgba(255, 255, 255, 0.03);
+    --titlebar-refresh-text-fg: rgba(255, 255, 255, 0.20);
+    --titlebar-constrols-button-hover: rgba(255, 255, 255, 0.08);
+    --titlebar-constrols-button-active: rgba(255, 255, 255, 0.08);
+    --searchbar-input-text-fg: rgba(255, 255, 255, 0.80);
     --searchbar-normal: rgba(255, 255, 255, 0.03);
-    --searchbar-focus: rgba(255, 255, 255, 0.20);
+    --searchbar-active-input-text-fg: rgba(255, 255, 255, 0.35);
+    --searchbar-border-focus: rgba(255, 255, 255, 0.10);
+    --searchbar-placeholder: rgba(255, 255, 255, 0.20);
+    --searchbar-placeholder-focus: rgba(255, 255, 255, 0.30);
 }
 
 .titlebar {
@@ -9,7 +18,6 @@
     width: 100%;
     max-width: 100%;
     z-index: 3;
-    /* border-bottom: 1px solid rgba(255, 255, 255, 0.05); */
 }
 
 .titlebar-inner {
@@ -21,14 +29,7 @@
     width: 100%;
     z-index: 2;
     padding-left: 70px;
-    /* backdrop-filter: blur(8px); */
-    /* background-color: #22222296; */
 }
-
-@keyframes blinkBorder { 50% { 
-    border-color: rgba(47, 255, 99, 0.60);
-    box-shadow: 0 0 20px 0px rgba(47, 255, 99, 0.05)
-}  }
 
 .titlebar-blur {
     position: fixed;
@@ -51,7 +52,6 @@
     height: 30px;
     border-radius: 50%;
     cursor: pointer;
-    /* background-color: rgba(255, 255, 255, 0.03); */
 }
 
 .titlebar-button-group {
@@ -60,7 +60,7 @@
     align-items: center;
     align-content: center;
     border: none;
-    background: rgba(255, 255, 255, 0.03);
+    background: var(--titlebar-button-group);
     border-radius: 15px;
     height: 30px;
     padding: 0 14px 0 0;
@@ -99,7 +99,7 @@
     transition: all 0.07s ease;
 } */
 .refresh-button {
-    background-color: rgba(255, 255, 255, 0.03) !important;
+    background-color: var(--titlebar-refresh-button) !important;
 }
 
 .navigation-button {
@@ -149,10 +149,10 @@
 .active-navigation-button:hover,
 .titlebar-controls-button:hover
 {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--titlebar-constrols-button-hover);
 }
 .titlebar-button:active {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--titlebar-constrols-button-active);
 }
 
 .titlebar-button img {
@@ -198,21 +198,20 @@
 }
 
 .button-disabled {
-    /* background: rgba(255, 255, 255, 0.02); */
     opacity: 0.5 !important;
     pointer-events: none !important;
 }
 
 .refresh-text {
-    font-family: 'Inter_Light';
+    font-family: 'Inter_Light', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.20);
+    color: var(--titlebar-refresh-text-fg);
     margin-left: 7px;
     white-space:nowrap;
 }
 
 .br_BA .refresh-text {
-    font-family: 'ChmcBraille_nK5P', 'Inter_Medium' !important;
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium', serif !important;
     font-size: 11px !important;
     letter-spacing: 3px !important;
 }
@@ -227,7 +226,7 @@
 }
 
 .search-bar-active input[type=text] {
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    border: 2px solid var(--searchbar-active-input-text-fg);
 }
 
 .search-bar input[type=text] {
@@ -247,13 +246,13 @@
     background-position: calc(100% - 10px) 55%;
     background-repeat: no-repeat;
     text-decoration: none !important;
-    color: rgba(255, 255, 255, 0.80);
+    color: var(--searchbar-input-text-fg);
     caret-color: white;
 }
 
 .search-bar input[type=text]:focus {
     text-decoration: none !important;
-    border: 2px solid rgba(255, 255, 255, 0.10);
+    border: 2px solid var(--searchbar-border-focus);
 }
 
 .search-bar input[type=text]:focus .options-container {
@@ -262,28 +261,28 @@
 
 /* Chrome, Firefox, Opera, Safari 10.1+ */
 .search-bar ::placeholder {
-    font-family: 'Inter_Light';
+    font-family: 'Inter_Light', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.20);
+    color: var(--searchbar-placeholder);
     white-space:nowrap;
 }
 /* Internet Explorer 10-11 */
 .search-bar ::-ms-input-placeholder {
-    font-family: 'Inter_Light';
+    font-family: 'Inter_Light', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.20);
+    color: var(--searchbar-placeholder);
     white-space:nowrap;
 }
 /* Microsoft Edge */
 .search-bar ::-ms-input-placeholder {
-    font-family: 'Inter_Light';
+    font-family: 'Inter_Light', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.20);
+    color: var(--searchbar-placeholder);
     white-space:nowrap;
 }
 
 .search-bar input[type=text]:focus::placeholder {
-    color: rgba(255, 255, 255, 0.30);
+    color: var(--searchbar-placeholder-focus);
 }
 
 .search-disabled,

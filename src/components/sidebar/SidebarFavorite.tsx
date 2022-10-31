@@ -19,7 +19,7 @@ const SidebarFavorite: React.FC<{
             onClick={buttonProps.action}
         >
             <span className='favorite-game-timer-text noselect'>{`${secondsToTime(favoriteProps.gameInfo.gameTime + globalInterval)}`}</span>
-            <img src={`src/assets/photos/${favoriteProps.summoner.playerImage}.webp`} alt="player" />
+            <img src={`src/assets/photos/${favoriteProps.summoner.playerImage}`} alt="player" />
             <div
                 className={`favorite-champ-bg`}
                 // style={{ backgroundImage: `url(src/assets/dragontail/champion/${favoriteProps.champion.name}.png)` }}

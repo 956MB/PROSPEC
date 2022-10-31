@@ -1,7 +1,15 @@
 :root {
     color-scheme: dark;
-    --section-badge-bg: 10, 10, 10, 0.70;
-    --section-badge-empty: 15, 15, 15, 0.50;
+    --section-badge-bg: rgba(10, 10, 10, 0.70);
+    --section-badge-empty: rgba(15, 15, 15, 0.50);
+    --players-section-title-fg: rgba(255, 255, 255, 0.80);
+    --players-section-badge-fg: rgba(255, 255, 255, 0.40);
+    --players-section-empty-fg: rgba(255, 255, 255, 0.35);
+    --divider-text-fg: rgba(255, 255, 255, 0.45);
+    --divider-1: rgba(255, 255, 255, 0.10);
+    --players-empty-bg: rgba(25, 25, 25, 0.60);
+    --players-empty-border: rgba(255, 255, 255, 0.05);
+    --players-empty-text-fg: rgba(255, 255, 255, 0.15);
 }
 
 .pros-container {
@@ -40,7 +48,7 @@
 .players-section-title {
     font-family: 'Inter_Medium', serif;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.80);
+    color: var(--players-section-title-fg);
     white-space: nowrap;
     text-align: left;
     letter-spacing: .06em;
@@ -69,7 +77,7 @@
     font-family: 'RobotoMono_Regular', serif;
     text-align: center;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.40);
+    color: var(--players-section-badge-fg);
     pointer-events: none;
     z-index: 2;
     user-select: none;
@@ -80,14 +88,12 @@
     text-align: center;
     text-transform: uppercase;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--players-section-empty-fg);
     pointer-events: none;
     z-index: 2;
     border-radius: 12px;
     user-select: none;
-    background-color: rgba(var(--card-bg));
-/*    background-color: rgba(255, 255, 255, 0.03);*/
-/*    outline: 1px solid rgba(255, 255, 255, 0.1);*/
+    background-color: var(--card-bg);
     backdrop-filter: blur(12px);
     padding: 5px 10px 5px 10px;
     margin: 15px auto 0 auto;
@@ -133,7 +139,7 @@
 .hor-divider {
     height: 1px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.10);
+    background-color: var(--divider-1);
 }
 
 .divider-left {
@@ -144,7 +150,7 @@
     font-family: 'RobotoMono_Regular', serif;
     font-size: 12px;
     margin: 0 13px 0 13px;
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--divider-text-fg);
     white-space: nowrap;
     text-align: left;
     text-transform: capitalize;
@@ -202,8 +208,8 @@
     justify-content: center;
     align-items: center;
     flex: 1;
-    background-color: rgba(25, 25, 25, 0.60);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--players-empty-bg);
+    border: 1px solid var(--players-empty-border);
     margin: 0 0 0 55px;
     border-radius: 5px;
     z-index: 2;
@@ -212,7 +218,7 @@
 .players-empty span {
     font-family: 'Inter_Medium', serif;
     font-size: 22px;
-    color: rgba(255, 255, 255, 0.15);
+    color: var(--players-empty-text-fg);
     margin-bottom: 47px;
     text-align: center;
 }

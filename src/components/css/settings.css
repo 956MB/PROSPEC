@@ -1,15 +1,4 @@
 :root {
-    --settings-item-title-fg: 255, 255, 255, 0.87;
-    --settings-item-description-fg: 255, 255, 255, 0.27;
-
-    --settings-page-section-bg: rgba(5, 5, 5, 0.20);
-    --settings-page-container-bg: 30, 30, 30, 0.75;
-    --settings-page-container-border: 25, 25, 25;
-    --settings-page-button-text-fg: 255, 255, 255, 0.40;
-    --settings-page-button-text-hover-fg: 255, 255, 255, 0.60;
-    --settings-page-button-text-active-fg: 255, 255, 255, 0.35;
-    --settings-page-button-text-active-hover-fg: 255, 255, 255, 0.40;
-
     --accent: rgba(255, 187, 0, 0.95);
     --accent-rgba: rgba(255, 187, 0, 0.7);
     --accent-version-bg: rgba(255, 187, 0, 0.11);
@@ -17,9 +6,57 @@
     --accent-opacity: rgba(255, 187, 0, 0.80);
     --accent-opacity-hover: rgba(255, 187, 0, 0.85);
     --accent-toggle: rgba(0, 255, 115, 0.85);
+    --settings-title-text-fg: rgba(140, 140, 140, 1.0);
+    --settings-about-title-text-fg: rgba(255, 255, 255, 0.90);
+    --settings-about-version-text-fg: rgba(255, 255, 255, 0.30);
+    --settings-about-version-text-hover-fg: rgba(255, 255, 255, 0.45);
+    --settings-about-version-text-active-fg: rgba(255, 255, 255, 0.27);
+    --settings-about-description-fg: rgba(255, 255, 255, 0.80);
+    --settings-about-button-bg: rgba(255, 255, 255, 0.04);
+    --settings-about-button-hover-bg: rgba(255, 255, 255, 0.09);
+    --settings-about-button-hover-border: rgba(255, 255, 255, 0.15);
+    --settings-about-button-text-fg: rgba(255, 255, 255, 0.70);
+    --settings-about-button-accent-text-fg: rgba(255, 255, 255, 0.70);
+    --settings-about-button-accent-hover-text-fg: rgba(0, 0, 0, 1.0);
+    --settings-about-button-hover-text-fg: rgba(255, 255, 255, 0.70);
+    --settings-about-button-accent-border: rgba(255,255,255,0.15);
+    --settings-item-title-fg: rgba(255, 255, 255, 0.87);
+    --settings-item-description-fg: rgba(255, 255, 255, 0.27);
+    --settings-topbar-left-border: rgba(255, 255, 255, 0.05);
+    --settings-topbar-border-bottom: rgba(255,255,255,0.05);
+    --settings-section-title-text-fg: rgba(255, 255, 255, 0.80);
+    --settings-section-title-showhide-fg: rgba(255, 255, 255, 0.40);
+    --settings-section-title-showhide-hover-fg: rgba(255, 255, 255, 0.60);
+    --settings-section-title-border: rgba(255, 255, 255, 0.10);
+    --settings-entry-name-text-fg: rgba(255, 255, 255, 0.70);
+    --settings-entry-content-text-fg: rgba(255, 255, 255, 0.85);
+    --settings-entry-package-text-fg: rgba(255, 255, 255, 0.70);
+    --settings-entry-date-text-fg: rgba(255, 255, 255, 0.70);
+    --settings-entry-line-change-text-fg: rgba(255, 255, 255, 0.20);
+    --settings-entry-reason-text-fg: rgba(255, 255, 255, 0.20);
+    --settings-entry-license-text-fg: rgba(255, 255, 255, 0.60);
+    --settings-entry-open-bg: rgba(255, 255, 255, 0.02);
+    --settings-entry-open-inner-bg: rgba(255, 255, 255, 0.030);
+    --settings-entry-open-inner-hover-bg: rgba(255, 255, 255, 0.05);
+    --settings-entry-tag-line: rgba(255, 255, 255, 0.10);
+    --settings-entry-change-text-fg: rgba(255, 255, 255, 0.65);
+    --settings-entry-secondary-action: rgba(255, 255, 255, 0.03);
+    --settings-entry-secondary-action-hover: rgba(255, 255, 255, 0.05);
+    --settings-entry-secondary-action-active: rgba(255, 255, 255, 0.08);
+    --settings-item-child-border: rgba(255, 255, 255, 0.10);
+    --settings-item-spacer-divider: rgba(255, 255, 255, 0.10);
+    --settings-item-spacer-divider-entry: rgba(255, 255, 255, 0.05);
+    --settings-page-section-bg: rgba(5, 5, 5, 0.20);
+    --settings-page-container-bg: rgba(30, 30, 30, 0.75);
+    --settings-page-container-border: rgba(25, 25, 25);
+    --settings-page-button-text-fg: rgba(255, 255, 255, 0.40);
+    --settings-page-button-text-hover-fg: rgba(255, 255, 255, 0.60);
+    --settings-page-button-text-active-fg: rgba(255, 255, 255, 0.35);
+    --settings-page-button-text-active-active-fg: rgba(255, 255, 255, 0.75);
+    --settings-page-button-text-active-hover-fg: rgba(255, 255, 255, 0.40);
+    --bool-circle-shadow: rgba(0, 0, 0, 0.25);
     --toggle-unselected: rgba(255, 255, 255, 0.20);
     --toggle-unselected-hover: rgba(255, 255, 255, 0.30);
-
     --tag-fixed-fg: rgb(0, 174, 255);
     --tag-fixed-bg: rgba(0, 174, 255, 0.11);
     --tag-improved-fg: rgb(255, 187, 0);
@@ -28,9 +65,9 @@
     --tag-added-bg: rgba(0, 255, 76, 0.11);
     --tag-removed-fg: rgb(255, 0, 0);
     --tag-removed-bg: rgba(255, 0, 0, 0.11);
-
-    --test-true: 94, 255, 0, 0.281;
-    --test-false: 255, 0, 0, 0.281;
+    --test-true: rgba(94, 255, 0, 0.281);
+    --test-false: rgba(255, 0, 0, 0.281);
+    --add-language-notice-text-fg: rgba(255, 255, 255, 0.30);
 }
 
 .braille-override {
@@ -77,17 +114,12 @@
 
 .settings-outer {
     display: flex;
-    /* position: absolute; */
     flex-direction: row;
     height: 100%;
     width: 100%;
     user-select: none;
     pointer-events: all;
-    /* top: 0; */
-    /* left: calc(-100% + 55px); */
-    border-right: 1px solid rgba(255,255,255,0.05);
     z-index: 4;
-    /* transition: .25s; */
 }
 
 .icon-flip {
@@ -99,7 +131,6 @@
     display: flex;
     position: relative;
     margin-left: 55px;
-    /* background-color: rgba(22, 22, 22, 0.50); */
     flex: 1;
     overflow: hidden;
     pointer-events: all;
@@ -116,7 +147,6 @@
     top: 0;
     min-height: 100%;
     min-width: 100%;
-    background-color: rgba(22, 22, 22, 0.89);
     z-index: 2;
 }
 
@@ -172,7 +202,6 @@
     justify-content: center;
     padding: 20px 20px 10px 29px;
     z-index: 3;
-    background-color: rgba(33, 33, 33, 0.60);
     pointer-events: all;
     backdrop-filter: blur(3px);
 }
@@ -197,7 +226,7 @@
 .settings-about-description span {
     font-family: 'Inter_Regular', serif;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.80);
+    color: var(--settings-about-description-fg);
     line-height: 1.5;
 }
 
@@ -240,11 +269,10 @@
     flex: 1;
     padding: 0 15px 0 0;
     pointer-events: none;
-    /* background-color: rgba(0, 255, 255, 0.281); */
 }
 
 .settings-topbar-left {
-    border-right: 1px solid rgba(255,255,255,0.05);
+    border-right: 1px solid var(--settings-topbar-left-border);
     padding: 16px 28px 0 0;
 }
 
@@ -259,9 +287,7 @@
     -webkit-box-sizing: border-box;
     pointer-events: all;
     z-index: 3;
-    border-bottom: 1px inset rgba(255,255,255,0.05);
-    /* background-color: rgba(45, 45, 45, 0.80); */
-    /* backdrop-filter: blur(8px); */
+    border-bottom: 1px inset var(--settings-topbar-border-bottom);
 }
 
 .settings-title-text {
@@ -269,7 +295,7 @@
     text-transform: uppercase;
     font-size: 12px;
     pointer-events: none;
-    color: rgba(140, 140, 140, 1.0);
+    color: var(--settings-title-text-fg);
     /* margin: 0 0 0 0; */
     /* line-height: 1.5; */
     white-space: nowrap;
@@ -278,7 +304,7 @@
 .settings-about-title-text {
     font-family: 'Inter_SemiBold', serif;
     font-size: 24px;
-    color: rgba(255, 255, 255, 0.95);
+    color: var(--settings-about-title-text-fg);
     text-transform: uppercase;
 }
 
@@ -300,16 +326,16 @@
 .settings-about-version-text {
     font-family: 'Inter_Medium', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.30);
+    color: var(--settings-about-version-text-fg);
     cursor: pointer;
     margin-top: -2px;
 }
 
 .settings-about-version-text:hover {
-    color: rgba(255, 255, 255, 0.45);
+    color: var(--settings-about-version-text-hover-fg);
 }
 .settings-about-version-text:active {
-    color: rgba(255, 255, 255, 0.27);
+    color: var(--settings-about-version-text-active-fg);
 }
 
 .settings-about-section {
@@ -337,7 +363,7 @@
     padding: 2px 10px 2px 10px;
     backdrop-filter: blur(5px);
     box-sizing: border-box;
-    border: 2px solid rgba(255, 255, 255, 0.04);
+    border: 2px solid var(--settings-about-button-bg);
     margin-left: auto;
     border-radius: 6px;
     cursor: pointer;
@@ -363,7 +389,7 @@
     text-align: center;
 }
 .settings-about-button-accent:hover {
-    border: 2px solid rgba(255,255,255,0.15);
+    border: 2px solid var(--settings-about-button-accent-border);
     background-color: var(--accent-opacity-hover) !important;
 }
 .settings-about-button:active,
@@ -373,22 +399,22 @@
 }
 
 .settings-about-button:hover {
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    background-color: rgba(255, 255, 255, 0.09);
+    border: 2px solid var(--settings-about-button-hover-bg);
+    background-color: var(--settings-about-button-hover-border);
 }
 .settings-about-button:hover span {
-    color: rgba(255, 255, 255, 0.70);
+    color: var(--settings-about-button-hover-text-fg);
 }
 
 .settings-about-button span {
     font-family: 'Inter_Medium', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.70);
+    color: var(--settings-about-button-text-fg);
 }
 .settings-about-button-accent span {
     font-family: 'Inter_Medium', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.70);
+    color: var(--settings-about-button-accent-text-fg);
 }
 .br_BA .settings-about-button span,
 .br_BA .settings-about-button-accent span
@@ -399,8 +425,7 @@
 }
 
 .settings-about-button-accent:hover span {
-    color: rgba(0, 0, 0, 1.0) !important;
-/*    color: rgba(255, 255, 255, 1.0) !important;*/
+    color: var(--settings-about-button-accent-hover-text-fg) !important;
 }
 
 .settings-about-scroll-container {
@@ -446,13 +471,13 @@
     justify-content: flex-start;
     padding: 2px 0 10px 0;
     width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    border-bottom: 1px solid var(--settings-section-title-border);
 }
 
 .settings-about-section-title-text {
     font-family: 'Inter_Medium', serif;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.80);
+    color: var(--settings-section-title-text-fg);
     margin: 0 auto 0 0;
     letter-spacing: .06em;
 }
@@ -461,12 +486,12 @@
     font-family: 'Inter_Medium', serif;
     font-size: 12px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.40);
+    color: var(--settings-section-title-showhide-fg);
     margin: 0 0 0 auto;
     cursor: pointer;
 }
 .settings-about-section-title-show-hide:hover {
-    color: rgba(255, 255, 255, 0.60);
+    color: var(--settings-section-title-showhide-hover-fg);
 }
 .settings-about-section-title-show-hide:active {
     opacity: 0.70;
@@ -564,7 +589,7 @@
 
 .entry-tag-vertical-line {
     width: 1px;
-    background-color: rgba(255, 255, 255, 0.10);
+    background-color: var(--settings-entry-tag-line);
     height: 100%;
     margin: 0 0 0 15px
 }
@@ -593,7 +618,7 @@
 .entry-change-text {
     font-family: 'Inter_Regular', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--settings-entry-change-text-fg);
     word-wrap: pre-wrap;
     text-align: left;
     /* margin: 0 0 15px 0; */
@@ -624,7 +649,7 @@
 .add-language-notice span {
     font-family: 'Inter_Regular', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.30);
+    color: var(--add-language-notice-text-fg);
     white-space: nowrap;
     text-align: center;
     margin-left: 7px;
@@ -656,19 +681,14 @@
     background-color: var(--tag-removed-bg);
 }
 
-.settings-about-entry-test {
-    height: 40px;
-    background-color: rgba(0, 255, 135, 0.205);
-}
-
 .entry-open {
-    background-color: rgba(255, 255, 255, 0.02);
+    background-color: var(--settings-entry-open-bg);
 }
 .entry-open .settings-about-entry-inner {
-    background-color: rgba(255, 255, 255, 0.030);
+    background-color: var(--settings-entry-open-inner-bg);
 }
 .settings-about-entry-inner:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--settings-entry-open-inner-hover-bg);
 }
 
 .settings-about-entry-title-container {
@@ -682,14 +702,14 @@
 .settings-about-section-entry-name {
     font-family: 'Inter_Medium', serif;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.70);
+    color: var(--settings-entry-name-text-fg);
     width: 115px;
     white-space: nowrap;
 }
 .settings-about-entry-content-name {
     font-family: 'Inter_Medium', serif;
     font-size: 18px;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--settings-entry-content-text-fg);
     white-space: nowrap;
 }
 .settings-about-entry-content-version {
@@ -702,7 +722,7 @@
 .settings-about-section-entry-name-package {
     font-family: 'Inter_Medium', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.70);
+    color: var(--settings-entry-package-text-fg);
     white-space: nowrap;
 }
 .settings-about-section-entry-version-change {
@@ -717,7 +737,7 @@
 .settings-about-section-entry-date-change {
     font-family: 'Inter_Medium', serif;
     font-size: 13px;
-    color: rgba(255, 255, 255, 0.70);
+    color: var(--settings-entry-date-text-fg);
     white-space: nowrap;
     margin: 0 24px 0 0;
 }
@@ -747,7 +767,7 @@
 .settings-about-section-entry-line-change {
     font-family: 'Inter_Regular', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.20);
+    color: var(--settings-entry-line-change-text-fg);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -762,7 +782,7 @@
 .settings-about-section-entry-reason {
     font-family: 'Inter_Regular', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.20);
+    color: var(--settings-entry-reason-text-fg);
     margin: 0 auto 0 12px;
     max-width: 285px;
 }
@@ -807,7 +827,7 @@
 .settings-about-entry-content-license {
     font-family: 'Inter_Regular', serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.55);
+    color: var(--settings-entry-license-text-fg);
     text-decoration: none;
     white-space: pre-line;
     margin: 15px 0 15px 34px;
@@ -851,9 +871,9 @@
     height: 100%;
     overflow-x: hidden;
     overflow-y: overlay;
-    background-color: rgba(var(--settings-page-container-bg));
+    background-color: var(--settings-page-container-bg);
     padding: 0 0 40px 0;
-    border-top: 1px solid rgb(var(--settings-page-container-border));
+    border-top: 1px solid var(--settings-page-container-border);
 }
 
 .settings-page {
@@ -947,7 +967,7 @@
     font-family: 'Inter_Medium', serif;
     text-transform: uppercase;
     font-size: 12px;
-    color: rgba(var(--settings-page-button-text-fg));
+    color: var(--settings-page-button-text-fg);
     text-align: center;
 }
 
@@ -958,21 +978,20 @@
 }
 
 .settings-page-button:active span {
-    color: rgba(var(--settings-page-button-text-active-fg)) !important;
+    color: var(--settings-page-button-text-active-fg) !important;
 }
 
 .settings-page-button:hover span {
-    color: rgba(var(--settings-page-button-text-hover-fg));
+    color: var(--settings-page-button-text-hover-fg);
 }
 
 .page-button-active span {
     /* NOTE: vvv: work around for 'bolder' text without affecting parent width */
     text-shadow: 0px 0px 1px var(--accent);
     color: var(--accent) !important;
-    /* color: rgba(255, 255, 255, 0.90) !important; */
 }
 .page-button-active:active span {
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: var(--settings-page-button-text-active-active-fg) !important;
 }
 
 .page-button-disabled {
@@ -990,10 +1009,10 @@
 }
 
 .test-false {
-    background-color: rgba(var(--test-false));
+    background-color: var(--test-false);
 }
 .test-true {
-    background-color: rgba(var(--test-true));
+    background-color: var(--test-true);
 }
 
 .child-disabled {
@@ -1017,7 +1036,7 @@
     flex-direction: row;
     justify-content: center;
     vertical-align: middle;
-    border-left: 1px solid rgba(255, 255, 255, 0.10);
+    border-left: 1px solid var(--settings-item-child-border);
     padding: 5px 8px 5px 20px;
     margin: 0 0 0 35px;
 }
@@ -1061,11 +1080,11 @@
 }
 
 .item-title {
-    color: rgba(var(--settings-item-title-fg));
+    color: var(--settings-item-title-fg);
     font-family: 'Inter_Medium', serif;
 }
 .item-description {
-    color: rgba(var(--settings-item-description-fg));
+    color: var(--settings-item-description-fg);
     font-family: 'Inter_Regular', serif;
     margin-top: 3px;
     font-size: 12px !important;
@@ -1134,12 +1153,12 @@
 .spacer-divider {
     height: 1px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.10);
+    background-color: var(--settings-item-spacer-divider);
 }
 .spacer-divider-entry {
     height: 1px;
     /* width: 100%; */
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: var(--settings-item-spacer-divider-entry);
 }
 
 .margin-lr-18 {
@@ -1151,13 +1170,9 @@
 .settings-secondary-action {
     margin-right: 20px;
     padding: 0 0 0 1px;
-    background-color: rgba(255, 255, 255, 0.03) !important;
+    background-color: var(--settings-entry-secondary-action) !important;
 }.settings-secondary-action img {
     margin: 1px 1px 0 0;
-}
-.settings-secondary-action:hover
-{
-    background: rgba(255, 255, 255, 0.08);
 }
 .settings-secondary-action:hover img
 {
@@ -1170,11 +1185,11 @@
 
 .settings-secondary-action:hover
 {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--settings-entry-secondary-action-hover);
     backdrop-filter: blur(4px);
 }
 .settings-secondary-action:active {
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--settings-entry-secondary-action-active);
     backdrop-filter: blur(4px);
 }
 
@@ -1222,7 +1237,7 @@
     margin: 0 3px 0 3px;
     transition: all 0.09s ease;
     float: left;
-    box-shadow: 0 0 15px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 15px 0px var(--bool-circle-shadow);
 }
 
 .item-value-bool:hover .bool-circle {

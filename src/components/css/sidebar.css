@@ -1,14 +1,20 @@
 :root {
-    --sidebar-bg: 40, 40, 40, 0.92;
-    --sidebar-border-right: 70, 70, 70, 0.20;
-    --sidebar-button-hover: 47, 47, 47;
-    --sidebar-button-active: 50, 50, 50;
-    --sidebar-button-active-hover: 50, 50, 50;
-    --sidebar-button-border-top: 30, 30, 30;
-    --sidebar-button-border-top-shadow: 70, 70, 70, 0.60;
-    --sidebar-button-border-bottom: 70, 70, 70, 0.60;
-    --sidebar-button-border-bottom-shadow: 30, 30, 30;
-    --sidebar-notification-bg: 255, 0, 0;
+    --sidebar-bg: rgba(40, 40, 40, 0.92);
+    --sidebar-border-right: rgba(70, 70, 70, 0.20);
+    --sidebar-button-hover: rgba(47, 47, 47, 1.0);
+    --sidebar-button-active: rgba(50, 50, 50, 1.0);
+    --sidebar-button-active-hover: rgba(50, 50, 50, 1.0);
+    --sidebar-button-border-top: rgba(30, 30, 30, 1.0);
+    --sidebar-button-border-top-shadow: rgba(70, 70, 70, 0.60);
+    --sidebar-button-border-bottom: rgba(70, 70, 70, 0.60);
+    --sidebar-button-border-bottom-shadow: rgba(30, 30, 30, 1.0);
+    --sidebar-notification-bg: rgba(255, 0, 0, 1.0);
+    --sidebar-favorites-group-title-text-fg: rgba(255, 255, 255, 0.30);
+    --sidebar-favorites-game-timer-text-fg: rgba(255, 255, 255, 0.60);
+    --sidebar-favorites-game-timer-bg: rgba(23, 23, 23, 1.0);
+    --card-image-mask-0: rgba(0,0,0,0.0);
+    --card-image-mask-1: rgba(0,0,0,1);
+    --card-image-mask-40: rgba(0,0,0,0.40);
 }
 
 .settings-sidebar {
@@ -24,10 +30,8 @@
     height: 100%;
     pointer-events: all;
     z-index: 5;
-    /* padding: 0 0 40px 0; */
-    /* background-color: rgb(0, 0, 0); */
-    background-color: rgb(var(--sidebar-bg));
-    border-right: 1px solid rgba(var(--sidebar-border-right));
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border-right);
 }
 
 .favorite-button {
@@ -37,25 +41,14 @@
     justify-content: center;
     align-items: center;
     border: none;
-    /* padding: 8px 0 8px 1px; */
-    /* padding: 0 8px 0 8px; */
-    margin: 5px 0 5px 0;
+    margin: 7px 0 7px 0;
     width: 46px;
     height: 66px;
     min-height: 66px;
-    /* flex: 1; */
     cursor: pointer;
-    /* background-color: rgba(68, 68, 68, 0.356); */
-    /* border: 2px solid rgb(50, 50, 50, 0.80); */
-    /* background-color: aqua; */
-    border-radius: 0 0 6px 6px;
+    border-radius: 0 0 4px 4px;
     box-sizing: content-box;
-    /* mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.20))); */
-    /* -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.20))); */
-    /* box-shadow: 0px 2px 0 rgb(88, 88, 88); */
-    /* box-shadow: inset 0px 1px 0 rgb(83, 83, 83); */
     transition: all 0.07s ease;
-    /* overflow: auto; */
     overflow: hidden;
 }
 
@@ -63,7 +56,6 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    /* border-radius: 50%; */
     border-radius: 6px;
     height: 46px;
     width: 46px;
@@ -71,30 +63,22 @@
     background-size: 60px;
     background-position: center;
     z-index: 1;
-    /* opacity: 0.85; */
-    mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.0)));
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0.0)));
+mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-0)));
+-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-0)));
     margin-bottom: 9px;
 }
 
 .favorite-button:hover .favorite-champ-bg {
-    /* background-color: rgb(75, 75, 75); */
-    /* opacity: 0.95; */
-    mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
-    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,1)));
+mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-1)));
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-1)));
 }
 
 .favorite-button img {
     position: relative;
     width: 150%;
     height: 55px;
-    /* background-color: aqua; */
-    /* background-size: cover; */
-    /* border-radius: 50%; */
     border-radius: 0 0 10px 10px;
     z-index: 2;
-    /* height: 55px; */
-    /* width: 55px; */
     margin-bottom: 13px;
 }
 
@@ -104,16 +88,13 @@
     transform: translateX(-50%);
     bottom: 0;
     width: 50px;
-    /* background-color: rgba(16, 16, 16, 0.80); */
-    background-color: rgba(23, 23, 23, 1.0);
-    /* backdrop-filter: blur(8px); */
+    background-color: var(--sidebar-favorites-game-timer-bg);
     padding: 4px 0 3px 0;
     border-radius: 0 0 6px 6px;
-    /* border-radius: 12px; */
-font-family: 'RobotoMono_Regular', serif !important;
+    font-family: 'RobotoMono_Regular', serif !important;
     text-align: center;
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.60);
+    color: var(--sidebar-favorites-game-timer-text-fg);
     pointer-events: none;
     z-index: 3 !important;
     user-select: none;
@@ -161,7 +142,7 @@ font-family: 'RobotoMono_Regular', serif !important;
     pointer-events: none;
 }
 .sidebar-button:hover {
-    background-color: rgb(var(--sidebar-button-hover));
+    background-color: var(--sidebar-button-hover);
 }
 .sidebar-button:hover img {
     opacity: 0.47;
@@ -171,10 +152,10 @@ font-family: 'RobotoMono_Regular', serif !important;
     margin-bottom: 14px !important;
 }
 .sidebar-button-active {
-    background-color: rgb(var(--sidebar-button-active));
+    background-color: var(--sidebar-button-active);
 }
 .sidebar-button-active:hover {
-    background-color: rgb(var(--sidebar-button-active-hover));
+    background-color: var(--sidebar-button-active-hover);
 }
 .sidebar-button-active img {
     opacity: 0.60 !important;
@@ -200,9 +181,6 @@ font-family: 'RobotoMono_Regular', serif !important;
     height: 100%;
     overflow-y: hidden;
     overflow-x: hidden;
-    /* flex: 1; */
-    /* background-color: rgba(0, 255, 255, 0.336); */
-    /* margin: 8px 0 8px 0; */
 }
 
 .favorites-scroll {
@@ -219,6 +197,7 @@ font-family: 'RobotoMono_Regular', serif !important;
     bottom: 0;
     right: -19px;
     left: 0;
+    padding: 7px 0 0 0;
     /* margin-top: 5px; */
 }
 
@@ -227,23 +206,23 @@ font-family: 'RobotoMono_Regular', serif !important;
     text-transform: uppercase;
     font-size: 9px;
     /* width: 100%; */
-    color: rgba(255, 255, 255, 0.30);
+    color: var(--sidebar-favorites-group-title-text-fg);
     text-align: center;
     margin: 5px 0 auto 0;
 }
 
 .borders-top {
-    border-top: 1px solid rgb(var(--sidebar-button-border-top));
-    box-shadow: inset 0px 1px 0 rgb(var(--sidebar-button-border-top-shadow));
+    border-top: 1px solid var(--sidebar-button-border-top);
+box-shadow: inset 0 1px 0 var(--sidebar-button-border-top-shadow);
 }
 .borders-bottom {
-    border-bottom: 1px solid rgb(var(--sidebar-button-border-bottom));
-    box-shadow: inset 0px -1px 0 rgb(var(--sidebar-button-border-bottom-shadow));
+    border-bottom: 1px solid var(--sidebar-button-border-bottom);
+box-shadow: inset 0 -1px 0 var(--sidebar-button-border-bottom-shadow);
 }
 .borders-both {
-    border-top: 1px solid rgb(var(--sidebar-button-border-top));
-    border-bottom: 1px solid rgb(var(--sidebar-button-border-bottom));
-    box-shadow: inset 0px 1px 0 rgb(var(--sidebar-button-border-top-shadow)), inset 0px -1px 0 rgb(var(--sidebar-button-border-bottom-shadow));
+    border-top: 1px solid var(--sidebar-button-border-top);
+border-bottom: 1px solid var(--sidebar-button-border-bottom);
+box-shadow: inset 0 1px 0 var(--sidebar-button-border-top-shadow), inset 0 -1px 0 var(--sidebar-button-border-bottom-shadow);
 }
 
 .notification-dot {
@@ -258,8 +237,8 @@ font-family: 'RobotoMono_Regular', serif !important;
     pointer-events: none;
     user-select: none;
     animation-delay: 0.2s;
-    color: rgb(var(--sidebar-notification-bg));
-    text-shadow: 0px 0px 3px rgb(var(--sidebar-notification-bg));
+    color: var(--sidebar-notification-bg);
+text-shadow: 0 0 3px var(--sidebar-notification-bg);
 }
 
 @keyframes showHideNotification {
