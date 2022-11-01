@@ -16,7 +16,8 @@ const TEAMS_SORT = mapEnum(ETeams, "number", (team: number) => { return team.toS
 
 const Players: React.FC<{
     players: IPlayers,
-}> = ({ players }) => {
+    fHandlePlayerFavorited: (name: string) => void
+}> = ({ players, fHandlePlayerFavorited }) => {
     const [usePlayersState, setUsePlayersState] = useState<IPlayers>(players);
     const [intervalActive, setIntervalActive] = useState<boolean>(false);
     const [gameInterval, setGameInterval] = useState<number>(0);
@@ -74,7 +75,8 @@ const Players: React.FC<{
                                 groupKey={group.key}
                                 globalInterval={gameInterval}
                                 menuOpen={menuOpen}
-                                fHandleMenuOpen={(set: number) => setMenuOpen(set)}></PlayersGroup>
+                                fHandleMenuOpen={(set: number) => setMenuOpen(set)}
+                                fHandlePlayerFavorited={fHandlePlayerFavorited} />
                         ))
                 ) : null}
 
@@ -89,7 +91,8 @@ const Players: React.FC<{
                                 groupKey={group.key}
                                 globalInterval={gameInterval}
                                 menuOpen={menuOpen}
-                                fHandleMenuOpen={(set: number) => setMenuOpen(set)}></PlayersGroup>
+                                fHandleMenuOpen={(set: number) => setMenuOpen(set)}
+                                fHandlePlayerFavorited={fHandlePlayerFavorited} />
                         ))
                 ) : null}
             </div>

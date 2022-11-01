@@ -127,8 +127,14 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-src-tauri/assets/*
-src-tauri/target/*
+/src/assets/dragontail/centered
+/src/assets/dragontail/champion
+/src/assets/dragontail/live
+/src/assets/dragontail/loading
+/src/assets/dragontail/splash
+/src/assets/dragontail/profileicon
+/src-tauri/assets/*
+/src-tauri/target/*
 /config.ini
 /scripts/cutouts
 /scripts/splash

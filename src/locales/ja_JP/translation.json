@@ -202,7 +202,8 @@
     },
     "titles": {
         "favorites": "お気に入り",
-        "all": "すべてのプレイヤー"
+        "all": "すべてのプレイヤー",
+        "accounts": "アカウント"
     },
     "tooltips": {
         "playerUnavailable": "{{insert}} ゲーム内ではないか、観客は利用できません",

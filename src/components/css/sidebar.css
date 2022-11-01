@@ -158,7 +158,7 @@ mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-imag
     background-color: var(--sidebar-button-active-hover);
 }
 .sidebar-button-active img {
-    opacity: 0.60 !important;
+    opacity: 0.70 !important;
 }
 
 .sidebar-group {

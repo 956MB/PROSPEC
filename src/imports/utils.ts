@@ -8,6 +8,7 @@ export function unull() { return () => null }
 export function ending(sec: number, _true: string): string | null { return sec >= 1800 ? _true : null }
 export function isEven(num: number) { return num % 2 == 0; }
 export function isOdd(num: number) { return Math.abs(num % 2) == 1; }
+export function noWhitespace(rem: string): string { return rem.replace(/\s/g, ""); }
 
 function escapeRegExp(str: string) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string

@@ -47,7 +47,7 @@
     --settings-item-spacer-divider: rgba(255, 255, 255, 0.10);
     --settings-item-spacer-divider-entry: rgba(255, 255, 255, 0.05);
     --settings-page-section-bg: rgba(5, 5, 5, 0.20);
-    --settings-page-container-bg: rgba(30, 30, 30, 0.75);
+    --settings-page-container-bg: rgba(19, 19, 19, 0.70);
     --settings-page-container-border: rgba(25, 25, 25);
     --settings-page-button-text-fg: rgba(255, 255, 255, 0.40);
     --settings-page-button-text-hover-fg: rgba(255, 255, 255, 0.60);
@@ -872,6 +872,7 @@
     overflow-x: hidden;
     overflow-y: overlay;
     background-color: var(--settings-page-container-bg);
+    backdrop-filter: blur(4px);
     padding: 0 0 40px 0;
     border-top: 1px solid var(--settings-page-container-border);
 }

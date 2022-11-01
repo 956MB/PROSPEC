@@ -14,7 +14,7 @@ interface ISpectatorContext {
     roleFilter: ERoles[];
     groupBy: EGroupBy;
     accountsLoaded: boolean;
-    allAccounts: ISummoner[];
+    allSummoners: ISummoner[];
     updateFilter: (update: string, newFilter: any[], reset: boolean) => void;
     updateGroup: (newGroup: EGroupBy) => void;
 }
@@ -25,7 +25,7 @@ export const SpectatorContext = createContext<ISpectatorContext>({
     roleFilter: [],
     groupBy: EGroupBy.NONE,
     accountsLoaded: false,
-    allAccounts: [],
+    allSummoners: [],
     updateFilter: () => null,
     updateGroup: () => null,
 })
@@ -36,7 +36,7 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
     const [roleFilter, setRoleFilter] = useState<ERoles[]>([]);
     const [groupBy, setGroupBy] = useState<EGroupBy>(EGroupBy.NONE);
     const [accountsLoaded, setAccountsLoaded] = useState<boolean>(false);
-    const [allAccounts, setAllAccounts] = useState<ISummoner[]>([]);
+    const [allSummoners, setAllSummoners] = useState<ISummoner[]>([]);
 
     useInit(() => {
         const loadPlayers = async () => {
@@ -56,6 +56,7 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
                                 newAccount.summonerId = account.id;
                                 newAccount.summonerPuuid = account.puuid;
                                 newAccount.region = account.region;
+                                newAccount.profileIcon = account.profileIcon;
                                 playerAccounts.push(newAccount);
                             }
                         }
@@ -72,7 +73,7 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
                             playerAccounts: playerAccounts,
                         }
 
-                        setAllAccounts(prevAccounts => [...prevAccounts, playerAccountI]);
+                        setAllSummoners(prevAccounts => [...prevAccounts, playerAccountI]);
                     }
                 }
     
@@ -103,7 +104,7 @@ const SpectatorProvider: React.FC<{ initPlayers: boolean, children: React.ReactN
             roleFilter,
             groupBy,
             accountsLoaded,
-            allAccounts,
+            allSummoners: allSummoners,
             updateFilter,
             updateGroup
         }}>

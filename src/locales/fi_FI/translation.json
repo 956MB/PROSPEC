@@ -202,7 +202,8 @@
     },
     "titles": {
         "favorites": "Suosikit",
-        "all": "Kaikki pelaajat"
+        "all": "Kaikki pelaajat",
+        "accounts": "Tilit"
     },
     "tooltips": {
         "playerUnavailable": "{{insert}} ei joko pelissä tai katsoja ei ole käytettävissä",

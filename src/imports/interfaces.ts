@@ -107,6 +107,7 @@ export interface ISummonerAccount {
     summonerId: string;
     summonerPuuid: string;
     region: string;
+    profileIcon: number;
 }
 
 export interface ITeamInfo {

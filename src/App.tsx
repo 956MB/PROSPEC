@@ -10,6 +10,7 @@ import { EChampions } from "./imports/typings";
 import { filterBy, getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, randomSkin, getChampionFromId, arrayRandom } from "./imports/utils";
 import "./imports/prototypes"
 import { Players, PlayersNotLoaded } from "./components/players/Players";
+import PlayerAccounts from "./components/players/PlayerAccounts";
 
 import { SpectatorContext } from "./context/SpectatorContext";
 import { SettingsContext } from "./context/SettingsContext";
@@ -23,7 +24,7 @@ function App() {
     const location = useLocation();
     const { i18n } = useTranslation('common');
 
-    const { regionFilter, modeFilter, roleFilter, accountsLoaded, allAccounts } = useContext(SpectatorContext);
+    const { regionFilter, modeFilter, roleFilter, accountsLoaded, allSummoners } = useContext(SpectatorContext);
     const { useBackground, liveBackground, autoRefresh, randomBackground } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IBackground>({
         type: "random", name: "FrightNight_Renata_and_Nautilus_Final", ext: "jpg"
@@ -31,6 +32,7 @@ function App() {
     const [playersAll, setPlayersAll] = useState<IPlayers>([]);
     const [sidebarFavorites, setSidebarFavorites] = useState<IPlayers>([]);
     const [playersKey, setPlayersKey] = useState<number>(0);
+    const [accountsKey, setAccountsKey] = useState<number>(1);
 
     const [pageState, setPageState] = useState<IPageState>({ currentPage: 0, pages: ["/"] });
     const fNavigateDirection = (dir: number, replace: boolean = false) => {
@@ -51,10 +53,19 @@ function App() {
         setPlayersAll([]);
         loopPlayers();
     }
+    const favoritePlayerToggle = (name: string) => {
+        const updatedPlayers = playersAll.map((player) =>
+            (player.playerAccount.summonerName === name) ? {...player, favorite: !player.favorite } : player
+        );
+
+        setPlayersAll(updatedPlayers);
+        setPlayersKey(playersKey + 1);
+        setAccountsKey(accountsKey + 1);
+    }
 
     const loopPlayers = async () => {
         console.log("loopPlayers CALLED::");
-        await Promise.all(allAccounts.filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 12).map(async (summoner, ip) => {
+        await Promise.all(allSummoners.filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 12).map(async (summoner, ip) => {
             let accounts = summoner.playerAccounts.filterRegions(regionFilter);
             let selectedAccount = arrayRandom(accounts);
             let randomC = getChampionFromId(randomEnum(EChampions, []))!;
@@ -91,13 +102,23 @@ function App() {
 
             <Routes>
                 <Route path='/' element={
-                    <Players key={playersKey} players={playersAll} />
+                    <Players
+                        key={playersKey}
+                        players={playersAll}
+                        fHandlePlayerFavorited={favoritePlayerToggle} />
                 } />
                 <Route path='/champsqueue' element={
                     <ChampionsQueue/>
                 } />
+                <Route path='/players' element={
+                    <PlayerAccounts
+                        key={accountsKey}
+                        players={allSummoners} />
+                } />
                 <Route path='/settings' element={
-                    <Settings fRefreshBackground={getAppBackground} fNavigatePage={fNavigatePage} />
+                    <Settings
+                        fRefreshBackground={getAppBackground}
+                        fNavigatePage={fNavigatePage} />
                 } />
             </Routes>
 

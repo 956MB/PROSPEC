@@ -17,8 +17,9 @@ const PlayersGroup: React.FC<{
     groupKey: string,
     globalInterval: number,
     menuOpen: number,
-    fHandleMenuOpen: (set: number) => void
-}> = ({ players, groupPos, groupKey, globalInterval, menuOpen, fHandleMenuOpen }) => {
+    fHandleMenuOpen: (set: number) => void,
+    fHandlePlayerFavorited: (name: string) => void
+}> = ({ players, groupPos, groupKey, globalInterval, menuOpen, fHandleMenuOpen, fHandlePlayerFavorited }) => {
     const { t } = useTranslation('common');
     const { showUnavailable } = useContext(SettingsContext);
 
@@ -57,7 +58,8 @@ const PlayersGroup: React.FC<{
                                     playerProps={player}
                                     globalInterval={globalInterval}
                                     menuOpen={menuOpen == player.id}
-                                    fHandleMenuOpen={fHandleMenuOpen}></Card>
+                                    fHandleMenuOpen={fHandleMenuOpen}
+                                    fHandlePlayerFavorited={fHandlePlayerFavorited} />
                             </RenderIfVisible>
                     })
                 )}

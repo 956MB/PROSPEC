@@ -26,13 +26,13 @@ const Card: React.FC<{
     playerProps: IPlayer,
     globalInterval: number,
     menuOpen: boolean,
-    fHandleMenuOpen: (set: number) => void
-}> = ({ playerProps, globalInterval, menuOpen, fHandleMenuOpen }) => {
+    fHandleMenuOpen: (set: number) => void,
+    fHandlePlayerFavorited: (name: string) => void
+}> = ({ playerProps, globalInterval, menuOpen, fHandleMenuOpen, fHandlePlayerFavorited }) => {
     const { t } = useTranslation('common');
     const { showSummonerIds, showRandomSkins } = useContext(SettingsContext);
     const [playerFavorited, setPlayerFavorited] = useState<boolean>(playerProps.favorite);
     const [champ, setChamp] = useState<string>(playerProps.champion.name);
-    const [glow, setGlow] = useState<string>(playerProps.champion.color);
 
     const [state, dispatch] = useReducer(cardReducer, {
         level: randomNumber(30, 500),
@@ -44,13 +44,11 @@ const Card: React.FC<{
 
     const toggleMenuClosed = (e: any) => {
         e.stopPropagation();
-
         if (menuOpen) { fHandleMenuOpen(-1); }
     }
     const toggleMenuOpen = (e: any) => {
         // TODO: detect if menu being opened will be outside viewport, change menu x/y to show inside
         e.preventDefault(); e.stopPropagation();
-
         const rect = e.currentTarget.getBoundingClientRect();
         const newX = e.clientX - rect.left;
         const newY = e.clientY - rect.top;
@@ -64,8 +62,6 @@ const Card: React.FC<{
     const cardRef = useDetectClickOutside({ onTriggered: toggleMenuClosed });
     const champStyles = {
         backgroundImage: `url(src/assets/dragontail/champion/${champ}.png)`,
-//        boxShadow: `0 0 100px 10px rgba(${!glow ? '255, 255, 255' : glow}, 0.20)`,
-//        outline: `2px solid rgba(${!glow ? '255, 255, 255' : glow}, 0.10)`,
         opacity: `${(!playerProps.active && state.cardPressed) ? '0.5' : '0.80'}`,
     };
 
@@ -75,7 +71,7 @@ const Card: React.FC<{
                 ? <CardMenu
                     player={playerProps}
                     favorited={playerFavorited}
-                    fToggleFavorited={() => setPlayerFavorited(!playerFavorited)}
+                    fToggleFavorited={() => fHandlePlayerFavorited(playerProps.playerAccount.summonerName)}
                     menuX={state.menuOrigin.x}
                     menuY={state.menuOrigin.y} /> : null}
 
@@ -94,8 +90,6 @@ const Card: React.FC<{
                     <span className={`${playerProps.active ? EButtonImages.NULL : ETooltip.BOTTOM}`}>{t(EEMessages.UNAVAILABLE, { insert: playerProps.playerInfo.playerName })}</span>
                 </div>
                 <div className={`card-champ noselect`} style={champStyles}></div>
-                {/* <img src={dragIcon} alt="drag" className='card-drag noselect' /> */}
-                {/* <div className='blur-small'></div> */}
                 <div className='card-photo noselect' style={{ backgroundImage: `url(src/assets/photos/${playerProps.playerInfo.playerImage})` }}></div>
                 <div
                     className={state.backgroundDir === "centered" ? 'card-image' : 'card-image-cutout'}

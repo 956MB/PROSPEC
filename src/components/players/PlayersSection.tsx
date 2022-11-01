@@ -2,14 +2,15 @@ import { useTranslation } from "react-i18next";
 import React, { useState, useContext } from "react";
 
 const PlayersSection: React.FC<{
+    extraClass?: string,
     sectionTitle: string,
     sectionPlayers: number,
     sectionEmptyMessage: string
-}> = ({ sectionTitle, sectionPlayers, sectionEmptyMessage }) => {
+}> = ({ extraClass, sectionTitle, sectionPlayers, sectionEmptyMessage }) => {
     const { t } = useTranslation('common');
 
     return (
-        <div className={`players-section`}>
+        <div className={`players-section ${extraClass}`}>
             <div className={`players-section-title-container`}>
                 <span className={`players-section-title noselect`}>{t(sectionTitle)}</span>
 

@@ -201,7 +201,8 @@
     },
     "titles": {
         "favorites": "즐겨 찾기",
-        "all": "모든 플레이어"
+        "all": "모든 플레이어",
+        "accounts": "계정"
     },
     "tooltips": {
         "playerUnavailable": "{{insert}} 게임에 있지 않거나 관중을 사용할 수 없습니다",

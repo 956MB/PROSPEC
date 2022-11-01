@@ -202,7 +202,8 @@
     },
     "titles": {
         "favorites": "Favoriter",
-        "all": "Alla spelare"
+        "all": "Alla spelare",
+        "accounts": "Konton"
     },
     "tooltips": {
         "playerUnavailable": "{{insert}} är antingen inte i ett spel, eller åskådare är inte tillgänglig",

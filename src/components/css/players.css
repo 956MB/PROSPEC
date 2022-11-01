@@ -2,7 +2,7 @@
     color-scheme: dark;
     --section-badge-bg: rgba(10, 10, 10, 0.70);
     --section-badge-empty: rgba(15, 15, 15, 0.50);
-    --players-section-title-fg: rgba(255, 255, 255, 0.80);
+    --players-section-title-fg: rgba(255, 255, 255, 0.90);
     --players-section-badge-fg: rgba(255, 255, 255, 0.40);
     --players-section-empty-fg: rgba(255, 255, 255, 0.35);
     --divider-text-fg: rgba(255, 255, 255, 0.45);
@@ -47,7 +47,7 @@
 
 .players-section-title {
     font-family: 'Inter_Medium', serif;
-    font-size: 13px;
+    font-size: 14px;
     color: var(--players-section-title-fg);
     white-space: nowrap;
     text-align: left;
@@ -71,7 +71,7 @@
     align-items: center;
     backdrop-filter: blur(8px);
     border-radius: 5px;
-    margin-left: 10px;
+    margin: 0 0 1px 10px;
 }
 .players-section-badge span {
     font-family: 'RobotoMono_Regular', serif;

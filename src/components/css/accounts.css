@@ -1,0 +1,339 @@
+:root {
+    --accounts-bg: rgba(16, 16, 16, 0.70);
+    --accounts-group-bg: rgba(19, 19, 19, 0.70);
+    --accounts-divider-1: rgba(33, 33, 33, 1.0);
+    --accounts-background-border-2: rgba(255, 255, 255, 0.035);
+    --accounts-photo-container-bg: rgba(30, 30, 30, 0.50);
+    --accounts-info-name-text-fg: rgba(255, 255, 255, 0.90);
+    --accounts-entry-name-text-fg: rgba(255, 255, 255, 0.90);
+    --challenger-rank-fg: #A4EFFF;
+    --grandMaster-rank-fg: #FF9090;
+    --master-rank-fg: #EEA8FF;
+    --diamond-rank-fg: #78AEFF;
+    --platinum-rank-fg: #8CFEAC;
+
+}
+
+.accounts-outer {
+    margin: auto;
+    position: relative;
+}
+
+.accounts-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: flex-start;
+/*    border-radius: 6px;*/
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    pointer-events: all;
+    backface-visibility: hidden !important;
+    z-index: 10;
+/*    background-color: var(--accounts-bg);*/
+/*    backdrop-filter: blur(6px);*/
+    height: 180px;
+    max-height: 180px;
+    border-bottom: 1px solid var(--accounts-divider-1);
+    border-left: 1px solid var(--accounts-divider-1);
+    border-right: 1px solid var(--accounts-divider-1);
+/*    width: 490px;*/
+/*    max-width: 551px;*/
+}
+
+.accounts-info-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 14px;
+/*    background-color: rgba(50, 50, 255, 0.2);*/
+}
+
+.accounts-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+/*    background-color: rgba(255, 50, 50, 0.2);*/
+    width: 100%;
+    padding: 0 0 5px 0;
+}
+
+.accounts-info-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+/*    width: 100%;*/
+/*    background-color: rgba(50, 255, 50, 0.2);*/
+}
+
+.accounts-info-name {
+    font-family: 'Inter_SemiBold', serif;
+    max-height: 23px;
+    font-size: 16px;
+    color: var(--accounts-info-name-text-fg);
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    margin: -4px 0 2px auto;
+    width: 100%;
+}
+
+.showmaker {
+    font-size: 15px !important;
+    margin: -4px auto 3px 0;
+}
+
+.accounts-info-sub {
+    font-family: 'RobotoMono_Regular', serif;
+    font-size: 12px;
+    color: var(--card-text-sub);
+    white-space: nowrap;
+    overflow: visible;
+    text-overflow: ellipsis;
+    margin: -2px auto 4px 0;
+    z-index: 1;
+    text-align: left;
+}
+
+.accounts-info-team-logo {
+    display: block;
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-size: 31px;
+    background-position-y: center;
+    background-position-x: left;
+/*    background-color: red;*/
+    box-sizing: border-box;
+/*    margin: 0 0 0 auto;*/
+    margin: -3px 4px 4px 0;
+}
+.drx-logo {
+    background-size: 26px;
+}
+.dk-logo {
+    width: 29px;
+    height: 35px;
+    background-size: 32px;
+    background-position-x: -2px !important;
+    margin: -3px 5px 4px 0;
+}
+
+.accounts-photo-container {
+    display: block;
+    position: relative;
+    width: 120px;
+    height: 108px;
+    max-height: 108px;
+    border-radius: 4px;
+    background-repeat: no-repeat;
+/*    opacity: 0.30;*/
+    background-position-y: -10px;
+    background-position-x: -37px;
+    background-size: 320px;
+    box-sizing: border-box;
+    border: 1px solid var(--accounts-background-border-2);
+    background-color: var(--accounts-photo-container-bg);
+/*    mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-40)));*/
+/*    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-image-mask-1)), to(var(--card-image-mask-40)));*/
+}
+
+.player-photo {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    /* TODO: player photos get blurry RIGHT AT 'background-size: 186px'... DONT KNOW WHY */
+    /* NOTE: annnnndd maybe 187px???? idk */
+    background-size: 120px;
+    border-radius: 4px;
+}
+
+.accounts-container {
+    flex: 1;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 2;
+    padding: 0 0 0 55px;
+    height: 100%;
+}
+
+.accounts-scroll {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: overlay;
+}
+
+.accounts-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 0 20px 0 20px;
+    -webkit-transition: all 0.15s ease;
+    -moz-transition: all 0.15s ease;
+    -o-transition: all 0.15s ease;
+    -ms-transition: all 0.15s ease;
+    transition: all 0.15s ease;
+    background-color: var(--accounts-group-bg);
+    backdrop-filter: blur(4px);
+/*    height: 100%;*/
+    flex: 1;
+}
+
+.accounts-grid {
+    display: grid;
+    justify-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
+/*    max-height: 1000px;*/
+    transition: max-height 0.45s;
+/*    grid-template-columns: repeat(auto-fill, auto);*/
+/*    grid-auto-columns: auto;*/
+/*    grid-auto-rows: auto;*/
+/*    grid-template-columns: auto auto auto;*/
+/*    grid-template-rows: auto auto;*/
+/*    grid-template-columns: repeat(auto-fill, minmax(471px, 1fr));*/
+    grid-auto-flow: row dense;
+/*    grid-gap: 20px;*/
+    grid-template-columns: repeat(auto-fit, 490px);
+/*    grid-template-columns: repeat(auto-fit, minmax(431px, 1fr));*/
+    margin-bottom: 10px;
+/*    background-color: var(--accounts-group-bg);*/
+}
+
+.accounts-card-divider {
+    display: block;
+/*    height: calc(100% - 28px);*/
+    height: 100%;
+    width: 1px;
+    background-color: var(--accounts-divider-1);
+}
+
+.accounts-list-section {
+    display: grid;
+    justify-items: flex-start;
+    justify-content: flex-start;
+    align-content: flex-start;
+/*    flex: 1;*/
+/*    grid-template-columns: 1fr 1fr;*/
+/*    gap: 20px 16px;*/
+    padding: 14px 7px 14px 7px;
+/*    margin: 14px 0 14px 0;*/
+/*    grid-template: repeat(3, 1fr) / repeat(2, 1fr);*/
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto auto;
+    grid-auto-flow: row dense; /* or 'row', 'row dense', 'column dense' */
+    gap: 0 0;
+/*    height: 100%;*/
+}
+
+.account-entry-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding: 7px;
+    background-color: transparent;
+    border-radius: 4px;
+/*    width: 100%;*/
+}
+.account-entry-container:hover {
+    background-color: rgba(255, 255, 255, 0.035);
+}
+
+.entry-profile-icon {
+    display: block;
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
+    margin: 0 7px 0 0;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.entry-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: center;
+    width: 110px;
+/*    background-color: rgba(255, 50, 50, 0.3);*/
+}
+
+.entry-account-name {
+    font-family: 'NotoSansKR_Medium', serif;
+    font-size: 13px;
+    color: var(--accounts-entry-name-text-fg);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    z-index: 1;
+    width: 100%;
+}
+.entry-account-sub {
+    font-family: 'Inter_Regular', serif;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 1;
+    text-align: left;
+}
+.entry-sub-dot {
+    font-size: 11px !important;
+    color: var(--card-text-sub);
+    margin: 0 2px 0 2px;
+}
+.entry-sub-normal {
+    color: var(--card-text-sub);
+}
+.Challenger-rank {
+    color: var(--challenger-rank-fg);
+}
+.GrandMaster-rank {
+    color: var(--grandMaster-rank-fg);
+}
+.Master-rank {
+    color: var(--master-rank-fg);
+}
+.Diamond-rank {
+    color: var(--diamond-rank-fg);
+}
+.Platinum-rank {
+    color: var(--platinum-rank-fg);
+}
+
+.entry-sub-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: center;
+}
+
+.section-fixed {
+    position: fixed;
+/*    top: 0;*/
+    width: 100%;
+    z-index: 100;
+}

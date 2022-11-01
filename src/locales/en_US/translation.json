@@ -202,7 +202,8 @@
     },
     "titles": {
         "favorites": "Favorites",
-        "all": "All players"
+        "all": "All players",
+        "accounts": "Accounts"
     },
 	"tooltips": {
 		"playerUnavailable": "{{insert}} is either not in a game, or spectator is unavailable",
