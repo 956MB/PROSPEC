@@ -16,7 +16,7 @@ const SidebarButton: React.FC<{
     return (
         <div
             id={buttonProps.id}
-            className={`sidebar-button ${location.pathname === buttonProps.page ? 'sidebar-button-active' : null} ${ETooltip.TOOLTIP} ${extraClass}`}
+            className={`sidebar-button ${location.pathname === buttonProps.page ? 'sidebar-button-active' : ''} ${ETooltip.TOOLTIP} ${extraClass}`}
             onClick={buttonProps.action}
         >
             {buttonProps.id === "sb-live" ? <h1 className="notification-dot">.</h1> : null}

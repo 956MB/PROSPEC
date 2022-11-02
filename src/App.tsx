@@ -7,7 +7,7 @@ import Settings from "./components/settings/Settings";
 import { IBackground, IPlayers, IPageState, IPlayer } from "./imports/interfaces";
 
 import { EChampions } from "./imports/typings";
-import { filterBy, getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, randomSkin, getChampionFromId, arrayRandom } from "./imports/utils";
+import { filterBy, getRegion, randomActive, getRandomBackground, randomEnum, randomNumber, randomSkin, getChampionFromId, arrayRandom, getThemeString } from "./imports/utils";
 import "./imports/prototypes"
 import { Players, PlayersNotLoaded } from "./components/players/Players";
 import PlayerAccounts from "./components/players/PlayerAccounts";
@@ -21,13 +21,12 @@ import { ChampionsQueue } from "./components/cq/ChampionsQueue";
 
 function App() {
     const navigate = useNavigate();
-    const location = useLocation();
     const { i18n } = useTranslation('common');
 
     const { regionFilter, modeFilter, roleFilter, accountsLoaded, allSummoners } = useContext(SpectatorContext);
-    const { useBackground, liveBackground, autoRefresh, randomBackground } = useContext(SettingsContext);
+    const { appTheme, useBackground, liveBackground, autoRefresh, randomBackground } = useContext(SettingsContext);
     const [appBG, setAppBG] = useState<IBackground>({
-        type: "random", name: "FrightNight_Renata_and_Nautilus_Final", ext: "jpg"
+        type: "random", name: "W22_Music_Video_Banner_v2", ext: "jpg"
     });
     const [playersAll, setPlayersAll] = useState<IPlayers>([]);
     const [sidebarFavorites, setSidebarFavorites] = useState<IPlayers>([]);
@@ -64,7 +63,6 @@ function App() {
     }
 
     const loopPlayers = async () => {
-        console.log("loopPlayers CALLED::");
         await Promise.all(allSummoners.filterRoles(roleFilter).filterRandomize().filterUniquePlayers(0, 12).map(async (summoner, ip) => {
             let accounts = summoner.playerAccounts.filterRegions(regionFilter);
             let selectedAccount = arrayRandom(accounts);
@@ -92,7 +90,7 @@ function App() {
 
     return (
         <div
-            className={`app ${i18n.language}`}
+            className={`app theme-${getThemeString(appTheme)} ${i18n.language}`}
             onContextMenu={(e) => {
                 e.preventDefault();
             }}>

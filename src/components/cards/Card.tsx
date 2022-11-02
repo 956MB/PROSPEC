@@ -76,7 +76,7 @@ const Card: React.FC<{
                     menuY={state.menuOrigin.y} /> : null}
 
             <div
-                className={`player-card ${!playerProps.active ? 'card-unavailable' : null}`}
+                className={`player-card ${!playerProps.active ? 'card-unavailable' : ''}`}
                 onClick={toggleMenuOpen}
                 onMouseDown={() => dispatch({ type: ECardReducerStates.CARD_PRESSED, payload: true })}
                 onMouseUp={() => dispatch({ type: ECardReducerStates.CARD_PRESSED, payload: false })}

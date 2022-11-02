@@ -52,8 +52,11 @@
             "shortcuts": {
 				"title": "Tangentbordsgenvägar"
             },
+            "accessability": {
+				"title": "Tillgång"
+            },
             "about": {
-                "title": "Om PROSPEC",
+                "title": "Handla om",
                 "description": "Prospec är en gratis och öppen källkod för skrivbordsklient för att spåra och spektera Professional League of Legends Players.Denna applikation är en slags 'uppgradering' eller alternativ till OP.ggs 'Pro Matches' -funktion.",
                 "thanks": {
                     "title": "Tack",
@@ -77,6 +80,10 @@
                     "appScale": {
 						"description": "",
                         "title": "Ansökan skala"
+                    },
+                    "appLanguage": {
+						"description": "",
+                        "title": "Språk"
                     },
                     "dark": {
 						"description": "",
@@ -125,6 +132,10 @@
                     "system": {
 						"description": "",
                         "title": "Systemet"
+                    },
+                    "oled": {
+						"description": "",
+                        "title": "OLED"
                     },
                     "appTheme": {
 						"description": "",
@@ -180,8 +191,7 @@
             },
             "language": {
                 "title": "Språk",
-                "question": "Ser du inte det språk du vill ha?",
-                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lägg till det!</a>"
+                "add": "Ser du inte det språk du vill ha? <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lägg till det!</a>"
             }
         },
         "title": "Inställningar"

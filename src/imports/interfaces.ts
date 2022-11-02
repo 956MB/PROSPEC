@@ -231,6 +231,7 @@ export interface ISettingsPageLanguage extends ISettingsPage {
 export interface ISettingsItems extends Array<ISettingsItem>{}
 export interface ISettingsItem {
     title?: string;
+    key?: string;
     description?: string;
     itemValue: ISettingsItemValue;
     childValues?: ISettingsItems;
@@ -252,6 +253,7 @@ export interface ISettingsItemValueSelections extends Array<ISettingsItemValueSe
 export interface ISettingsItemValueSelection {
     index: number;
     text: string;
+    extra: string;
 }
 
 export interface ISettingsItemValueSelector extends Omit<ISettingsItemValue, 'value'> {

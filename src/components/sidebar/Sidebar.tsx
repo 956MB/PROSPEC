@@ -65,7 +65,7 @@ const Sidebar: React.FC<{
             </div>
             </div> */}
 
-            <div className={`sidebar-group`}>
+            <div className={`sidebar-group settings-group`}>
                 {React.Children.toArray(
                     lowerButtons.map((button) => (
                         <SidebarButton

@@ -1,12 +1,21 @@
 :root {
-    --app-background: rgba(21,21,21,0.85);
-    --app-background-overlay: rgba(25,25,25,1.0);
+    --app-background: rgba(21,21,21,1.0);
+    --app-background-overlay: rgba(25,25,25,0.95);
     --app-scrollbar-track: rgba(35, 35, 35, 0.90);
     --app-scrollbar-thumb: rgba(255, 255, 255, 0.18);
     --app-scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
     --app-scrollbar-thumb-active: rgba(255, 255, 255, 0.35);
     --tooltip-bg: rgba(15, 15, 15, 0.97);
     --tooltip-text-fg: rgba(255, 255, 255, 0.75);
+}
+
+.theme-oled {
+    --app-background: rgba(0,0,0,1.0);
+    --app-background-overlay: rgba(0,0,0,1.0);
+    --app-scrollbar-track: rgba(17, 17, 17, 0.90);
+    --app-scrollbar-thumb: rgba(255, 255, 255, 0.12);
+    --app-scrollbar-thumb-hover: rgba(255, 255, 255, 0.19);
+    --app-scrollbar-thumb-active: rgba(255, 255, 255, 0.26);
 }
 
 html {
@@ -144,6 +153,21 @@ img {
 @font-face {
     font-family: 'NotoSansKR_Medium';
     src: url('src/assets/fonts/Noto_Sans_KR/NotoSansKR-Medium.otf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'NotoSansJP_Light';
+    src: url('src/assets/fonts/Noto_Sans_JP/NotoSansJP-Light.otf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'NotoSansJP_Regular';
+    src: url('src/assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.otf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'NotoSansJP_Medium';
+    src: url('src/assets/fonts/Noto_Sans_JP/NotoSansJP-Medium.otf');
     font-weight: 500;
 }
 @font-face {
@@ -333,7 +357,6 @@ img {
 }
 
 .app-background {
-    position: fixed;
     position: absolute;
     left: 0;
     top: 0;
@@ -346,7 +369,7 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-/*    filter: grayscale(1);*/
+    filter: grayscale(1);
     pointer-events: none;
     z-index: 0;
 }
@@ -363,7 +386,6 @@ img {
     object-fit: cover;
     filter: grayscale(1);
     opacity: 0.70;
-    background-size: cover;
 }
 
 .dark-overlay {
@@ -375,7 +397,7 @@ img {
     height: 100%;
     /* background-color: rgba(21, 21, 21, 0.85); */
     /* background-image: linear-gradient(rgba(21, 21, 21, 0.85), var(--app-background)); */
-    background-image: linear-gradient(0deg, var(--app-background-overlay) 0%, var(--app-background-overlay) 30%, var(--app-background) 100%);
+    background-image: linear-gradient(180deg, var(--app-background-overlay) 0%, var(--app-background-overlay) 30%, var(--app-background) 100%);
     z-index: 1;
 }
 

@@ -52,8 +52,11 @@
             "shortcuts": {
 				"title": "키 바인드"
             },
+            "accessability": {
+				"title": "접근성"
+            },
             "about": {
-                "title": "PROSPEC 에 대해",
+                "title": "에 대한",
                 "description": "PROSPEC 은 프로 프 리그 오브 레전드 플레이어를 추적하고 관중하기위한 무료 및 오픈 소스 데스크탑 클라이언트입니다.이 응용 프로그램은 일종의 '업그레이드'또는 OP.GG의 'Pro Matches'기능에 대한 대안입니다.",
                 "thanks": {
                     "title": "감사",
@@ -77,6 +80,10 @@
                     "appScale": {
 						"description": "",
                         "title": "앱 스케일"
+                    },
+                    "appLanguage": {
+						"description": "",
+                        "title": "언어"
                     },
                     "dark": {
 						"description": "",
@@ -125,6 +132,10 @@
                     "system": {
 						"description": "",
                         "title": "체계"
+                    },
+                    "oled": {
+						"description": "",
+                        "title": "OLED"
                     },
                     "appTheme": {
 						"description": "",
@@ -179,8 +190,7 @@
             },
             "language": {
                 "title": "언어",
-                "question": "원하는 언어가 보이지 않습니까?",
-                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">그것을 추가하십시오!</a>"
+                "add": "원하는 언어가 보이지 않습니까? <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">그것을 추가하십시오!</a>"
             }
         },
         "title": "기본 설정"

@@ -4,11 +4,11 @@ import parse from 'html-react-parser';
 
 import '../css/settings.css';
 import { ISettingsItemValueLanguage, ISettingsPage, ISettingsPageButton, ISettingsPageLanguage } from "../../imports/interfaces";
-import { SettingsItem, SettingsItemLanguage, SettingsItemSpacer } from "./SettingsItem";
+import { SettingsItem, SettingsItemLanguage, SettingsItemSpacerElement } from "./SettingsItem";
 
 const SettingsPage: React.FC<{
     pageProps: ISettingsPage,
-    pageActive: boolean,
+    pageActive?: boolean,
 }> = ({ pageProps, pageActive }) => {
     const [t, i18n] = useTranslation('common');
     const langPage = pageProps as ISettingsPageLanguage;
@@ -19,10 +19,10 @@ const SettingsPage: React.FC<{
     }
 
     return (
-        <div className={`${pageProps.type === 'lang' ? 'settings-page-lang' : 'settings-page'} ${pageActive ? `${pageProps.type === 'lang' ? 'page-active-lang' : 'page-active'}` : null}`}>
+        <div className={`${pageProps.type === 'lang' ? 'settings-page-lang' : 'settings-page'}`}>
             {React.Children.toArray(
                 pageProps.items.map((item, i) => {
-                    if (item.itemValue.type === 'spacer') { return <SettingsItemSpacer /> }
+                    if (item.itemValue.type === 'spacer') { return <SettingsItemSpacerElement /> }
 
                     const valueLang = item.itemValue as ISettingsItemValueLanguage
                     return pageProps.type === 'lang'
@@ -56,7 +56,7 @@ const SettingsPageButton: React.FC<{
     const { t } = useTranslation('common');
 
     return (
-        <div className={`settings-page-button ${pageActive ? 'page-button-active' : null} ${buttonProps.disabled ? 'page-button-disabled' : null}`} onClick={() => FPageSwitch(buttonProps.index)}>
+        <div className={`settings-page-button ${pageActive ? 'page-button-active' : ''} ${buttonProps.disabled ? 'page-button-disabled' : ''}`} onClick={() => FPageSwitch(buttonProps.index)}>
             <div className='page-button-inner'>
                 <span className='page-button-text transition-0_08s'>{t(buttonProps.text)}</span>
                 {/* <span className='page-button-text transition-0_08s'>{t(buttonProps.text)}</span> */}

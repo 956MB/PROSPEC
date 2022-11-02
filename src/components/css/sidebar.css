@@ -17,6 +17,16 @@
     --card-image-mask-40: rgba(0,0,0,0.40);
 }
 
+.theme-oled {
+    --sidebar-bg: rgba(0, 0, 0, 1.0);
+    --sidebar-border-right: rgba(30, 30, 30, 1.0);
+    --sidebar-button-hover: rgba(0, 0, 0, 0.0);
+    --sidebar-button-active: rgba(0, 0, 0, 1.0);
+    --sidebar-button-active-hover: rgba(0, 0, 0, 1.0);
+    --sidebar-button-border-top: rgba(0, 0, 0, 1.0);
+    --sidebar-button-border-bottom-shadow: rgba(0, 0, 0, 1.0);
+}
+
 .settings-sidebar {
     position: absolute;
     left: 0;
@@ -32,6 +42,7 @@
     z-index: 5;
     background-color: var(--sidebar-bg);
     border-right: 1px solid var(--sidebar-border-right);
+/*    margin: 47px 0 0 0;*/
 }
 
 .favorite-button {
@@ -152,12 +163,17 @@ mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-imag
     margin-bottom: 14px !important;
 }
 .sidebar-button-active {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-left: 3px solid var(--accent);
     background-color: var(--sidebar-button-active);
 }
 .sidebar-button-active:hover {
     background-color: var(--sidebar-button-active-hover);
 }
 .sidebar-button-active img {
+    margin-left: -3px;
     opacity: 0.70 !important;
 }
 
@@ -172,7 +188,11 @@ mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-imag
 
 .pages-group {
     box-sizing: border-box;
-    margin: 47px 0 auto 0;
+    margin: 46px 0 auto 0;
+}
+.settings-group {
+    box-sizing: border-box;
+/*    margin: 0 0 47px 0;*/
 }
 
 .favorites-group {

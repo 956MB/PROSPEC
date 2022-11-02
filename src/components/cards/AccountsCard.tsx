@@ -28,8 +28,6 @@ const AccountsCard: React.FC<{
                     </div>
                 </div>
 
-                <div className={`accounts-card-divider`}></div>
-
                 <div className={`accounts-list-section`}>
                     {React.Children.toArray(
                         playerProps.playerAccounts.slice(0, 6).map((account) =>
@@ -56,7 +54,7 @@ const AccountEntry: React.FC<{
             <div className={`entry-info-container`}>
                 <span className={`entry-account-name select`}>{accountProps.summonerName}</span>
                 <div className={`entry-sub-container`}>
-                    <span className={`entry-account-sub ${noWhitespace(testRank)}-rank noselect`}>{testRank}</span>
+                    <span className={`entry-account-rank ${noWhitespace(testRank)}-rank noselect`}>{testRank}</span>
                     <span className={`entry-account-sub entry-sub-dot noselect`}>{`·`}</span>
                     <span className={`entry-account-sub entry-sub-normal noselect`}>{accountProps.region.toUpperCase()}</span>
                 </div>

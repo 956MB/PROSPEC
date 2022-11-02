@@ -52,8 +52,11 @@
             "shortcuts": {
 				"title": "ショートカット"
             },
+            "accessability": {
+				"title": "アクセシビリティ"
+            },
             "about": {
-                "title": "プロスペックについて",
+                "title": "約",
                 "description": "PROSPEC は、プロのリーグオブレジェンドプレーヤーを追跡および観察するための無料でオープンソースのデスクトップクライアントです。このアプリケーションは、Op.ggの「Pro Matches」機能に代わる「アップグレード」または代替品です。",
                 "thanks": {
                     "title": "ありがとう",
@@ -77,6 +80,10 @@
                     "appScale": {
 						"description": "",
                         "title": "アプリの規模"
+                    },
+                    "appLanguage": {
+						"description": "",
+                        "title": "言語"
                     },
                     "dark": {
 						"description": "",
@@ -125,6 +132,10 @@
                     "system": {
 						"description": "",
                         "title": "システム"
+                    },
+                    "oled": {
+						"description": "",
+                        "title": "OLED"
                     },
                     "appTheme": {
 						"description": "",
@@ -180,8 +191,7 @@
             },
             "language": {
                 "title": "言語",
-                "question": "あなたが望む言語が見えませんか？",
-                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">追加！</a>"
+                "add": "あなたが望む言語が見えませんか？ <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">追加！</a>"
             }
         },
         "title": "設定"

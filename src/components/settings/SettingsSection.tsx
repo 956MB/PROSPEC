@@ -39,7 +39,7 @@ const SettingsSection: React.FC<{
                                     positionClass={getEntryIndexClass(i, sectionEntries.length)}
                                     sectionEntry={entry as ISettingsSectionEntryPackage} />
                                 : null}
-                            {i < sectionEntries.length - 1 ? <div className={`spacer-divider-entry ${sectionType === 'change' || sectionType === 'package' ? 'margin-lr-18' : null}`}></div> : null}
+                            {i < sectionEntries.length - 1 ? <div className={`spacer-divider-entry ${sectionType === 'change' || sectionType === 'package' ? 'margin-lr-18' : ''}`}></div> : null}
                         </div>
                     ))
                 )}

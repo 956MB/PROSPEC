@@ -32,7 +32,7 @@ const PlayersGroup: React.FC<{
     });
 
     return (
-        <div className={`pros-group ${groupInfo.type === EGroupBy.NONE ? 'unsorted-group' : null} ${groupPos} ${groupCollapsed ? 'group-collapsed' : null}`}>
+        <div className={`pros-group ${groupInfo.type === EGroupBy.NONE ? 'unsorted-group' : ''} ${groupPos} ${groupCollapsed ? 'group-collapsed' : ''}`}>
             {groupInfo.type === EGroupBy.NONE ? null :
                 <div className='group-sidebar' onClick={() => setGroupCollapsed(!groupCollapsed)}>
                     <div className='hor-divider divider-left'></div>
@@ -49,7 +49,7 @@ const PlayersGroup: React.FC<{
                 </div>
             }
 
-            <div className={`pros-grid ${groupCollapsed ? 'pros-hidden' : null}`}>
+            <div className={`pros-grid ${groupCollapsed ? 'pros-hidden' : ''}`}>
                 {React.Children.toArray(
                     players.map(player => {
                         return (!showUnavailable && !player.active) ? null :

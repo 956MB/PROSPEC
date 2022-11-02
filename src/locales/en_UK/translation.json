@@ -49,6 +49,12 @@
     },
 	"settings": {
 		"pages": {
+            "shortcuts": {
+				"title": "Keybinds"
+            },
+            "accessability": {
+				"title": "Accessability"
+            },
 			"about": {
 				"title": "About",
                 "description": "PROSPEC is a free and open source dekstop client for spectating professional League of Legends players. This application is a sort of 'upgrade' or alternative to OP.GG's 'Pro Matches' feature.",
@@ -73,6 +79,10 @@
 					"appScale": {
 						"title": "App scale"
 					},
+                    "appLanguage": {
+						"description": "",
+                        "title": "Language"
+                    },
 					"dark": {
 						"title": "Dark"
 					},
@@ -117,6 +127,10 @@
 					"system": {
 						"title": "System"
 					},
+                    "oled": {
+						"description": "",
+                        "title": "OLED"
+                    },
 					"appTheme": {
 						"title": "Theme"
 					}
@@ -166,8 +180,7 @@
 			},
 			"language": {
 				"title": "Language",
-                "question": "Don't see the language you want?",
-                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Add it!</a>"
+                "add": "Don't see the language you want? <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Add it!</a>"
 			}
 		},
 		"title": "Settings"

@@ -43,14 +43,14 @@ const Titlebar: React.FC<{
     }
 
     return (
-        <div data-tauri-drag-region className="titlebar">
+        <div data-tauri-drag-region={true} className="titlebar">
             <div className='titlebar-inner'>
                 <div className='refresh-group'>
                     <TitlebarNavigationButton buttonIcon={backwardIcon}
-                        buttonClasses={`navigation-button ${checkNavBackward(pageState) ? 'active-navigation-button' : null} nav-back`}
+                        buttonClasses={`navigation-button ${checkNavBackward(pageState) ? 'active-navigation-button' : ''} nav-back`}
                         onClick={() => fNavigateDirection(-1)} />
                     <TitlebarNavigationButton buttonIcon={forwardIcon}
-                        buttonClasses={`navigation-button ${checkNavForward(pageState) ? 'active-navigation-button' : null} nav-forward`}
+                        buttonClasses={`navigation-button ${checkNavForward(pageState) ? 'active-navigation-button' : ''} nav-forward`}
                         onClick={() => fNavigateDirection(1)} />
 
                     {location.pathname === "/" ?
@@ -87,8 +87,8 @@ const SearchBar: React.FC<{
     const location = useLocation();
 
     return (
-        <div className={`search-bar ${(value === '') ? null : 'search-bar-active'} ${searchDisabled ? 'search-disabled' : null}`}>
-            <div className={`icon-container ${(value === '') ? null : 'icon-clickable'}`} onClick={(value === '') ? () => null : fClearSearch}>
+        <div className={`search-bar ${(value === '') ? '' : 'search-bar-active'} ${searchDisabled ? 'search-disabled' : ''}`}>
+            <div className={`icon-container ${(value === '') ? '' : 'icon-clickable'}`} onClick={(value === '') ? () => null : fClearSearch}>
                 <img
                     src={`src/assets/icons/${(value === '') ? 'search' : 'close'}.svg`}
                     className={`${(value === '') ? 'search-icon' : 'close-icon'}`} />

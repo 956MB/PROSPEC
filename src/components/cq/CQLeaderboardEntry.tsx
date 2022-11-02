@@ -14,7 +14,7 @@ const CQLeaderboardEntry: React.FC<{
                 element={<span className={`entry-rank-text ${entryIndex == 0 ? 'rank-text-leader' : (`rank-text-${isOdd(entryIndex+1) ? 'odd' : 'even'}`)} noselect`}>{entryIndex + 1}</span>}/>
             <div className='controls-divider'></div>
             <CQLeaderboardControl size={'small'}
-                element={<span className={`entry-lp-text ${entryIndex == 0 ? 'lp-text-leader' : null} noselect`}>{entryProps.lp.toLocaleString()}</span>}/>
+                element={<span className={`entry-lp-text ${entryIndex == 0 ? 'lp-text-leader' : ''} noselect`}>{entryProps.lp.toLocaleString()}</span>}/>
             <div className='controls-divider'></div>
             <CQLeaderboardControl size={'100'}
                 element={<></>}/>

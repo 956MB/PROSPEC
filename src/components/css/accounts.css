@@ -1,6 +1,6 @@
 :root {
-    --accounts-bg: rgba(16, 16, 16, 0.70);
-    --accounts-group-bg: rgba(19, 19, 19, 0.70);
+    --accounts-bg: rgba(20, 20, 20, 0.80);
+    --accounts-group-bg: rgba(17, 17, 17, 0.90);
     --accounts-divider-1: rgba(33, 33, 33, 1.0);
     --accounts-background-border-2: rgba(255, 255, 255, 0.035);
     --accounts-photo-container-bg: rgba(30, 30, 30, 0.50);
@@ -11,7 +11,12 @@
     --master-rank-fg: #EEA8FF;
     --diamond-rank-fg: #78AEFF;
     --platinum-rank-fg: #8CFEAC;
+}
 
+.theme-oled {
+    --accounts-group-bg: rgba(0, 0, 0, 1.0);
+    --accounts-photo-container-bg: rgba(0, 0, 0, 1.0);
+    --accounts-background-border-2: rgba(30, 30, 30, 1.0);
 }
 
 .accounts-outer {
@@ -39,7 +44,7 @@
     border-bottom: 1px solid var(--accounts-divider-1);
     border-left: 1px solid var(--accounts-divider-1);
     border-right: 1px solid var(--accounts-divider-1);
-/*    width: 490px;*/
+    width: 490px;
 /*    max-width: 551px;*/
 }
 
@@ -50,6 +55,10 @@
     align-content: center;
     align-items: center;
     padding: 14px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-right: 1px solid var(--accounts-divider-1);
 /*    background-color: rgba(50, 50, 255, 0.2);*/
 }
 
@@ -87,9 +96,14 @@
     margin: -4px 0 2px auto;
     width: 100%;
 }
+.br_BA .accounts-info-name {
+    font-family: 'ChmcBraille_nK5P', 'Inter_Medium', serif !important;
+    font-size: 10px !important;
+    letter-spacing: 3px !important;
+}
 
 .showmaker {
-    font-size: 15px !important;
+    font-size: 15px;
     margin: -4px auto 3px 0;
 }
 
@@ -200,9 +214,9 @@
 .accounts-grid {
     display: grid;
     justify-items: flex-start;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     flex: 1;
 /*    max-height: 1000px;*/
     transition: max-height 0.45s;
@@ -214,7 +228,7 @@
 /*    grid-template-columns: repeat(auto-fill, minmax(471px, 1fr));*/
     grid-auto-flow: row dense;
 /*    grid-gap: 20px;*/
-    grid-template-columns: repeat(auto-fit, 490px);
+    grid-template-columns: repeat(auto-fit, 489px);
 /*    grid-template-columns: repeat(auto-fit, minmax(431px, 1fr));*/
     margin-bottom: 10px;
 /*    background-color: var(--accounts-group-bg);*/
@@ -236,13 +250,15 @@
 /*    flex: 1;*/
 /*    grid-template-columns: 1fr 1fr;*/
 /*    gap: 20px 16px;*/
-    padding: 14px 7px 14px 7px;
+    padding: 14px 0 14px 0;
 /*    margin: 14px 0 14px 0;*/
 /*    grid-template: repeat(3, 1fr) / repeat(2, 1fr);*/
     grid-template-columns: auto auto;
     grid-template-rows: auto auto auto;
     grid-auto-flow: row dense; /* or 'row', 'row dense', 'column dense' */
     gap: 0 0;
+/*    width: 100%;*/
+    flex-grow: 1;
 /*    height: 100%;*/
 }
 
@@ -252,9 +268,9 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    padding: 7px;
     background-color: transparent;
-    border-radius: 4px;
+    padding: 7px 7px 7px 14px;
+/*    border-radius: 4px;*/
 /*    width: 100%;*/
 }
 .account-entry-container:hover {
@@ -292,12 +308,36 @@
     z-index: 1;
     width: 100%;
 }
+.br_BA .entry-account-name {
+    font-family: 'ChmcBraille_nK5P', 'NotoSansKR_Medium', serif !important;
+    font-size: 12px !important;
+    letter-spacing: 3px !important;
+}
 .entry-account-sub {
     font-family: 'Inter_Regular', serif;
     font-size: 11px;
     white-space: nowrap;
     z-index: 1;
     text-align: left;
+}
+.entry-account-rank {
+    font-family: 'Inter_Regular', serif;
+    font-size: 11px;
+    white-space: nowrap;
+    z-index: 1;
+    text-align: left;
+}
+/*.kr_KR .entry-account-rank {*/
+/*    font-family: 'NotoSansKR_Light', 'Inter_Regular', serif !important;*/
+/*}*/
+/*.ja_JP .entry-account-rank {*/
+/*    font-family: 'NotoSansJP_Light', 'Inter_Regular', serif !important;*/
+/*}*/
+.br_BA .entry-account-sub {
+    font-family: 'ChmcBraille_nK5P', 'NotoSansKR_Medium', serif !important;
+    font-size: 9px !important;
+    letter-spacing: 2px !important;
+    margin: 1px 0 0 0;
 }
 .entry-sub-dot {
     font-size: 11px !important;

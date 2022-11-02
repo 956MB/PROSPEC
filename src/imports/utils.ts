@@ -94,9 +94,17 @@ export function currentYearN(): number {
     return (new Date()).getFullYear();
 }
 
-const LANGS = [ "English, US", "English, UK", "Svenska", "Suomi", "한국어", "日本語", "Braille" ];
+export const LANGS = [ "English, US", "English, UK", "Svenska", "Suomi", "한국어", "日本語", "Braille" ];
 export function getLanguageStatic(lang: number): string {
     return LANGS.at(lang)!;
+}
+export const THEMES = [ "dark", "light", "oled", "system" ];
+export function getThemeString(theme: number): string {
+    return THEMES.at(theme)!;
+}
+export const SCALES = [ "100%", "90%", "75%", "50%" ];
+export function getScaleString(scale: number): string {
+    return SCALES.at(scale)!;
 }
 
 export function getEntryIndexClass(idx: number, length: number): string {
@@ -443,6 +451,7 @@ export function oMode(mode: string): string { return `modes.${mode}` }
 export function oRole(role: string): string { return `roles.${role}` }
 export function oRegion(region: string): string { return `regions.${region}` }
 export function sTitle(page: string): string { return `settings.pages.${page}.title` }
+export function sAdd(): string { return `settings.pages.language.add` }
 export function sItemTitle(page: string, item: string): string { return `settings.pages.${page}.items.${item}.title` }
 export function sItemDescription(page: string, item: string): string { return `settings.pages.${page}.items.${item}.description` }
 export function pAbout(item: string): string { return `settings.pages.about.${item}` }
@@ -457,7 +466,7 @@ export function FormSettingsPage(index: number, type: string, title: string, ite
 export function FormSettingsPageLang(index: number, type: string, title: string, selected: number, items?: ISettingsItems, disabled?: boolean): ISettingsPageLanguage {
     return { index: index, type: type, title: sTitle(title), selected: selected, items: items ? items : [], disabled: disabled ? disabled : false }
 }
-export function SettingsItemSpacer(): ISettingsItem { return { itemValue: { type: "spacer", value: false } }; }
+export function SettingsItemSpacer(title?: string): ISettingsItem { return { title: title ? title : "", itemValue: { type: "spacer", value: false } }; }
 export function SettingsItemBoolean(section: string, key: string, value: boolean, children?: ISettingsItems, secondaryAction?: () => void): ISettingsItem {
     return {
         title: sItemTitle(section, key),
@@ -467,13 +476,13 @@ export function SettingsItemBoolean(section: string, key: string, value: boolean
         secondaryAction: secondaryAction
     }
 }
-export function ItemValueSelection(index: number, section: string, value: string, ignoreTranslation: boolean): ISettingsItemValueSelection {
-    return { index: index, text: ignoreTranslation ? value : sItemTitle(section, value) };
+export function ItemValueSelection(index: number, section: string, value: string, extra: string, ignoreTranslation: boolean): ISettingsItemValueSelection {
+    return { index: index, text: ignoreTranslation ? value : sItemTitle(section, value), extra: extra };
 }
-export function SettingsItemSelector(section: string, key: string, value: number, selections: string[], ignoreTranslation: boolean = false): ISettingsItem {
+export function SettingsItemSelector(section: string, key: string, value: number, selections: string[], extras?: string[], ignoreTranslation: boolean = false): ISettingsItem {
     return {
-        title: sItemTitle(section, key), itemValue: {
-            type: 'selector', key: key, value: value, options: selections.map((value, i) => { return ItemValueSelection(i, section, value, ignoreTranslation) }) as ISettingsItemValueSelections
+        title: key === 'appLanguage' ? sAdd() : sItemTitle(section, key), key: key, itemValue: {
+            type: 'selector', key: key, value: value, options: selections.map((value, i) => { return ItemValueSelection(i, section, value, extras ? extras[i] : '', ignoreTranslation) }) as ISettingsItemValueSelections
         } as ISettingsItemValueSelector
     }
 }

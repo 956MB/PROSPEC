@@ -52,8 +52,11 @@
             "shortcuts": {
                 "title": "Pikanäppäimet"
             },
+            "accessability": {
+				"title": "Saavutettavuus"
+            },
             "about": {
-                "title": "Tietoja PROSPEC",
+                "title": "Tietoja",
                 "description": "PROSPEC on ilmainen ja avoimen lähdekoodin työpöytä -asiakas Professional League of Legends -pelaajien seurantaan ja katsomiseen.Tämä sovellus on eräänlainen 'päivitys' tai vaihtoehto OP.GG: n 'Pro Matches' -ominaisuudelle.",
                 "thanks": {
                     "title": "Kiitos",
@@ -77,6 +80,10 @@
                     "appScale": {
 						"description": "",
                         "title": "Sovellusasteikko"
+                    },
+                    "appLanguage": {
+						"description": "",
+                        "title": "Kieli"
                     },
                     "dark": {
 						"description": "",
@@ -125,6 +132,10 @@
                     "system": {
 						"description": "",
                         "title": "Järjestelmä"
+                    },
+                    "oled": {
+						"description": "",
+                        "title": "OLED"
                     },
                     "appTheme": {
 						"description": "",
@@ -180,8 +191,7 @@
             },
             "language": {
                 "title": "Kieli",
-                "question": "Etkö näe haluamasi kieltä?",
-                "add": "<a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lisää se!</a>"
+                "add": "Etkö näe haluamasi kieltä? <a title=https://github.com/956MB/PROSPEC/tree/master/src/locale href=https://github.com/956MB/PROSPEC/tree/master/src/locale target=\"_blank\" rel=\"noopener noreferrer\">Lisää se!</a>"
             }
         },
         "title": "Asetukset"
