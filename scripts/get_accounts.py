@@ -11,9 +11,9 @@ def main(filename):
         for player in data['players']:
             for account in player['accounts']:
                 if (account['puuid'] == ""):
-                    info = getInfo(account['region'], account['name'])
-                    account['puuid'] = info[0]
-                    account['profileIcon'] = info[1]
+                    info_puuid, info_profileicon = getInfo(account['region'], account['name'])
+                    account['puuid'] = info_puuid
+                    account['profileIcon'] = info_profileicon
                     sleep(0.03)
 
     os.remove(filename)
@@ -29,10 +29,10 @@ def getInfo(region, summonerName):
         accInfo = r.json()
         print('200: ', summonerName, accInfo['puuid'], accInfo['profileIconId'])
         return (accInfo['puuid'], accInfo['profileIconId'])
-    elif (r.status_code == 404):
-        print("404: ", summonerName)
+    else:
+        print("{}: {}".format(r.status_code, summonerName))
     
-    return ('', 0)
+    return ('', 29)
 
 if __name__ == "__main__":
     url = 'https://{}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{}'

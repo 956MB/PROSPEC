@@ -1,11 +1,12 @@
 :root {
     --accounts-bg: rgba(20, 20, 20, 0.80);
-    --accounts-group-bg: rgba(17, 17, 17, 0.90);
+    --accounts-group-bg: rgba(17, 17, 17, 0.40);
     --accounts-divider-1: rgba(33, 33, 33, 1.0);
     --accounts-background-border-2: rgba(255, 255, 255, 0.035);
     --accounts-photo-container-bg: rgba(30, 30, 30, 0.50);
     --accounts-info-name-text-fg: rgba(255, 255, 255, 0.90);
     --accounts-entry-name-text-fg: rgba(255, 255, 255, 0.90);
+    --accounts-entry-container-hover: rgba(255, 255, 255, 0.035);
     --challenger-rank-fg: #A4EFFF;
     --grandMaster-rank-fg: #FF9090;
     --master-rank-fg: #EEA8FF;
@@ -14,9 +15,10 @@
 }
 
 .theme-oled {
-    --accounts-group-bg: rgba(0, 0, 0, 1.0);
+    --accounts-group-bg: rgba(0, 0, 0, 0.3);
     --accounts-photo-container-bg: rgba(0, 0, 0, 1.0);
     --accounts-background-border-2: rgba(30, 30, 30, 1.0);
+    --accounts-entry-container-hover: rgba(255, 255, 255, 0.060);
 }
 
 .accounts-outer {
@@ -101,6 +103,10 @@
     font-size: 10px !important;
     letter-spacing: 3px !important;
 }
+.ku_KZ .accounts-info-name {
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Medium', serif !important;
+    font-size: 10px !important;
+}
 
 .showmaker {
     font-size: 15px;
@@ -140,7 +146,7 @@
     width: 29px;
     height: 35px;
     background-size: 32px;
-    background-position-x: -2px !important;
+    background-position-x: -5px !important;
     margin: -3px 5px 4px 0;
 }
 
@@ -206,7 +212,7 @@
     -ms-transition: all 0.15s ease;
     transition: all 0.15s ease;
     background-color: var(--accounts-group-bg);
-    backdrop-filter: blur(4px);
+/*    backdrop-filter: blur(4px);*/
 /*    height: 100%;*/
     flex: 1;
 }
@@ -230,7 +236,7 @@
 /*    grid-gap: 20px;*/
     grid-template-columns: repeat(auto-fit, 489px);
 /*    grid-template-columns: repeat(auto-fit, minmax(431px, 1fr));*/
-    margin-bottom: 10px;
+/*    margin-bottom: 10px;*/
 /*    background-color: var(--accounts-group-bg);*/
 }
 
@@ -270,11 +276,12 @@
     align-items: center;
     background-color: transparent;
     padding: 7px 7px 7px 14px;
+    overflow: hidden;
 /*    border-radius: 4px;*/
 /*    width: 100%;*/
 }
 .account-entry-container:hover {
-    background-color: rgba(255, 255, 255, 0.035);
+    background-color: var(--accounts-entry-container-hover);
 }
 
 .entry-profile-icon {
@@ -327,6 +334,13 @@
     z-index: 1;
     text-align: left;
 }
+.ku_KZ .entry-account-rank {
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Regular', serif !important;
+    font-size: 7px !important;
+/*    letter-spacing: 1px !important;*/
+    margin: 3px 0 0 0;
+}
+
 /*.kr_KR .entry-account-rank {*/
 /*    font-family: 'NotoSansKR_Light', 'Inter_Regular', serif !important;*/
 /*}*/
@@ -339,10 +353,22 @@
     letter-spacing: 2px !important;
     margin: 1px 0 0 0;
 }
+.ku_KZ .entry-account-sub {
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Regular', serif !important;
+    font-size: 7px !important;
+/*    letter-spacing: 0 !important;*/
+    margin: 3px 0 0 0;
+}
+
 .entry-sub-dot {
     font-size: 11px !important;
     color: var(--card-text-sub);
     margin: 0 2px 0 2px;
+}
+.ku_KZ .entry-sub-dot {
+    font-size: 11px !important;
+    color: var(--card-text-sub);
+    margin: 0 3px 0 3px;
 }
 .entry-sub-normal {
     color: var(--card-text-sub);

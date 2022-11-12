@@ -15,6 +15,7 @@ async function importLanguages(): Promise<ILanguageResources> {
                     const obj = JSON.parse(contents);
                     const langText = obj["language"]["text"] as string;
                     resources.push({lang: lang, text: langText} as ILanguageResource);
+                    console.log(`::LOADED:: lang: ${lang} text: ${langText}`);
                 }
             }
         }

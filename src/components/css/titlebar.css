@@ -10,12 +10,12 @@
     --searchbar-border-focus: rgba(255, 255, 255, 0.10);
     --searchbar-placeholder: rgba(255, 255, 255, 0.20);
     --searchbar-placeholder-focus: rgba(255, 255, 255, 0.30);
-    --titlebar-border-bottom: rgba(0, 0, 0, 0.0);
+    --titlebar-border-bottom: rgba(49, 49, 49, 1.0);
 }
 
 .theme-oled {
     --titlebar-button-group: rgba(255, 255, 255, 0.07);
-    --titlebar-border-bottom: rgba(0, 0, 0, 0.0);
+    --titlebar-border-bottom: rgba(32, 32, 32, 1.0);
     --searchbar-normal: rgba(255, 255, 255, 0.07);
 }
 
@@ -26,6 +26,7 @@
     max-width: 100%;
     z-index: 3;
     border-bottom: 1px solid var(--titlebar-border-bottom);
+    box-sizing: content-box;
 }
 
 .titlebar-inner {
@@ -217,11 +218,14 @@
     margin-left: 7px;
     white-space:nowrap;
 }
-
 .br_BA .refresh-text {
     font-family: 'ChmcBraille_nK5P', 'Inter_Medium', serif !important;
     font-size: 11px !important;
     letter-spacing: 3px !important;
+}
+.ku_KZ .refresh-text {
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Medium', serif !important;
+    font-size: 9px !important;
 }
 
 .search-bar {
@@ -258,6 +262,13 @@
     caret-color: white;
 }
 
+.ku_KZ .search-bar input[type=text] {
+/*    padding-bottom: 3px !important;*/
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Light', serif !important;
+    font-size: 9px !important;
+    letter-spacing: 1px !important;
+}
+
 .search-bar input[type=text]:focus {
     text-decoration: none !important;
     border: 2px solid var(--searchbar-border-focus);
@@ -291,6 +302,18 @@
     font-family: 'ChmcBraille_nK5P', 'Inter_Light', serif !important;
     font-size: 11px !important;
     letter-spacing: 3px !important;
+}
+.ku_KZ .search-bar ::placeholder {
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Light', serif !important;
+    font-size: 9px !important;
+    letter-spacing: 1px !important;
+    margin: -1px 0 0 0 !important;
+}
+.ku_KZ .search-bar ::-ms-input-placeholder {
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Light', serif !important;
+    font-size: 9px !important;
+    letter-spacing: 1px !important;
+    margin: -1px 0 0 0 !important;
 }
 .ja_JP .search-bar ::placeholder {
     font-family: 'NotoSansJP_Light', 'Inter_Light', serif !important;

@@ -110,6 +110,7 @@ const SettingsProvider: React.FC<{ langs: ILanguageResources, children: React.Re
 
         settingsStore.set(key, val);
         settingsStore.save();
+//        console.log(`::SAVED:: key:${key} val:${val}`);
     }
 
     const getSetting = async (key: string): Promise<any> => {

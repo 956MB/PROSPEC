@@ -5,17 +5,21 @@
     --app-scrollbar-thumb: rgba(255, 255, 255, 0.18);
     --app-scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
     --app-scrollbar-thumb-active: rgba(255, 255, 255, 0.35);
+    --app-selection-bg: rgb(255, 238, 0);
+    --app-selection-fg: rgb(0, 0, 0);
     --tooltip-bg: rgba(15, 15, 15, 0.97);
     --tooltip-text-fg: rgba(255, 255, 255, 0.75);
 }
 
 .theme-oled {
     --app-background: rgba(0,0,0,1.0);
-    --app-background-overlay: rgba(0,0,0,1.0);
-    --app-scrollbar-track: rgba(17, 17, 17, 0.90);
+    --app-background-overlay: rgba(0,0,0,0.89);
+    --app-scrollbar-track: rgba(19, 19, 19, 0.90);
     --app-scrollbar-thumb: rgba(255, 255, 255, 0.12);
     --app-scrollbar-thumb-hover: rgba(255, 255, 255, 0.19);
     --app-scrollbar-thumb-active: rgba(255, 255, 255, 0.26);
+    --app-selection-bg: rgb(225, 225, 225);
+    --app-selection-fg: rgb(0, 0, 0);
 }
 
 html {
@@ -31,7 +35,7 @@ body {
 /* width */
 ::-webkit-scrollbar {
     width: 18px;
-    /* backdrop-filter: blur(5px); */
+     backdrop-filter: blur(8px);
 }
 
 /* Track */
@@ -42,9 +46,6 @@ body {
     background-clip: content-box;
     backdrop-filter: blur(5px);
 }
-/* .pros-container  ::-webkit-scrollbar-track {
-    margin-top: 47px;
-} */
 /* Handle */
 ::-webkit-scrollbar-thumb {
     /* background: #888; */
@@ -69,12 +70,12 @@ background-color: var(--app-scrollbar-thumb);
 }
 
 ::selection {
-    background: rgb(255, 238, 0); /* WebKit/Blink Browsers */
-    color: black;
+    background: var(--app-selection-bg); /* WebKit/Blink Browsers */
+    color: var(--app-selection-fg);
 }
 ::-moz-selection {
-    background: rgb(255, 238, 0); /* Gecko Browsers */
-    color: black;
+    background: var(--app-selection-bg); /* Gecko Browsers */
+    color: var(--app-selection-fg);
 }
 
 .noselect {
@@ -197,6 +198,10 @@ img {
     font-family: 'ChmcBraille_nK5P';
     src: url('src/assets/fonts/chmc-braille-font/ChmcBraille-nK5P.otf');
 }
+@font-face {
+    font-family: 'Khuzdulerebor_Rjno';
+    src: url('src/assets/fonts/khuzdulerebor-font/Khuzdulerebor-Rjno.ttf');
+}
 
 .tooltip {
     position: relative;
@@ -239,6 +244,14 @@ img {
 {
     font-family: 'ChmcBraille_nK5P', 'Inter_Medium', serif !important;
     letter-spacing: 3px !important;
+}
+.ku_KZ .tooltip .tooltip-text,
+.ku_KZ .tooltip .tooltip-text-delay
+{
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Medium', serif !important;
+    font-size: 9px;
+    padding: 6px 9px 6px 9px;
+    letter-spacing: 1px !important;
 }
 
 .tooltip-right {
@@ -363,7 +376,7 @@ img {
     background-repeat: no-repeat;
     background-size: cover;
 /*    background-size: auto;*/
-    background-position-y: top;
+    background-position-y: -30px;
     background-position-x: center;
     opacity: 0.70;
     width: 100%;

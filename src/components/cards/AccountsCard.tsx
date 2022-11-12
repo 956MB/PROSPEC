@@ -45,8 +45,8 @@ const AccountEntry: React.FC<{
     accountProps: ISummonerAccount,
 }> = ({ accountProps }) => {
     const { showSummonerIds } = useContext(SettingsContext);
-    const RANKS = [ "Challenger", "Grand Master", "Master", "Diamond", "Platinum" ];
-    const [testRank, setTestRank] = useState<string>(arrayRandom(RANKS));
+//    const RANKS = [ "Challenger", "Grand Master", "Master", "Diamond", "Platinum" ];
+    const [testRank, setTestRank] = useState<string>("Challenger");
 
     return (
         <div className={`account-entry-container`}>

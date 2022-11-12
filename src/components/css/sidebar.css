@@ -4,6 +4,7 @@
     --sidebar-button-hover: rgba(47, 47, 47, 1.0);
     --sidebar-button-active: rgba(50, 50, 50, 1.0);
     --sidebar-button-active-hover: rgba(50, 50, 50, 1.0);
+    --sidebar-button-active-border: rgba(255, 187, 0, 0.95);
     --sidebar-button-border-top: rgba(30, 30, 30, 1.0);
     --sidebar-button-border-top-shadow: rgba(70, 70, 70, 0.60);
     --sidebar-button-border-bottom: rgba(70, 70, 70, 0.60);
@@ -18,11 +19,13 @@
 }
 
 .theme-oled {
-    --sidebar-bg: rgba(0, 0, 0, 1.0);
+    --sidebar-bg: rgba(0, 0, 0, 0.60);
     --sidebar-border-right: rgba(30, 30, 30, 1.0);
     --sidebar-button-hover: rgba(0, 0, 0, 0.0);
     --sidebar-button-active: rgba(0, 0, 0, 1.0);
     --sidebar-button-active-hover: rgba(0, 0, 0, 1.0);
+    --sidebar-button-active-border: rgba(255, 187, 0, 0.95);
+/*    --sidebar-button-active-border: rgba(255, 255, 255, 0.90);*/
     --sidebar-button-border-top: rgba(0, 0, 0, 1.0);
     --sidebar-button-border-bottom-shadow: rgba(0, 0, 0, 1.0);
 }
@@ -166,7 +169,7 @@ mask-image: -webkit-gradient(linear, left top, left bottom, from(var(--card-imag
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    border-left: 3px solid var(--accent);
+    border-left: 3px solid var(--sidebar-button-active-border);
     background-color: var(--sidebar-button-active);
 }
 .sidebar-button-active:hover {

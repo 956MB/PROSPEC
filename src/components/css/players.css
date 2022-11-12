@@ -69,6 +69,10 @@
     font-size: 14px !important;
     letter-spacing: 3px !important;
 }
+.ku_KZ .players-section-title {
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Medium', serif !important;
+    font-size: 10px !important;
+}
 
 .players-section-title-container {
     display: flex;
@@ -87,7 +91,7 @@
     align-items: center;
     backdrop-filter: blur(8px);
     border-radius: 5px;
-    margin: 0 0 1px 10px;
+    margin: 0 0 0 10px;
 }
 .players-section-badge span {
     font-family: 'RobotoMono_Regular', serif;
@@ -121,13 +125,29 @@
     margin: 15px auto 0 auto;
     letter-spacing: .02em;
 }
+.ku_KZ .players-section-empty {
+    font-family: 'Khuzdulerebor_Rjno', 'Inter_Regular', serif !important;
+    font-size: 9px !important;
+    letter-spacing: 1px !important;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--players-section-empty-fg);
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 12px;
+    user-select: none;
+    background-color: var(--section-empty-bg);
+    backdrop-filter: blur(12px);
+    padding: 7px 10px 6px 10px;
+    margin: 15px auto 0 auto;
+}
 
 .pros-group {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: flex-start;
-    padding: 0 20px 0 20px;
+    padding: 0 25px 0 25px;
     -webkit-transition: all 0.15s ease;  
     -moz-transition: all 0.15s ease;  
     -o-transition: all 0.15s ease;  
@@ -208,8 +228,8 @@
 
 .pros-grid {
     display: grid;
-    justify-items: center;
-    justify-content: center;
+    justify-items: flex-start;
+    justify-content: flex-start;
     flex: 1;
     max-height: 1000px;
     transition: max-height 0.45s;

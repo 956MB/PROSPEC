@@ -145,16 +145,119 @@ export enum ELeagues {
 }
 
 export enum ETeams {
-    DRX = 80,
-    DK = 254,
-    BRO = 109,
-    GEN = 151,
-    HLE = 194,
-    KT = 338,
-    KDF = 235,
-    LSB = 415,
-    NS = 16,
-    T1 = 266,
+    // TODO: go back and check abbreviations
+    KOI = 206, // KOI
+    TF = 361, // Team Flash
+    // NOTE: LCS:
+    _100T = 29, // 100 Thieves
+    IMM = 212, // Immortals
+    CLG = 459, // Counter Logic Gaming
+    EG = 267, // Evil Geniuses
+    FLY = 677, // FlyQuest
+    TL = 237, // Team Liquid
+    TSM = 117, // TSM
+    C9 = 196, // Cloud9
+    DIG = 230, // Dignitas
+    GG = 453, // Golden Guardians
+    // NOTE: LEC:
+    RGE = 903, // Rogue
+    MAD = 154, // MAD Lions
+    G2 = 202, // G2 Esports
+    FNC = 328, // Fnatic
+    VIT = 431, // Team Vitality
+    AST = 619, // Astralis
+    BDS = 297, // Team BDS
+    MSF = 562, // Misfits Gaming
+    EXC = 407, // exceL Esports
+    SK = 256, // SK Gaming
+    // NOTE: LCK:
+    T1 = 523, // T1
+    DK = 636, // DWG Gaming
+    KT = 679, // KT Rolster
+    NS = 718, // Nongshim RedForce
+    BRO = 730, // Fredit BRION
+    GEN = 445, // Gen.G
+    DRX = 918, // DRX
+    LSB = 526, // Liiv SANDBOX
+    HLE = 339, // Hanwha Life Esports
+    KDF = 813, // Kwangdong Freecs
+    // NOTE: LPL:
+    LNG = 186, // LNG Esports
+    TES = 394, // Top Esports
+    JDG = 37, // JD Gaming
+    EDG = 159, // EDward Gaming
+    RA = 499, // Rare Atom
+    LGD = 646, // LGD Gaming
+    FPX = 105, // FunPlus Phoenix
+    OMG = 107, // Oh My God
+    IG = 584, // Invictus Gaming
+    AL = 379, // Anyone's Legend
+    BBG = 969, // Bilibili Gaming
+    RNG = 635, // Royal Never Give Up
+    WE = 759, // Team World Elite
+    TT = 378, // ThunderTalk Gaming
+    UP = 231, // Ultra Prime
+    V5 = 817, // Victory Five
+    WG = 103, // Weibo Gaming
+    // NOTE: CBLOL:
+    FLG = 857, // Flamengo Los Grandes
+    FUR = 781, // FURIA Esports
+    INTZ = 578, // INTZ e-Sports
+    RED = 382, // RED Canids
+    PNG = 586, // paiN Gaming
+    LLL = 155, // LOUD
+    KBM = 364, // KaBuM! e-Sports
+    MIN = 374, // Netshoes Miners
+    VL = 396, // Vorax Liberty
+    RE = 820, // Rensga Esports
+    // NOTE: LCL:
+    DA = 106, // Dragon Army
+    CC = 475, // CrowCrowd
+    OBG = 565, // One Breath Gaming
+    // NOTE: LJL:
+    AXIZ = 838, // AXIZ
+    BC = 218, // Burning Core
+    CGA = 15, // Crest Gaming Act
+    DFM = 696, // DetonatioN FocusMe
+    SBH = 177, // Fukuoka SoftBank Hawks gaming
+    RJ = 884, // Rascal Jester
+    SG = 555, // Sengoku Gaming
+    V3 = 816, // V3 Esports
+    // NOTE: LLA:
+    R7 = 95, // Rainbow7
+    AK = 735, // All Knights
+    ES = 347, // Estral Esports
+    INF = 805, // Infinity eSports
+    ISG = 743, // Isurus Gaming
+    AZE = 915, // Team Aze
+    XTEN = 904, // XTEN Esports
+    // NOTE: LCO:
+    CEC = 978, // Chiefs Esports Club
+    MAM = 371, // MAMMOTH
+    ORDER = 828, // ORDER
+    PEACE = 930, // PEACE
+    PGG = 24, // Pentanet.GG
+    // NOTE: PCS:
+    PSG = 7, // PSG Talon
+    BG = 683, // Beyond Gaming
+    CTBC = 484, // CTBC Flying Oyster
+    JT = 182, // J Team
+    // NOTE: TCL:
+    _5R = 687, // 5 Ronin
+    BEC = 11, // Besiktas e-Sports Club
+    DP = 74, // Dark Passage
+    FE = 335, // Fenerbahçe Esports
+    GLA = 115, // Galakticos
+    GLE = 607, // Galatasaray Esports
+    IWC = 990, // Istanbul Wild Cats
+    NASR = 553, // NASR eSports Turkey
+    SMB = 923, // SuperMassive Blaze
+    TA = 369, // Team AURORA
+    // NOTE: VCS:
+    CE = 179, // CERBERUS Esports
+    GAM = 165, // GAM Esports
+    SGB = 806, // Saigon Buffalo
+    TS = 865, // Team Secret
 }
 
 export enum ETeamNames {

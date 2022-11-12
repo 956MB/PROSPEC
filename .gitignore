@@ -133,6 +133,7 @@ dist
 /src/assets/dragontail/loading
 /src/assets/dragontail/splash
 /src/assets/dragontail/profileicon
+/src/assets/dragontail/extra/*
 /src-tauri/assets/*
 /src-tauri/target/*
 /config.ini
